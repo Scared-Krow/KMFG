@@ -1,0 +1,170 @@
+;Ringout Warning and Vorpal Timer
+[Statedef -2]
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = (player(1), map(ComboStateCheck) || player(2), map(ComboStateCheck))
+sysvar(1) = 1
+[State 0, VarSet]
+type = VarSet
+trigger1 = (player(1), map(ComboStateCheck) = 0 && player(2), map(ComboStateCheck) = 0)
+sysvar(1) = 0
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = 1
+sysvar(2) = (player(1), map(ComboTimer) + player(2), map(ComboTimer)) / 2
+[State 0, VarSet]
+type = VarSet
+trigger1 = sysvar(2) > 75
+sysvar(2) = 76
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "p1combo = %f"
+params = player(1), map(ComboStateCheck)
+
+[State - 1]
+type 		= MapSet
+trigger1 		= roundstate = 1 || map(BreakTimer) >= 450
+map 			= "BreakTimer"
+value 		= 0
+persistent = 1
+[State - 1]
+type 		= MapAdd
+triggerall	= roundstate = 2
+trigger1 		= 1 
+map 			= "BreakTimer"
+value 		= 1 - (sysvar(1))
+persistent = 1
+
+;Timer Explod
+[State 0, Explod]
+type = Explod
+triggerall = !numexplod(1015) && !sysvar(2)
+trigger1 = 1
+anim = F1015
+ID = 1015
+pos = 160, 175
+postype = left
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -1
+supermovetime = 0
+pausemovetime = 0
+scale = 0.35,0.35
+sprpriority = -10
+ontop = 0
+shadow = 0,0,0
+ownpal = 0
+removeongethit = 0
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = !sysvar(1)
+ID = 1015
+window = -20, 5, 20, -map(BreakTimer)/6
+trans = none
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = sysvar(1)
+ID = 1015
+trans = AddAlpha
+alpha = 100, 100
+
+;Timer Explod
+[State 0, Explod]
+type = Explod
+triggerall = !numexplod(1016) && sysvar(2)
+trigger1 = 1
+anim = 1016
+ID = 1016
+pos = 160, 175
+postype = left
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -1
+supermovetime = 0
+pausemovetime = 0
+scale = 0.35,0.35
+sprpriority = -9
+ontop = 0
+shadow = 0,0,0
+ownpal = 0
+removeongethit = 0
+[State 0, ModifyExplod]
+type = ModifyExplod
+trigger1 = sysvar(2)
+ID = 1016
+window = -20, 5, 20, -sysvar(2)
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = !sysvar(2)
+id = 1016
+
+
+[State 0, Explod]
+type = Explod
+triggerall = !numexplod(1000)
+trigger1 = camerapos x  < -435
+anim = F1000
+ID = 1000
+pos = -665,0
+postype = none
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -1
+supermovetime = 0
+pausemovetime = 0
+scale = 0.75,3
+sprpriority = -100
+ontop = 0
+shadow = 0,0,0
+ownpal = 0
+removeongethit = 0
+[State 0, Explod]
+type = Explod
+triggerall = !numexplod(1000)
+trigger1 = camerapos x  > 435
+anim = F1000
+ID = 1000
+pos = 665,0
+postype = none
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -1
+supermovetime = 0
+pausemovetime = 0
+scale = -0.75,3
+sprpriority = -100
+ontop = 0
+shadow = 0,0,0
+ownpal = 0
+removeongethit = 0
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = abs(camerapos x) = [0, 20]
+id = 1000

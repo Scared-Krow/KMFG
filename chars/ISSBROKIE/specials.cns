@@ -1,0 +1,207 @@
+;---------------------------------------------------------------------------
+;UpperCut
+[Statedef 1000]
+type    = U
+movetype= A
+physics = N
+anim = 1000
+velset = 0,0
+ctrl = 0
+
+[State 0, Var Charge]
+type = MapSet
+trigger1 = time = 0
+map = "Charge"
+value = 0
+ignorehitpause = 1
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 1
+trigger2 = animelem = 2
+x = 8
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelem = 3
+y = -6.5
+x = 2
+
+[State 210, 2]
+type = HitDef
+trigger1 = time = 0
+attr = S, SA
+animtype  = Up
+damage = ceil(cond(fvar(10) * 50 < 25, 25, fvar(10) * 50)),0
+guardflag = MA
+pausetime = 12,12
+sparkno = 1
+sparkxy = -10,-65
+hitsound   = 5,2
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 20
+ground.velocity = -3,-6
+air.hittime = ceil(cond(fvar(16) * 50 < 30, 30, fvar(16) * 50))
+air.velocity = -2,-5
+guard.ctrltime = 10
+guard.hittime = 10
+fall = 1
+fall.yvelocity = 0
+yaccel = .25
+hitonce = 1
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem = 5
+statetype = A      
+movetype = I        
+physics = A  
+
+
+[State 1000, 7]
+type = ChangeState
+triggerall = movehit
+trigger1 = command = "x"
+value = 1005
+ctrl = 0
+
+
+[State 1000, 7]
+type = ChangeState
+triggerall = time > 10
+trigger1 = pos y >= -3
+value = 1001
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;Land
+[Statedef 1001]
+type    = S
+movetype= I
+physics = S
+anim = 1002
+velset = 0,0
+ctrl = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 200, 3]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;UpperCut Slam Charge
+[Statedef 1005]
+type    = U
+movetype= I
+physics = A
+velset = vel x*2, vel y
+anim = 1001
+ctrl = 0
+
+[State 0, ChangeAnim]
+type = ChangeState
+triggerall = time > 7
+trigger1 = command != "holdx"
+value = 1006
+
+[State 0, Var Charge]
+type = MapAdd
+triggerall = time > 7
+trigger1 = command = "holdx"
+map = "Charge"
+value = 1
+ignorehitpause = 1
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = Map(Charge) = 12
+time = 3
+add = 0,0,0
+mul = 120,106,150
+invertall = 0
+color = 256
+ignorehitpause = 1
+
+[State 1000, 7]
+type = ChangeState
+triggerall = time > 8
+trigger1 = pos y >= -3
+value = 1001
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;UpperCut Slam
+[Statedef 1006]
+type    = U
+movetype= A
+physics = A
+velset = vel x, vel y
+anim = 1003
+ctrl = 0
+
+[State 0, PalFX]
+type = PalFX
+triggerall = Movetype = A
+trigger1 = Map(Charge) >= 12 && Map(Charge) <= 14
+time = 1
+add = 0,0,0
+mul = 120,106,150
+invertall = 0
+color = 256
+ignorehitpause = 1
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem = 2
+statetype = A      
+movetype = I        
+physics = A  
+
+[State 210, 2]
+type = HitDef
+trigger1 = time = 0
+attr = S, SA
+animtype  = Medium
+damage = ceil(cond(fvar(10) * 50 < 25, 25, fvar(10) * 50))*cond((Map(Charge) >= 12 && Map(Charge) <= 14),2,1),0
+guardflag = MA
+pausetime = cond((Map(Charge) >= 12 && Map(Charge) <= 14),16,13),cond((Map(Charge) >= 12 && Map(Charge) <= 14),16,13)
+sparkno = 1
+sparkxy = -10,-65
+hitsound   = 5,2
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 20
+ground.velocity = -6,-2
+air.hittime = 45
+air.velocity = cond(Map(GroundBounce)=0&&Map(Charge) >= 12 && Map(Charge) <= 14,-5,-7),5
+guard.ctrltime = 10
+guard.hittime = 10
+fall = 1
+fall.yvelocity = cond(Map(GroundBounce)=0&&Map(Charge) >= 12 && Map(Charge) <= 14,-4,0)
+hitonce = 1
+ID = 5420
+
+[State 0, TargetState]
+type = TargetState
+triggerall = Map(Charge) >= 12 && Map(Charge) <= 14
+triggerall = Map(GroundBounce)=1
+triggerall = enemy,statetype = A && NumTarget(5420)
+trigger1 = movehit=1
+value = 5420
+ID = 5420
+
+
+[State -2, Ground Bounce Limiter]
+type = mapset
+trigger1 = movehit=1
+value = 1
+map = "GroundBounce"
