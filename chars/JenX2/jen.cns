@@ -405,10 +405,59 @@ ctrl = 1
 ;---------------------------------------------------------------------------
 [Statedef -2]
 
+[State 0, ENEMYCTRL]
+type = text
+triggerall = teamside = 2
+triggerall = GameMode = "Training"
+trigger1 = 1
+removetime = 1
+layerno = 2
+text = "Pressure Gap= %d"
+params = var(49)
+font = F3
+align = 0
+pos = 220,185
+ignorehitpause = 1
+pausemovetime = 100
+
+[State 0, VarSet] ;Gap Varset
+type = VarSet
+triggerall = gameMode = "Training"
+trigger1 = 1
+v = 49
+value = MAP(AWFreeze)
+
+[State -2, ActionWindow Tick Up]
+type 		= MapAdd
+trigger1 	= ctrl && (stateno != 150 || stateno != 152 || stateno != 154)
+trigger1    = stateno != [10, 11]
+trigger1    = map(ActionWindow) < 30
+map 		= "ActionWindow"
+value 		= 1
+ignorehitpause 	= 1
+[State -2, ActionWindow Reset]
+type 		= MapSet
+trigger1    = (stateno = 0 || stateno = [10,11]) && time >= 30
+map 		= "ActionWindow"
+value 		= 0
+ignorehitpause 	= 0
+
+[State -2, ActionWindow ValueFreeze]
+type 		= MapSet
+trigger1 	= !ctrl
+map 		= "AWFreeze"
+value 		= MAP(actionwindow)
+ignorehitpause 	= 1
+[State -2, ActionWindow ValueFreeze]
+type 		= MapSet
+trigger1 	= stateno = 0 && time >= 30
+map 		= "AWFreeze"
+value 		= 0
+
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "Map(DJAccess)= %d, Map(BUCKX2) = %f"
+text = "Map(DJAccess)= %.0f, Map(BUCKX2) = %f"
 params = Map(DJAccess), Map(BUCKX2)
 
 ;---------REDUCE MECHANIC
