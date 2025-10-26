@@ -202,7 +202,7 @@ type = VarAdd
 triggerall = combocount=0
 trigger1 = animelem = 3 
 fv = 11
-value = .75
+value = .8
 
 ;DAMAGE SCALING
 [State 0, VarAdd]
@@ -224,7 +224,7 @@ type = HitDef
 trigger1 = time = 0
 attr = S, NA
 animtype  = Medium
-damage = ceil(cond(fvar(10) * 55 < 5, 5, fvar(10) * 55)),0
+damage = ceil(cond(fvar(10) * 50 < 5, 5, fvar(10) * 50)),0
 guardflag = MA
 pausetime = 12,12
 sparkno = 1
@@ -682,6 +682,14 @@ type = PosAdd
 trigger1 = animelem = 4
 x = 18
 
+;STARTER SCALING
+[State 0, VarAdd]
+type = VarAdd
+triggerall = combocount=0
+trigger1 = animelem = 3 
+fv = 11
+value = .5
+
 ;DAMAGE SCALING
 [State 0, VarAdd]
 type = VarAdd
@@ -695,7 +703,7 @@ type = VarAdd
 triggerall = enemy,movetype = H && enemy,statetype = A
 trigger1 = animelem = 4
 fv = 15
-value = 1
+value = .5
 
 [State 440, 2]
 type = PlaySnd
@@ -706,7 +714,7 @@ value = 0, 2
 type = HitDef
 trigger1 = time = 0
 attr = C, NA
-damage = floor(cond(fvar(10) * 75 < 7, 7, fvar(10) * 75)),0
+damage = floor(cond(fvar(10) * 60 < 6, 6, fvar(10) * 60)),0
 hitflag = MAF
 guardflag = LA
 pausetime = 10,10
@@ -717,11 +725,11 @@ guardsound = 6,0
 ground.type = low
 ground.slidetime = 10
 ground.hittime  = 17
-ground.velocity = -3,-3
-air.velocity = -2.5,-2
+ground.velocity = -3
+air.velocity = -2,-3
 air.hittime = ceil(cond(fvar(16) * 40 < 15, 15, fvar(16) * 40))
 guard.velocity = -5
-fall = 1
+air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 12
 guard.hittime = 12
@@ -747,6 +755,14 @@ trigger1 = movecontact
 value = 40
 ctrl = 0
 
+[State 210, 5]
+type = ChangeState
+trigger1 = command = "b"
+trigger1 = movecontact
+value = 441
+ctrl = 0
+
+
 [State 440, 4]
 type = ChangeState
 trigger1 = AnimTime = 0
@@ -754,7 +770,114 @@ value = 11
 ctrl = 1
 
 ;---------------------------------------------------------------------------
-;j.L
+;2D>D
+[Statedef 441]
+type    = C
+movetype= A
+physics = C
+ctrl = 0
+anim = 441
+sprpriority = 2
+facep2 = 1
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 2
+trigger2 = animelem = 3
+x = 2
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 4
+x = 18
+
+;REPEATED USE DAMAGE SCALING
+[State 0, VarAdd]
+type = VarAdd
+triggerall = Map(crD)=1
+trigger1 = animelem = 4
+fv = 11
+value = 2
+
+;DAMAGE SCALING
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = animelem = 4
+fv = 11
+value = 1.5
+
+;HITSTUN SCALING
+[State 0, VarAdd]
+type = VarAdd
+triggerall = enemy,movetype = H && enemy,statetype = A
+trigger1 = animelem = 4
+fv = 15
+value = 1
+
+[State 440, 2]
+type = PlaySnd
+trigger1 = animelem = 3
+value = 0, 2
+
+[State 440, 3]
+type = HitDef
+trigger1 = time = 0
+attr = S, NA
+damage = floor(cond(fvar(10) * 50 < 5, 5, fvar(10) * 50)),0
+hitflag = MAF
+guardflag = MA
+pausetime = 10,10
+sparkno = 1
+sparkxy = -5,-10
+hitsound   = 5,2
+guardsound = 6,0
+ground.type = low
+ground.slidetime = 10
+ground.hittime  = 17
+ground.velocity = -3,-4.75
+air.velocity = -2.5,-4
+air.hittime = ceil(cond(fvar(16) * 40 < 15, 15, fvar(16) * 40))
+guard.velocity = -5
+fall = 1
+fall.yvelocity = 0
+guard.ctrltime = 12
+guard.hittime = 12
+p2facing = 1
+
+[State -2, 2C limiter]
+type = mapset
+trigger1 = movehit=1
+value = 1
+map = "crD"
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem = 5
+statetype = C      
+movetype = I        
+physics = C  
+
+[State 210, 5]
+type = ChangeState
+triggerall = command = "28"
+trigger1 = movecontact
+value = 60
+ctrl = 0
+[State 210, 5]
+type = ChangeState
+triggerall = command = "holdup"
+trigger1 = movecontact
+value = 40
+ctrl = 0
+
+[State 440, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;j.A
 [Statedef 600]
 type    = A
 movetype= A
@@ -838,7 +961,7 @@ trigger1 = Time = 17
 value = 1
 
 ;---------------------------------------------------------------------------
-;j.M
+;j.B
 [Statedef 610]
 type    = A
 movetype= A
@@ -890,8 +1013,8 @@ guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
 ground.hittime  = 14
-ground.velocity = -6
-air.velocity = -1.25,-1.25
+ground.velocity = -4
+air.velocity = -2,-2
 air.hittime = ceil(cond(fvar(16) * 30 < 15, 15, fvar(16) * 30))
 air.fall = 1
 fall.yvelocity = 0
@@ -905,7 +1028,7 @@ movetype = I
 physics = A 
 
 ;---------------------------------------------------------------------------
-;j.H
+;j.C
 [Statedef 630]
 type    = A
 movetype= A
@@ -972,7 +1095,7 @@ statetype = A
 movetype = I        
 physics = A 
 ;---------------------------------------------------------------------------
-;j.V
+;j.D
 [Statedef 640]
 type    = A
 movetype= A

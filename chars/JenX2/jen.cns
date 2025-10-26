@@ -405,60 +405,11 @@ ctrl = 1
 ;---------------------------------------------------------------------------
 [Statedef -2]
 
-[State 0, ENEMYCTRL]
-type = text
-triggerall = teamside = 2
-triggerall = GameMode = "Training"
-trigger1 = 1
-removetime = 1
-layerno = 2
-text = "Pressure Gap= %d"
-params = var(49)
-font = F3
-align = 0
-pos = 220,185
-ignorehitpause = 1
-pausemovetime = 100
-
-[State 0, VarSet] ;Gap Varset
-type = VarSet
-triggerall = gameMode = "Training"
-trigger1 = 1
-v = 49
-value = MAP(AWFreeze)
-
-[State -2, ActionWindow Tick Up]
-type 		= MapAdd
-trigger1 	= ctrl && (stateno != 150 || stateno != 152 || stateno != 154)
-trigger1    = stateno != [10, 11]
-trigger1    = map(ActionWindow) < 30
-map 		= "ActionWindow"
-value 		= 1
-ignorehitpause 	= 1
-[State -2, ActionWindow Reset]
-type 		= MapSet
-trigger1    = (stateno = 0 || stateno = [10,11]) && time >= 30
-map 		= "ActionWindow"
-value 		= 0
-ignorehitpause 	= 0
-
-[State -2, ActionWindow ValueFreeze]
-type 		= MapSet
-trigger1 	= !ctrl
-map 		= "AWFreeze"
-value 		= MAP(actionwindow)
-ignorehitpause 	= 1
-[State -2, ActionWindow ValueFreeze]
-type 		= MapSet
-trigger1 	= stateno = 0 && time >= 30
-map 		= "AWFreeze"
-value 		= 0
-
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "Map(DJAccess)= %.0f, Map(BUCKX2) = %f"
-params = Map(DJAccess), Map(BUCKX2)
+text = "var(10) = %.3f, var(11) = %.3f"
+params = fvar(10),fvar(11)
 
 ;---------REDUCE MECHANIC
 [State -2, Reduce]
@@ -566,12 +517,12 @@ ignoreHitPause = 1
 
 [State -2, Damage Dampener Limit]
 type = VarSet
-trigger1 = enemy, movetype != H
+trigger1 = combocount = 0
 fvar(11) = 0
 ignoreHitPause = 1
 [State -2, Damage Dampener Limit]
 type = VarSet
-trigger1 = enemy, movetype != H
+trigger1 = combocount = 0
 fvar(10) = 1
 ignoreHitPause = 1
 
@@ -579,16 +530,12 @@ ignoreHitPause = 1
 
 [State -2, Hit Count Reset(Hitstun Scaling)]
 type = VarSet
-trigger1 = NumEnemy && fvar(15)
-trigger1 = (EnemyNear, MoveType != H) && (EnemyNear, StateNo != 5300)
-trigger2 = enemy,stateno = [120,155]
+trigger1 = combocount = 0
 fvar(15) = 0
 ignoreHitPause = 1
 [State -2, Hit Count Reset(Hitstun Scaling)]
 type = VarSet
-trigger1 = NumEnemy && fvar(15)
-trigger1 = (EnemyNear, MoveType != H) && (EnemyNear, StateNo != 5300)
-trigger2 = enemy,stateno = [120,155]
+trigger1 = combocount = 0
 fvar(16) = 0
 ignoreHitPause = 1
 
@@ -692,6 +639,12 @@ type = mapset
 trigger1 = enemy,movetype != H
 value = 0
 map = "Launcher"
+
+[State -2, 2D>D Reset]
+type = mapset
+trigger1 = enemy,movetype != H
+value = 0
+map = "crD"
 
 [State -2, Gun Reset]
 type = mapset
