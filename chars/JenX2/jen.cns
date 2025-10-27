@@ -481,12 +481,12 @@ freq = 60
 ampl = -4
 phase = 90
 
-[State -2, Low Map Reset]
+[State -2, CounterHit Reset]
 type = mapset
 trigger1 = enemy,movetype != A
 value = 0
 map = "CounterHit"
-[State -2, Low Map Reset]
+[State -2, CounterHit Reset]
 type = mapset
 trigger1 = enemy,movetype = A
 value = 1
@@ -657,6 +657,12 @@ type = mapset
 trigger1 = enemy,movetype != H
 value = 0
 map = "qcbD"
+
+[State -2, Gun Reset]
+type = mapset
+trigger1 = enemy,movetype != H
+value = 0
+map = "stanceA"
 
 
 ;This controller plays a sound everytime KFM lands from a jump, or
