@@ -1141,3 +1141,7 @@ if roundNo = 1 {
 changeState{value: 0}
 
 [Statedef -2]
+
+if Map(ADPhysics)>0 {
+	velSet{y:0}
+}

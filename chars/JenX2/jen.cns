@@ -36,7 +36,7 @@ jump.neu = 0,-8.5
 jump.back = -2.55    
 jump.fwd = 2.5       
 runjump.back = -2.55,-8.1 
-runjump.fwd = 3,-8.1      
+runjump.fwd = 4,-8.1      
 airjump.neu = 0,-5      
 airjump.back = -2.55      
 airjump.fwd = 2.5         
@@ -200,10 +200,15 @@ ctrl = 1
 [Statedef 160]
 type = A
 movetype = I
-physics = N
+physics = A
 ctrl = 0
 anim = 160
-velset = vel x*.25,0
+velset = 0,0
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = time <= 20
+flag = noairguard
 
 [State -2, Airdash Limiter]
 type = mapadd
@@ -213,25 +218,25 @@ map = "DJ"
 
 [State 0, VelSet]
 type = VelSet
-trigger1 = time = 2
-x = 5
+trigger1 = 1
+x = 5.25
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = time = 15
+trigger1 = time = 16
 statetype = A       ;S,A,C,L
 movetype = I        ;I,A,H
 physics = A         ;A,C,S,N
 
 [State 0, VelMul]
 type = VelMul
-trigger1 = time > 15
-x = .98
+trigger1 = time > 11
+x = .95
 
 [State -2, AirDash Physics]
 type = mapset
 trigger1 = time = 0
-value = 17
+value = 16
 map = "ADPhysics"
 [State -2, AirDash Physics]
 type = mapset
@@ -248,10 +253,15 @@ value = 1
 [Statedef 161]
 type = A
 movetype = I
-physics = N
+physics = A
 ctrl = 0
 anim = 161
-velset = vel x*.25,0
+velset = 0,0
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = time <= 20
+flag = noairguard
 
 [State -2, Airdash Limiter]
 type = mapadd
@@ -260,9 +270,9 @@ value = -1
 map = "DJ"
 
 [State 0, VelSet]
-type = VelAdd
-trigger1 = time = 2
-x = -5
+type = VelSet
+trigger1 = 1
+x = -5.25
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -559,10 +569,6 @@ type = mapadd
 trigger1 = Map(ADPhysics)>0
 value = -1
 map = "ADPhysics"
-[State 0, VelMul]
-type = VelMul
-trigger1 = Map(AirDashing)>0
-y = 1.05
 [State -2, AirDash Physics]
 type = mapset
 trigger1 = statetype != A

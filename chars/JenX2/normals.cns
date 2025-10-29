@@ -542,7 +542,7 @@ ground.hittime  = 13
 ground.velocity = -3
 guard.velocity = -3
 air.velocity = -1,-1.35
-air.hittime = ceil(cond(fvar(16) * 22 < 5, 5, fvar(16) * 22))
+air.hittime = ceil(cond(22-Map(HitstunScaling) < 5, 5, 22-Map(HitstunScaling)))
 air.fall = 1
 guard.ctrltime = 12
 guard.hittime = 12
@@ -988,11 +988,12 @@ movetype= A
 ctrl = 0
 anim = 600
 sprpriority = 2
+velset = vel x, vel y
 facep2 = cond(Map(AirDashing)>0,1,0)
 
 [State 0, VelMul]
 type = VelMul
-trigger1 = Map(AirDashing)>0
+trigger1 = time > 6
 x = .975
 
 [State -2, Starter Damage Scaling]
@@ -1079,11 +1080,12 @@ movetype= A
 ctrl = 0
 anim = 610
 sprpriority = 2
+velset = vel x, vel y
 facep2 = cond(Map(AirDashing)>0,1,0)
 
 [State 0, VelMul]
 type = VelMul
-trigger1 = Map(AirDashing)>0
+trigger1 = time > 10
 x = .975
 
 [State 0, StateTypeSet]
@@ -1160,12 +1162,14 @@ movetype= A
 ctrl = 0
 anim = 630
 sprpriority = 2
+velset = vel x, vel y
 facep2 = cond(Map(AirDashing)>0,1,0)
 
 [State 0, VelMul]
 type = VelMul
-trigger1 = Map(AirDashing)>0
+trigger1 = time > 11
 x = .975
+
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1242,12 +1246,14 @@ movetype= A
 ctrl = 0
 anim = 640
 sprpriority = 2
+velset = vel x, vel y
 facep2 = cond(Map(AirDashing)>0,1,0)
 
 [State 0, VelMul]
 type = VelMul
-trigger1 = Map(AirDashing)>0
+trigger1 = time > 15
 x = .975
+
 
 [State 0, StateTypeSet]
 type = StateTypeSet
