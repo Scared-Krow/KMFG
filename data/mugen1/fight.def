@@ -44,6 +44,7 @@ scale = 4
 
 ;-----------------------------------------------------------
 [Lifebar]
+
 ;Player 1
 p1.pos    = 560,40
 p1.bg0.anim = -1
@@ -407,7 +408,7 @@ mid.shift = 0                ;Ikemen feature: makes the shift element also affec
 mid.freeze = 0               ;Ikemen feature: controls mid element freezing during gethit/combo (default: 1)
 mid.delay = 0                ;Ikemen feature: frames before mid element starts decreasing (default: 30)
 mid.mult = 1.0               ;Ikemen feature: moving relation between mid value and life (default: 1.0)
-mid.steps = 16               ;Ikemen feature: mid value decreasing steps (default: 8)
+mid.steps = 0               ;Ikemen feature: mid value decreasing steps (default: 8)
 ;Player 1
 p1.pos    = 590,40
 p1.bg0.anim = 20
