@@ -2,7 +2,7 @@
 life = 1000
 attack = 100
 defence = 100
-liedown.time = 25
+liedown.time = 15
 sparkno = 2
 guard.sparkno = 40
 KO.echo = 0
@@ -53,7 +53,7 @@ airjump.num = 1
 airjump.height = 100  
 yaccel = .45        
 stand.friction = .85  
-crouch.friction = .82 
+crouch.friction = .85 
 stand.friction.threshold = 2          
 crouch.friction.threshold = .05      
 air.gethit.groundlevel = 0           
@@ -141,7 +141,7 @@ flag = NoAutoTurn
 
 [State 100, 4]
 type = ChangeState
-trigger1 = command != "holdfwd" && command != "holdd"
+trigger1 = command != "holdfwd"
 value = 101
 
 ;---------------------------------------------------------------------------
@@ -212,20 +212,20 @@ value = -1
 map = "DJ"
 
 [State 0, VelSet]
-type = VelAdd
-trigger1 = time = [3,7]
-x = 1
+type = VelSet
+trigger1 = time = 2
+x = 5
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = time = 17
+trigger1 = time = 15
 statetype = A       ;S,A,C,L
 movetype = I        ;I,A,H
 physics = A         ;A,C,S,N
 
 [State 0, VelMul]
 type = VelMul
-trigger1 = time > 17
+trigger1 = time > 15
 x = .98
 
 [State -2, AirDash Physics]
@@ -233,6 +233,11 @@ type = mapset
 trigger1 = time = 0
 value = 17
 map = "ADPhysics"
+[State -2, AirDash Physics]
+type = mapset
+trigger1 = time = 0
+value = 1
+map = "AirDashing"
 
 [State 0, CtrlSet]
 type = CtrlSet
@@ -256,19 +261,19 @@ map = "DJ"
 
 [State 0, VelSet]
 type = VelAdd
-trigger1 = time = [3,7]
-x = -1
+trigger1 = time = 2
+x = -5
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = time = 17
+trigger1 = time = 15
 statetype = A       ;S,A,C,L
 movetype = I        ;I,A,H
 physics = A         ;A,C,S,N
 
 [State 0, VelMul]
 type = VelMul
-trigger1 = time > 17
+trigger1 = time > 15
 x = .98
 
 [State -2, AirDash Physics]
@@ -276,6 +281,12 @@ type = mapset
 trigger1 = time = 0
 value = 17
 map = "ADPhysics"
+[State -2, AirDash Physics]
+type = mapset
+trigger1 = time = 0
+value = 1
+map = "AirDashing"
+
 
 [State 0, CtrlSet]
 type = CtrlSet
@@ -408,8 +419,8 @@ ctrl = 1
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "var(10) = %.3f, var(11) = %.3f"
-params = fvar(10),fvar(11)
+text = "DamageScaling = %.3f, HitstunScaling = %.3f, qcfD = %.2f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(qcfD)
 
 ;---------REDUCE MECHANIC
 [State -2, Reduce]
@@ -458,7 +469,18 @@ trigger1 = Map(Reduce)=0
 value = 1
 ignorehitpause = 1
 
-;-------COUNTER HITS
+[State -2, Damage Scaling Reset]
+type = mapset
+trigger1 = combocount=0 || enemy,movetype != H
+value = 1
+map = "DamageScaling"
+[State -2, Hitstun Scaling Reset]
+type = mapset
+trigger1 = combocount=0 || enemy,movetype != H
+value = 0
+map = "HitstunScaling"
+
+;-------COUNTER HITS----------
 
 [State 0, Zoom]
 type = zoom
@@ -492,75 +514,24 @@ trigger1 = enemy,movetype = A
 value = 1
 map = "CounterHit"
 
-
-;DAMAGE SCALING
-
-[State -2, Hit Count Reset(Damage Scaling)]
-type = VarSet
-trigger1 = NumEnemy && fvar(10)
-trigger1 = (EnemyNear, MoveType != H) && (EnemyNear, StateNo != 5300)
-trigger2 = enemy,stateno = [120,155]
-fvar(10) = 0
-ignoreHitPause = 1
-
-[State -2, Damage Dampener]
-type = VarSet
-trigger1 = 1
-fvar(10) = ifElse(fvar(11) < 1, 10, ifElse(fvar(11) >= 10, 1, 10 - fvar(11))) / 10.0
-ignoreHitPause = 1
-
-[State -2, Damage Dampener Limit]
-type = VarSet
-trigger1 = fvar(10) < 0 
-fvar(10) = 0 
-ignoreHitPause = 1 
-
-[State -2, Damage Dampener Limit]
-type = VarSet
-trigger1 = combocount = 0
-fvar(11) = 0
-ignoreHitPause = 1
-[State -2, Damage Dampener Limit]
-type = VarSet
-trigger1 = combocount = 0
-fvar(10) = 1
-ignoreHitPause = 1
-
-;HITSTUN SCALING
-
-[State -2, Hit Count Reset(Hitstun Scaling)]
-type = VarSet
-trigger1 = combocount = 0
-fvar(15) = 0
-ignoreHitPause = 1
-[State -2, Hit Count Reset(Hitstun Scaling)]
-type = VarSet
-trigger1 = combocount = 0
-fvar(16) = 0
-ignoreHitPause = 1
-
-[State -2, Hitstun Dampener]
-type = VarSet
-trigger1 = 1
-fvar(16) = ifElse(fvar(15) < 3, 15, ifElse(fvar(15) >= 15, 1, 15 - fvar(15))) / 15.0
-ignoreHitPause = 1
-
-[State -2, Hitstun Dampener Limit]
-type = VarSet
-trigger1 = fvar(16) < 0
-fvar(16) = 0
-ignoreHitPause = 1
 ;---------------------------------------------------------------------------
 ; States that are executed when in self's state file (use statedef -3)
 ;---------------------------------------------------------------------------
 [Statedef -3]
 
+;---------------------------------------------------------------------------
+; CHARACTER SPECIFIC
+;---------------------------------------------------------------------------
 
 [State -2, Install Timer]
 type = mapadd
 trigger1 = Map(BUCKX2)>0
 value = -1
 map = "BUCKX2"
+
+;---------------------------------------------------------------------------
+; UNIVERSAL
+;---------------------------------------------------------------------------
 
 [State -2, DJ buffer]
 type = mapadd
@@ -588,6 +559,15 @@ type = mapadd
 trigger1 = Map(ADPhysics)>0
 value = -1
 map = "ADPhysics"
+[State 0, VelMul]
+type = VelMul
+trigger1 = Map(AirDashing)>0
+y = 1.05
+[State -2, AirDash Physics]
+type = mapset
+trigger1 = statetype != A
+value = 0
+map = "AirDashing"
 
 
 [State 0, Explod]
@@ -617,17 +597,17 @@ value = 1
 map = "DJ"
 [State -2, Move Limit Reset]
 type = mapset
-trigger1 = enemy,movetype != H
+trigger1 = combocount=0
 value = 0
 map = "GroundBounce"
 [State -2, Move Limit Reset]
 type = mapset
-trigger1 = enemy,movetype != H
+trigger1 = combocount=0
 value = 0
 map = "WallBounce"
 [State -2, Move Limit Reset]
 type = mapset
-trigger1 = enemy,movetype != H
+trigger1 = combocount=0
 value = 0
 map = "Tumble"
 
@@ -639,25 +619,21 @@ type = mapset
 trigger1 = enemy,movetype != H
 value = 0
 map = "Launcher"
-
 [State -2, 2D>D Reset]
 type = mapset
 trigger1 = enemy,movetype != H
 value = 0
 map = "crD"
-
 [State -2, Gun Reset]
 type = mapset
 trigger1 = enemy,movetype != H
 value = 0
 map = "qcfD"
-
 [State -2, Gun Reset]
 type = mapset
 trigger1 = enemy,movetype != H
 value = 0
 map = "qcbD"
-
 [State -2, Gun Reset]
 type = mapset
 trigger1 = enemy,movetype != H

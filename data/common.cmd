@@ -183,7 +183,7 @@ buffer.time = 6
 name = "FADash"     
 command = ~$F, >F
 time = 8
-buffer.time = 6
+buffer.time = 8
 
 [Command]
 name = "BB"     
@@ -195,7 +195,7 @@ buffer.time = 6
 name = "BADash"     
 command = ~$B, >B
 time = 8
-buffer.time = 6
+buffer.time = 8
 
 [Command]
 name = "22"    

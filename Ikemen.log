@@ -2,8 +2,8 @@ Version: nightly
 Build Time: 2025-10-08
 
 Error log:
-.\external\script\start.lua:1602: data/common1.zss:128:
-Wrong token: expected :, got }
+.\external\script\start.lua:1602: chars/JenX2/specials.cns:331:
+Invalid data: moveadd
 stack traceback:
 	[G]: in function 'game'
 	.\external\script\start.lua:1602: in function 'f_game'

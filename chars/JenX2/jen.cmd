@@ -219,7 +219,7 @@ var(1) = 1
 type = ChangeState
 value = 100
 triggerall = stateno!= 100
-trigger1 = command = "FF" || (command = "d" && command != "holdback")
+trigger1 = command = "FF"
 trigger1 = statetype != A
 trigger1 = ctrl
 ;---------------------------------------------------------------------------
@@ -227,7 +227,7 @@ trigger1 = ctrl
 [State -1, Run Back]
 type = ChangeState
 value = 105
-trigger1 = command = "BB" || (command = "d" && command = "holdback")
+trigger1 = command = "BB"
 trigger1 = statetype != A
 trigger1 = ctrl
 ;---------------------------------------------------------------------------
@@ -237,7 +237,7 @@ type = ChangeState
 value = 160
 triggerall = Map(DJ)>0
 triggerall = vel y > 0 || pos y < -40
-triggerall = command = "FADash" || (command = "d" && command != "holdback")
+triggerall = command = "FADash"
 trigger1 = statetype = A
 trigger1 = ctrl
 trigger2 = var(1)
@@ -248,7 +248,7 @@ type = ChangeState
 value = 161
 triggerall = Map(DJ)>0
 triggerall = vel y > 0 || pos y < -40
-triggerall = command = "BADash" || (command = "d" && command = "holdback")
+triggerall = command = "BADash"
 trigger1 = statetype = A
 trigger1 = ctrl
 trigger2 = var(1)
@@ -286,6 +286,7 @@ trigger1 = ctrl
 [State -1, DJ]
 type = ChangeState
 value = 45
+triggerall = vel y > 0 || pos y < -50
 triggerall = Map(DJ)>0 && Map(DJAccess)=1
 triggerall = statetype = A
 triggerall = command = "up"
@@ -430,7 +431,7 @@ triggerall = command = "b"
 triggerall = command != "holddown"
 trigger1 = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,430]) && stateno != 300 && stateno != 250 && stateno != 240
+trigger2 = (stateno = [200,430]) && stateno != 300 && stateno != 250 && stateno != 240 && stateno != 241
 trigger2 = movecontact
 ;---------------------------------------------------------------------------
 ;2A
@@ -476,7 +477,7 @@ triggerall = command = "b"
 triggerall = command = "holddown"
 trigger1 = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,430]) && stateno != 300 && stateno != 250 && stateno != 240
+trigger2 = (stateno = [200,430]) && stateno != 300 && stateno != 250 && stateno != [240,241]
 trigger2 = movecontact
 
 ;---------------------------------------------------------------------------

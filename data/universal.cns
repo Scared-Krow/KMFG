@@ -121,7 +121,7 @@ trans = add
 
 [State 0, NotHitBy]
 type = NotHitBy
-trigger1 = time=[3,16]
+trigger1 = time=[3,15]
 value = SCA,NP,SP,HP
 time = 1
 
@@ -129,6 +129,12 @@ time = 1
 type = HitBy
 trigger1 = 1
 value = SCA,NA,SA,HA,NT,ST,HT
+time = 1
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = time<3 || time > 15
+value = SCA,NA,SA,HA,NT,ST,HT,NP,SP,HP
 time = 1
 
 [State 0, VelSet]

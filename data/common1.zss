@@ -842,7 +842,7 @@ if time = 0 {
 
 #-------------------------------------------------------------------------------
 # Downed get-hit (getting up)
-[StateDef 5120; type: L; movetype: I; physics: N;]
+[StateDef 5120; type: S; movetype: I; physics: N;]
 
 if time = 0 {
 	let a = call SelfAnimExistAddMod10(anim = [5111, 5119], 5120);
@@ -852,8 +852,7 @@ if time = 0 {
 if getHitVar(fall.yVel) = 0 { notHitBy{value: SCA; time: 1} }
 if animTime = 0 {
 	hitFallSet{value: 1}
-	notHitBy{value: , NT,ST,HT; time: 12}
-	notHitBy{value2: SCA; time: 3}
+	notHitBy{value: , NT,ST,HT; time: 5}
 	changeState{value: 0; ctrl: 1}
 }
 
@@ -1003,7 +1002,7 @@ velMul {x:.99}
 
 if backEdgeDist <= 60 && frontEdgeDist <= 60 { ScreenBound{value:1; movecamera: 1,0;} }
 
-if BackEdgeDist <= 20 { changeState {value: 5402} }
+if BackEdgeDist <= 5 { changeState {value: 5402} }
 
 if vel y > 0 && pos y >= 0 && time > 10 { selfState {value: 5100} }
 
@@ -1070,7 +1069,7 @@ if alive && gethitvar(hittime) = -1 && command = "recovery" {
 if time = 25 { velset {y: 1} }
 if time > 25 { velMul {y: 1.05} }
 
-if vel y > 0 && pos y >= 45 { selfState {value: 5100} }
+if vel y > 0 && pos y >= 0 { selfState {value: 5100} }
 
 #-------------------------------------------------------------------------------
 # SKD (shake)
@@ -1099,9 +1098,9 @@ if facing != enemy,facing {
 
 velAdd{y: getHitVar(yAccel)}
 
-if time <= 8 { changeAnim{value:5061; elem:2;} }
-if time > 8 && time <= 13 { changeAnim{value:5061; elem:3;} }
-if time > 13 { changeAnim{value:5061; elem:4;} }
+if time <= 8 { changeAnim{value:5061; elem:1;} }
+if time > 8 && time <= 13 { changeAnim{value:5061; elem:2;} }
+if time > 13 { changeAnim{value:5061; elem:3;} }
 
 if vel y > 0 && pos y >= 10 { selfState {value: 5422} }
 

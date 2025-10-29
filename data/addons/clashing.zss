@@ -14,7 +14,7 @@ mapset{map: "_pots_clashing_cfg_prioritycheck"; value: 0}		# Clash only if both 
 mapset{map: "_pots_clashing_cfg_attrcheck"; value: 0}			# Clash only if both attacks are of the same type (normal, special, super)
 mapset{map: "_pots_clashing_cfg_clsn2check"; value: 0}			# Clash only if the hurtboxes are not hit
 mapset{map: "_pots_clashing_cfg_flagguard"; value: 1}			# Makes a clash count as if the attacks were guarded
-mapset{map: "_pots_clashing_cfg_pause"; value: 20}				# Duration of pause upon a clash
+mapset{map: "_pots_clashing_cfg_pause"; value: 15}				# Duration of pause upon a clash
 mapset{map: "_pots_clashing_cfg_zoom"; value: 1.2}				# Amount to zoom during a clash
 mapset{map: "_pots_clashing_cfg_simul"; value: 1}				# Allow clashes during simul mode
 
@@ -111,8 +111,8 @@ ignorehitpause if !ishelper {
 				}
 
 				# Lifebar messages
-				lifebaraction{text: "Clash"; top: 1}
-				lifebaraction{text: "Clash"; top: 1; redirectID: p2, ID}
+				#lifebaraction{text: "Clash"; top: 1}
+				#lifebaraction{text: "Clash"; top: 1; redirectID: p2, ID}
 
 				# Pause
 				pause{time: map(_pots_clashing_cfg_pause); endcmdbuftime: 10; pausebg: 0}
@@ -133,16 +133,16 @@ ignorehitpause if !ishelper {
 				}
 
 				# Zoom
-				if map(_pots_clashing_cfg_zoom) != 1.0 {
-					zoom{
-						scale: map(_pots_clashing_cfg_zoom);
-						time: 20;
-						pos: 0, 0;
-						lag: 0.618;
-						stagebound: 1;
-						camerabound: 1;
-					}
-				}
+				#if map(_pots_clashing_cfg_zoom) != 1.0 {
+				#	zoom{
+				#		scale: map(_pots_clashing_cfg_zoom);
+				#		time: 20;
+				#		pos: 0, 0;
+				#		lag: 0.618;
+				#		stagebound: 1;
+				#		camerabound: 1;
+				#	}
+				#}
 
 				# Sound
 				# You can add your own sounds here by adding them to common.snd
