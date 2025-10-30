@@ -495,6 +495,83 @@ trigger1 = movecontact
 trigger2 = pos y >= 0
 
 ;---------------------------------------------------------------------------
+;623A
+[Statedef 1100]
+type    = S
+movetype= A
+physics = S
+anim = 1100
+ctrl = 0
+
+[State 0, ReversalDef]
+type = ReversalDef
+trigger1 = time > 3 && time < 14
+reversal.attr = SCA,AA
+pausetime = 5,10
+sparkno = -1
+hitsound = -1
+p1stateno = 1101
+
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;623A>Active
+[Statedef 1101]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+anim = 1101
+poweradd = 20
+velset = 20,0
+sprpriority = -1
+
+[State 0, Width]
+type = Width
+trigger1 = time < 5
+edge = 0,0
+player = -15,-15
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = time < 5
+value = 0
+
+[State 210, 2]
+type = HitDef
+trigger1 = time = 0
+attr = S, NA
+animtype  = Medium
+damage = ceil(cond(125*Map(DamageScaling) < 5, 5, 125*Map(DamageScaling)))
+guardflag = MA
+pausetime = 12,12
+sparkno = 1
+sparkxy = -10,-65
+hitsound   = 5,2
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 25
+ground.velocity = 4
+air.hittime = ceil(cond(30-Map(HitstunScaling) < 18, 18, 30-Map(HitstunScaling)))
+air.velocity = -1.75,-3.5
+guard.ctrltime = 13
+guard.hittime = 13
+air.fall = 1
+fall.yvelocity = 0
+p2facing = -1
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+;---------------------------------------------------------------------------
 ;214B
 [Statedef 1200]
 type    = S
@@ -655,7 +732,7 @@ type = HitDef
 triggerall = Map(extendedCH)=0
 trigger1 = animelem = 12
 attr = C, SP                    ;Attribute: Standing, Normal Attack
-damage = ceil(cond(25*Map(DamageScaling) < 2, 2, 25*Map(DamageScaling))),5
+damage = ceil(cond(35*Map(DamageScaling) < 2, 2, 35*Map(DamageScaling))),5
 animtype = Light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = LA                   ;Flags on how move is to be guarded against
 hitflag = MAFD                    ;Flags of conditions that move can hit
@@ -674,7 +751,7 @@ airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
 air.velocity = -1,5       ;X-velocity at which opponent is pushed,
 air.hittime = ceil(cond(30-Map(HitstunScaling) < 15, 15, 30-Map(HitstunScaling)))
-down.hittime = ceil(cond(35-Map(HitstunScaling) < 20, 20, 35-Map(HitstunScaling)))
+down.hittime = ceil(cond(35-Map(HitstunScaling) < 14, 14, 35-Map(HitstunScaling)))
 air.fall = 1
 fall.yvelocity = 0
 down.velocity = -1,-5

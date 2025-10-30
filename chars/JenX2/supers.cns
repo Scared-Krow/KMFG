@@ -101,7 +101,7 @@ ctrl = 0
 type = HitDef
 trigger1 = time = 0
 attr = S,HP                     ;Attribute: Standing, Normal Attack
-damage = floor(cond(root,fvar(10) * 200 < 100, 100, root,fvar(10) * 200)),15
+damage = ceil(cond(200*root,Map(DamageScaling) < 100, 100, 200*root,Map(DamageScaling))),25
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAFD                    ;Flags of conditions that move can hit

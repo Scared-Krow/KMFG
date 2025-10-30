@@ -967,7 +967,7 @@ if time = 0 {
 		if command = "holdback" {
 			velAdd{x: const(velocity.air.gethit.airrecover.back)}
 		}
-	} else if time = 20 {
+	} else if time = 15 {
 		ctrlSet{value: 1}
 	}
 	velAdd{y: const(movement.air.gethit.airrecover.yAccel)}

@@ -338,8 +338,8 @@ trigger5 = stateno=[1000,2000] && movecontact
 ;============================================================================
 
 ;---------------------------------------------------------------------------
-;214A
-[State -1, 214A]
+;214B
+[State -1, 214B]
 type = ChangeState
 value = 1200
 triggerall = command = "214B"
@@ -375,7 +375,13 @@ triggerall = statetype = A
 trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------
-
+;623A
+[State -1, 623A]
+type = ChangeState
+value = 1100
+triggerall = command = "623A"
+triggerall = statetype != A
+trigger1 = ctrl
 
 ;===========================================================================
 

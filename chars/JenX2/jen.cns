@@ -575,6 +575,16 @@ trigger1 = statetype != A
 value = 0
 map = "AirDashing"
 
+[State Throw Tech]
+type = mapset
+trigger1 = ctrl
+map = "CanTT"
+value = 1
+[State Throw Tech]
+type = mapset
+trigger1 = !ctrl
+map = "CanTT"
+value = 0
 
 [State 0, Explod]
 type = Explod
@@ -593,6 +603,7 @@ scale = 1,1
 sprpriority = -7
 ownpal = 1
 removeongethit = 0
+
 ;================================================================
 ;Generic Limiters
 ;================================================================

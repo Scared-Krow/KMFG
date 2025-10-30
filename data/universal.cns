@@ -65,15 +65,19 @@ statetype = A       ;S,A,C,L
 movetype = I        ;I,A,H
 physics = A         ;A,C,S,N
 
-[State 1220, Afterimage]
-type = AfterImage
-trigger1 = Time = 0
-length = 15
-TimeGap  = 2
-FrameGap = 1
-Trans = Add
-time = 30
-palbright = 1, 1, 1
+[State -3, Lv1 Shadows]
+type = afterimage
+trigger1 = time = 0
+time = 15
+length = 3
+framegap = 1
+timegap = 3
+paladd = 0, 0, 0
+palmul = 1, 1,1
+palcontrast = 150, 150, 150
+palpostbright = 0, 0, 0
+trans = add1
+
 ;---------------------------------------------------------------------------
 ;6K
 [Statedef 700]
@@ -100,8 +104,8 @@ length = 3
 framegap = 1
 timegap = 3
 paladd = 0, 0, 0
-palmul = 0.75, 0.75, 0.75
-palcontrast = 128, 128, 128
+palmul = 1, 1,1
+palcontrast = 150, 150, 150
 palpostbright = 0, 0, 0
 trans = add1
 
@@ -109,14 +113,14 @@ trans = add1
 type = afterimage
 triggerall = prevMoveType = A
 trigger1 = time = 2
-time = 10
+time = 12
 length = 3
 framegap = 1
 timegap = 3
 paladd = 0, 0, 0
-palmul = 0.7, 0.7, 0.8
-palcontrast = 100, 100, 200
-palpostbright = 0, 0, 15
+palmul = 1, 1, 1
+palcontrast = 100, 88, 150
+palpostbright = 0, 0, 0
 trans = add
 
 [State 0, NotHitBy]

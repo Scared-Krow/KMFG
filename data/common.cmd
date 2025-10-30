@@ -214,26 +214,26 @@ buffer.time = 1
 
 [Command]
 name = "6246A"
-command = ~F, $D, B, $F, x
-time = 40
+command = ~F, $D, $B, $F, x
+time = 20
 buffer.time = 5
 
 [Command]
 name = "6246B"
-command = ~F, $D, B, $F, a
-time = 40
+command = ~F, $D, $B, $F, a
+time = 20
 buffer.time = 5
 
 [Command]
 name = "6246C"
-command = ~F, $D, B, $F, y
-time = 40
+command = ~F, $D, $B, $F, y
+time = 20
 buffer.time = 5
 
 [Command]
 name = "6246D"
-command = ~F, $D, B, $F, b
-time = 40
+command = ~F, $D, $B, $F, b
+time = 20
 buffer.time = 5
 
 [Command]
