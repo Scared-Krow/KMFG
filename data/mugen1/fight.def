@@ -747,7 +747,7 @@ p2.range.x = 6,433
 ;-----------------------------------------------------------
 [Powerbar]
 ;Player 1
-p1.pos    = 400,600
+p1.pos    = 400,625
 p1.bg1.spr = 41,0
 p1.bg1.layerno = 2
 p1.front.spr = 43,0
@@ -763,7 +763,7 @@ p1.mid.scale = 4, 4
 p1.shift.scale = 4, 4
 
 ;Player 2
-p2.pos    = 880,600
+p2.pos    = 880,625
 p2.bg0.facing = -1
 p2.bg1.spr = 41,0
 p2.bg1.facing = -1
