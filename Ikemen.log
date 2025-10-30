@@ -2,15 +2,10 @@ Version: nightly
 Build Time: 2025-10-08
 
 Error log:
-.\external\script\start.lua:1602: chars/JenX2/normals.cns:1400:
-Command doesn't exist: ax
+external/script/main.lua:4294: <game end>
 stack traceback:
-	[G]: in function 'game'
-	.\external\script\start.lua:1602: in function 'f_game'
-	.\external\script\start.lua:2048: in function 'launchFight'
-	external/script/default.lua:2: in function <external/script/default.lua:0>
-	.\external\script\start.lua:1665: in function 'f'
-	external/script/main.lua:3196: in function 'loop'
-	external/script/main.lua:3323: in function 'loop'
+	[G]: in function 'refresh'
+	external/script/main.lua:4294: in function 'f_menuCommonDraw'
+	external/script/main.lua:3228: in function 'loop'
 	external/script/main.lua:4501: in main chunk
 	[G]: ?

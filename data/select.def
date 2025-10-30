@@ -275,11 +275,6 @@ randomselect
  ;
  ;Insert your stages below.
 
-stages/stage1.def
-stages/stage3d.def
-stages/stageZ.def
-stages/kfm.def
-stages/stage0.def
 stages/stage0-720.def
 
 ;-------------------------------------------------------------------------------
