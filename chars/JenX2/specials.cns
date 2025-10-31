@@ -869,7 +869,7 @@ type = Explod
 trigger1 = animelem = 8
 anim = 1001
 ID = 1001
-pos = 0,-18
+pos = 15,-25
 postype = P1  ;P2, Front, Back, Left, Right
 facing = 1
 vfacing = 1
@@ -1005,6 +1005,23 @@ freq = 80
 ampl = -5
 phase = 160
 ignorehitpause = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 5
+anim = 1001
+ID = 1001
+pos = -30,40
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = -2
+scale = 2,2
+sprpriority = 4
+ownpal = 1
+removeongethit = 1
+
 
 [State 210, 2]
 type = HitDef

@@ -7,6 +7,7 @@ physics = S
 anim = 1000
 velset = 0,0
 ctrl = 0
+poweradd = -500
 
 [State 0, SuperPause]
 type = SuperPause
@@ -66,6 +67,7 @@ physics = S
 anim = 3100
 velset = 0,0
 ctrl = 0
+poweradd = -500
 
 [State 0, SuperPause]
 type = SuperPause
@@ -94,7 +96,6 @@ movetype= A
 physics = N
 anim = 1002
 velset = 35,0
-poweradd = -500
 ctrl = 0
 
 [State 200, 1]

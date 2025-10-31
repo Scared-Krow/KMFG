@@ -52,8 +52,8 @@ air.gethit.airrecover.down = 1.5
 airjump.num = 1      
 airjump.height = 100  
 yaccel = .45        
-stand.friction = .85  
-crouch.friction = .85 
+stand.friction = .875
+crouch.friction = .85
 stand.friction.threshold = 2          
 crouch.friction.threshold = .05      
 air.gethit.groundlevel = 0           
@@ -158,26 +158,14 @@ type = AssertSpecial
 trigger1 = 1
 flag = nowalk
 
-
 [State 0, VelAdd]
 type = VelSet
 trigger1 = animelem = 1
 x = -6
 
-[State 0, VelAdd]
-type = VelSet
-trigger1 = animelem = 4
-x = 10
-
-[State 0, CtrlSet]
-type = CtrlSet
-trigger1 = time = 12
-value = 1
-
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = animtime = 0
-trigger2 = command = "holdback" && time >= 12
 value = 0
 ctrl = 1
 
@@ -564,6 +552,12 @@ trigger1 = command != "holdup"
 value = 0
 map = "DJCount"
 
+
+[State -2, AirDash Physics]
+type = mapadd
+trigger1 = movetype = H || statetype != A
+value = 0
+map = "ADPhysics"
 [State -2, AirDash Physics]
 type = mapadd
 trigger1 = Map(ADPhysics)>0

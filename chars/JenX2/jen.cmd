@@ -324,6 +324,7 @@ trigger5 = stateno=[1000,2000] && movecontact
 [State -1, 214214B]
 type = ChangeState
 value = 3100
+triggerall = Map(BUCKX2) <= 0
 triggerall = power>=500
 triggerall = command = "214214A"
 triggerall = statetype != A
