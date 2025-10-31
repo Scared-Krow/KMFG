@@ -841,13 +841,13 @@ x = -5
 
 [State 0, NotHitBy]
 type = NotHitBy
-trigger1 = time = [4,15]
+trigger1 = time = [4,17]
 value = SCA
 time = 1
 
 [State 0, HitBy]
 type = HitBy
-trigger1 = time < 4 || time > 15
+trigger1 = time < 4 || time > 17
 value = SCA,NA,SA,HA,NT,ST,HT,NP,SP,HP
 time = 1
 

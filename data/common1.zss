@@ -643,7 +643,7 @@ persistent(0) if anim = [5050, 5059] && vel y >= ifElse(anim = 5050,
 if time > 0 {
 	velAdd{y: getHitVar(yAccel)}
 }
-if alive && gethitvar(hittime) = -1 && command = "recovery" {
+if alive && gethitvar(hittime) = -1 {
 		changeState{value: 5210}
 }
 if vel y > 0 && pos y >= cond(anim = [5051, 5059] || anim = [5061, 5069], 0, const(movement.air.gethit.groundlevel)) {
@@ -1046,7 +1046,7 @@ if time = 0 {
 
 velAdd{y: getHitVar(yAccel)}
 
-if alive && gethitvar(hittime) = -1 && command = "recovery" {
+if alive && gethitvar(hittime) = -1 {
 		changeState{value: 5210}
 }
 
@@ -1062,7 +1062,7 @@ changeAnim{value:5402}
 
 if time = 0 { posFreeze {value: 0;} }
 
-if alive && gethitvar(hittime) = -1 && command = "recovery" {
+if alive && gethitvar(hittime) = -1 {
 		changeState{value: 5210}
 }
 
