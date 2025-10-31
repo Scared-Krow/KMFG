@@ -207,13 +207,14 @@ var(1) = 0
 type = VarSet
 trigger1 = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,699]) && movecontact
+trigger2 = (stateno = [200,699])
+trigger2 = (movecontact || (enemy,Map(Parry)=1 && MoveReversed))
 var(1) = 1
 
 ;============================================================================
 ;======================UNIVERSAL STATES======================================
 ;============================================================================
-;---------------------------------------------------------------------------
+
 ;Run Fwd
 [State -1, Run Fwd]
 type = ChangeState
@@ -268,11 +269,20 @@ trigger4 = ((stateno=1204)&& time >= 25) && power >= 250
 ;5K
 [State -1, 5K]
 type = ChangeState
-value = 725
-triggerall = command != "holdfwd" && command = "c"
+value = 705
+triggerall = command != "holdfwd" && command != "holddown" &&(command = "c" || (command = "y" && command = "b"))
 triggerall = statetype != A
-triggerall = stateno != 700
-trigger1 = ctrl
+trigger1 = stateno = 706 || stateno = 711
+trigger2 = ctrl
+;---------------------------------------------------------------------------
+;2K
+[State -1, 2K]
+type = ChangeState
+value = 710
+triggerall = command = "holddown" && (command = "c" || (command = "y" && command = "b"))
+triggerall = statetype != A
+trigger1 = stateno = 706 || stateno = 711
+trigger2 = ctrl
 ;---------------------------------------------------------------------------
 ;Super Jump
 [State -1, SJ]
@@ -447,10 +457,9 @@ type = ChangeState
 value = 400
 triggerall = command = "x"
 triggerall = command = "holddown"
-trigger1 = statetype != A
+triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = 200 || stateno = 400) && movecontact
-trigger2 = movecontact
 ;---------------------------------------------------------------------------
 ;2B
 [State -1, 2B]
@@ -458,10 +467,9 @@ type = ChangeState
 value = 410
 triggerall = command = "a"
 triggerall = command = "holddown"
-trigger1 = statetype != A
+triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = 200 || stateno = 400) && movecontact
-trigger2 = movecontact
 
 ;---------------------------------------------------------------------------
 ;2C
@@ -470,7 +478,7 @@ type = ChangeState
 value = 430
 triggerall = command = "y"
 triggerall = command = "holddown"
-trigger1 = statetype != A
+triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,210]) ||(stateno = [400,410])
 trigger2 = movecontact
@@ -482,7 +490,7 @@ type = ChangeState
 value = 440
 triggerall = command = "b"
 triggerall = command = "holddown"
-trigger1 = statetype != A
+triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,430]) && stateno != 300 && stateno != 250 && stateno != [240,241]
 trigger2 = movecontact

@@ -2390,23 +2390,23 @@ function start.f_selectScreen()
 			if #start.p[side].t_selTemp > 0 then
 				for i = 1, #start.p[side].t_selTemp do
 					if i <= 1 then
-						local ES_p1 = ''
-						local ES_p2 = ''
-						if selES1 == 1 then
-							ES_p1 = 'EXTRA \n \n \n \n SPECIAL 1'
-						elseif selES1 == 2 then
-							ES_p1 = 'EXTRA \n \n \n \n SPECIAL 2'
+						local Assist_p1 = ''
+						local Assist_p2 = ''
+						if p1Assist == 1 then
+							Assist_p1 = 'JenX2'
+						elseif p1Assist == 2 then
+							Assist_p1 = 'ISSBROKIE!!'
 						end
-						if selES2 == 1 then
-							ES_p2 = 'EXTRA \n \n \n \n SPECIAL 1'
-						elseif selES2 == 2 then
-							ES_p2 = 'EXTRA \n \n \n \n SPECIAL 2'
+						if p2Assist == 1 then
+							Assist_p2 = 'JenX2'
+						elseif p2Assist == 2 then
+							Assist_p2 = 'ISSBROKIE!!'
 						end
 						t_txt_name[1]:update({
 							font =   motif.select_info['p' .. side .. '_name_font'][1],
 							bank =   motif.select_info['p' .. side .. '_name_font'][2],
 							align =  motif.select_info['p' .. side .. '_name_font'][3],
-							text =   ES_p1,
+							text =   Assist_p1,
 							x =      motif.select_info['p' .. side .. '_name_offset'][1] + (i - 1) * motif.select_info['p' .. side .. '_name_spacing'][1],
 							y =      motif.select_info['p' .. side .. '_name_offset'][2] + (i - 1) * motif.select_info['p' .. side .. '_name_spacing'][2] + 30,
 							scaleX = motif.select_info['p' .. side .. '_name_scale'][1] - 0.2,
@@ -2438,7 +2438,7 @@ function start.f_selectScreen()
 							font =   motif.select_info['p' .. side .. '_name_font'][1],
 							bank =   motif.select_info['p' .. side .. '_name_font'][2],
 							align =  motif.select_info['p' .. side .. '_name_font'][3],
-							text =   ES_p2,
+							text =   Assist_p2,
 							x =      motif.select_info['p' .. side .. '_name_offset'][1] + (i - 1) * motif.select_info['p' .. side .. '_name_spacing'][1],
 							y =      motif.select_info['p' .. side .. '_name_offset'][2] + (i - 1) * motif.select_info['p' .. side .. '_name_spacing'][2] + 30,
 							scaleX = motif.select_info['p' .. side .. '_name_scale'][1] - 0.2,
@@ -3127,11 +3127,12 @@ function start.f_selectMenu(side, cmd, player, member, selectState)
 		--selection menu
 		elseif selectState == 1 then
 			-- EXTRA SPECIAL SELECTION MENU
-			if selES1 == nil then
-				selES1 = 1
+			if p1Assist == nil then
+				p1Assist = 1
 			end
-			if selES2 == nil then
-				selES2 = 1
+			
+			if p2Assist == nil then
+				p2Assist = 1
 			end
 
 			if main.coop or (gamemode() == 'trials') or (side == 1 and (start.p[1].teamMode ~= 0 or main.coop) and P1SelChars > 0) then
@@ -3150,34 +3151,18 @@ function start.f_selectMenu(side, cmd, player, member, selectState)
 			if main.f_input({cmd}, {'$F'}) and ((side == 1 and TypeSelectFlag1 == true) or (side == 2 and TypeSelectFlag2 == true)) then
 				sndPlay(motif.files.snd_data, start.f_getCursorData(player, '_cursor_move_snd')[1], start.f_getCursorData(player, '_cursor_move_snd')[2])
 				if side == 1 then
-					if selES1 == 1 then
-						selES1 = 2
-					else
-						selES1 = 1
-					end
+					p1Assist = p1Assist + 1
 				elseif side == 2 then
-					if selES2 == 1 then
-						selES2 = 2
-					else
-						selES2 = 1
-					end
+					p2Assist = 2
 				end				
 			-- Previous Super
 			elseif main.f_input({cmd}, {'$B'}) and ((side == 1 and TypeSelectFlag1 == true) or (side == 2 and TypeSelectFlag2 == true)) then
 				sndPlay(motif.files.snd_data, start.f_getCursorData(player, '_cursor_move_snd')[1], start.f_getCursorData(player, '_cursor_move_snd')[2])
 				if side == 1 then
-					if selES1 == 1 then
-						selES1 = 2
-					else
-						selES1 = 1
-					end
+					p1Assist = p1Assist - 1
 				elseif side == 2 then
-					if selES2 == 1 then
-						selES2 = 2
-					else
-						selES2 = 1
-					end
-				end
+					p2Assist = 1
+				end	
 			
 				-- Confirm Super --BOOKMARK
 			elseif (not main.coop) and (main.f_input({cmd}, {'x'}) or main.f_input({cmd}, {'y'}) or main.f_input({cmd}, {'z'}) or main.f_input({cmd}, {'a'}) or main.f_input({cmd}, {'b'}) or main.f_input({cmd}, {'c'})) or (ArcadeEdition == 1 and timerSelect == -1) then

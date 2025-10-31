@@ -512,7 +512,6 @@ sparkno = -1
 hitsound = -1
 p1stateno = 1101
 
-
 [State 1000, 7]
 type = ChangeState
 trigger1 = animtime = 0
@@ -558,8 +557,8 @@ ground.type = High
 ground.slidetime = 12
 ground.hittime  = 25
 ground.velocity = 4
-air.hittime = ceil(cond(30-Map(HitstunScaling) < 18, 18, 30-Map(HitstunScaling)))
-air.velocity = -1.75,-3.5
+air.hittime = 60
+air.velocity = 3,-6
 guard.ctrltime = 13
 guard.hittime = 13
 air.fall = 1
@@ -1039,7 +1038,7 @@ ground.type = High
 ground.slidetime = 12
 ground.hittime  = 21
 ground.velocity = -6,-2.5
-air.hittime = ceil(cond(50-Map(HitstunScaling) < 35, 35, 50-Map(HitstunScaling)))
+air.hittime = ceil(cond(40-Map(HitstunScaling) < 20, 20, 40-Map(HitstunScaling)))
 air.velocity = -6,-2
 guard.ctrltime = 29
 guard.hittime = 29

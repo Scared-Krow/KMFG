@@ -263,15 +263,15 @@ function loop()
 	start.f_stageMusic()
 	--match start
 	if roundstart() then
-		if selES1 == nil then
-			selES1 = 1
+		if p1Assist == nil then
+			p1Assist = 1
 		end
-		if selES2 == nil then
-			selES2 = 1
+		if p2Assist == nil then
+			p2Assist = 1
 		end
 
-		charMapSet(1, "ES_SELECT", selES1)
-		charMapSet(2, "ES_SELECT", selES2)
+		charMapSet(1, "Assist", p1Assist)
+		charMapSet(2, "Assist", p2Assist)
 		
 		setLifebarElements({bars = main.lifebar.bars})
 		if roundno() == 1 then

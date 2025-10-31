@@ -87,6 +87,7 @@ physics = N
 ctrl = 0
 anim = 700
 velset = 3,0
+facep2 = 1
 
 [State 0, PowerAdd]
 type = PowerAdd
@@ -180,237 +181,182 @@ type = ChangeState
 trigger1 = animtime = 0
 value = 0
 ctrl = 1
-;---------------------------------------------------------------------------
-;S Parry
-[Statedef 725]
+
+;Stand Parry
+[Statedef 705]
 type = S
-movetype = I
 physics = S
+movetype = I
+anim = 705
+velset = 0, 0
 ctrl = 0
-anim = 500
-velset = 0,0
+sprpriority = 2
+facep2 = 1
 
-[State 0, HitOverride]
-type = HitOverride
-triggerall = time<=7
-trigger1 = time>=0
-attr = SA,NA,SA,HA
-slot = 8
-stateno = 726
-time = 1
-forceair = 0
+[State -2 Parry]
+type = mapset
+trigger1 = time = [1,10]
+value = 1
+map = "Parry"
+[State -2, Parry]
+type = mapset
+trigger1 = time = 11
+value = 0
+map = "Parry"
 
-[State 0, ChangeState]
-type = ChangeState
+[State 1300, 2]
+type = ReversalDef
+trigger1 = Time = [1,10]
+reversal.attr = SA,AA
+pausetime = 0,0
+sparkno = 40
+sparkxy = 40,0
+hitsound = 6,0
+p1stateno = 706
+p1sprpriority = 2 ;Set P1's sprite in front of P2's
+p2sprpriority = 1
+
+[State 700, End]
+type = changestate
 trigger1 = animtime = 0
 value = 0
 ctrl = 1
 
-;---------------------------------------------------------------------------
-;S Parry Activate
-[Statedef 726]
+;Stand Parry Success
+[Statedef 706]
 type = S
-movetype = I
 physics = S
+movetype = I
+anim = 705
+velset = 0, 0
 ctrl = 0
-anim = 0
+sprpriority = 2
+facep2 = 1
+
 
 
 [State 0, CtrlSet]
 type = CtrlSet
-trigger1 = time = 1
+trigger1 = time = 5
+ignorehitpause = 1
 value = 1
 
-;---------------------------------------------------------------------------
-;C Parry
-[Statedef 730]
+[State 700, Snd]
+type = playsnd
+trigger1 = !time
+value = S6700, 0
+
+[State 700, Stop]
+type = posfreeze
+trigger1 = 1
+value = 1
+
+[State 700, Flash]
+type = palfx
+trigger1 = time = 1
+ignorehitpause = 1
+add = 255, 30, 0
+sinadd = 255, -30, 0, 60
+time = 15
+
+[State 700, No walking]
+type = assertspecial
+trigger1 = 1
+flag = nowalk
+
+[State 700, End]
+type = changestate
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;Crouch Parry
+[Statedef 710]
 type = S
-movetype = I
 physics = S
+movetype = I
+anim = 710
+velset = 0, 0
 ctrl = 0
-anim = 505
-velset = 0,0
+sprpriority = 2
+facep2 = 1
 
-[State 0, HitOverride]
-type = HitOverride
-triggerall = time<=7
-trigger1 = time>=0
-attr = C,NA,SA,HA
-slot = 8
-stateno = 501
-time = 1
-forceair = 0
+[State -2 Parry]
+type = mapset
+trigger1 = time = [1,10]
+value = 1
+map = "Parry"
+[State -2, Parry]
+type = mapset
+trigger1 = time = 11
+value = 0
+map = "Parry"
 
+[State 1300, 2]
+type = ReversalDef
+trigger1 = Time = [1,10]
+reversal.attr = C,AA
+pausetime = 0,0
+sparkno = 40
+sparkxy = 40,0
+hitsound = 6,0
+p1stateno = 711
+p1sprpriority = 2 ;Set P1's sprite in front of P2's
+p2sprpriority = 1
 
-
-[State 0, ChangeState]
-type = ChangeState
+[State 700, End]
+type = changestate
 trigger1 = animtime = 0
 value = 11
 ctrl = 1
 
-;---------------------------------------------------------------------------
-;C Parry Activate
-[Statedef 731]
+;Crouch Parry Success
+[Statedef 711]
 type = S
-movetype = I
 physics = S
+movetype = I
+anim = 710
+velset = 0, 0
 ctrl = 0
-anim = 11
-
+sprpriority = 2
+facep2 = 1
 
 [State 0, CtrlSet]
 type = CtrlSet
-trigger1 = time = 1
+trigger1 = time = 5
+ignorehitpause = 1
 value = 1
 
+[State 700, Snd]
+type = playsnd
+trigger1 = !time
+value = S6700, 0
 
-;---------------------------------------------------------------------------
-;Burst
-[Statedef 525]
-type = S
-movetype = A
-physics = S
-ctrl = 0
-anim = 525
-velset = 0,0
-poweradd = -1000
 
-[State 0, NotHitBy]
-type = NotHitBy
-trigger1 = time = 0
-value = SCA,AT,AA,AP
-time = 1
-
-[State 430, 2]
-type = HitDef
-trigger1 = time = 0
-attr = S, NA
-damage = 0
-animtype  = Light
-hitflag = MAFD
-guardflag = MA
-pausetime = 6,6
-guard.pausetime = 12,12
-sparkno = -1
-sparkxy = -10,-8
-hitsound   = 5,1
-guardsound = 6,0
-ground.type = Low
-ground.slidetime = 6
-ground.hittime  = 13
-ground.velocity = -6,-2
-air.velocity = -6,-2
-air.hittime = 10
-fall.yvelocity = 0
-fall = 1
-
-[State 0, LifeSet]
-type = LifeSet
-trigger1 = time = 0
-value = 1
-[State 0, LifeSet]
-type = LifeSet
-trigger1 = movehit
-value = 1
-redirectID = enemy,ID
-
-[State 0, ChangeState]
-type = ChangeState
-trigger1 = animtime = 0
-value = 0
-ctrl = 1
-
-;---------------------------------------------------------------------------
-;Charge Start
-[Statedef 550]
-type = S
-movetype = A
-physics = S
-ctrl = 0
-anim = 550
-velset = 0,0
-
-;HITSTUN SCALING
-[State 0, VarAdd]
-type = VarAdd
-triggerall = enemy,movetype = H && enemy,statetype = A
-trigger1 = animelem = 2
-fv = 15
-value = 1
-
-[State 0, PowerAdd]
-type = PowerAdd
+[State 700, Stop]
+type = posfreeze
 trigger1 = 1
-value = 2
+value = 1
 
-[State 1000, 5]
-type = HitDef
-trigger1 = time = 0
-attr = S, SA
-animtype  = Hard
-damage = floor(cond(fvar(11) * 25 < 5, 5, fvar(11) * 25)),5
-priority  = 5
-guardflag = MA
-pausetime = 10,10
-sparkxy = -10,-60
-hitsound   = 5,4
-guardsound = 6,0
-ground.type = Low
-ground.slidetime = 12
-ground.hittime  = 21
-ground.velocity = -3,-2
-air.velocity = -2,-2
-guard.velocity = -8
-guard.slidetime = 12
-air.hittime = ceil(cond(fvar(16) * 30 < 10, 10, fvar(16) * 30))
-fall = 1
-guard.ctrltime = 7
-guard.hittime = 7
-fall.yvelocity = 0
+[State 700, Flash]
+type = palfx
+trigger1 = time = 1
+ignorehitpause = 1
+add = 255, 30, 0
+sinadd = 255, -30, 0, 60
+time = 15
 
+[State 700, No walking]
+type = assertspecial
+trigger1 = 1
+flag = nowalk
 
-[State 0, ChangeState]
-type = ChangeState
-triggerall = movecontact
-trigger1 = command = "holdup"
-value = 40
-ctrl = 0
-[State 0, ChangeState]
-type = ChangeState
-triggerall = movecontact
-trigger1 = (command = "c" && command != "holdback") || command = "FF"
-value = 100
-ctrl = 1
-[State 0, ChangeState]
-type = ChangeState
-triggerall = movecontact
-trigger1 = (command = "c" && command = "holdback") || command = "BB"
-value = 105
-ctrl = 1
-
-[State 0, ChangeState]
-type = ChangeState
-triggerall = time > 15
-trigger1 = command != "holdz"
-value = 551
-ctrl = 0
-
-;---------------------------------------------------------------------------
-;Charge End
-[Statedef 551]
-type = S
-movetype = I
-physics = S
-ctrl = 0
-anim = 551
-velset = 0,0
-
-[State 0, ChangeState]
-type = ChangeState
+[State 700, End]
+type = changestate
 trigger1 = animtime = 0
-value = 0
+value = 11
 ctrl = 1
+
 
 ;-----------------------------------------------------------------------------
 ; Ground Bounce (shaking)
