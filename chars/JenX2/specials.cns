@@ -104,7 +104,7 @@ redirectID = root,ID
 
 [State 200, 1]
 type = HitDef
-trigger1 = time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = S,NP                     ;Attribute: Standing, Normal Attack
 damage = ceil(cond(80*root,Map(DamageScaling) < 20, 20, 80*root,Map(DamageScaling))),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
@@ -283,7 +283,7 @@ ignorehitpause = 1
 
 [State 200, 1]
 type = HitDef
-trigger1 = time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = S,NP                     ;Attribute: Standing, Normal Attack
 damage = ceil(cond(80*root,Map(DamageScaling) < 20, 20, 80*root,Map(DamageScaling))),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
@@ -446,7 +446,7 @@ ignorehitpause = 1
 
 [State 200, 1]
 type = HitDef
-trigger1 = time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = S,NP                     ;Attribute: Standing, Normal Attack
 damage = ceil(cond(80*root,Map(DamageScaling) < 20, 20, 80*root,Map(DamageScaling))),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
@@ -468,10 +468,19 @@ air.type = High                  ;Type: High, Low, Trip (def: same as ground.typ
 air.velocity = -2,15      ;X-velocity at which opponent is pushed,
 air.hittime = 60
 fall = 1
-fall.yvelocity = cond(root,Map(GroundBounce)=0,-6,0)
+down.bounce = -6
 guard.ctrltime = 7
 guard.hittime = 7
 id = 5420
+
+[State 0, TargetState]
+type = TargetState
+triggerall = root,Map(GroundBounce)=0
+triggerall = enemy,statetype = A && NumTarget(5420)
+trigger1 = movehit=1
+value = 5430
+ID = 5420
+ignorehitpause = 1
 
 [State 0, TargetState]
 type = TargetState
@@ -543,7 +552,7 @@ value = 0
 
 [State 210, 2]
 type = HitDef
-trigger1 = time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 animtype  = Medium
 damage = ceil(cond(125*Map(DamageScaling) < 5, 5, 125*Map(DamageScaling)))
@@ -754,8 +763,8 @@ down.hittime = ceil(cond(35-Map(HitstunScaling) < 14, 14, 35-Map(HitstunScaling)
 air.fall = 1
 fall.yvelocity = 0
 down.velocity = -1,-5
-guard.ctrltime = 7
-guard.hittime = 7
+guard.ctrltime = 5
+guard.hittime = 5
 
 [State -2, Repeated Use]
 type = mapset
@@ -932,7 +941,7 @@ ignorehitpause = 1
 
 [State 200, 1]
 type = HitDef
-trigger1 = time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = S,NP                     ;Attribute: Standing, Normal Attack
 damage = ceil(cond(100*root,Map(DamageScaling) < 20, 20, 100*root,Map(DamageScaling))),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
@@ -1021,10 +1030,9 @@ sprpriority = 4
 ownpal = 1
 removeongethit = 1
 
-
 [State 210, 2]
 type = HitDef
-trigger1 = time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 animtype  = Medium
 damage = ceil(cond(95*Map(DamageScaling) < 25, 25, 95*Map(DamageScaling))),20

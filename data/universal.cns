@@ -733,3 +733,20 @@ elem = AnimElemNo(0)
 type = ChangeState
 trigger1 = Time >= 5;floor(gethitvar(hittime) * 0.8)
 value = fvar(9)
+
+[Statedef -2]
+
+[State -2, Combo State Check]
+type = TeamMapSet
+triggerall = enemy, stateno != [120, 155]
+trigger1 = enemy, movetype = H
+map = "ComboStateCheck"
+value = 1
+ignorehitpause = 1
+persistent = 1
+[State -2, Combo State Check]
+type = TeamMapSet
+trigger1 = enemy, movetype != H
+map = "ComboStateCheck"
+value = 0
+ignorehitpause = 1

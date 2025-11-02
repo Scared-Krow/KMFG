@@ -1,2 +1,81 @@
-[State -2]
+;---------------------------------------------------------------------------
+;JenX2
+;---------------------------------------------------------------------------
 
+[Statedef 4000]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+anim = F4000
+velset = 20,0
+sprpriority = -1
+
+[State 0. PosSet]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 0, PowerAdd]
+type = PowerAdd
+trigger1 = time = 0
+value = -250
+redirectID = root,ID
+
+[State 0, Width]
+type = Width
+trigger1 = time < 5
+edge = 0,0
+player = -15,-15
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = time < 5
+value = 0
+
+[State 210, 2]
+type = HitDef
+trigger1 = !MoveContact && !MoveReversed
+attr = S, NA
+animtype  = Medium
+damage = ceil(root,cond(125*Map(DamageScaling) < 5, 5, 125*root,Map(DamageScaling)))
+guardflag = MA
+pausetime = 12,12
+sparkno = 1
+sparkxy = -10,-65
+hitsound   = 5,2
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 25
+ground.velocity = 4
+air.hittime = 60
+air.velocity = 3,-6
+guard.ctrltime = 13
+guard.hittime = 13
+air.fall = 1
+fall.yvelocity = 0
+p2facing = -1
+
+[State 1000, 7]
+type = DestroySelf
+trigger1 = animtime = 0
+trigger2 = root,movetype = H
+trigger3 = movetype = H
+
+[Statedef -2]
+
+[State 0, Helper]
+type = Helper
+triggerall = numhelper(4000)<=0 && movetype != H
+triggerall = power >= 250 && Map(Assist) = 1 && roundstate = 2
+trigger1 = command = "z"
+helpertype = Normal
+name = "JenX2"
+ID = 4000
+stateno = 4000
+pos = 0,0
+postype = P1
+facing = 1
+keyctrl = 0
+ownpal = 0

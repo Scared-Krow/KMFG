@@ -49,7 +49,7 @@ air.gethit.airrecover.up = -2
 air.gethit.airrecover.down = 1.5      
 
 [Movement]
-airjump.num = 1      
+airjump.num = 1     
 airjump.height = 100  
 yaccel = .45        
 stand.friction = .875
@@ -188,7 +188,7 @@ ctrl = 1
 [Statedef 160]
 type = A
 movetype = I
-physics = A
+physics = N
 ctrl = 0
 anim = 160
 velset = 0,0
@@ -241,7 +241,7 @@ value = 1
 [Statedef 161]
 type = A
 movetype = I
-physics = A
+physics = N
 ctrl = 0
 anim = 161
 velset = 0,0
@@ -467,17 +467,19 @@ trigger1 = Map(Reduce)=0
 value = 1
 ignorehitpause = 1
 
+
 [State -2, Damage Scaling Reset]
 type = mapset
-trigger1 = combocount=0 || enemy,movetype != H
+trigger1 = enemy,GetHitVar(hittime)=-1
 value = 1
 map = "DamageScaling"
+ignorehitpause = 1
 [State -2, Hitstun Scaling Reset]
 type = mapset
-trigger1 = combocount=0 || enemy,movetype != H
+trigger1 = enemy,GetHitVar(hittime)=-1
 value = 0
 map = "HitstunScaling"
-
+ignorehitpause = 1
 ;-------COUNTER HITS----------
 
 [State 0, Zoom]
@@ -579,24 +581,6 @@ type = mapset
 trigger1 = !ctrl
 map = "CanTT"
 value = 0
-
-[State 0, Explod]
-type = Explod
-trigger1 = numexplod(999)<1
-anim = F999
-ID = 999
-pos = 0,0
-postype = P1  ;P2, Front, Back, Left, Right
-facing = 1
-vfacing = 1
-bindtime = 1
-removetime = -2
-supermovetime = 99999
-pausemovetime = 99999
-scale = 1,1
-sprpriority = -7
-ownpal = 1
-removeongethit = 0
 
 ;================================================================
 ;Generic Limiters

@@ -258,7 +258,7 @@ trigger2 = var(1)
 [State -1, 6K]
 type = ChangeState
 value = 700
-triggerall = command = "holdfwd" && command = "c"
+triggerall = command = "holdfwd" && command != "holddown" &&(command = "c" || (command = "y" && command = "b"))
 triggerall = statetype != A
 triggerall = stateno != 700
 trigger1 = ctrl
@@ -296,11 +296,10 @@ trigger1 = ctrl
 [State -1, DJ]
 type = ChangeState
 value = 45
-triggerall = vel y > 0 || pos y < -50
 triggerall = Map(DJ)>0 && Map(DJAccess)=1
+triggerall = vel y > 0 || pos y < -50
 triggerall = statetype = A
 triggerall = command = "up"
-;triggerall = vel y > -7 && pos y < -30
 trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------

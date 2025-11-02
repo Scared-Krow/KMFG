@@ -521,6 +521,10 @@ if hitShakeOver {
 
 call GetHitKnockedBack(5005 + (getHitVar(groundType) = 2) * 10, 0);
 
+if isHelper=1 {
+	DestroySelf{1}
+}
+
 #-------------------------------------------------------------------------------
 # Crouch get-hit (shaking)
 [StateDef 5010; type: C; movetype: H; physics: N; velset: 0, 0;]
@@ -1142,6 +1146,6 @@ changeState{value: 0}
 
 [Statedef -2]
 
-if Map(ADPhysics)>0 {
+if Map(ADPhysics)>0 && moveType != H {
 	velSet{y:0}
 }

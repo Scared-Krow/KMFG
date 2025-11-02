@@ -139,133 +139,13 @@ s = s
 ;-| Default Values |-------------------------------------------------------
 [Defaults]
 ; Default value for the "time" parameter of a Command. Minimum 1.
-command.time = 20
+command.time = 16
 
 ; Default value for the "buffer.time" parameter of a Command. Minimum 1,
 ; maximum 30.
 command.buffer.time = 3
 
 
-;-| Super Motions |--------------------------------------------------------
-;The following two have the same name, but different motion.
-;Either one will be detected by a "command = TripleKFPalm" trigger.
-;Time is set to 20 (instead of default of 15) to make the move
-;easier to do.
-
-
-;-| Special Motions |------------------------------------------------------
-[Command]
-name = "blocking"
-command = $F,x
-time = 3
-
-[Command]
-name = "blocking" ;Same name as above (buttons in opposite order)
-command = x,$F
-time = 3
-
-
-;-| 2/3 Button Combination |-----------------------------------------------
-[Command]
-name = "recovery";Required (do not remove)
-command = x+y
-time = 1
-
-;-| Dir + Button |---------------------------------------------------------
-[Command]
-name = "down_a"
-command = /$D,a
-time = 1
-
-[Command]
-name = "down_b"
-command = /$D,b
-time = 1
-
-;-| Single Button |---------------------------------------------------------
-[Command]
-name = "a"
-command = a
-time = 1
-buffer.time = 3
-[Command]
-name = "b"
-command = b
-time = 1
-buffer.time = 3
-[Command]
-name = "c"
-command = c
-time = 1
-buffer.time = 3
-[Command]
-name = "x"
-command = x
-time = 1
-buffer.time = 3
-[Command]
-name = "y"
-command = y
-time = 1
-buffer.time = 3
-[Command]
-name = "z"
-command = z
-time = 1
-buffer.time = 3
-
-[Command]
-name = "holda"
-command = /a
-time = 3
-[Command]
-name = "holdb"
-command = /b
-time = 3
-[Command]
-name = "holdc"
-command = /c
-time = 3
-[Command]
-name = "holdx"
-command = /x
-time = 1
-buffer.time = 3
-[Command]
-name = "holdy"
-command = /y
-time = 3
-[Command]
-name = "holdz"
-command = /z
-time = 3
-
-
-[Command]
-name = "start"
-command = s
-time = 1
-
-;-| Hold Dir |--------------------------------------------------------------
-[Command]
-name = "holdfwd";Required (do not remove)
-command = /$F
-time = 1
-
-[Command]
-name = "holdback";Required (do not remove)
-command = /$B
-time = 1
-
-[Command]
-name = "holdup" ;Required (do not remove)
-command = /$U
-time = 1
-
-[Command]
-name = "holddown";Required (do not remove)
-command = /$D
-time = 1
 
 ;---------------------------------------------------------------------------
 ; 2. State entry
@@ -327,18 +207,20 @@ var(1) = 0
 type = VarSet
 trigger1 = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,499]) && movecontact
+trigger2 = (stateno = [200,699])
+trigger2 = (movecontact || (enemy,Map(Parry)=1 && MoveReversed))
 var(1) = 1
 
 ;============================================================================
 ;======================UNIVERSAL STATES======================================
 ;============================================================================
-;---------------------------------------------------------------------------
+
 ;Run Fwd
 [State -1, Run Fwd]
 type = ChangeState
 value = 100
-trigger1 = command = "FF" || (command = "d" && command != "holdback")
+triggerall = stateno!= 100
+trigger1 = command = "FF"
 trigger1 = statetype != A
 trigger1 = ctrl
 ;---------------------------------------------------------------------------
@@ -346,7 +228,7 @@ trigger1 = ctrl
 [State -1, Run Back]
 type = ChangeState
 value = 105
-trigger1 = command = "BB" || (command = "d" && command = "holdback")
+trigger1 = command = "BB"
 trigger1 = statetype != A
 trigger1 = ctrl
 ;---------------------------------------------------------------------------
@@ -354,40 +236,73 @@ trigger1 = ctrl
 [State -1, Run Fwd]
 type = ChangeState
 value = 160
-trigger1 = command = "FF" || (command = "d" && command != "holdback")
+triggerall = Map(DJ)>0
+triggerall = vel y > 0 || pos y < -40
+triggerall = command = "FADash"
 trigger1 = statetype = A
 trigger1 = ctrl
+trigger2 = var(1)
 ;---------------------------------------------------------------------------
 ;Air Dash Back
 [State -1, Run Back]
 type = ChangeState
 value = 161
-trigger1 = command = "BB" || (command = "d" && command = "holdback")
+triggerall = Map(DJ)>0
+triggerall = vel y > 0 || pos y < -40
+triggerall = command = "BADash"
 trigger1 = statetype = A
 trigger1 = ctrl
-
+trigger2 = var(1)
 ;---------------------------------------------------------------------------
 ;6K
 [State -1, 6K]
 type = ChangeState
 value = 700
-triggerall = command = "holdfwd" && command = "c"
+triggerall = command = "holdfwd" && command != "holddown" &&(command = "c" || (command = "y" && command = "b"))
 triggerall = statetype != A
 triggerall = stateno != 700
 trigger1 = ctrl
 trigger2 = movecontact && power >= 250
-trigger3 = ((stateno=1000 || stateno=1005)&& time >= 21 ) && power >= 250
-
+trigger3 = ((stateno=1000 || stateno=1005)&& time >= 22 ) && power >= 250
+trigger4 = ((stateno=1204)&& time >= 25) && power >= 250
 ;---------------------------------------------------------------------------
 ;5K
 [State -1, 5K]
 type = ChangeState
-value = 725
-triggerall = command != "holdfwd" && command = "c"
+value = 705
+triggerall = command != "holdfwd" && command != "holddown" &&(command = "c" || (command = "y" && command = "b"))
 triggerall = statetype != A
-triggerall = stateno != 700
+trigger1 = stateno = 706 || stateno = 711
+trigger2 = ctrl
+;---------------------------------------------------------------------------
+;2K
+[State -1, 2K]
+type = ChangeState
+value = 710
+triggerall = command = "holddown" && (command = "c" || (command = "y" && command = "b"))
+triggerall = statetype != A
+trigger1 = stateno = 706 || stateno = 711
+trigger2 = ctrl
+;---------------------------------------------------------------------------
+;Super Jump
+[State -1, SJ]
+type = ChangeState
+value = 60
+triggerall = statetype != A
+triggerall = command = "28"
 trigger1 = ctrl
-
+;---------------------------------------------------------------------------
+;Double Jump
+[State -1, DJ]
+type = ChangeState
+value = 45
+triggerall = vel y > 0 || pos y < -50
+triggerall = Map(DJ)>0 && Map(DJAccess)=1
+triggerall = statetype = A
+triggerall = command = "up"
+;triggerall = vel y > -7 && pos y < -30
+trigger1 = ctrl
+trigger2 = var(1)
 ;---------------------------------------------------------------------------
 ;Taunt
 [State -1, Taunt]
@@ -410,17 +325,16 @@ triggerall = command = "6246C"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
-trigger3 = ((stateno=1000 || stateno=1005)&& time >= 21)
-trigger4 = helper(1002),movecontact || helper(1006),movecontact
-trigger5 = stateno=[1000,2000] && movecontact
+trigger3 = stateno=[1000,2000] && movecontact
 
 ;---------------------------------------------------------------------------
-;214214B
+;214214A
 [State -1, 214214B]
 type = ChangeState
 value = 3100
+triggerall = Map(BUCKX2) <= 0
 triggerall = power>=500
-triggerall = command = "214214B"
+triggerall = command = "214214A"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
@@ -433,15 +347,50 @@ trigger5 = stateno=[1000,2000] && movecontact
 ;============================================================================
 
 ;---------------------------------------------------------------------------
-;623D
-[State -1, 623A]
+;214B
+[State -1, 214B]
 type = ChangeState
-value = 1000
-triggerall = command = "623A"
+value = 1200
+triggerall = command = "214B"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
-
+trigger3 = Map(BUCKX2)>0 && ((stateno =[1000,2000] && movecontact) || stateno = 1204 && time > 24)
+;---------------------------------------------------------------------------
+;214D
+[State -1, 214D]
+type = ChangeState
+value = 1005
+triggerall = command = "214D"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = var(1)
+;---------------------------------------------------------------------------
+;236A
+[State -1, 236A]
+type = ChangeState
+value = 1000
+triggerall = command = "236A"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = var(1)
+;---------------------------------------------------------------------------
+;236B
+[State -1, 236B]
+type = ChangeState
+value = 1100
+triggerall = command = "236B"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = var(1)
+;---------------------------------------------------------------------------
+;623A
+[State -1, 623A]
+type = ChangeState
+value = 1100
+triggerall = command = "623A"
+triggerall = statetype != A
+trigger1 = ctrl
 
 ;===========================================================================
 
@@ -450,18 +399,9 @@ trigger2 = var(1)
 [State -1, Kung Fu Throw]
 type = ChangeState
 value = 800
-triggerall = command = "y" && command != "holddown"
+triggerall = command = "x" && command = "a"
 triggerall = statetype != A
-triggerall = ctrl
-triggerall = stateno != 100
-trigger1 = command = "holdfwd"
-trigger1 = p2bodydist X < 10
-trigger1 = (p2statetype = S) || (p2statetype = C)
-trigger1 = p2movetype != H
-trigger2 = command = "holdback"
-trigger2 = p2bodydist X < 13
-trigger2 = (p2statetype = S) || (p2statetype = C)
-trigger2 = p2movetype != H
+trigger1 = ctrl
 
 
 
@@ -503,10 +443,10 @@ trigger2 = movecontact
 type = ChangeState
 value = 240
 triggerall = command = "b"
-triggerall = command != "holddown" && command != "holdback"
+triggerall = command != "holddown"
 trigger1 = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,430]) && stateno != 300 && stateno != 250 && stateno != 240
+trigger2 = (stateno = [200,430]) && stateno != 300 && stateno != 250 && stateno != 240 && stateno != 241
 trigger2 = movecontact
 ;---------------------------------------------------------------------------
 ;2A
@@ -515,10 +455,9 @@ type = ChangeState
 value = 400
 triggerall = command = "x"
 triggerall = command = "holddown"
-trigger1 = statetype != A
+triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = 200 || stateno = 400) && movecontact
-trigger2 = movecontact
 ;---------------------------------------------------------------------------
 ;2B
 [State -1, 2B]
@@ -526,10 +465,9 @@ type = ChangeState
 value = 410
 triggerall = command = "a"
 triggerall = command = "holddown"
-trigger1 = statetype != A
+triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = 200 || stateno = 400) && movecontact
-trigger2 = movecontact
 
 ;---------------------------------------------------------------------------
 ;2C
@@ -538,7 +476,7 @@ type = ChangeState
 value = 430
 triggerall = command = "y"
 triggerall = command = "holddown"
-trigger1 = statetype != A
+triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,210]) ||(stateno = [400,410])
 trigger2 = movecontact
@@ -550,9 +488,9 @@ type = ChangeState
 value = 440
 triggerall = command = "b"
 triggerall = command = "holddown"
-trigger1 = statetype != A
+triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,430]) && stateno != 300 && stateno != 250 && stateno != 240
+trigger2 = (stateno = [200,430]) && stateno != 300 && stateno != 250 && stateno != [240,241]
 trigger2 = movecontact
 
 ;---------------------------------------------------------------------------

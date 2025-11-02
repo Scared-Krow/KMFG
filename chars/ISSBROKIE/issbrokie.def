@@ -5,12 +5,12 @@
 [Info]
 name = "ISSBROKIE"        ;Name of character
 displayname = "ISSBROKIE!!" ;Name of character to display
-versiondate = 09,30,2009    ;Version date of character (MM-DD-YYYY or X.XX)
+versiondate = 09,27,2025    ;Version date of character (MM-DD-YYYY or X.XX)
 mugenversion = 1.0          ;Version of M.U.G.E.N character works on (X.XX)
-author = "Elecbyte"         ;Character author name
+author = "ScaredCrow"         ;Character author name
 pal.defaults = 1,2,3,4      ;Default palettes in order of preference (up to 4)
                             ;Numbering starts from 1
-localcoord = 320,240       ;Local coordinate space width and height
+localcoord = 320,240        ;Local coordinate space width and height
 
 ; Files for the player
 [Files]
@@ -20,8 +20,7 @@ st      = issbrokie.cns           ;States
 st2	= normals.cns
 st3	= specials.cns
 st4	= supers.cns
-st5	= data/universal.cns
-stcommon = common1      ;Common states (from data/ or motif)
+stcommon = COMMON.cns      ;Common states (from data/ or motif)
 sprite  = issbrokie.sff           ;Sprite
 anim    = issbrokie.air           ;Animation
 sound   = issbrokie.snd           ;Sound

@@ -2,22 +2,23 @@
 life = 750
 attack = 100
 defence = 100
-liedown.time = 20
+liedown.time = 15
 sparkno = 2
 guard.sparkno = 40
 KO.echo = 0
 IntPersistIndex = 60
 FloatPersistIndex = 40
 power = 1000
+fall.defence_up = 0
 
 [Size]
-xscale = 1.3     
-yscale = 1.3  
-ground.back = 5 
-ground.front = 25    
-air.back = 20     
-air.front = 5  
-height = 40          
+xscale = 1.35
+yscale = 1.35
+ground.back = 12 
+ground.front = 16 
+air.back = 12     
+air.front = 18
+height = 45
 attack.dist = 160    
 proj.attack.dist = 90 
 proj.doscale = 0     
@@ -27,16 +28,16 @@ shadowoffset = 0
 draw.offset = 0,0
 
 [Velocity]
-walk.fwd  = 1.666
-walk.back = -1.5    
-run.fwd  = 4.6, 0    
+walk.fwd  = 2.2
+walk.back = -1.8   
+run.fwd  = 7, 0    
 run.back = -4.5,-3.8 
-jump.neu = 0,-8 
+jump.neu = 0,-8.5
 jump.back = -2.55    
 jump.fwd = 2.5       
 runjump.back = -2.55,-8.1 
-runjump.fwd = 3,-8.1      
-airjump.neu = 0,-7      
+runjump.fwd = 4,-8.1      
+airjump.neu = 0,-5      
 airjump.back = -2.55      
 airjump.fwd = 2.5         
 air.gethit.groundrecover = -.15,-3.5  
@@ -48,23 +49,23 @@ air.gethit.airrecover.up = -2
 air.gethit.airrecover.down = 1.5      
 
 [Movement]
-airjump.num = 0      
-airjump.height = 35   
+airjump.num = 1      
+airjump.height = 100  
 yaccel = .45        
-stand.friction = .85  
-crouch.friction = .82 
+stand.friction = .875
+crouch.friction = .85
 stand.friction.threshold = 2          
 crouch.friction.threshold = .05      
-air.gethit.groundlevel = 25           
-air.gethit.groundrecover.ground.threshold = -20 
-air.gethit.groundrecover.groundlevel = 10   
+air.gethit.groundlevel = 0           
+air.gethit.groundrecover.ground.threshold = 0 
+air.gethit.groundrecover.groundlevel = 20
 air.gethit.airrecover.threshold = -1  
 air.gethit.airrecover.yaccel = .35    
 air.gethit.trip.groundlevel = 15      
 down.bounce.offset = 0, 20            
-down.bounce.yaccel = .333           
+down.bounce.yaccel = .3           
 down.bounce.groundlevel = 12         
-down.friction.threshold = .05         
+down.friction.threshold = .05    
 
 [Quotes]
 victory1 = "You must defeat Tu Shou to stand a chance."
@@ -84,46 +85,64 @@ victory7 = "What do you mean my girlfriend is in another temple?"
 ;           held (remembered from state 800 through state 810).
 
 
- 
-; Forward Dash
-[Statedef 100]
-type = S
-movetype = I
+ ;---------------------------------------------------------------------------
+; Walk
+[Statedef 20]
+type    = S
 physics = S
-ctrl = 0
-anim = 100
+sprpriority = 0
 
-[State 0, AssertSpecial]
+[State 20, 1]
+type = VelSet
+trigger1 = command = "holdfwd"
+x = const(velocity.walk.fwd.x)*cond(Map(BUCKX2)>0,1.25,1)
+
+[State 20, 2]
+type = VelSet
+trigger1 = command = "holdback"
+x = const(velocity.walk.back.x)*cond(Map(BUCKX2)>0,1.25,1)
+
+[State 20, 3]
+type = ChangeAnim
+triggerall = vel x > 0
+trigger1 = Anim != 20 && Anim != 5
+trigger2 = Anim = 5 && AnimTime = 0
+value = 20
+
+[State 20, 4]
+type = ChangeAnim
+triggerall = vel x < 0
+trigger1 = Anim != 21 && Anim != 5
+trigger2 = Anim = 5 && AnimTime = 0
+value = 21
+;---------------------------------------------------------------------------
+; Run forward
+[Statedef 100]
+type    = S
+physics = S
+anim = 100
+sprpriority = 1
+ctrl = 1
+
+[State 100, 1]
+type = VelSet
+trigger1 = 1
+x = const(velocity.run.fwd.x)*cond(Map(BUCKX2)>0,1.25,1)
+
+[State 100, 2] ;Prevent run from canceling into walk
 type = AssertSpecial
 trigger1 = 1
-flag = nowalk
+flag = NoWalk
 
-[State 0, VelAdd]
-type = VelAdd
-trigger1 = animelem = 1
-x = 2
-[State 0, VelAdd]
-type = VelAdd
-trigger1 = animelem = 2
-x = 6
+[State 100, 3] ;Prevent from turning
+type = AssertSpecial
+trigger1 = 1
+flag = NoAutoTurn
 
-[State 0, VelSet]
-type = VelSet
-trigger1 = time > 16
-x = -2.4
-
-[State 0, CtrlSet]
-type = CtrlSet
-trigger1 = time = 5
-value = 1
-
-[State 0, ChangeState]
+[State 100, 4]
 type = ChangeState
-triggerall = command != "holdfwd" && command != "holdc"
-trigger1 = command = "holdback" && time >= 16
-trigger2 = time >= 54
+trigger1 = command != "holdfwd"
 value = 101
-ctrl = 1
 
 ;---------------------------------------------------------------------------
 ; Back Dash
@@ -139,26 +158,14 @@ type = AssertSpecial
 trigger1 = 1
 flag = nowalk
 
-
 [State 0, VelAdd]
 type = VelSet
 trigger1 = animelem = 1
 x = -6
 
-[State 0, VelAdd]
-type = VelSet
-trigger1 = animelem = 4
-x = 10
-
-[State 0, CtrlSet]
-type = CtrlSet
-trigger1 = time = 12
-value = 1
-
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = animtime = 0
-trigger2 = command = "holdback" && time >= 12
 value = 0
 ctrl = 1
 
@@ -181,56 +188,110 @@ ctrl = 1
 [Statedef 160]
 type = A
 movetype = I
-physics = N
+physics = A
 ctrl = 0
 anim = 160
-velset = vel x*.25,0
+velset = 0,0
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = time <= 20
+flag = noairguard
+
+[State -2, Airdash Limiter]
+type = mapadd
+trigger1 = time = 0
+value = -1
+map = "DJ"
 
 [State 0, VelSet]
 type = VelSet
-trigger1 = time = 8
-x = 5
+trigger1 = 1
+x = 4.5
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = time = 20
+trigger1 = time = 16
 statetype = A       ;S,A,C,L
 movetype = I        ;I,A,H
 physics = A         ;A,C,S,N
 
+[State 0, VelMul]
+type = VelMul
+trigger1 = time > 8
+x = .95
+
+[State -2, AirDash Physics]
+type = mapset
+trigger1 = time = 0
+value = 12
+map = "ADPhysics"
+[State -2, AirDash Physics]
+type = mapset
+trigger1 = time = 0
+value = 1
+map = "AirDashing"
+
 [State 0, CtrlSet]
 type = CtrlSet
-trigger1 = time = 15
+trigger1 = time = 7
 value = 1
 ;---------------------------------------------------------------------------
 ; Back Air Dash
 [Statedef 161]
 type = A
 movetype = I
-physics = N
+physics = A
 ctrl = 0
 anim = 161
-velset = vel x*.25,0
+velset = 0,0
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = time <= 20
+flag = noairguard
+
+[State -2, Airdash Limiter]
+type = mapadd
+trigger1 = time = 0
+value = -1
+map = "DJ"
 
 [State 0, VelSet]
 type = VelSet
-trigger1 = time = 8
-x = -5
+trigger1 = 1
+x = -4.5
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = time = 20
+trigger1 = time = 15
 statetype = A       ;S,A,C,L
 movetype = I        ;I,A,H
 physics = A         ;A,C,S,N
 
+[State 0, VelMul]
+type = VelMul
+trigger1 = time > 8
+x = .98
+
+[State -2, AirDash Physics]
+type = mapset
+trigger1 = time = 0
+value = 12
+map = "ADPhysics"
+[State -2, AirDash Physics]
+type = mapset
+trigger1 = time = 0
+value = 1
+map = "AirDashing"
+
+
 [State 0, CtrlSet]
 type = CtrlSet
-trigger1 = time = 15
+trigger1 = time = 7
 value = 1
 ;---------------------------------------------------------------------------
 ; Lose by Time Over
-; CNS difficulty: basic
 [Statedef 170]
 type = S
 ctrl = 0
@@ -245,7 +306,6 @@ time = 1
 
 ;---------------------------------------------------------------------------
 ; Win state decider
-; CNS difficulty: basic
 [Statedef 180]
 type = S
 
@@ -256,7 +316,6 @@ value = 181
 
 ;---------------------------------------------------------------------------
 ; Win pose 1 - Bow
-; CNS difficulty: basic
 [Statedef 181]
 type = S
 ctrl = 0
@@ -271,7 +330,6 @@ time = 1
 
 ;---------------------------------------------------------------------------
 ; Introduction
-; CNS difficulty: basic
 [Statedef 191]
 type = S
 ctrl = 0
@@ -341,33 +399,6 @@ movetype = I
 physics = S
 sprpriority = 2
 
-[State 0, SuperPause]
-type = SuperPause
-trigger1 = time = 0
-time = 47
-anim = -1
-;sound = 20,0
-;pos = 0,-50
-movetime = 47
-darken = 1
-p2defmul = 1
-unhittable = 1
-
-[State 0, Zoom]
-type = zoom
-trigger1= anim = 195
-scale = 1.25
-lag = .25
-stagebound = 1
-camerabound = 1
-pos = pos x,-20
-ignorehitpause=1
-
-[State 195, 2]
-type = lifeSet
-trigger1 = AnimTime = 0
-value = 0
-
 [State 195, 2]
 type = ChangeState
 trigger1 = AnimTime = 0
@@ -377,7 +408,17 @@ ctrl = 1
 ;---------------------------------------------------------------------------
 ; Override common states (use same number to override) :
 ;---------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------
+; States that are always executed (use statedef -2)
+;---------------------------------------------------------------------------
 [Statedef -2]
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "DamageScaling = %.3f, HitstunScaling = %.3f, Map(ADPhysics) = %.2f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(ADPhysics)
 
 ;---------REDUCE MECHANIC
 [State -2, Reduce]
@@ -426,7 +467,18 @@ trigger1 = Map(Reduce)=0
 value = 1
 ignorehitpause = 1
 
-;-------COUNTER HITS
+[State -2, Damage Scaling Reset]
+type = mapset
+trigger1 = combocount=0 || enemy,movetype != H
+value = 1
+map = "DamageScaling"
+[State -2, Hitstun Scaling Reset]
+type = mapset
+trigger1 = combocount=0 || enemy,movetype != H
+value = 0
+map = "HitstunScaling"
+
+;-------COUNTER HITS----------
 
 [State 0, Zoom]
 type = zoom
@@ -449,92 +501,137 @@ freq = 60
 ampl = -4
 phase = 90
 
-[State -2, Low Map Reset]
+[State -2, CounterHit Reset]
 type = mapset
 trigger1 = enemy,movetype != A
 value = 0
 map = "CounterHit"
-[State -2, Low Map Reset]
+[State -2, CounterHit Reset]
 type = mapset
 trigger1 = enemy,movetype = A
 value = 1
 map = "CounterHit"
 
-
-;DAMAGE SCALING
-
-[State -2, Hit Count Reset(Damage Scaling)]
-type = VarSet
-trigger1 = NumEnemy && fvar(10)
-trigger1 = (EnemyNear, MoveType != H) && (EnemyNear, StateNo != 5300)
-trigger2 = enemy,stateno = [120,155]
-fvar(10) = 0
-ignoreHitPause = 1
-
-[State -2, Damage Dampener]
-type = VarSet
-trigger1 = 1
-fvar(10) = ifElse(fvar(11) < 1, 10, ifElse(fvar(11) >= 10, 1, 10 - fvar(11))) / 10.0
-ignoreHitPause = 1
-
-[State -2, Damage Dampener Limit]
-type = VarSet
-trigger1 = fvar(10) < 0 
-fvar(10) = 0 
-ignoreHitPause = 1 
-
-[State -2, Damage Dampener Limit]
-type = VarSet
-trigger1 = enemy, movetype != H
-fvar(11) = 0
-ignoreHitPause = 1
-
-;HITSTUN SCALING
-
-[State -2, Hit Count Reset(Hitstun Scaling)]
-type = VarSet
-trigger1 = NumEnemy && fvar(15)
-trigger1 = (EnemyNear, MoveType != H) && (EnemyNear, StateNo != 5300)
-trigger2 = enemy,stateno = [120,155]
-fvar(15) = 0
-ignoreHitPause = 1
-
-[State -2, Hitstun Dampener]
-type = VarSet
-trigger1 = 1
-fvar(16) = ifElse(fvar(15) < 3, 15, ifElse(fvar(15) >= 15, 1, 15 - fvar(15))) / 20.0
-ignoreHitPause = 1
-
-[State -2, Hitstun Dampener Limit]
-type = VarSet
-trigger1 = fvar(16) < 0
-fvar(16) = 0
-ignoreHitPause = 1
 ;---------------------------------------------------------------------------
 ; States that are executed when in self's state file (use statedef -3)
 ;---------------------------------------------------------------------------
 [Statedef -3]
 
+;---------------------------------------------------------------------------
+; CHARACTER SPECIFIC
+;---------------------------------------------------------------------------
 
+[State -2, Install Timer]
+type = mapadd
+trigger1 = Map(BUCKX2)>0
+value = -1
+map = "BUCKX2"
+
+;---------------------------------------------------------------------------
+; UNIVERSAL
+;---------------------------------------------------------------------------
+
+[State -2, DJ buffer]
+type = mapadd
+trigger1 = command = "holdup" && Map(DJAccess)=1
+value = 1
+map = "DJCount"
+[State -2, DJ buffer]
+type = mapset
+trigger1 = command = "holdup" && Map(DJCount)=4
+value = 0
+map = "DJAccess"
+[State -2, DJ buffer]
+type = mapset
+trigger1 = command != "holdup"
+value = 1
+map = "DJAccess"
+[State -2, DJ buffer]
+type = mapset
+trigger1 = command != "holdup"
+value = 0
+map = "DJCount"
+
+
+[State -2, AirDash Physics]
+type = mapadd
+trigger1 = movetype = H || statetype != A
+value = 0
+map = "ADPhysics"
+[State -2, AirDash Physics]
+type = mapadd
+trigger1 = Map(ADPhysics)>0
+value = -1
+map = "ADPhysics"
+[State -2, AirDash Physics]
+type = mapset
+trigger1 = statetype != A
+value = 0
+map = "AirDashing"
+
+[State Throw Tech]
+type = mapset
+trigger1 = ctrl
+map = "CanTT"
+value = 1
+[State Throw Tech]
+type = mapset
+trigger1 = !ctrl
+map = "CanTT"
+value = 0
 ;================================================================
 ;Generic Limiters
 ;================================================================
-
 [State -2, Move Limit Reset]
 type = mapset
-trigger1 = enemy,movetype != H
+trigger1 = Statetype != A
+value = 1
+map = "DJ"
+[State -2, Move Limit Reset]
+type = mapset
+trigger1 = combocount=0
 value = 0
 map = "GroundBounce"
 [State -2, Move Limit Reset]
 type = mapset
-trigger1 = enemy,movetype != H
+trigger1 = combocount=0
 value = 0
 map = "WallBounce"
 [State -2, Move Limit Reset]
 type = mapset
-trigger1 = enemy,movetype != H
+trigger1 = combocount=0
 value = 0
 map = "Tumble"
+
+;================================================================
+;Repeat Damage Scaling
+;================================================================
+[State -2, 2C Reset]
+type = mapset
+trigger1 = enemy,movetype != H
+value = 0
+map = "Launcher"
+[State -2, 2D>D Reset]
+type = mapset
+trigger1 = enemy,movetype != H
+value = 0
+map = "crD"
+[State -2, Gun Reset]
+type = mapset
+trigger1 = enemy,movetype != H
+value = 0
+map = "qcfD"
+[State -2, Gun Reset]
+type = mapset
+trigger1 = enemy,movetype != H
+value = 0
+map = "qcbD"
+[State -2, Gun Reset]
+type = mapset
+trigger1 = enemy,movetype != H
+value = 0
+map = "stanceA"
+
 
 ;This controller plays a sound everytime KFM lands from a jump, or
 ;from his back-dash.
