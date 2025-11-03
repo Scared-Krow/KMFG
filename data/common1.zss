@@ -520,11 +520,6 @@ if hitShakeOver {
 [StateDef 5001; type: S; movetype: H; physics: S;]
 
 call GetHitKnockedBack(5005 + (getHitVar(groundType) = 2) * 10, 0);
-
-if isHelper=1 {
-	DestroySelf{1}
-}
-
 #-------------------------------------------------------------------------------
 # Crouch get-hit (shaking)
 [StateDef 5010; type: C; movetype: H; physics: N; velset: 0, 0;]
@@ -744,6 +739,7 @@ playSnd{value: F7, ($vely > const240p(5)) + ($vely > const240p(14))}
 [StateDef 5100; type: L; movetype: H; physics: N;]
 
 
+if time = 0 {mapSet{map: "GroundBounce"; value: 1; redirectID:enemy,ID}}
 if time = 0 {
 	if getHitVar(fall.yVel) = 0 && vel x > 1 {
 		velSet{x: 1}
@@ -997,6 +993,8 @@ if hitShakeOver {
 
 if time = 0 { hitVelSet {x:1;y:1;} }
 
+if time = 0 {mapSet{map: "WallBounce"; value: 1; redirectID:enemy,ID}}
+
 if time = 0 {
 	posAdd {y:-15}
 }
@@ -1101,6 +1099,7 @@ if facing != enemy,facing {
 }
 
 velAdd{y: getHitVar(yAccel)}
+if vel y > 0 {velMul{y: 1.025}}
 
 if time <= 8 { changeAnim{value:5061; elem:1;} }
 if time > 8 && time <= 13 { changeAnim{value:5061; elem:2;} }
@@ -1147,5 +1146,10 @@ changeState{value: 0}
 [Statedef -2]
 
 if Map(ADPhysics)>0 && moveType != H {
-	velSet{y:0}
+	velMul{y:0}
 }
+
+if ishelper && stateno!=[4000,4999] {
+	destroyself{recursive: 1}
+}
+

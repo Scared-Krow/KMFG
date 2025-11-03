@@ -904,7 +904,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.2
+value = Map(DamageScaling)-.25
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1514,7 +1514,7 @@ priority  = 5
 pausetime = 12,12
 hitsound   = 5,3
 sparkxy = -10,-86
-sparkno = 5
+sparkno = 2
 hitsound   = 4
 guardsound = 6,2
 ground.type = Low
@@ -1534,12 +1534,6 @@ trigger1 = movehit=1
 value = 5400
 ID = 5400
 ignorehitpause = 1
-
-[State -2, Wall Bounce Limiter]
-type = mapset
-trigger1 = movehit=1
-value = 1
-map = "WallBounce"
 
 [State 810, State End]
 type = ChangeState

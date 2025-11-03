@@ -2,8 +2,10 @@ Version: nightly
 Build Time: 2025-10-08
 
 Error log:
-.\external\script\start.lua:1602: data/COMMON.cns:2524:
-value not specified
+.\external\script\start.lua:1602: chars/ISSBROKIE/issbrokie.def:
+data/common1.zss
+common1.zss:766:
+Invalid key name: ignorehitpause
 stack traceback:
 	[G]: in function 'game'
 	.\external\script\start.lua:1602: in function 'f_game'

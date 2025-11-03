@@ -34,7 +34,7 @@ persistent = 0
 
 [State 200, 1]
 type = HitDef
-trigger1 = time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = S, NA                     ;Attribute: Standing, Normal Attack
 damage = ceil(cond(20*Map(DamageScaling) < 2, 2, 20*Map(DamageScaling)))
 animtype = Light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
@@ -133,7 +133,7 @@ value = 0, 1
 
 [State 230, 2]
 type = HitDef
-trigger1 = Time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 animtype  = Medium
 damage = ceil(cond(40*Map(DamageScaling) < 4, 4, 40*Map(DamageScaling)))
@@ -218,7 +218,7 @@ persistent = 0
 
 [State 210, 2]
 type = HitDef
-trigger1 = time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 animtype  = Medium
 damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
@@ -232,7 +232,7 @@ ground.type = High
 ground.slidetime = 12
 ground.hittime  = 22
 ground.velocity = -4
-air.hittime = ceil(cond(30-Map(HitstunScaling) < 16, 16, 30-Map(HitstunScaling)))
+air.hittime = ceil(cond(25-Map(HitstunScaling) < 14, 14, 25-Map(HitstunScaling)))
 air.velocity = -1.75,-3.5
 guard.ctrltime = 13
 guard.hittime = 13
@@ -314,15 +314,15 @@ persistent = 0
 
 [State 200, 1]
 type = HitDef
-trigger1 = time = 0
-attr = S,NP                     ;Attribute: Standing, Normal Attack
+trigger1 = !MoveContact && !MoveReversed
+attr = S,NA                     ;Attribute: Standing, Normal Attack
 damage = ceil(cond(100*Map(DamageScaling) < 25, 25, 100*Map(DamageScaling)))
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = HA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 15,15                ;Time attacker pauses, time opponent shakes
-sparkno = 4                      ;Spark anim no (Def: set above)
+sparkno = 1                     ;Spark anim no (Def: set above)
 sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
 hitsound = 5, 4                  ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
@@ -339,6 +339,10 @@ fall = 1
 fall.yvelocity = cond(Map(GroundBounce)=0,-6,0)
 guard.ctrltime = 10
 guard.hittime = 10
+envshake.time = 12
+envshake.freq = 100
+envshake.phase = 150
+envshake.ampl = -7
 id = 5420
 
 [State 0, TargetState]
@@ -349,12 +353,6 @@ trigger1 = movehit=1
 value = 5420
 ID = 5420
 ignorehitpause = 1
-
-[State -2, Wall Bounce Limiter]
-type = mapset
-trigger1 = movehit
-value = 1
-map = "GroundBounce"
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -429,7 +427,7 @@ value = 0, 0
 
 [State 400, 2]
 type = HitDef
-trigger1 = time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 damage = ceil(cond(20*Map(DamageScaling) < 2, 2, 20*Map(DamageScaling)))
 priority  = 3
@@ -508,7 +506,7 @@ persistent = 0
 
 [State 430, 2]
 type = HitDef
-trigger1 = time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 damage = ceil(cond(35*Map(DamageScaling) < 3, 3, 35*Map(DamageScaling)))
 animtype  = Light
@@ -612,7 +610,7 @@ value = 0, 0
 
 [State 400, 2]
 type = HitDef
-trigger1 = time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 damage = ceil(cond(45*Map(DamageScaling) < 4, 4, 45*Map(DamageScaling)))
 priority  = 3
@@ -720,7 +718,7 @@ value = 0, 2
 
 [State 440, 3]
 type = HitDef
-trigger1 = time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = C, NA
 damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
 hitflag = MAF
@@ -829,7 +827,7 @@ value = 0, 2
 
 [State 440, 3]
 type = HitDef
-trigger1 = time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
 hitflag = MAF
@@ -942,7 +940,7 @@ value = 0, 0
 
 [State 600, 2]
 type = HitDef
-trigger1 = Time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
 damage = ceil(cond(20*Map(DamageScaling) < 2, 2, 20*Map(DamageScaling)))
 guardflag = HA
@@ -1032,7 +1030,7 @@ persistent = 0
 
 [State 610, 3]
 type = HitDef
-trigger1 = Time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
 damage = ceil(cond(40*Map(DamageScaling) < 4, 4, 40*Map(DamageScaling)))
 guardflag = HA
@@ -1115,7 +1113,7 @@ persistent = 0
 
 [State 630, 2]
 type = HitDef
-trigger1 = Time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
 damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
 guardflag = HA
@@ -1199,7 +1197,7 @@ persistent = 0
 
 [State 640, 3]
 type = HitDef
-trigger1 = Time = 0
+trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
 damage = ceil(cond(65*Map(DamageScaling) < 6, 6, 65*Map(DamageScaling)))
 guardflag = HA

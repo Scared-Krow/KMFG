@@ -345,26 +345,6 @@ trigger5 = stateno=[1000,2000] && movecontact
 ;============================================================================
 ;============================SPECIALS========================================
 ;============================================================================
-
-;---------------------------------------------------------------------------
-;214B
-[State -1, 214B]
-type = ChangeState
-value = 1200
-triggerall = command = "214B"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2 = var(1)
-trigger3 = Map(BUCKX2)>0 && ((stateno =[1000,2000] && movecontact) || stateno = 1204 && time > 24)
-;---------------------------------------------------------------------------
-;214D
-[State -1, 214D]
-type = ChangeState
-value = 1005
-triggerall = command = "214D"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2 = var(1)
 ;---------------------------------------------------------------------------
 ;236A
 [State -1, 236A]
@@ -384,13 +364,14 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------
-;623A
-[State -1, 623A]
+;63214B
+[State -1, 63214B]
 type = ChangeState
-value = 1100
-triggerall = command = "623A"
+value = 1200
+triggerall = command = "624B"
 triggerall = statetype != A
 trigger1 = ctrl
+trigger2 = var(1)
 
 ;===========================================================================
 

@@ -25,7 +25,7 @@ proj.doscale = 0
 head.pos = -5, -90   
 mid.pos = -5, -60    
 shadowoffset = 0     
-draw.offset = 0,0
+draw.offset = 0,1
 
 [Velocity]
 walk.fwd  = 1.8
@@ -188,7 +188,7 @@ ctrl = 1
 [Statedef 160]
 type = A
 movetype = I
-physics = N
+physics = A
 ctrl = 0
 anim = 160
 velset = 0,0
@@ -241,7 +241,7 @@ value = 1
 [Statedef 161]
 type = A
 movetype = I
-physics = N
+physics = A
 ctrl = 0
 anim = 161
 velset = 0,0
@@ -417,8 +417,8 @@ ctrl = 1
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f, qcfD = %.2f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(qcfD)
+text = "DamageScaling = %.3f, HitstunScaling = %.3f, Map(GroundBounce) = %.2f, Map(WallBounce) = %.2f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(GroundBounce),Map(WallBounce)
 
 ;---------REDUCE MECHANIC
 [State -2, Reduce]
@@ -470,13 +470,13 @@ ignorehitpause = 1
 
 [State -2, Damage Scaling Reset]
 type = mapset
-trigger1 = enemy,GetHitVar(hittime)=-1
+trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
 value = 1
 map = "DamageScaling"
 ignorehitpause = 1
 [State -2, Hitstun Scaling Reset]
 type = mapset
-trigger1 = enemy,GetHitVar(hittime)=-1
+trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
 value = 0
 map = "HitstunScaling"
 ignorehitpause = 1

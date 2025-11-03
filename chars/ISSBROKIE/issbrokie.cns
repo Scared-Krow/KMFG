@@ -25,7 +25,7 @@ proj.doscale = 0
 head.pos = -5, -90   
 mid.pos = -5, -60    
 shadowoffset = 0     
-draw.offset = 0,0
+draw.offset = 0,1
 
 [Velocity]
 walk.fwd  = 2.2
@@ -417,8 +417,8 @@ ctrl = 1
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f, Map(ADPhysics) = %.2f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(ADPhysics)
+text = "DamageScaling = %.3f, HitstunScaling = %.3f, Map(GroundBounce) = %.2f, Map(WallBounce) = %.2f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(GroundBounce),Map(WallBounce)
 
 ;---------REDUCE MECHANIC
 [State -2, Reduce]
@@ -469,14 +469,16 @@ ignorehitpause = 1
 
 [State -2, Damage Scaling Reset]
 type = mapset
-trigger1 = combocount=0 || enemy,movetype != H
+trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
 value = 1
 map = "DamageScaling"
+ignorehitpause = 1
 [State -2, Hitstun Scaling Reset]
 type = mapset
-trigger1 = combocount=0 || enemy,movetype != H
+trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
 value = 0
 map = "HitstunScaling"
+ignorehitpause = 1
 
 ;-------COUNTER HITS----------
 
@@ -521,11 +523,10 @@ map = "CounterHit"
 ; CHARACTER SPECIFIC
 ;---------------------------------------------------------------------------
 
-[State -2, Install Timer]
-type = mapadd
-trigger1 = Map(BUCKX2)>0
-value = -1
-map = "BUCKX2"
+[State 0, AttackMulSet]
+type = AttackMulSet
+trigger1 = Map(RAWRXD)=1
+value = 1.2
 
 ;---------------------------------------------------------------------------
 ; UNIVERSAL
