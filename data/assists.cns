@@ -11,6 +11,12 @@ anim = F4000
 velset = 20,0
 sprpriority = -1
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 999
+
 [State 0. PosSet]
 type = PosSet
 trigger1 = time = 0
