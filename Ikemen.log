@@ -2,10 +2,9 @@ Version: nightly
 Build Time: 2025-10-08
 
 Error log:
-.\external\script\start.lua:1602: chars/ISSBROKIE/issbrokie.def:
-data/common1.zss
-common1.zss:766:
-Invalid key name: ignorehitpause
+.\external\script\start.lua:1602: chars/ISSBROKIE/normals.cns:756:
+up
+ground.type: Invalid ground.type: up
 stack traceback:
 	[G]: in function 'game'
 	.\external\script\start.lua:1602: in function 'f_game'

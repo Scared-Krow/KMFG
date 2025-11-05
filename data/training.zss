@@ -140,7 +140,6 @@ ignoreHitPause if gameMode != "training" || isHelper || teamSide != 2 {
 		}
 		# Fall Recovery
 		if map(_iksys_trainingFallRecovery) = 0 {
-				if gethitvar(hittime) = -1 && statetype = A && movetype = H {assertInput{flag: a}}
 			} else {
 				if map(_iksys_trainingFallRecovery) = 1 && movetype = H {
 					if facing = 1 {

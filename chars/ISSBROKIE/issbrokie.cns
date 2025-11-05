@@ -95,12 +95,12 @@ sprpriority = 0
 [State 20, 1]
 type = VelSet
 trigger1 = command = "holdfwd"
-x = const(velocity.walk.fwd.x)*cond(Map(BUCKX2)>0,1.25,1)
+x = const(velocity.walk.fwd.x)
 
 [State 20, 2]
 type = VelSet
 trigger1 = command = "holdback"
-x = const(velocity.walk.back.x)*cond(Map(BUCKX2)>0,1.25,1)
+x = const(velocity.walk.back.x)
 
 [State 20, 3]
 type = ChangeAnim
@@ -127,7 +127,7 @@ ctrl = 1
 [State 100, 1]
 type = VelSet
 trigger1 = 1
-x = const(velocity.run.fwd.x)*cond(Map(BUCKX2)>0,1.25,1)
+x = const(velocity.run.fwd.x)
 
 [State 100, 2] ;Prevent run from canceling into walk
 type = AssertSpecial

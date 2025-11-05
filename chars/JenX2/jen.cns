@@ -529,6 +529,94 @@ trigger1 = Map(BUCKX2)>0
 value = -1
 map = "BUCKX2"
 
+[State 0, Explod]
+type = Explod
+triggerall = teamside = 1
+trigger1 = Map(BUCKX2)>0 && numexplod(3100)<=0
+anim = 2001
+ID = 3101
+pos = 15,158
+postype = left  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = -2
+supermovetime = 9999999
+pausemovetime = 999999
+scale = 1,1
+sprpriority = -6
+ontop = 0
+ownpal = 1
+removeongethit = 0
+[State 0, Explod]
+type = Explod
+triggerall = teamside = 2
+trigger1 = Map(BUCKX2)>0 && numexplod(3100)<=0
+anim = 2001
+ID = 3101
+pos = -15,158
+postype = right ;P2, Front, Back, Left, Right
+facing = -1
+vfacing = 1
+bindtime = 1
+removetime = -2
+supermovetime = 9999999
+pausemovetime = 999999
+scale = 1,1
+sprpriority = -6
+ontop = 0
+ownpal = 1
+removeongethit = 0
+
+
+
+[State 0, Explod]
+type = Explod
+triggerall = teamside = 1
+trigger1 = Map(BUCKX2)>0 && numexplod(3100)<=0
+anim = 2000
+ID = 3100
+pos = 15,158
+postype = left  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = -2
+supermovetime = 9999999
+pausemovetime = 999999
+scale = 1,1
+sprpriority = -7
+ontop = 0
+ownpal = 1
+removeongethit = 0
+[State 0, Explod]
+type = Explod
+triggerall = teamside = 2
+trigger1 = Map(BUCKX2)>0 && numexplod(3100)<=0
+anim = 2000
+ID = 3100
+pos = -15,158
+postype = right ;P2, Front, Back, Left, Right
+facing = -1
+vfacing = 1
+bindtime = 1
+removetime = -2
+supermovetime = 9999999
+pausemovetime = 999999
+scale = 1,1
+sprpriority = -7
+ontop = 0
+ownpal = 1
+removeongethit = 0
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = Map(BUCKX2)=0
+id = 3100
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = Map(BUCKX2)=0
+id = 3101
 ;---------------------------------------------------------------------------
 ; UNIVERSAL
 ;---------------------------------------------------------------------------

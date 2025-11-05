@@ -458,7 +458,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.25
+value = Map(DamageScaling)-.2
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -475,7 +475,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S,SA                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
+damage = ceil(cond(55*Map(DamageScaling) < 5, 5, 55*Map(DamageScaling)))
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -622,6 +622,7 @@ ground.velocity = -.75,-6.25
 guard.velocity = -3
 air.hittime = 40
 air.velocity = -.75,-5
+down.velocity = -.75,-6
 guard.ctrltime = 13
 guard.hittime = 13
 down.hittime = 20
@@ -631,15 +632,16 @@ fall.yvelocity = 0
 yaccel = .35
 p2facing = 1
 
-[State 210, 5]
+[State 200, 3]
 type = ChangeState
-trigger1 = time = 55
+trigger1 = AnimTime = 0
 value = 0
 ctrl = 1
 
+
 [State 1000, 7]
 type = ChangeState
-trigger1 = time > 13 && command = "recovery"
+trigger1 = time > 13 && time < 55 && command = "recovery"
 value = 1101
 
 ;---------------------------------------------------------------------------
@@ -685,7 +687,7 @@ ground.velocity = -4,-2
 guard.velocity = -4
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
-air.velocity = -3,-2      ;X-velocity at which opponent is pushed,
+air.velocity = -3,-1      ;X-velocity at which opponent is pushed,
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 10, 10, 25-Map(HitstunScaling)))
 fall = 1
 fall.yvelocity = 0
@@ -783,29 +785,29 @@ type = HitDef
 triggerall = root,Map(Charge) = [47,49]
 trigger1 = !MoveContact && !Movereversed
 attr = S,NP                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(50*root,Map(DamageScaling) < 15, 15, 50*root,Map(DamageScaling))),10
+damage = ceil(cond(50*root,Map(DamageScaling) < 15, 15, 50*root,Map(DamageScaling))),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
-pausetime = 9,9                ;Time attacker pauses, time opponent shakes
+pausetime = 1,1                ;Time attacker pauses, time opponent shakes
 sparkno = 2                      ;Spark anim no (Def: set above)
 sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
 hitsound = 5, 2                  ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
-ground.slidetime = 60            ;Time that the opponent slides back
-ground.hittime  = 60
+ground.slidetime = 75            ;Time that the opponent slides back
+ground.hittime  = 75
 ground.velocity = -6,-2
 guard.velocity = -8
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
 air.velocity = -6,-2
-air.hittime = 60
+air.hittime = 75
 fall = 1
 fall.yvelocity = 0
-guard.ctrltime = 5
-guard.hittime = 5
+guard.ctrltime = 14
+guard.hittime = 14
 id = 5420
 
 [State 200, 1]
@@ -818,24 +820,24 @@ animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
-pausetime = 5,5                ;Time attacker pauses, time opponent shakes
+pausetime = 1,1                ;Time attacker pauses, time opponent shakes
 sparkno = 2                     ;Spark anim no (Def: set above)
 sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
 hitsound = 5, 2                  ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
-ground.slidetime = 10           ;Time that the opponent slides back
-ground.hittime  = 12
-ground.velocity = -6
-guard.velocity = -8
+ground.slidetime = 16           ;Time that the opponent slides back
+ground.hittime  = 16
+ground.velocity = -4
+guard.velocity = -6
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
 air.velocity = -6,-2
 air.hittime = ceil(cond(30-root,Map(HitstunScaling) < 24, 24, 30-root,Map(HitstunScaling)))
 air.fall = 1
 fall.yvelocity = 0
-guard.ctrltime = 5
-guard.hittime = 5
+guard.ctrltime = 9
+guard.hittime = 9
 
 [State 0, TargetState]
 type = TargetState
@@ -845,13 +847,97 @@ value = 5420
 ID = 5420
 ignorehitpause = 1
 
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time = 0
+value = random%50-25
+ignorehitpause = 1
 
 [State 0, DestroySelf]
-type = DestroySelf
+type = ChangeState
 trigger1 = movecontact
 trigger2 = frontedgedist < -25
 trigger3 = pos y >= -5 && time > 10
+value = 1104
 
+;---------------------------------------------------------------------------
+;Shatter Rocks
+[Statedef 1103]
+type    = U
+movetype= I
+physics = N
+anim = 1102
+velset = random%5-2.5,-random%5
+ctrl = 0
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = .4
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = frontedgedist < -25
+trigger2 = pos y >= -5 && time > 10
+
+;---------------------------------------------------------------------------
+;Rock Transition
+[Statedef 1104]
+type    = U
+movetype= I
+physics = S
+anim = 1102
+ctrl = 0
+
+[State 0, Helper]
+type = Helper
+trigger1 = time = 0
+helpertype = Normal ;Player
+name = "Rock"
+ID = 1103
+stateno = 1103
+pos = cond(enemy,movetype=H,35,0),0
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 0
+ignorehitpause = 1
+size.xscale = .4
+size.yscale = .4
+[State 0, Helper]
+type = Helper
+trigger1 = time = 0
+helpertype = Normal ;Player
+name = "Rock"
+ID = 1103
+stateno = 1103
+pos = cond(enemy,movetype=H,35,0),0
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 0
+ignorehitpause = 1
+size.xscale = .4
+size.yscale = .4
+[State 0, Helper]
+type = Helper
+trigger1 = time = 0
+helpertype = Normal ;Player
+name = "Rock"
+ID = 1103
+stateno = 1103
+pos = cond(enemy,movetype=H,35,0),0
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 0
+ignorehitpause = 1
+size.xscale = .4
+size.yscale = .4
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time = 0
 ;---------------------------------------------------------------------------
 ;63214B
 [Statedef 1200]

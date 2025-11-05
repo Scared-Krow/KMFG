@@ -1069,7 +1069,7 @@ physics = A
 
 [State 600, 3]
 type = CtrlSet
-trigger1 = Time = 17
+trigger1 = Time = 12
 value = 1
 
 ;---------------------------------------------------------------------------
