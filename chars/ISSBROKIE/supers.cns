@@ -27,6 +27,12 @@ type = PosAdd
 trigger1 = animelem = 9
 x = 12
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = animelemno(0)=[1,9]
+value = SCA
+time = 1
+
 [State 210, 2]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
@@ -62,7 +68,7 @@ type = HitDef
 trigger1 = movehit
 attr = S, HA
 animtype  = up
-damage = ceil(cond(85*Map(DamageScaling) < 40, 40, 85*Map(DamageScaling)))
+damage = ceil(cond(90*Map(DamageScaling) < 40, 40, 90*Map(DamageScaling)))
 guardflag = MA
 hitflag = MAFD
 pausetime = 8,8
@@ -86,7 +92,7 @@ p2facing = 1
 
 [State -2, Install]
 type = mapset
-trigger1 = movehit
+trigger1 = animelem = 10 && movehit
 value = 1
 map = "RAWRXD"
 ignorehitpause = 1

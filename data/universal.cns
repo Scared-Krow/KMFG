@@ -89,16 +89,8 @@ anim = 700
 velset = 3,0
 facep2 = 1
 
-[State 0, PowerAdd]
-type = PowerAdd
-trigger1 = prevMoveType = A && time = 0
-value = -250
-ignorehitpause = 0
-
-
 [State -3, Lv1 Shadows]
 type = afterimage
-triggerall = prevMoveType != A
 trigger1 = time = 2
 time = 10
 length = 3
@@ -110,9 +102,74 @@ palcontrast = 150, 150, 150
 palpostbright = 0, 0, 0
 trans = add1
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time=[3,15]
+value = SCA,NP,SP,HP
+time = 1
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NT,ST,HT
+time = 1
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = time<3 || time > 15
+value = SCA,NA,SA,HA,NT,ST,HT,NP,SP,HP
+time = 1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 5
+x = 6
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = time > 12
+x = .875
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = time =[5,16] 
+value = 0
+
+[State 0, Width]
+type = Width
+trigger1 = time=[5,16]
+player = -25,-25
+
+[State 100, 2] ;Prevent run from canceling into walk
+type = AssertSpecial
+trigger1 = 1
+flag = NoWalk
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;Enhanced 6K
+[Statedef 701]
+type = S
+movetype = I
+physics = N
+ctrl = 0
+anim = 700
+velset = 3,0
+facep2 = 1
+
+[State 0, PowerAdd]
+type = PowerAdd
+trigger1 = time = 0
+value = -250
+ignorehitpause = 0
+
 [State -3, Lv1 Shadows]
 type = afterimage
-triggerall = prevMoveType = A
 trigger1 = time = 2
 time = 12
 length = 3
@@ -152,14 +209,6 @@ type = VelMul
 trigger1 = time > 12
 x = .875
 
-
-[State 0, PlayerPush]
-type = PlayerPush
-triggerall = prevMoveType != A
-trigger1 = time =[5,16] 
-value = 0
-
-
 [State 0, Width]
 type = Width
 trigger1 = time=[5,16]
@@ -172,7 +221,6 @@ flag = NoWalk
 
 [State 0, CtrlSet]
 type = CtrlSet
-triggerall = prevMoveType = A
 trigger1 = time = 10
 value = 1
 
@@ -207,7 +255,7 @@ map = "Parry"
 [State 1300, 2]
 type = ReversalDef
 trigger1 = Time = [1,10]
-reversal.attr = SA,AA
+reversal.attr = SA,AA,AP
 pausetime = 0,0
 sparkno = 40
 sparkxy = 40,0
@@ -295,7 +343,7 @@ map = "Parry"
 [State 1300, 2]
 type = ReversalDef
 trigger1 = Time = [1,10]
-reversal.attr = C,AA
+reversal.attr = C,AA,AP
 pausetime = 0,0
 sparkno = 40
 sparkxy = 40,0

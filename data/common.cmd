@@ -35,32 +35,32 @@ buffer.time = 1
 name = "x"
 command = x
 time = 1
-buffer.time = 3
+buffer.time = 5
 [Command]
 name = "y"
 command = y
 time = 1
-buffer.time = 3
+buffer.time = 5
 [Command]
 name = "z"
 command = z
 time = 1
-buffer.time = 3
+buffer.time = 5
 [Command]
 name = "a"
 command = a
 time = 1
-buffer.time = 3
+buffer.time = 5
 [Command]
 name = "b"
 command = b
 time = 1
-buffer.time = 3
+buffer.time = 5
 [Command]
 name = "c"
 command = c
 time = 1
-buffer.time = 3
+buffer.time = 5
 [Command]
 name = "start"
 command = s
@@ -70,12 +70,12 @@ buffer.time = 1
 name = "d"
 command = d
 time = 1
-buffer.time = 3
+buffer.time = 5
 [Command]
 name = "w"
 command = w
 time = 1
-buffer.time = 3
+buffer.time = 5
 
 [Command]
 name = "menu"

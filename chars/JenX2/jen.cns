@@ -480,6 +480,21 @@ trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
 value = 0
 map = "HitstunScaling"
 ignorehitpause = 1
+
+
+[State -2, Grounded Pushback]
+type = mapset
+trigger1 = 1
+value = Map(PushBack)
+map = "HitstunScaling"
+ignorehitpause = 1
+[State -2, Grounded Pushback]
+type = mapset
+trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
+value = 0
+map = "PushBack"
+ignorehitpause = 1
+
 ;-------COUNTER HITS----------
 
 [State 0, Zoom]
@@ -697,6 +712,11 @@ map = "Tumble"
 ;================================================================
 ;Repeat Damage Scaling
 ;================================================================
+[State -2, 5C Reset]
+type = mapset
+trigger1 = enemy,movetype != H || enemy,statetype = A
+value = 0
+map = "stC"
 [State -2, 2C Reset]
 type = mapset
 trigger1 = enemy,movetype != H
