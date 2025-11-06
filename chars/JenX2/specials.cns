@@ -112,7 +112,7 @@ guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 8,8                ;Time attacker pauses, time opponent shakes
-sparkno = 4                      ;Spark anim no (Def: set above)
+sparkno = 2                     ;Spark anim no (Def: set above)
 sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
 hitsound = 5, 4                  ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
@@ -129,6 +129,7 @@ fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 7
 guard.hittime = 7
+p2facing = 1
 id = 5400
 
 [State 0, TargetState]
@@ -284,8 +285,8 @@ guardflag = M                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 8,8                ;Time attacker pauses, time opponent shakes
-sparkno = 4                      ;Spark anim no (Def: set above)
-sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
+sparkno = 2                      ;Spark anim no (Def: set above)
+sparkxy = -10, -25               ;X-offset for the "hit spark" rel. to p2,
 hitsound = 5, 4                  ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
@@ -301,6 +302,7 @@ fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 7
 guard.hittime = 7
+p2facing = 1
 id = 5400
 
 [State 0, TargetState]
@@ -440,8 +442,8 @@ guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 8,8                ;Time attacker pauses, time opponent shakes
-sparkno = 4                      ;Spark anim no (Def: set above)
-sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
+sparkno = 2                     ;Spark anim no (Def: set above)
+sparkxy = -10, -25               ;X-offset for the "hit spark" rel. to p2,
 hitsound = 5, 4                  ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
@@ -457,6 +459,7 @@ fall = 1
 fall.yvelocity = cond(root,Map(GroundBounce)=0,-5.6,0)
 guard.ctrltime = 7
 guard.hittime = 7
+p2facing = 1
 id = 5420
 
 
@@ -920,8 +923,8 @@ guardflag = MA                  ;Flags on how move is to be guarded against
 hitflag = HAF                    ;Flags of conditions that move can hit
 priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 8,8                ;Time attacker pauses, time opponent shakes
-sparkno = 4                      ;Spark anim no (Def: set above)
-sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
+sparkno = 2                     ;Spark anim no (Def: set above)
+sparkxy = -10, 0               ;X-offset for the "hit spark" rel. to p2,
 hitsound = 5, 4                  ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
@@ -937,6 +940,7 @@ fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 7
 guard.hittime = 7
+p2facing = 1
 id = 5420
 
 [State 0, TargetState]

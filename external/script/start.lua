@@ -2207,10 +2207,6 @@ function start.f_selectScreen()
 		local str = 'teammenu_itemname_' .. gamemode() .. '_'
 		local t = {
 			{data = text:create({}), itemname = 'single', displayname = (motif.select_info[str .. 'single'] or motif.select_info.teammenu_itemname_single), mode = 0, insert = true},
-			{data = text:create({}), itemname = 'simul', displayname = (motif.select_info[str .. 'simul'] or motif.select_info.teammenu_itemname_simul), mode = 1, insert = true},
-			{data = text:create({}), itemname = 'turns', displayname = (motif.select_info[str .. 'turns'] or motif.select_info.teammenu_itemname_turns), mode = 2, insert = true},
-			{data = text:create({}), itemname = 'tag', displayname = (motif.select_info[str .. 'tag'] or motif.select_info.teammenu_itemname_tag), mode = 3, insert = true},
-			{data = text:create({}), itemname = 'ratio', displayname = (motif.select_info[str .. 'ratio'] or motif.select_info.teammenu_itemname_ratio), mode = 2, insert = true},
 		}
 		local activeNum = #t
 		-- keep team mode allowed by game mode declaration, but only if it hasn't been disabled by screenpack parameter
@@ -3127,13 +3123,9 @@ function start.f_selectMenu(side, cmd, player, member, selectState)
 		--selection menu
 		elseif selectState == 1 then
 			-- EXTRA SPECIAL SELECTION MENU
-			if p1Assist == nil then
 				p1Assist = 1
-			end
-			
-			if p2Assist == nil then
 				p2Assist = 1
-			end
+		
 
 			if main.coop or (gamemode() == 'trials') or (side == 1 and (start.p[1].teamMode ~= 0 or main.coop) and P1SelChars > 0) then
 				TypeSelectFlag1 = false
@@ -3164,7 +3156,7 @@ function start.f_selectMenu(side, cmd, player, member, selectState)
 					p2Assist = 1
 				end	
 			
-				-- Confirm Super --BOOKMARK
+				-- Confirm Assist --BOOKMARK
 			elseif (not main.coop) and (main.f_input({cmd}, {'x'}) or main.f_input({cmd}, {'y'}) or main.f_input({cmd}, {'z'}) or main.f_input({cmd}, {'a'}) or main.f_input({cmd}, {'b'}) or main.f_input({cmd}, {'c'})) or (ArcadeEdition == 1 and timerSelect == -1) then
 				sndPlay(motif.files.snd_data, start.f_getCursorData(player, '_cursor_done_snd')[1], start.f_getCursorData(player, '_cursor_done_snd')[2])
 				selectState = 2

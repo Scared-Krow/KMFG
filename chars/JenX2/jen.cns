@@ -604,6 +604,23 @@ sprpriority = -7
 ontop = 0
 ownpal = 1
 removeongethit = 0
+x1 = 100
+y1 = 100
+x2 = 0
+y2 = 0
+
+[State 0, ModifyExplod]
+type = ModifyExplod
+triggerall = teamside = 1
+trigger1 = numexplod(3100)>=1
+ID = 3100
+x1 = Map(BUCKX2)
+y1 = 100
+x2 = 0
+y2 = 0
+
+
+
 [State 0, Explod]
 type = Explod
 triggerall = teamside = 2
@@ -623,6 +640,10 @@ sprpriority = -7
 ontop = 0
 ownpal = 1
 removeongethit = 0
+x1 = 100
+y1 = 100
+x2 = 0
+y2 = 0
 
 [State 0, RemoveExplod]
 type = RemoveExplod

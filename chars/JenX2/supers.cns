@@ -148,14 +148,14 @@ poweradd = -500
 [State 0, SuperPause]
 type = SuperPause
 trigger1 = time = 0
-time = 15
+time = 39
 darken = 1
 p2defmul = 1
-movetime = 15
+movetime = 39
 
 [State -2, Install]
 type = mapset
-trigger1 = time = 15
+trigger1 = time = 33
 value = 660
 map = "BUCKX2"
 
