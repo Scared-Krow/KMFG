@@ -78,6 +78,52 @@ time = 1
 buffer.time = 5
 
 [Command]
+name = "xNB"
+command = x
+time = 1
+buffer.time = 1
+[Command]
+name = "yNB"
+command = y
+time = 1
+buffer.time = 1
+[Command]
+name = "zNB"
+command = z
+time = 1
+buffer.time = 1
+[Command]
+name = "aNB"
+command = a
+time = 1
+buffer.time = 1
+[Command]
+name = "bNB"
+command = b
+time = 1
+buffer.time = 1
+[Command]
+name = "cNB"
+command = c
+time = 1
+buffer.time = 1
+[Command]
+name = "start"
+command = s
+time = 1
+buffer.time = 1
+[Command]
+name = "dNB"
+command = d
+time = 1
+buffer.time = 1
+[Command]
+name = "wNB"
+command = w
+time = 1
+buffer.time = 1
+
+[Command]
 name = "menu"
 command = m
 time = 1

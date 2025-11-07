@@ -281,7 +281,20 @@ ctrl = 0
 sprpriority = 2
 facep2 = 1
 
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0 
+time = 5
+anim = -1
+sound = -1
+darken = 0
+unhittable = 1
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time = [0,5]
+value = SCA
+time = 1
 
 [State 0, CtrlSet]
 type = CtrlSet
@@ -368,6 +381,22 @@ velset = 0, 0
 ctrl = 0
 sprpriority = 2
 facep2 = 1
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0 
+time = 5
+anim = -1
+sound = -1
+darken = 0
+unhittable = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time = [0,5]
+value = SCA
+time = 1
+
 
 [State 0, CtrlSet]
 type = CtrlSet
@@ -738,3 +767,133 @@ elem = AnimElemNo(0)
 type = ChangeState
 trigger1 = Time >= 5;floor(gethitvar(hittime) * 0.8)
 value = fvar(9)
+
+[Statedef -2]
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "DamageScaling = %.3f, HitstunScaling = %.3f, Map(GroundBounce) = %.2f, Map(WallBounce) = %.2f, Map(FatalCounter) = %.0f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(GroundBounce),Map(WallBounce),Map(FatalCounter)
+
+;---------REDUCE MECHANIC
+[State -2, Reduce]
+type = mapset
+trigger1 = enemy,movehit=1
+value = 0
+map = "Reduce"
+[State -2, Reduce]
+type = mapset
+trigger1 = enemy,movehit=1
+value = 0
+map = "ReduceLockout"
+
+[State -2, Reduce Set]
+type = mapset
+triggerall = Map(ReduceLockout)=0
+trigger1 = movetype = H && command = "c"
+value = 5
+map = "Reduce"
+
+[State -2, Reduce Set]
+type = mapset
+trigger1 = movetype = H && command = "c"
+value = 12
+map = "ReduceLockout"
+
+[State -2, Reduce]
+type = mapadd
+trigger1 = Map(Reduce)>0
+value = -1
+map = "Reduce"
+[State -2, Reduce]
+type = mapadd
+trigger1 = Map(ReduceLockout)>0
+value = -1
+map = "ReduceLockout"
+
+[State 0, DefenceMulSet]
+type = DefenceMulSet
+trigger1 = Map(Reduce)>0
+value = .8
+ignorehitpause = 1
+[State 0, DefenceMulSet]
+type = DefenceMulSet
+trigger1 = Map(Reduce)=0
+value = 1
+ignorehitpause = 1
+
+[State -2, Damage Scaling Reset]
+type = mapset
+trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
+value = 1
+map = "DamageScaling"
+ignorehitpause = 1
+[State -2, Hitstun Scaling Reset]
+type = mapset
+trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H || enemy,statetype = A
+value = 0
+map = "HitstunScaling"
+ignorehitpause = 1
+
+[State -2, Grounded Pushback]
+type = mapset
+trigger1 = 1
+value = Map(PushBack)
+map = "HitstunScaling"
+ignorehitpause = 1
+[State -2, Grounded Pushback]
+type = mapset
+trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
+value = 0
+map = "PushBack"
+ignorehitpause = 1
+
+;-------COUNTER HITS----------
+
+[State 0, Zoom]
+type = zoom
+triggerall = enemy,stateno != 666999 && enemy,prevstateno != 666999
+triggerall = movetype != H
+triggerall = stateno != 200 && stateno != 400
+trigger1= Movecountered 
+scale = 1.25
+lag = .25
+stagebound = 1
+camerabound = 1
+pos = pos x,-20
+ignorehitpause=1
+[State 0, EnvShake]
+type = EnvShake
+triggerall = stateno != 200 && stateno != 400
+trigger1= Movecountered && time = 0
+time = 10
+freq = 60
+ampl = -4
+phase = 90
+
+[State -2, Fatal Counter]
+type = mapset
+triggerall = HitPauseTime=0 && movecountered=1
+trigger1 = Map(FatalCounter)=1
+value = Map(DamageScaling)+.35
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+
+[State -2, Counter Hit]
+type = mapset
+triggerall = HitPauseTime=0 && movecountered=1
+trigger1 = Map(FatalCounter)=0
+value = Map(DamageScaling)+.1
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+
+
+[State Fatal Counter]
+type = mapset
+trigger1 = Map(FatalCounter)>0
+map = "FatalCounter"
+value = 0
+ignorehitpause = 1

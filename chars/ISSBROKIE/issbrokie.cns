@@ -36,7 +36,7 @@ jump.neu = 0,-8.5
 jump.back = -2.55    
 jump.fwd = 2.5       
 runjump.back = -2.55,-8.1 
-runjump.fwd = 4,-8.1      
+runjump.fwd = 4.8,-8.1      
 airjump.neu = 0,-5      
 airjump.back = -2.55      
 airjump.fwd = 2.5         
@@ -424,107 +424,6 @@ ctrl = 1
 ;---------------------------------------------------------------------------
 ; States that are always executed (use statedef -2)
 ;---------------------------------------------------------------------------
-[Statedef -2]
-
-[State 0, DisplayToClipboard]
-type = DisplayToClipboard
-trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f, Map(GroundBounce) = %.2f, Map(WallBounce) = %.2f, facing = %d, vel x = %f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(GroundBounce),Map(WallBounce),facing, vel x
-
-;---------REDUCE MECHANIC
-[State -2, Reduce]
-type = mapset
-trigger1 = enemy,movehit=1
-value = 0
-map = "Reduce"
-[State -2, Reduce]
-type = mapset
-trigger1 = enemy,movehit=1
-value = 0
-map = "ReduceLockout"
-
-[State -2, Reduce Set]
-type = mapset
-triggerall = Map(ReduceLockout)=0
-trigger1 = movetype = H && command = "c"
-value = 5
-map = "Reduce"
-
-[State -2, Reduce Set]
-type = mapset
-trigger1 = movetype = H && command = "c"
-value = 12
-map = "ReduceLockout"
-
-[State -2, Reduce]
-type = mapadd
-trigger1 = Map(Reduce)>0
-value = -1
-map = "Reduce"
-[State -2, Reduce]
-type = mapadd
-trigger1 = Map(ReduceLockout)>0
-value = -1
-map = "ReduceLockout"
-
-[State 0, DefenceMulSet]
-type = DefenceMulSet
-trigger1 = Map(Reduce)>0
-value = .8
-ignorehitpause = 1
-[State 0, DefenceMulSet]
-type = DefenceMulSet
-trigger1 = Map(Reduce)=0
-value = 1
-ignorehitpause = 1
-
-[State -2, Damage Scaling Reset]
-type = mapset
-trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
-value = 1
-map = "DamageScaling"
-ignorehitpause = 1
-[State -2, Hitstun Scaling Reset]
-type = mapset
-trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H || enemy,statetype = A
-value = 0
-map = "HitstunScaling"
-ignorehitpause = 1
-
-;-------COUNTER HITS----------
-
-[State 0, Zoom]
-type = zoom
-triggerall = enemy,stateno != 666999 && enemy,prevstateno != 666999
-triggerall = movetype != H
-triggerall = stateno != 200 && stateno != 400
-trigger1= Movecountered 
-scale = 1.25
-lag = .25
-stagebound = 1
-camerabound = 1
-pos = pos x,-20
-ignorehitpause=1
-[State 0, EnvShake]
-type = EnvShake
-triggerall = stateno != 200 && stateno != 400
-trigger1= Movecountered && time = 0
-time = 10
-freq = 60
-ampl = -4
-phase = 90
-
-[State -2, CounterHit Reset]
-type = mapset
-trigger1 = enemy,movetype != A
-value = 0
-map = "CounterHit"
-[State -2, CounterHit Reset]
-type = mapset
-trigger1 = enemy,movetype = A
-value = 1
-map = "CounterHit"
 
 ;---------------------------------------------------------------------------
 ; States that are executed when in self's state file (use statedef -3)
@@ -539,6 +438,17 @@ map = "CounterHit"
 type = AttackMulSet
 trigger1 = Map(RAWRXD)=1
 value = 1.2
+
+[State Fatal Counter]
+type = mapset
+trigger1 = roundstate = [0,1]
+map = "RAWRXD"
+value = 0
+
+[State 0, AttackMulSet]
+type = AttackMulSet
+trigger1 = Map(RAWRXD)=0
+value = 1
 
 ;---------------------------------------------------------------------------
 ; UNIVERSAL

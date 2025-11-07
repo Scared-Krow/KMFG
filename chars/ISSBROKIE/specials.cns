@@ -95,7 +95,7 @@ damage = ceil(cond(40*Map(DamageScaling) < 10, 10, 40*Map(DamageScaling))),10
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
-priority = 3, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+priority = 1, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 10,10                ;Time attacker pauses, time opponent shakes
 sparkno = 1                     ;Spark anim no (Def: set above)
 sparkxy = -10, -50               ;X-offset for the "hit spark" rel. to p2,
@@ -240,7 +240,7 @@ damage = ceil(cond(5*Map(DamageScaling) < 1, 1, 5*Map(DamageScaling))),1
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
-priority = 1, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+priority = 2, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 2,2
 guard.pausetime = 1,1
 sparkno = 1                     ;Spark anim no (Def: set above)
@@ -270,6 +270,7 @@ attr = S, SA
 animtype  = Medium
 damage = ceil(cond(40*Map(DamageScaling) < 5, 5, 40*Map(DamageScaling))),3
 guardflag = MA
+priority = 2
 pausetime = 10,10
 sparkno = 1
 sparkxy = -10,-65
@@ -383,7 +384,7 @@ damage = ceil(cond(60*Map(DamageScaling) < 15, 15, 60*Map(DamageScaling)))
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = HA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
-priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+priority = 3, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 14,14                ;Time attacker pauses, time opponent shakes
 sparkno = 2                      ;Spark anim no (Def: set above)
 sparkxy = -15, -54              ;X-offset for the "hit spark" rel. to p2,
@@ -480,7 +481,7 @@ damage = ceil(cond(55*Map(DamageScaling) < 5, 5, 55*Map(DamageScaling)))
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
-priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+priority = 2, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 14,14               ;Time attacker pauses, time opponent shakes
 sparkno = 2                   ;Spark anim no (Def: set above)
 sparkxy = -10, -50               ;X-offset for the "hit spark" rel. to p2,
@@ -612,6 +613,7 @@ damage = ceil(cond(30*Map(DamageScaling) < 3, 3, 30*Map(DamageScaling)))
 guardflag = LA
 hitflag = MAFD
 pausetime = 2,2
+priority = 1
 sparkno = 1
 sparkxy = -10,-65
 hitsound   = 5,2
@@ -653,7 +655,7 @@ movetype= A
 physics = S
 ctrl = 0
 anim = 1101
-poweradd = 20
+poweradd = 0
 velset = 0,0
 sprpriority = -1
 
@@ -675,7 +677,7 @@ damage = ceil(cond(25*Map(DamageScaling) < 5, 5, 25*Map(DamageScaling))),5
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
-priority = 3, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+priority = 2, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 7,7               ;Time attacker pauses, time opponent shakes
 sparkno = 1                     ;Spark anim no (Def: set above)
 sparkxy = -10, -50              ;X-offset for the "hit spark" rel. to p2,
@@ -1034,7 +1036,7 @@ movetype= A
 physics = S
 anim = 1201
 velset = 0,0
-poweradd = 20
+poweradd = 0
 ctrl = 0
 
 [State 0, PalFX]
@@ -1102,7 +1104,7 @@ damage = ceil(cond(80*Map(DamageScaling) < 25, 25, 80*Map(DamageScaling))),10
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
-priority = 3, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+priority = 4, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 15,15                ;Time attacker pauses, time opponent shakes
 sparkno = 1                     ;Spark anim no (Def: set above)
 sparkxy = -10, -50               ;X-offset for the "hit spark" rel. to p2,
@@ -1241,11 +1243,11 @@ guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
 ground.slidetime = 50            ;Time that the opponent slides back
 ground.hittime  = 60
-ground.velocity = -3,-7
+ground.velocity = -4,-7
 guard.velocity = -6
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
-air.velocity = -2,-5.5     ;X-velocity at which opponent is pushed,
+air.velocity = -4,-6    ;X-velocity at which opponent is pushed,
 air.hittime = ceil(cond(40-Map(HitstunScaling) < 15, 15, 40-Map(HitstunScaling)))
 fall = 1
 fall.yvelocity = 0
@@ -1254,8 +1256,7 @@ guard.hittime = 10
 
 [State 210, 5]
 type = ChangeState
-triggerall = movehit
-trigger1 = command = "y"
+trigger1 = movehit && animelem = 5
 value = 1301
 
 
@@ -1303,7 +1304,7 @@ y = .35
 [State 1000, 7]
 type = ChangeState
 trigger1 = Map(Charge)>=20
-trigger2 = command != "holdy" && Map(Charge)>=10
+trigger2 = command != "holdy" && Map(Charge)>=12
 value = 1302
 ctrl = 0
 
@@ -1332,7 +1333,7 @@ ignorehitpause = 0
 type = mapset
 triggerall = Map(Charge)=[14,16]
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.2
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1340,7 +1341,7 @@ persistent = 0
 type = mapset
 triggerall = Map(Charge)!=[14,16]
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.15
+value = Map(DamageScaling)-.25
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1358,11 +1359,11 @@ type = HitDef
 triggerall = Map(Charge)=[14,16]
 trigger1 = !MoveContact && !MoveReversed
 attr = S,SA                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(75*Map(DamageScaling) < 15, 15, 75*Map(DamageScaling)))
+damage = ceil(cond(60*Map(DamageScaling) < 15, 15, 60*Map(DamageScaling)))
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = HA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
-priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+priority = 4, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 14,14                ;Time attacker pauses, time opponent shakes
 sparkno = 1                     ;Spark anim no (Def: set above)
 sparkxy = -10, -40               ;X-offset for the "hit spark" rel. to p2,
@@ -1371,11 +1372,11 @@ guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
 ground.slidetime = 50            ;Time that the opponent slides back
 ground.hittime  = 60
-ground.velocity = -2,15
+ground.velocity = -3,15
 guard.velocity = -6
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
-air.velocity = -2,15      ;X-velocity at which opponent is pushed,
+air.velocity = -3,15      ;X-velocity at which opponent is pushed,
 air.hittime = 60
 fall = 1
 fall.yvelocity = cond(Map(GroundBounce)=0,-6.25,0)

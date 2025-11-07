@@ -281,7 +281,7 @@ type = ChangeState
 value = 705
 triggerall = command != "holdfwd" && command != "holddown" &&(command = "c" || (command = "y" && command = "b"))
 triggerall = statetype != A
-trigger1 = stateno = 706 || stateno = 711
+trigger1 = (stateno = 706 || stateno = 711) && (command = "cNB" || (command = "y" && command = "b"))
 trigger2 = ctrl
 ;---------------------------------------------------------------------------
 ;2K
@@ -290,7 +290,7 @@ type = ChangeState
 value = 710
 triggerall = command = "holddown" && (command = "c" || (command = "y" && command = "b"))
 triggerall = statetype != A
-trigger1 = stateno = 706 || stateno = 711
+trigger1 = (stateno = 706 || stateno = 711) && (command = "cNB" || (command = "y" && command = "b"))
 trigger2 = ctrl
 ;---------------------------------------------------------------------------
 ;Super Jump

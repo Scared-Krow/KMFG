@@ -78,7 +78,7 @@ type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 animtype  = Medium
-damage = ceil(cond(125*root,Map(DamageScaling) < 5, 5, 125*root,Map(DamageScaling)))
+damage = ceil(cond(90*root,Map(DamageScaling) < 5, 5, 90*root,Map(DamageScaling)))
 guardflag = MA
 pausetime = 12,12
 sparkno = 1
@@ -95,7 +95,7 @@ guard.ctrltime = 13
 guard.hittime = 13
 air.fall = 1
 fall.yvelocity = 0
-p2facing = -1
+p2facing = 1
 
 [State 1000, 7]
 type = DestroySelf
@@ -156,7 +156,7 @@ player = 10,10
 
 [State 0, VelSet]
 type = VelSet
-trigger1 = time = [16,43]
+trigger1 = time = [16,35]
 x = 3
 
 [State 0, PosAdd]
@@ -179,7 +179,7 @@ redirectID = root,ID
 
 [State 200, 1]
 type = HitDef
-triggerall = time <= 43
+triggerall = time <= 35
 trigger1 = time%2=0
 attr = S,SA                     ;Attribute: Standing, Normal Attack
 damage = ceil(cond(5*root,Map(DamageScaling) < 1, 1, 5*root,Map(DamageScaling))),1
@@ -187,7 +187,7 @@ animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 1, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
-pausetime = 2,2
+pausetime = 1,1
 guard.pausetime = 1,1
 sparkno = 1                     ;Spark anim no (Def: set above)
 sparkxy = -20-random%10, -20-random%30               ;X-offset for the "hit spark" rel. to p2,
@@ -211,7 +211,7 @@ id = 5420
 
 [State 210, 2]
 type = HitDef
-trigger1 = animelem = 16
+trigger1 = animelem = 12
 attr = S, SA
 animtype  = Medium
 damage = ceil(cond(40*root,Map(DamageScaling) < 5, 5, 40*root,Map(DamageScaling))),3

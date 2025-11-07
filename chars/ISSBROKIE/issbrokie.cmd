@@ -280,7 +280,7 @@ type = ChangeState
 value = 705
 triggerall = command != "holdfwd" && command != "holddown" &&(command = "c" || (command = "y" && command = "b"))
 triggerall = statetype != A
-trigger1 = stateno = 706 || stateno = 711
+trigger1 = (stateno = 706 || stateno = 711) && (command = "cNB" || (command = "y" && command = "b"))
 trigger2 = ctrl
 ;---------------------------------------------------------------------------
 ;2K
@@ -289,7 +289,7 @@ type = ChangeState
 value = 710
 triggerall = command = "holddown" && (command = "c" || (command = "y" && command = "b"))
 triggerall = statetype != A
-trigger1 = stateno = 706 || stateno = 711
+trigger1 = (stateno = 706 || stateno = 711) && (command = "cNB" || (command = "y" && command = "b"))
 trigger2 = ctrl
 ;---------------------------------------------------------------------------
 ;Super Jump
@@ -336,19 +336,16 @@ trigger2 = var(1)
 trigger3 = stateno=[640,2000] && movecontact
 
 ;---------------------------------------------------------------------------
-;214214A
-[State -1, 214214B]
+;236236D
+[State -1, 236236D]
 type = ChangeState
 value = 3100
-triggerall = Map(BUCKX2) <= 0
 triggerall = power>=500
-triggerall = command = "214214A"
+triggerall = command = "236236D"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
-trigger3 = ((stateno=1000 || stateno=1005)&& time >= 21)
-trigger4 = helper(1002),movecontact || helper(1006),movecontact
-trigger5 = stateno=[1000,2000] && movecontact
+trigger3 = stateno=[640,2000] && movecontact
 
 ;============================================================================
 ;============================SPECIALS========================================
@@ -386,7 +383,6 @@ trigger2 = var(1)
 type = ChangeState
 value = 1300
 triggerall = command = "623C"
-triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 ;===========================================================================

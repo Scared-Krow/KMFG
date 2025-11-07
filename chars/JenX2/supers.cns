@@ -28,7 +28,7 @@ pos = 30,-50
 postype = P1    ;P2, Front, Back, Left, Right
 facing = 1
 keyctrl = 0
-ownpal = 0
+ownpal = 1
 [State 0, Helper]
 type = Helper
 trigger1 = time = 49
@@ -40,7 +40,7 @@ pos = 30,-50
 postype = P1    ;P2, Front, Back, Left, Right
 facing = 1
 keyctrl = 0
-ownpal = 0
+ownpal = 1
 
 [State 200, 1]
 type = HitDef
@@ -149,10 +149,10 @@ poweradd = -500
 [State 0, SuperPause]
 type = SuperPause
 trigger1 = time = 0
-time = 39
+time = 41
 darken = 1
 p2defmul = 1
-movetime = 39
+movetime = 41
 
 [State -2, Install]
 type = mapset
@@ -179,6 +179,7 @@ ctrl = 0
 [State 0, DestroySelf]
 type = DestroySelf
 trigger1 = time = 110
+trigger2 = root,movetype = H
 ;---------------------------------------------------------------------------
 ;Trail2
 [Statedef 3002]
@@ -193,3 +194,4 @@ ctrl = 0
 [State 0, DestroySelf]
 type = DestroySelf
 trigger1 = time = 110
+trigger2 = root,movetype = H

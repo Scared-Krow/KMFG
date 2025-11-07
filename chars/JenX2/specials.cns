@@ -6,7 +6,7 @@ movetype= A
 physics = S
 anim = 1000
 velset = 0,0
-poweradd = 20
+poweradd = 0
 ctrl = 0
 
 [State 0, PosAdd]
@@ -127,8 +127,8 @@ air.velocity = cond(root,Map(WallBounce)=0,-20,-7),cond(root,Map(WallBounce)=0,-
 air.hittime = 60
 fall = 1
 fall.yvelocity = 0
-guard.ctrltime = 7
-guard.hittime = 7
+guard.ctrltime = 5
+guard.hittime = 5
 p2facing = 1
 id = 5400
 
@@ -172,7 +172,7 @@ movetype= A
 physics = S
 anim = 1005
 velset = 0,0
-poweradd = 20
+poweradd = 0
 ctrl = 0
 
 [State 0, PosAdd]
@@ -335,7 +335,7 @@ movetype= I
 physics = N
 anim = 1010
 velset = 0,0
-poweradd = 20
+poweradd = 0
 ctrl = 0
 
 [State 0, Helper]
@@ -457,8 +457,8 @@ air.velocity = -2,15      ;X-velocity at which opponent is pushed,
 air.hittime = 60
 fall = 1
 fall.yvelocity = cond(root,Map(GroundBounce)=0,-5.6,0)
-guard.ctrltime = 7
-guard.hittime = 7
+guard.ctrltime = 5
+guard.hittime = 5
 p2facing = 1
 id = 5420
 
@@ -509,7 +509,7 @@ movetype= A
 physics = S
 ctrl = 0
 anim = 1101
-poweradd = 20
+poweradd = 0
 velset = 20,0
 sprpriority = -1
 
@@ -612,7 +612,7 @@ movetype= A
 physics = S
 anim = 1203
 velset = 0,0
-poweradd = 20
+poweradd = 0
 ctrl = 0
 
 [State 0, PosAdd]
@@ -805,7 +805,7 @@ movetype= A
 physics = S
 anim = 1204
 velset = 0,0
-poweradd = 20
+poweradd = 0
 ctrl = 0
 
 [State 0, PosAdd]
@@ -945,6 +945,16 @@ id = 5420
 
 [State 0, TargetState]
 type = TargetState
+triggerall = movecountered
+triggerall = enemy,statetype = A && NumTarget(5420)
+trigger1 = movehit=1
+value = 5400
+ID = 5420
+ignorehitpause = 1
+
+
+[State 0, TargetState]
+type = TargetState
 triggerall = enemy,statetype = A && NumTarget(5420)
 trigger1 = movehit=1
 value = 5420
@@ -965,7 +975,7 @@ movetype= A
 physics = S
 ctrl = 0
 anim = 1205
-poweradd = 20
+poweradd = 0
 velset = vel x * 1.25
 sprpriority = -1
 
