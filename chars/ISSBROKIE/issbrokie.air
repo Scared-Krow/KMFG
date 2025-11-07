@@ -111,7 +111,7 @@ Clsn2Default: 1
 ; fdash walk stop
 [Begin Action 101]
 Clsn2Default: 1
-  Clsn2[0] = -2, -51, 28, -1
+  Clsn2[0] = -7, -43, 23, -1
 100,1, 0,0, 5
 
 ; Hop backwards
@@ -125,15 +125,17 @@ Clsn2Default: 1
 ; fwd airdash
 [Begin Action 160]
 LoopStart
-Clsn2Default: 1
-  Clsn2[0] = -20, -45, 30, -5
+Clsn2Default: 2
+  Clsn2[0] = 3, -46, 29, -23
+  Clsn2[1] = -16, -35, 16, -5
 100,2, 0,0, 7
 
 ; backwards airdash
 [Begin Action 161]
 LoopStart
-Clsn2Default: 1
-  Clsn2[0] = -18, -49, 32, -9
+Clsn2Default: 2
+  Clsn2[0] = 3, -46, 29, -23
+  Clsn2[1] = -16, -35, 16, -5
 100,2, 0,0, 7
 
 ;---------------------------
@@ -361,14 +363,13 @@ Clsn2: 2
 [Begin Action 430]
 Clsn2Default: 1
   Clsn2[0] = -11, -44, 22, -1
-430,0, 0,0, 7
-430,1, 0,0, 3
+430,0, 0,0, 3
+430,1, 0,0, 8
 Clsn1: 1
-  Clsn1[0] = 1, -69, 22, -29
+  Clsn1[0] = 14, -54, 35, -10
 430,2, 0,0, 3
 430,3, 0,0, 8
 430,4, 0,0, 5
-430,5, 0,0, 4
 
 ; 2D
 [Begin Action 440]

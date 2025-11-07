@@ -49,12 +49,12 @@ cutlow = 0
 [PlayerInfo]
 ;--- Player 1 ---
  ;Player 1 starting coordinates.
-p1startx = -280         ;Starting x coordinates
+p1startx = -320         ;Starting x coordinates
 p1starty = 0            ;Starting y coordinates
 p1facing = 1            ;Direction player faces: 1=right, -1=left
 
 ;--- Player 2 ---
-p2startx = 280
+p2startx = 320
 p2starty = 0
 p2facing = -1
 
@@ -156,7 +156,7 @@ bgmusic = HIT LICKS.mp3
 ;bgmloopend = <sample number>
 
  ;Adjust the volume. 100 is for 100%.
-bgmvolume = 30
+bgmvolume = 10
 
 ;========================================================
 ;--------------------------------------------------------

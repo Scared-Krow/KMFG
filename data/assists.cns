@@ -249,6 +249,7 @@ trigger3 = movetype = H
 
 [State 0, Helper]
 type = Helper
+triggerall = HitDefAttr != SCA,HA,HP,HT
 triggerall = numhelper(4000)<=0 && movetype != H
 triggerall = power >= 250 && Map(Assist) = 1 && roundstate = 2
 trigger1 = command = "z"
@@ -266,6 +267,7 @@ size.yscale = 1.3
 
 [State 0, Helper]
 type = Helper
+triggerall = HitDefAttr != SCA,HA,HP,HT
 triggerall = numhelper(4010)<=0 && movetype != H
 triggerall = power >= 250 && Map(Assist) = 2 && roundstate = 2
 trigger1 = command = "z"

@@ -73,6 +73,7 @@ ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
 getpower = 0,0
 p2facing = 1
+kill = 0
 
 [State 200, 1]
 type = HitDef

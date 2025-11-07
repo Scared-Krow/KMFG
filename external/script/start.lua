@@ -3123,9 +3123,13 @@ function start.f_selectMenu(side, cmd, player, member, selectState)
 		--selection menu
 		elseif selectState == 1 then
 			-- EXTRA SPECIAL SELECTION MENU
+			if p1Assist == nil then
 				p1Assist = 1
+			end
+			
+			if p2Assist == nil then
 				p2Assist = 1
-		
+			end
 
 			if main.coop or (gamemode() == 'trials') or (side == 1 and (start.p[1].teamMode ~= 0 or main.coop) and P1SelChars > 0) then
 				TypeSelectFlag1 = false
@@ -3156,7 +3160,7 @@ function start.f_selectMenu(side, cmd, player, member, selectState)
 					p2Assist = 1
 				end	
 			
-				-- Confirm Assist --BOOKMARK
+				-- Confirm Super --BOOKMARK
 			elseif (not main.coop) and (main.f_input({cmd}, {'x'}) or main.f_input({cmd}, {'y'}) or main.f_input({cmd}, {'z'}) or main.f_input({cmd}, {'a'}) or main.f_input({cmd}, {'b'}) or main.f_input({cmd}, {'c'})) or (ArcadeEdition == 1 and timerSelect == -1) then
 				sndPlay(motif.files.snd_data, start.f_getCursorData(player, '_cursor_done_snd')[1], start.f_getCursorData(player, '_cursor_done_snd')[2])
 				selectState = 2
