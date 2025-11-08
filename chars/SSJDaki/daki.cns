@@ -37,9 +37,9 @@ jump.back = -2.55
 jump.fwd = 2.5       
 runjump.back = -2.55,-8.1 
 runjump.fwd = 4,-8.1      
-airjump.neu = 0,-5      
-airjump.back = -2.55      
-airjump.fwd = 2.5         
+airjump.neu = 0,-6   
+airjump.back = -3     
+airjump.fwd = 3         
 air.gethit.groundrecover = -.15,-3.5  
 air.gethit.airrecover.mul = .5,.2     
 air.gethit.airrecover.add = 0,-4.5    
@@ -419,7 +419,10 @@ trigger1 = 1
 text = "Map(Flight) = %.0f"
 params = Map(Flight)
 
-
+[State Test]
+type = Height
+trigger1 = Map(Flight)>0
+value = 0, 100
 ;---------------------------------------------------------------------------
 ; States that are executed when in self's state file (use statedef -3)
 ;---------------------------------------------------------------------------
@@ -430,8 +433,25 @@ params = Map(Flight)
 ;---------------------------------------------------------------------------
 
 [State -2, Flight]
-type = mapadd
-trigger1 = roundstate = [0,1]
+type = mapset
+trigger1 = Map(Flight)>0
+value = 0
+map = "FlightAvailable"
+ignorehitpause = 1
+persistent = 0
+
+[State -2, Flight]
+type = mapset
+trigger1 = statetype != A
+value = 1
+map = "FlightAvailable"
+ignorehitpause = 1
+persistent = 0
+
+[State -2, Flight]
+type = mapset
+triggerall = Map(Flight)>0
+trigger1 = (statetype = S || statetype = C) || movetype = H
 value = 0
 map = "Flight"
 ignorehitpause = 1

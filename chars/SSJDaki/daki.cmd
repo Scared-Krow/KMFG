@@ -236,6 +236,7 @@ trigger1 = ctrl
 [State -1, Run Fwd]
 type = ChangeState
 value = 160
+triggerall = Map(Flight)<=0
 triggerall = Map(DJ)>0
 triggerall = vel y > 0 || pos y < -40
 triggerall = command = "FADash"
@@ -247,6 +248,7 @@ trigger2 = var(1)
 [State -1, Run Back]
 type = ChangeState
 value = 161
+triggerall = Map(Flight)<=0
 triggerall = Map(DJ)>0
 triggerall = vel y > 0 || pos y < -40
 triggerall = command = "BADash"
@@ -292,15 +294,7 @@ triggerall = command = "holddown" && (command = "c" || (command = "y" && command
 triggerall = statetype != A
 trigger1 = (stateno = 706 || stateno = 711) && (command = "cNB" || (command = "y" && command = "b"))
 trigger2 = ctrl
-;---------------------------------------------------------------------------
-;Jump
-[State -1, Jump]
-type = ChangeState
-value = 40
-triggerall = Map(Flight)<=0
-triggerall = statetype != A
-triggerall = command = "up"
-trigger1 = ctrl
+
 ;---------------------------------------------------------------------------
 ;Super Jump
 [State -1, SJ]
@@ -314,11 +308,12 @@ trigger1 = ctrl
 [State -1, DJ]
 type = ChangeState
 value = 45
+triggerall = Map(Flight)<=0
 triggerall = Map(DJ)>0 && Map(DJAccess)=1
 triggerall = vel y > 0 || pos y < -50
 triggerall = statetype = A
 triggerall = command = "up"
-trigger1 = ctrl && Map(Flight)<=0
+trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------
 ;Taunt
@@ -409,7 +404,17 @@ trigger2 = var(1)
 [State -1, 214]
 type = ChangeState
 value = 1300
+triggerall = Map(FlightAvailable)=1
 triggerall = command = "214A"
+trigger1 = ctrl
+trigger2 = var(1)
+;---------------------------------------------------------------------------
+;8 WAY DASH
+[State -1, 214]
+type = ChangeState
+value = 1302
+triggerall = Map(Flight)>0
+triggerall = command = "a" && command = "b"
 trigger1 = ctrl
 trigger2 = var(1)
 ;===========================================================================
@@ -534,7 +539,6 @@ trigger1 = statetype = A
 trigger1 = ctrl
 trigger2 = stateno = 600
 trigger2 = movecontact
-
 ;---------------------------------------------------------------------------
 ;j.C
 [State -1, jC]
