@@ -125,7 +125,7 @@ if animTime = 0 {
 changeAnim{value: ifElse(selfAnimExist(44), 44, 41)}
 if time = 0 {
 	sysVar(1) := 0;
-	Map(DJ) := -1;
+	Map(DJ) := Map(DJ)-1;
 }
 if command = "holdback" {
 	sysVar(1) := -1;

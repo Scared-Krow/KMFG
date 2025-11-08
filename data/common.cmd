@@ -423,18 +423,22 @@ command = ~F, D, B,  b
 [Command]
 name = "22A"    
 command = ~D, D, x
+time = 10
 
 [Command]
 name = "22B"    
 command = ~D, D, a
+time = 10
 
 [Command]
 name = "22C"    
 command = ~D, D, y
+time = 10
 
 [Command]
 name = "22D"    
 command = ~D, D, b
+time = 10
 
 [Command]
 name = "46A"    

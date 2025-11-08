@@ -49,7 +49,7 @@ air.gethit.airrecover.up = -2
 air.gethit.airrecover.down = 1.5      
 
 [Movement]
-airjump.num = 1     
+airjump.num = 0     
 airjump.height = 100  
 yaccel = .45        
 stand.friction = .875

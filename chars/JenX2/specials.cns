@@ -130,6 +130,7 @@ fall.yvelocity = 0
 guard.ctrltime = 5
 guard.hittime = 5
 p2facing = 1
+guard.dist = 0
 id = 5400
 
 [State 0, TargetState]
@@ -303,6 +304,7 @@ fall.yvelocity = 0
 guard.ctrltime = 7
 guard.hittime = 7
 p2facing = 1
+guard.dist = 0
 id = 5400
 
 [State 0, TargetState]
@@ -460,6 +462,7 @@ fall.yvelocity = cond(root,Map(GroundBounce)=0,-5.6,0)
 guard.ctrltime = 5
 guard.hittime = 5
 p2facing = 1
+guard.dist = 0
 id = 5420
 
 
@@ -670,6 +673,7 @@ air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 7
 guard.hittime = 7
+guard.dist = 0
 id = 5400
 
 [State -2, Counterhit]
@@ -708,6 +712,8 @@ fall.yvelocity = 0
 down.velocity = -1,-5
 guard.ctrltime = 7
 guard.hittime = 7
+guard.dist = 0
+
 
 [State 200, 1]
 type = HitDef
@@ -739,6 +745,8 @@ fall.yvelocity = 0
 down.velocity = -1,-5
 guard.ctrltime = 5
 guard.hittime = 5
+guard.dist = 0
+
 
 [State -2, Repeated Use]
 type = mapset
@@ -840,7 +848,7 @@ helpertype = Normal ;Player
 name = "Bullet"
 ID = 1209
 stateno = 1209
-pos = 10,-70
+pos = 10,-50
 postype = P1    ;P2, Front, Back, Left, Right
 facing = 1
 keyctrl = 0
@@ -941,6 +949,7 @@ fall.yvelocity = 0
 guard.ctrltime = 7
 guard.hittime = 7
 p2facing = 1
+guard.dist = 0
 id = 5420
 
 [State 0, TargetState]

@@ -773,8 +773,8 @@ value = fvar(9)
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f, Map(GroundBounce) = %.2f, Map(WallBounce) = %.2f, Map(FatalCounter) = %.0f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(GroundBounce),Map(WallBounce),Map(FatalCounter)
+text = "DamageScaling = %.3f, HitstunScaling = %.3f, Map(GroundBounce) = %.2f, Map(WallBounce) = %.2f, Map(Flight) %.0f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(GroundBounce),Map(WallBounce),Map(Flight)
 
 ;---------REDUCE MECHANIC
 [State -2, Reduce]
@@ -794,7 +794,6 @@ triggerall = Map(ReduceLockout)=0
 trigger1 = movetype = H && command = "c"
 value = 5
 map = "Reduce"
-
 [State -2, Reduce Set]
 type = mapset
 trigger1 = movetype = H && command = "c"
@@ -811,6 +810,15 @@ type = mapadd
 trigger1 = Map(ReduceLockout)>0
 value = -1
 map = "ReduceLockout"
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = Map(Reduce)>0
+time = 1
+add = 60,20,200
+mul = 200,200,200
+invertall = 0
+color = 256
 
 [State 0, DefenceMulSet]
 type = DefenceMulSet
@@ -849,6 +857,12 @@ value = 0
 map = "PushBack"
 ignorehitpause = 1
 
+[State 0, AttackDist]
+type = AttackDist
+trigger1 = 1
+value = 0
+ignorehitpause = 1
+persistent = 1
 ;-------COUNTER HITS----------
 
 [State 0, Zoom]
