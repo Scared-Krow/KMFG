@@ -946,26 +946,17 @@ if time = 0 {
 			x: const(velocity.air.gethit.airrecover.add.x);
 			y: const(velocity.air.gethit.airrecover.add.y);
 		}
-			if vel y > 0 {
+			if time = 0 {
 				velMul{y: .5}
 			}
-			if vel y > -3 {
-				velAdd{y: -2}
-			}
-			if vel y > -2 {
-				velAdd{y: -1}
-			}
 		if command = "holdup" {
-			velAdd{y: const(velocity.air.gethit.airrecover.up)}
-		}
-		if command = "holddown" {
-			velAdd{y: const(velocity.air.gethit.airrecover.down)}
+			velAdd{y: -2}
 		}
 		if command = "holdfwd" {
-			velAdd{x: const(velocity.air.gethit.airrecover.fwd)}
+			velAdd{x: 4}
 		}
 		if command = "holdback" {
-			velAdd{x: const(velocity.air.gethit.airrecover.back)}
+			velAdd{x: -2}
 		}
 	} else if time = 15 {
 		ctrlSet{value: 1}
