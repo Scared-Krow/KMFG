@@ -925,6 +925,10 @@ notHitBy{value: SCA; time: 1}
 
 map(Punish) := 0;
 
+if time < 10 {
+	playerPush{value: 0}
+}
+
 if time = 0 {
 	palFx{time: 3; add: 128, 128, 128}
 	posFreeze{}
@@ -952,10 +956,10 @@ if time = 0 {
 		if command = "holdup" {
 			velAdd{y: -2}
 		}
-		if command = "holdfwd" {
-			velAdd{x: 4}
+		else if command = "holdfwd" {
+			velAdd{x: 2}
 		}
-		if command = "holdback" {
+		else if command = "holdback" {
 			velAdd{x: -2}
 		}
 	} else if time = 15 {
@@ -963,7 +967,7 @@ if time = 0 {
 	}
 	velAdd{y: const(movement.air.gethit.airrecover.yAccel)}
 }
-if vel y > 0 && pos y >= 0 && time > 16 {
+if vel y > 0 && pos y >= 0 && time > 15 {
 	changeState{value: 52; ctrl: 1}
 }
 
