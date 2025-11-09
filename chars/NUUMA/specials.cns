@@ -633,7 +633,7 @@ value = 0, 2
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
-damage = ceil(cond(20*Map(DamageScaling) < 5, 5, 20*Map(DamageScaling)))
+damage = ceil(cond(40*Map(DamageScaling) < 10, 10, 40*Map(DamageScaling)))
 hitflag = MAF
 guardflag = MA
 pausetime = 10,10
@@ -662,7 +662,7 @@ guard.dist = 0
 type = HitDef
 trigger1 = animelem = 7
 attr = S, NA
-damage = ceil(cond(30*Map(DamageScaling) < 5, 5, 30*Map(DamageScaling)))
+damage = ceil(cond(40*Map(DamageScaling) < 10, 10, 40*Map(DamageScaling)))
 hitflag = MAF
 guardflag = MA
 pausetime = 10,10
@@ -793,6 +793,7 @@ p2facing = 1
 guard.dist = 0
 p2stateno = 5440
 p2getp1state = 0
+id = 1
 [State 210, 2]
 type = HitDef
 trigger1 = anim = 1016

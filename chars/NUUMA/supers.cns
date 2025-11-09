@@ -6,7 +6,7 @@ movetype= A
 physics = S
 anim = 2000
 velset = vel x,0
-poweradd = 0
+poweradd = -500
 ctrl = 0
 
 [State 0, SuperPause]
@@ -144,7 +144,7 @@ type    = A
 movetype= A
 physics = A
 anim = 2001
-poweradd = 0
+poweradd = -500
 ctrl = 0
 
 [State 0, VelSet]

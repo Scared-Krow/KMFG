@@ -178,7 +178,7 @@ ground.type = Low
 ground.slidetime = 10
 ground.hittime  = 18
 ground.velocity = -2-(Map(PushBack))
-air.velocity = -1.5,-1.5
+air.velocity = -2.5,-1.5
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 15, 15, 25-Map(HitstunScaling)))
 air.fall = 1
 ground.cornerpush.veloff = -4-(Map(PushBack))
@@ -1364,8 +1364,8 @@ value = 0, 1
 [State -2, PushBack]
 type = mapset
 trigger1 = movehit && combocount>3
-value = Map(PushBack)+1
-map = "PushBack"
+value = Map(JDPushBack)+1
+map = "JDPushBack"
 ignorehitpause = 1
 persistent = 0
 [State -2, Starter Damage Scaling]
@@ -1409,7 +1409,7 @@ ground.slidetime = 12
 ground.hittime  = 18
 ground.velocity = -5, -4
 guard.velocity = -5
-air.velocity = -5, -2
+air.velocity = -6, -2
 air.hittime = ceil(cond(40-Map(HitstunScaling) < 15, 15, 40-Map(HitstunScaling)))
 fall = 1
 air.fall = 1
@@ -1417,7 +1417,7 @@ guard.ctrltime = 14
 guard.hittime = 14
 fall.yvelocity = 0
 p2facing = 1
-air.cornerpush.veloff = -18-(Map(PushBack))
+air.cornerpush.veloff = -18-(Map(PushBack) -Map(JDPushback))
 guard.dist = 0
 
 [State 0, StateTypeSet]

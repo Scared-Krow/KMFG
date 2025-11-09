@@ -525,7 +525,13 @@ type = mapset
 trigger1 = command != "holdup"
 value = 0
 map = "DJCount"
-
+[State -2, PushBack]
+type = mapset
+trigger1 = !combocount
+value = 0
+map = "JDPushBack"
+ignorehitpause = 1
+persistent = 0
 
 [State -2, AirDash Physics]
 type = mapadd

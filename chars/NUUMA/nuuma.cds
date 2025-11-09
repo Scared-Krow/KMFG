@@ -27,6 +27,15 @@ command = ~D, F,  y
 time = 10
 
 [Command]
+name = "236D"
+command = ~$D, F,  b
+time = 10
+[Command]
+name = "236C"
+command = ~D, F,  y
+time = 10
+
+[Command]
 name = "sh_buffer"
 command = /U
 time = 1
@@ -117,6 +126,7 @@ triggerall = HitDefAttr != SCA,HA,HP,HT
 triggerall = command = "holdfwd" && command != "holddown" &&(command = "c" || (command = "y" && command = "b"))
 triggerall = statetype != A
 triggerall = stateno != 700
+triggerall = !(stateno = 1025 && numtarget(1))
 trigger1 = movecontact && power >= 250
 trigger2 = (stateno= [1000, 1005] && animelemno(0) >= 5) && power >= 250
 ;---------------------------------------------------------------------------
@@ -156,13 +166,6 @@ triggerall = statetype = A
 triggerall = command = "up"
 trigger1 = ctrl
 trigger2 = var(1)
-;---------------------------------------------------------------------------
-;Taunt
-[State -1, Taunt]
-type = ChangeState
-value = 195
-triggerall = stateno != 195
-trigger1 = command = "start"
 
 ;============================================================================
 ;=============================SUPERS=========================================
