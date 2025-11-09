@@ -814,8 +814,8 @@ value = fvar(9)
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f, Map(GroundBounce) = %.2f, Map(WallBounce) = %.2f, Map(Flight) %.0f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(GroundBounce),Map(WallBounce),Map(Flight)
+text = "DamageScaling = %.3f, HitstunScaling = %.3f, Map(GroundBounce) = %.2f, Map(WallBounce) = %.2f, Map(PushBack) %.0f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(GroundBounce),Map(WallBounce),Map(PushBack)
 
 ;---------REDUCE MECHANIC
 [State -2, Reduce]
@@ -880,14 +880,14 @@ map = "DamageScaling"
 ignorehitpause = 1
 [State -2, Hitstun Scaling Reset]
 type = mapset
-trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H || enemy,statetype = A
+trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
 value = 0
 map = "HitstunScaling"
 ignorehitpause = 1
 
 [State -2, Grounded Pushback]
-type = mapset
-trigger1 = 1
+type = mapadd
+trigger1 = enemy,statetype != A && movehit=1 && Hitpausetime = 0
 value = Map(PushBack)
 map = "HitstunScaling"
 ignorehitpause = 1

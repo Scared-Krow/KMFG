@@ -11,6 +11,7 @@ facep2 = 1
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -61,7 +62,7 @@ guard.velocity = -3
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
 air.velocity = -1,-1.5        ;X-velocity at which opponent is pushed,
-air.hittime = ceil(cond(20-Map(HitstunScaling) < 5, 5, 20-Map(HitstunScaling)))
+air.hittime = ceil(cond(20-Map(HitstunScaling) < 8, 8, 20-Map(HitstunScaling)))
 air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 13
@@ -104,6 +105,7 @@ facep2 = 1
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -217,6 +219,7 @@ x = 15
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -350,6 +353,7 @@ x = 2
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -464,6 +468,7 @@ x = 5
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -565,6 +570,7 @@ facep2 = 1
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -660,6 +666,7 @@ value = 0, 0
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -729,13 +736,13 @@ physics = C
 [State 210, 5]
 type = ChangeState
 triggerall = command = "28"
-trigger1 = movehit
+trigger1 = MoveContact
 value = 60
 ctrl = 0
 [State 210, 5]
 type = ChangeState
 triggerall = command = "holdup"
-trigger1 = movehit
+trigger1 = MoveContact
 value = 40
 ctrl = 0
 
@@ -761,13 +768,7 @@ type = PosAdd
 trigger1 = animelem = 3
 x = 3
 
-[State -2, PushBack]
-type = mapset
-trigger1 = movehit && combocount>3
-value = Map(PushBack)+1
-map = "PushBack"
-ignorehitpause = 1
-persistent = 0
+
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
@@ -908,6 +909,7 @@ x = 18
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -1135,6 +1137,7 @@ x = .975
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -1251,6 +1254,7 @@ value = 0, 1
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -1296,7 +1300,7 @@ ground.slidetime = 12
 ground.hittime  = 16
 ground.velocity = -4-(Map(PushBack))
 air.velocity = -2,-2
-air.hittime = ceil(cond(22-Map(HitstunScaling) < 10, 10, 22-Map(HitstunScaling)))
+air.hittime = ceil(cond(22-Map(HitstunScaling) < 14, 14, 22-Map(HitstunScaling)))
 air.fall = 1
 fall.yvelocity = 0
 p2facing = 1
@@ -1345,6 +1349,7 @@ value = 0, 0
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -1440,6 +1445,7 @@ value = 0, 1
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"

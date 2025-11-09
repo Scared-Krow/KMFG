@@ -12,6 +12,7 @@ facep2 = 1
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -103,6 +104,7 @@ facep2 = 1
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -224,6 +226,7 @@ x = 15
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -333,13 +336,6 @@ value = 1
 map = "FatalCounter"
 ignorehitpause = 1
 
-[State -2, PushBack]
-type = mapset
-trigger1 = movehit && combocount>3
-value = Map(PushBack)+1
-map = "PushBack"
-ignorehitpause = 1
-persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
@@ -459,6 +455,7 @@ facep2 = 1
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -551,6 +548,7 @@ value = 0, 0
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -660,6 +658,7 @@ x = 20
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -784,13 +783,7 @@ type = PosAdd
 trigger1 = animelem = 4
 x = 12
 
-[State -2, PushBack]
-type = mapset
-trigger1 = movehit && combocount>3
-value = Map(PushBack)+1
-map = "PushBack"
-ignorehitpause = 1
-persistent = 0
+
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
@@ -941,6 +934,7 @@ x = .975
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -1056,6 +1050,7 @@ value = 0, 1
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -1148,6 +1143,7 @@ value = 0, 0
 
 [State -2, PushBack]
 type = mapset
+triggerall = enemy,statetype != A
 trigger1 = movehit && combocount>3
 value = Map(PushBack)+1
 map = "PushBack"
@@ -1244,13 +1240,6 @@ type = PlaySnd
 trigger1 = Time = 2
 value = 0, 1
 
-[State -2, PushBack]
-type = mapset
-trigger1 = movehit && combocount>3
-value = Map(PushBack)+1
-map = "PushBack"
-ignorehitpause = 1
-persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
