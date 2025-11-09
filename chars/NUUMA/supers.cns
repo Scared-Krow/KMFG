@@ -1,0 +1,287 @@
+;---------------------------------------------------------------------------
+;Placeholder Super
+[Statedef 2000]
+type    = S
+movetype= A
+physics = S
+anim = 2000
+velset = vel x,0
+poweradd = 0
+ctrl = 0
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0
+time = 28
+darken = 1
+p2defmul = 1
+movetime = 38
+
+[State 0, Helper]
+type = Helper
+triggerall = time % 3 = 0
+trigger1 = animelemno(0) = [4, 15]
+helpertype = Normal ;Player
+name = "Arc Cleaver"
+ID = 2000
+stateno = 2001
+pos = 10,-30
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 0
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;Straight Cleaver
+[Statedef 2001]
+type    = U
+movetype= A
+physics = N
+anim = 1001
+velset = 15,-2 + (root, time % 5)
+ctrl = 0
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = -time * 35
+[State 0, AngleAdd]
+type = AngleAdd
+trigger1 = 1
+value = 30
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = time = 1
+time = 6
+freq = 60
+ampl = -3
+phase = 120
+ignorehitpause = 1
+
+[State -2, Repeated Damage Scaling]
+type = mapset
+trigger1 = movehit=1 && combocount>1 && root,Map(qcfD)>9
+value = root,Map(DamageScaling)-.35
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+redirectID = root,ID
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movehit=1 && combocount=1
+value = root,Map(DamageScaling)*.9
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+redirectID = root,ID
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = movehit=1 && combocount>1
+value = root,Map(DamageScaling)-.05
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+redirectID = root,ID
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,statetype = A && enemy,movetype = H
+trigger1 = movehit=1
+value = root,Map(HitstunScaling)+.5
+map = "HitstunScaling"
+ignorehitpause = 1
+persistent = 0
+redirectID = root,ID
+
+[State 200, 1]
+type = HitDef
+trigger1 = !MoveContact && !MoveReversed
+attr = S,NP                     ;Attribute: Standing, Normal Attack
+damage = ceil(cond(40*root,Map(DamageScaling) < 5, 5, 40*root,Map(DamageScaling))),5
+animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
+guardflag = MA                   ;Flags on how move is to be guarded against
+hitflag = MAFD                    ;Flags of conditions that move can hit
+priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+pausetime = 2,1
+guard.pausetime = 2, 1
+sparkno = 2                     ;Spark anim no (Def: set above)
+sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
+hitsound = 5, 4
+guardsound = 6, 0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 15
+ground.velocity = -5
+guard.velocity = -10
+airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
+air.velocity = -7, -1.5       ;X-velocity at which opponent is pushed,
+air.hittime = ceil(cond(35-Map(HitstunScaling) < 10, 10, 35-Map(HitstunScaling)))
+fall.yvelocity = 0
+guard.ctrltime = 5
+guard.hittime = 5
+p2facing = 1
+guard.dist = 0
+
+[State 0, Changestate]
+type = Changestate
+trigger1 = MoveContact || Movereversed
+value = 999
+[State 0, Changestate]
+type = DestroySelf
+trigger1 = BackEdgeBodyDist < 0 || FrontEdgeBodyDist < 0	
+
+;---------------------------------------------------------------------------
+;Placeholder Super Air
+[Statedef 2002]
+type    = A
+movetype= A
+physics = A
+anim = 2001
+poweradd = 0
+ctrl = 0
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelemno(0) < 12
+x = -1
+y = -1
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelemno(0) = 12
+x = -3
+y = -3
+
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0
+time = 28
+darken = 1
+p2defmul = 1
+movetime = 38
+
+[State 0, Helper]
+type = Helper
+triggerall = time % 3 = 0
+trigger1 = animelemno(0) = [4, 15]
+helpertype = Normal ;Player
+name = "Down Cleaver"
+ID = 2000
+stateno = 2003
+pos = 10,-61
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 0
+
+[State 400, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 1
+
+;Down Cleaver (AIR)
+[Statedef 2003]
+type    = U
+movetype= A
+physics = N
+anim = 1001
+velset = 12 + (root, time % 5), 10
+ctrl = 0
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = -time * 35
+[State 0, AngleAdd]
+type = AngleAdd
+trigger1 = 1
+value = 30
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = time = 1
+time = 6
+freq = 60
+ampl = -3
+phase = 120
+ignorehitpause = 1
+
+[State -2, Repeated Damage Scaling]
+type = mapset
+trigger1 = movehit=1 && combocount>1 && root,Map(qcfD)>9
+value = root,Map(DamageScaling)-.35
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+redirectID = root,ID
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movehit=1 && combocount=1
+value = root,Map(DamageScaling)*.9
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+redirectID = root,ID
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = movehit=1 && combocount>1
+value = root,Map(DamageScaling)-.05
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+redirectID = root,ID
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,statetype = A && enemy,movetype = H
+trigger1 = movehit=1
+value = root,Map(HitstunScaling)+.5
+map = "HitstunScaling"
+ignorehitpause = 1
+persistent = 0
+redirectID = root,ID
+
+[State 200, 1]
+type = HitDef
+trigger1 = !MoveContact && !MoveReversed
+attr = S,NP                     ;Attribute: Standing, Normal Attack
+damage = ceil(cond(40*root,Map(DamageScaling) < 7, 7, 40*root,Map(DamageScaling))),10
+animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
+guardflag = MA                   ;Flags on how move is to be guarded against
+hitflag = MAFD                    ;Flags of conditions that move can hit
+priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+pausetime = 8,8                ;Time attacker pauses, time opponent shakes
+sparkno = 2                     ;Spark anim no (Def: set above)
+sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
+hitsound = 5, 4
+guardsound = 6, 0
+ground.type = High
+ground.slidetime = 5
+ground.hittime  = 15
+ground.velocity = -1, -4
+guard.velocity = -10
+fall = 1
+airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
+air.velocity = -5, -2.5       ;X-velocity at which opponent is pushed,
+air.hittime = ceil(cond(25-Map(HitstunScaling) < 5, 5, 25-Map(HitstunScaling)))
+fall.yvelocity = 0
+guard.ctrltime = 5
+guard.hittime = 5
+p2facing = 1
+guard.dist = 0
+
+[State 0, Changestate]
+type = Changestate
+trigger1 = MoveContact || Movereversed
+value = 999
+[State 0, Changestate]
+type = DestroySelf
+trigger1 = BackEdgeBodyDist < 0 || FrontEdgeBodyDist < 0	

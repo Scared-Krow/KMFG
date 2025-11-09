@@ -262,7 +262,7 @@ mask  = 0
  ;The format for tiling is x,y. For each of them, the value is:
  ;0 to use no tiling, 1 to tile, n where (n>1) to tile n times.
  ;If this line is omitted, it's assumed that there will be no tiling.
-;tile  = 0, 0
+tile  = 1, 0
 
  ;This is the x and y space between each tile, for tiled backgrounds
  ;If omitted, default value is 0,0
@@ -295,3 +295,4 @@ xscale = 1, 3
 yscalestart = 100
 yscaledelta = .3
 mask = 0
+tile = 1, 1

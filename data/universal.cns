@@ -676,6 +676,47 @@ trigger1 = Pos Y >= Const(movement.down.bounce.groundlevel)
 type = selfState
 value = 5100
 
+;---------------------------------------------------------------------------
+; Air to Ground Restand State
+[Statedef 5440]
+type    = S
+movetype= H
+physics = S
+
+[State 5002, ChangeAnim2]
+type = ChangeAnim2
+trigger1 = 1
+value = 5000
+elem = 2
+[State , Sound - Grond Impact - Land]
+type = PlaySnd
+freqmul = 1 + fvar(28)
+trigger1 = time = 0
+value = 40,0
+volumescale = 100
+channel = 10
+
+[State , PosSet]
+type = PosSet
+trigger1 = 1
+y = 0
+[State , 4]
+type = VelSet
+trigger1 = pos y = 0
+y = 0
+[State 5002, 1]
+type = HitVelSet
+trigger1 = Time = 0
+x = 1
+[State 5002, 4]
+type = VelSet
+trigger1 = HitOver
+x = 0
+[State 5002, 6]
+type = SelfState
+trigger1 = pos y = 0 && hitover
+value = 5001
+
 ;----------------------------------------------------------------------
 ;Armor State
 [Statedef 666999]
