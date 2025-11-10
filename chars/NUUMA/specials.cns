@@ -63,7 +63,7 @@ ctrl = 1
 type    = S
 movetype= A
 physics = S
-anim = 1005
+anim = 1000
 velset = vel x,0
 poweradd = 0
 ctrl = 0
@@ -161,7 +161,7 @@ priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 defa
 pausetime = 8,8                ;Time attacker pauses, time opponent shakes
 sparkno = 2                     ;Spark anim no (Def: set above)
 sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
-hitsound = 5, 4
+hitsound = 9, 0
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = 5
@@ -266,7 +266,7 @@ priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 defa
 pausetime = 8,8                ;Time attacker pauses, time opponent shakes
 sparkno = 2                     ;Spark anim no (Def: set above)
 sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
-hitsound = 5, 4
+hitsound = 9, 0
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = 5
@@ -280,6 +280,7 @@ air.hittime = ceil(cond(35-root,Map(HitstunScaling) < 10, 10, 35-root,Map(Hitstu
 fall.yvelocity = 0
 guard.ctrltime = 5
 guard.hittime = 5
+forcenofall = 1
 p2facing = 1
 guard.dist = 0
 
@@ -365,7 +366,7 @@ priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 defa
 pausetime = 8,8                ;Time attacker pauses, time opponent shakes
 sparkno = 2                     ;Spark anim no (Def: set above)
 sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
-hitsound = 5, 4
+hitsound = 9, 0
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = 5
@@ -465,7 +466,7 @@ priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 defa
 pausetime = 8,8                ;Time attacker pauses, time opponent shakes
 sparkno = 2                     ;Spark anim no (Def: set above)
 sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
-hitsound = 5, 4
+hitsound = 9, 0
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = 5
@@ -573,6 +574,7 @@ anim = 1020
 velset = vel x * 0.25, 0
 poweradd = 0
 ctrl = 0
+facep2 = 1
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -750,7 +752,7 @@ hitsound   = 5,1
 guardsound = 6,0
 ground.type = Low
 ground.slidetime = 10
-ground.hittime  = 999
+ground.hittime  = 25
 ground.velocity = 0
 air.velocity = -1.5,-1.5
 air.hittime = 999
@@ -764,6 +766,16 @@ p2facing = 1
 guard.dist = 0
 p2stateno = 5440
 p2getp1state = 0
+
+[State -2, INFECTION]
+type = mapset
+triggerall = anim = 1016
+trigger1 = movehit=1 && HitPauseTime=0
+value = Map(Infection)+1
+map = "Infection"
+ignorehitpause = 1
+persistent = 0
+
 [State 210, 2]
 type = HitDef
 trigger1 = anim = 1016

@@ -52,7 +52,7 @@ priority = 1, Hit                ;Attack priority: 0 (least) to 7 (most), 4 defa
 pausetime = 8,8                ;Time attacker pauses, time opponent shakes
 sparkno = 0                      ;Spark anim no (Def: set above)
 sparkxy = -10, -70              ;X-offset for the "hit spark" rel. to p2,
-hitsound = 5, 0                  ;Sound to play on hit
+hitsound = 9, 0                 ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
 ground.slidetime = 5             ;Time that the opponent slides back
@@ -63,7 +63,7 @@ airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
 air.velocity = -1,-1.5        ;X-velocity at which opponent is pushed,
 air.hittime = ceil(cond(20-Map(HitstunScaling) < 5, 5, 20-Map(HitstunScaling)))
-air.fall = 1
+forcenofall = 1
 fall.yvelocity = 0
 guard.ctrltime = 13
 guard.hittime = 13
@@ -94,8 +94,8 @@ ctrl = 0
 
 [State 200, 2]
 type = PlaySnd
-trigger1 = Time = 1
-value = 0, 0
+trigger1 = Time = 0
+value = F8, 0
 
 [State 200, 3]
 type = ChangeState
@@ -126,7 +126,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.825
+value = Map(DamageScaling)*.8
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -266,6 +266,14 @@ map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
 
+[State -2, INFECTION]
+type = mapset
+trigger1 = movehit=1 && HitPauseTime=1
+value = Map(Infection)+1
+map = "Infection"
+ignorehitpause = 1
+persistent = 0
+
 [State 210, 2]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
@@ -277,7 +285,7 @@ priority = 3, Hit
 pausetime = 8,8
 sparkno = 1
 sparkxy = -10,-65
-hitsound   = 5,2
+hitsound   = S230,0
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
@@ -304,7 +312,7 @@ priority = 3, Hit
 pausetime = 10,10
 sparkno = 1
 sparkxy = -10,-65
-hitsound   = 5,2
+hitsound   = S230,1
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 20
@@ -829,6 +837,14 @@ persistent = 0
 ;value2 = A,NT,ST,HT
 ;time = 1
 
+[State -2, INFECTION]
+type = mapset
+trigger1 = movehit=1 && HitPauseTime=1
+value = Map(Infection)+1
+map = "Infection"
+ignorehitpause = 1
+persistent = 0
+
 
 [State 400, 1]
 type = PlaySnd
@@ -847,7 +863,7 @@ pausetime = 9,9
 priority = 3, Hit 
 sparkno = 0
 sparkxy = -10,-30
-hitsound   = 5,1
+hitsound   = S230,0
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 20
@@ -867,7 +883,7 @@ guard.dist = 0
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = animelem = 6
+trigger1 = animelem = 7
 statetype = C      
 movetype = I        
 physics = C  
@@ -1158,7 +1174,7 @@ priority = 2
 pausetime = 10,10
 sparkno = 1
 sparkxy = -10,-25
-hitsound   = 5,3
+hitsound   = 5,1
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
@@ -1235,6 +1251,15 @@ map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
 
+[State -2, INFECTION]
+type = mapset
+trigger1 = movehit=1 && HitPauseTime=1
+value = Map(Infection)+1
+map = "Infection"
+ignorehitpause = 1
+persistent = 0
+
+
 [State 630, 2]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
@@ -1245,7 +1270,7 @@ priority = 3
 pausetime = 8,8
 sparkno = 1
 sparkxy = -5,-45
-hitsound   = 5,0
+hitsound   = S230,0
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 6
@@ -1271,7 +1296,7 @@ priority = 3
 pausetime = 12,12
 sparkno = 1
 sparkxy = -5,-45
-hitsound   = 5,0
+hitsound   = S230,1
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 6
@@ -1288,6 +1313,12 @@ p2facing = 1
 ground.cornerpush.veloff = -8-(Map(PushBack))
 air.cornerpush.veloff = -5
 guard.dist = 0
+
+[State 0, LifeAdd]
+type = LifeAdd
+triggerall = Map(Infection)>=10
+trigger1 = movehit=1
+value = 10
 
 [State 0, VelMul]
 type = VelMul
@@ -1384,7 +1415,7 @@ priority = 4
 pausetime = 16,16
 sparkno = 1
 sparkxy = -10,-40
-hitsound   = 5,3
+hitsound   = 5,2
 guardsound = 6,0
 animtype = Med
 ground.type = High

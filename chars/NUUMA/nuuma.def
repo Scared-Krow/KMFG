@@ -7,7 +7,7 @@ name = "Nuuma"        ;Name of character
 displayname = "Nuuma" ;Name of character to display
 versiondate = 09,27,2025    ;Version date of character (MM-DD-YYYY or X.XX)
 mugenversion = 1.0
-author = "ScaredCrow (and ChubXN)"         ;Character author name
+author = "PXN & ScaredCrow"         ;Character author name
 pal.defaults = 1,2,3,4      ;Default palettes in order of preference (up to 4)
                             ;Numbering starts from 1
 localcoord = 320,240        ;Local coordinate space width and height

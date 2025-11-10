@@ -549,17 +549,13 @@ call GetHitKnockedBack(5025, 11);
 # Air get-hit (shaking)
 [StateDef 5020; type: A; movetype: H; physics: N; velset: 0, 0;]
 
+changeAnim{value: 5030}
+
 call GetHitShaking(ifElse(getHitVar(airType) = 1, 5000, 5010));
 if hitShakeOver {
 	changeState{value: 5030}
 }
-if anim = 5000 || anim = 5010 {
-	forceFeedback{time: 6; waveform: square}
-} else if anim = 5001 || anim = 5011 {
-	forceFeedback{time: 8; waveform: sinesquare; ampl: 110,-1,-.3}
-} else if anim = 5012 || anim = 5002 || anim = 5030 || anim = [5051,5059] {
-	forceFeedback{time: 15; waveform: sinesquare; ampl: 140}
-}
+
 
 #-------------------------------------------------------------------------------
 # Air get-hit (knocked away)
@@ -605,7 +601,7 @@ if hitOver || animTime = 0 ||
 }
 
 #-------------------------------------------------------------------------------
-# Air get-hit (recovering in air, not falling)
+# Air get-hit (will always airtech)
 [StateDef 5040; type: A; movetype: H; physics: N;]
 
 map(Punish) := 0;
@@ -613,8 +609,13 @@ map(Punish) := 0;
 if !alive {
 	changeState{value: 5050; ctrl: 0}
 }
-if animTime = 0 && anim != 5040 || time = 0 && anim != 5035 {
-	changeAnim{value: 5040}
+if animTime = 0 && anim = 5035 || time = 0 && anim != 5035 &&
+	anim != [5051, 5059] && anim != [5061, 5069] && anim != 5090 {
+	changeAnim{value: 5050}
+}
+persistent(0) if anim = [5050, 5059] && vel y >= ifElse(anim = 5050,
+	const240p(1), const240p(-2)) && selfAnimExist(anim + 10) {
+	changeAnim{value: anim + 10}
 }
 if hitOver {
 	ctrlSet{value: 1}
@@ -623,8 +624,11 @@ if hitOver {
 if time > 0 {
 	velAdd{y: getHitVar(yAccel)}
 }
-if vel y > 0 && pos y >= 0 {
-	changeState{value: 52}
+if alive && gethitvar(hittime) = -1 {
+		changeState{value: 5210}
+}
+if vel y > 0 && pos y >= -10 {
+	changeState{value: 5210}
 }
 
 #-------------------------------------------------------------------------------
@@ -952,6 +956,7 @@ if time = 0 {
 		}
 			if time = 0 {
 				velMul{y: .5}
+				velMul{x: .5}
 			}
 		if command = "holdup" {
 			velAdd{y: -2}

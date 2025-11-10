@@ -62,14 +62,14 @@ module =                  ;Ikemen feature: External Lua code
  ;Music will continue to play between screens if the files names
  ;are the same, and both BGMs are specified to loop.
   ;Music to play at title screen.
-title.bgm = 
-title.bgm.volume = 100    ;volume scaling factor in percent. 100 is default
+title.bgm = FADED.mp3
+title.bgm.volume = 10    ;volume scaling factor in percent. 100 is default
 title.bgm.loop = 1        ;Set to 0 to prevent looping
 title.bgm.loopstart = 
 title.bgm.loopend = 
   ;Music to play at char select screen.
-select.bgm = 
-select.bgm.volume = 100
+select.bgm = SKINWALKER.mp3
+select.bgm.volume = 10
 select.bgm.loop = 1
 select.bgm.loopstart = 
 select.bgm.loopend = 

@@ -14,7 +14,7 @@ s = s
 
 ;-| Default Values |-------------------------------------------------------
 [Defaults]
-command.time = 16
+command.time = 12
 command.buffer.time = 3
 
 [Command]

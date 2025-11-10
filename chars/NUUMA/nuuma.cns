@@ -495,10 +495,17 @@ ctrl = 1
 ; States that are always executed (use statedef -2)
 ;---------------------------------------------------------------------------
 
+[Statedef -2]
 
-;---------------------------------------------------------------------------
-; States that are executed when in self's state file (use statedef -3)
-;---------------------------------------------------------------------------
+[State 0, LifeAdd]
+type = LifeAdd
+triggerall = Map(Infection)>=5
+trigger1 = time%8=0
+value = -1
+kill = 0
+absolute = 1
+redirectID = enemy,ID
+
 [Statedef -3]
 
 ;---------------------------------------------------------------------------

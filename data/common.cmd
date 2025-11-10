@@ -318,59 +318,51 @@ command = ~D, $B, D, $B, b
 
 [Command]
 name = "214A"
-command = ~D, B,  x
+command = ~D, DB, B,  x
 
 [Command]
 name = "214B"
-command = ~D, B,  a
+command = ~D, DB, B,  a
 
 [Command]
 name = "214C"
-command = ~D, B,  y
+command = ~D, DB, B,  y
 
 [Command]
 name = "214D"
-command = ~D, B,  b
+command = ~D, DB, B,  b
 
 [Command]
 name = "236A"
-command = ~D, F,  x
+command = ~D, DF, F,  x
 
 [Command]
 name = "236B"
-command = ~D, F, a
+command = ~D, DF, F, a
 
 [Command]
 name = "236C"
-command = ~D, F,  y
+command = ~D, DF, F,  y
 
 [Command]
 name = "236D"
-command = ~D, F,  b
+command = ~D, DF, F,  b
 
 [Command]
 name = "623A"
 command = F, D, $F,  x
-time = 20
-buffer.time = 3
 
 [Command]
 name = "623B"
 command = F, D, $F,  a
-time = 20
-buffer.time = 3
 
 [Command]
 name = "623C"
 command = F, D, $F,  y
-time = 20
-buffer.time = 3
 
 [Command]
 name = "623D"
 command = F, D, $F,  b
-time = 20
-buffer.time = 3
 
 [Command]
 name = "421A"

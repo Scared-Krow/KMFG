@@ -814,24 +814,24 @@ value = fvar(9)
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f, Map(GroundBounce) = %.2f, Map(WallBounce) = %.2f, Map(PushBack) %.0f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(GroundBounce),Map(WallBounce),Map(PushBack)
+text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(Infection) %.0f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(Infection)
 
 ;---------REDUCE MECHANIC
 [State -2, Reduce]
 type = mapset
-trigger1 = enemy,movehit=1
+trigger1 = enemy,movehit=1 && enemy,HitPauseTime=0
 value = 0
 map = "Reduce"
 [State -2, Reduce]
 type = mapset
-trigger1 = enemy,movehit=1
+trigger1 = enemy,movehit=1 && enemy,HitPauseTime=0
 value = 0
 map = "ReduceLockout"
 
 [State -2, Reduce Set]
 type = mapset
-triggerall = Map(ReduceLockout)=0
+triggerall = Map(ReduceLockout)=0 && stateno != [120,150]
 trigger1 = movetype = H && command = "c"
 value = 5
 map = "Reduce"
@@ -929,16 +929,16 @@ phase = 90
 
 [State -2, Fatal Counter]
 type = mapset
-triggerall = HitPauseTime=0 && movecountered=1
+triggerall = HitPauseTime=1 && movecountered=1
 trigger1 = Map(FatalCounter)=1
-value = Map(DamageScaling)+.35
+value = Map(DamageScaling)+.3
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 
 [State -2, Counter Hit]
 type = mapset
-triggerall = HitPauseTime=0 && movecountered=1
+triggerall = HitPauseTime=1 && movecountered=1
 trigger1 = Map(FatalCounter)=0
 value = Map(DamageScaling)+.1
 map = "DamageScaling"
