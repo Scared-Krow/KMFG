@@ -574,7 +574,6 @@ anim = 1020
 velset = vel x * 0.25, 0
 poweradd = 0
 ctrl = 0
-facep2 = 1
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -628,7 +627,7 @@ pausetime = 10,10
 priority = 4, Hit 
 sparkno = 1
 sparkxy = -5,-10
-hitsound   = 5,2
+hitsound   = 9,0
 guardsound = 6,0
 ground.type = low
 ground.slidetime = 10
@@ -657,7 +656,7 @@ pausetime = 10,10
 priority = 4, Hit 
 sparkno = 1
 sparkxy = -5,-10
-hitsound   = 5,2
+hitsound   = 9,0
 guardsound = 6,0
 ground.type = low
 ground.slidetime = 10
@@ -748,7 +747,7 @@ pausetime = 1,1
 guard.pausetime = 10, 10
 sparkno = 0
 sparkxy = -10,-10
-hitsound   = 5,1
+hitsound   = S230,0
 guardsound = 6,0
 ground.type = Low
 ground.slidetime = 10
@@ -770,7 +769,7 @@ p2getp1state = 0
 [State -2, INFECTION]
 type = mapset
 triggerall = anim = 1016
-trigger1 = movehit=1 && HitPauseTime=0
+trigger1 = movehit=1 && HitPauseTime=1
 value = Map(Infection)+1
 map = "Infection"
 ignorehitpause = 1
@@ -788,7 +787,7 @@ pausetime = 10,10
 priority = 4, Hit 
 sparkno = 1
 sparkxy = -12,-50
-hitsound   = 5,2
+hitsound   = S230,1
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 26
