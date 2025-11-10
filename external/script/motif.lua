@@ -1730,6 +1730,25 @@ local motif =
 		menu_valuename_guardmode_auto = "Auto", --Ikemen feature
 		menu_valuename_guardmode_all = "All", --Ikemen feature
 		menu_valuename_guardmode_random = "Random", --Ikemen feature
+		menu_valuename_fallrecovery_neut = "Neutral", --PXN feature
+		menu_valuename_fallrecovery_back = "Back", --PXN feature
+		menu_valuename_fallrecovery_fwd = "Forward", --PXN feature
+		menu_valuename_fallrecovery_random = "Random", --Ikemen feature
+		menu_valuename_atkdatadisp_none = "Off", --PXN Feature
+		menu_valuename_atkdatadisp_vis = "Basic", --PXN Feature
+		menu_valuename_atkdatadisp_advanced = "Advanced", --PXN Feature
+		menu_valuename_ctrldatadisp_none = "Off", --PXN Feature
+		menu_valuename_ctrldatadisp_p1 = "P1", --PXN Feature
+		menu_valuename_ctrldatadisp_p2 = "P2", --PXN Feature
+		menu_valuename_ctrldatadisp_all = "All", --PXN Feature
+		menu_valuename_punish_off = "Off", --PXN Feature
+		menu_valuename_punish_guard = "Guard", --PXN Feature
+		menu_valuename_punish_rec	= "Recovery", --PXN Feature
+		menu_valuename_punish_wakeup = "Wakeup", --PXN Feature
+		menu_valuename_punish_all = "All", --PXN Feature
+		menu_valuename_regen_instant = "Instant", --PXN Feature
+		menu_valuename_regen_delay = "Delayed", --PXN Featur
+		menu_valuename_regen_off = "None", --PXN Featuree
 		menu_valuename_fallrecovery_none = "None", --Ikemen feature
 		menu_valuename_fallrecovery_ground = "Ground", --Ikemen feature
 		menu_valuename_fallrecovery_air = "Air", --Ikemen feature
@@ -1738,23 +1757,20 @@ local motif =
 		menu_valuename_distance_close = "Close", --Ikemen feature
 		menu_valuename_distance_medium = "Medium", --Ikemen feature
 		menu_valuename_distance_far = "Far", --Ikemen feature
+		menu_valuename_dir_5 = "Neutral", --Ikemen feature
+		menu_valuename_dir_6 = "Forward", --Ikemen feature
+		menu_valuename_dir_2 = "Down", --Ikemen feature
+		menu_valuename_dir_4 = "Back", --Ikemen feature
 		menu_valuename_buttonjam_none = "None", --Ikemen feature
-		menu_valuename_buttonjam_a = "A", --Ikemen feature
-		menu_valuename_buttonjam_b = "B", --Ikemen feature
-		menu_valuename_buttonjam_c = "C", --Ikemen feature
-		menu_valuename_buttonjam_x = "X", --Ikemen feature
-		menu_valuename_buttonjam_y = "Y", --Ikemen feature
-		menu_valuename_buttonjam_z = "Z", --Ikemen feature
+		menu_valuename_buttonjam_x = "A", --Ikemen feature
+		menu_valuename_buttonjam_a = "B", --Ikemen feature
+		menu_valuename_buttonjam_y = "C", --Ikemen feature
+		menu_valuename_buttonjam_b = "D", --Ikemen feature
+		menu_valuename_buttonjam_c = "KARMA", --Ikemen feature
+		menu_valuename_buttonjam_z = "Mob", --Ikemen feature
 		menu_valuename_buttonjam_s = "Start", --Ikemen feature
-		menu_valuename_buttonjam_d = "D", --Ikemen feature
-		menu_valuename_buttonjam_w = "W", --Ikemen feature
-		--menu_itemname_dummycontrol = "Dummy Control", --Ikemen feature
-		--menu_itemname_ailevel = "AI Level", --Ikemen feature
-		--menu_itemname_dummymode = "Dummy Mode", --Ikemen feature
-		--menu_itemname_guardmode = "Guard Mode", --Ikemen feature
-		--menu_itemname_fallrecovery = "Fall Recovery", --Ikemen feature
-		--menu_itemname_distance = "Distance", --Ikemen feature
-		--menu_itemname_buttonjam = "Button Jam", --Ikemen feature
+		menu_valuename_buttonjam_d = "EX", --Ikemen feature
+		menu_valuename_buttonjam_w = "Dash", --Ikemen feature
 	},
 	trainingbgdef =
 	{
@@ -2573,8 +2589,12 @@ function motif.setBaseTrainingInfo()
 	motif.training_info.menu_itemname_menutraining_dummymode = "Dummy Mode"
 	motif.training_info.menu_itemname_menutraining_guardmode = "Guard Mode"
 	motif.training_info.menu_itemname_menutraining_fallrecovery = "Fall Recovery"
-	motif.training_info.menu_itemname_menutraining_distance = "Distance"
-	motif.training_info.menu_itemname_menutraining_buttonjam = "Button Jam"
+	motif.training_info.menu_itemname_menutraining_atkdatadisp = "Attack Data"
+	motif.training_info.menu_itemname_menutraining_ctrldatadisp = "Control Display"
+	motif.training_info.menu_itemname_menutraining_punish = "Punish After"
+	motif.training_info.menu_itemname_menutraining_regen = "Life Regen"
+	motif.training_info.menu_itemname_menutraining_dir = "Direction Buffer"
+	motif.training_info.menu_itemname_menutraining_buttonjam = "Punish Option"
 	motif.training_info.menu_itemname_menutraining_back = "Back"
 	motif.training_info.menu_itemname_menuinput = "Button Config"
 	motif.training_info.menu_itemname_menuinput_keyboard = "Key Config"
@@ -2582,7 +2602,7 @@ function motif.setBaseTrainingInfo()
 	motif.training_info.menu_itemname_menuinput_empty = ""
 	motif.training_info.menu_itemname_menuinput_inputdefault = "Default"
 	motif.training_info.menu_itemname_menuinput_back = "Back"
-	--motif.training_info.menu_itemname_reset = "Round Reset"
+	motif.training_info.menu_itemname_reset = "Round Reset"
 	--motif.training_info.menu_itemname_reload = "Rematch"
 	motif.training_info.menu_itemname_commandlist = "Command List"
 	motif.training_info.menu_itemname_characterchange = "Character Change"
@@ -2593,13 +2613,17 @@ function motif.setBaseTrainingInfo()
 	main.t_sort.training_info.menu = {
 		"back",
 		"menutraining",
+		"menutraining_regen",
+		"menutraining_atkdatadisp",
+		"menutraining_ctrldatadisp",
+		"menutraining_guardmode",
+		"menutraining_punish",
+		"menutraining_buttonjam",
+		"menutraining_dir",
+		"menutraining_fallrecovery",
 		"menutraining_dummycontrol",
 		"menutraining_ailevel",
 		"menutraining_dummymode",
-		"menutraining_guardmode",
-		"menutraining_fallrecovery",
-		"menutraining_distance",
-		"menutraining_buttonjam",
 		"menutraining_back",
 		"menuinput",
 		"menuinput_keyboard",
@@ -2607,8 +2631,7 @@ function motif.setBaseTrainingInfo()
 		"menuinput_empty",
 		"menuinput_inputdefault",
 		"menuinput_back",
-		--"reset",
-		--"reload",
+		"reset",
 		"commandlist",
 		"characterchange",
 		"exit",
