@@ -814,8 +814,8 @@ value = fvar(9)
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(Infection) %.0f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(Infection)
+text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(Infection) %.0f, Map(InfectionLevel) %.0f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(Infection),Map(InfectionLevel)
 
 ;---------REDUCE MECHANIC
 [State -2, Reduce]

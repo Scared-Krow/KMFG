@@ -497,14 +497,54 @@ ctrl = 1
 
 [Statedef -2]
 
+[State -2, INFECTION Subtract]
+type = mapadd
+triggerall = Map(InfectionLevel)>0
+trigger1 = enemy,movetype != H
+value = -1
+map = "Infection"
+ignorehitpause = 1
+persistent = 0
+[State -2, INFECTION Level Reset]
+type = mapset
+trigger1 = Map(Infection)<=0
+value = 0
+map = "InfectionLevel"
+ignorehitpause = 1
+persistent = 0
+
+
 [State 0, LifeAdd]
 type = LifeAdd
-triggerall = Map(Infection)>=5
+triggerall = Map(InfectionLevel)=1
 trigger1 = time%8=0
 value = -1
 kill = 0
 absolute = 1
 redirectID = enemy,ID
+[State 0, LifeAdd]
+type = LifeAdd
+triggerall = Map(InfectionLevel)=2
+trigger1 = time%5=0
+value = -1
+kill = 0
+absolute = 1
+redirectID = enemy,ID
+[State 0, LifeAdd]
+type = LifeAdd
+triggerall = Map(InfectionLevel)=3
+trigger1 = time%3=0
+value = -1
+kill = 0
+absolute = 1
+redirectID = enemy,ID
+
+[State -2, jD]
+type = mapset
+trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
+value = 0
+map = "jD"
+ignorehitpause = 1
 
 [Statedef -3]
 

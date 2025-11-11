@@ -161,7 +161,7 @@ priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 defa
 pausetime = 8,8                ;Time attacker pauses, time opponent shakes
 sparkno = 2                     ;Spark anim no (Def: set above)
 sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
-hitsound = 9, 0
+hitsound = 9, 1
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = 5
@@ -611,11 +611,6 @@ map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
 
-[State 440, 2]
-type = PlaySnd
-trigger1 = animelem = 3
-value = 0, 2
-
 [State 440, 3]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
@@ -656,7 +651,7 @@ pausetime = 10,10
 priority = 4, Hit 
 sparkno = 1
 sparkxy = -5,-10
-hitsound   = 9,0
+hitsound   = 9,1
 guardsound = 6,0
 ground.type = low
 ground.slidetime = 10
@@ -729,7 +724,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.075
+value = Map(DamageScaling)-.25
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -766,15 +761,6 @@ guard.dist = 0
 p2stateno = 5440
 p2getp1state = 0
 
-[State -2, INFECTION]
-type = mapset
-triggerall = anim = 1016
-trigger1 = movehit=1 && HitPauseTime=1
-value = Map(Infection)+1
-map = "Infection"
-ignorehitpause = 1
-persistent = 0
-
 [State 210, 2]
 type = HitDef
 trigger1 = anim = 1016
@@ -803,6 +789,25 @@ p2facing = 1
 ground.cornerpush.veloff = -5-(Map(PushBack))
 air.cornerpush.veloff = -5
 guard.dist = 0
+
+[State -2, INFECTION]
+type = mapset
+triggerall = anim = 1016
+trigger1 = movehit=1 && HitPauseTime=1
+value = 360
+map = "Infection"
+ignorehitpause = 1
+persistent = 0
+
+[State -2, INFECTION LEVEL]
+type = mapadd
+triggerall = anim = 1016 && Map(InfectionLevel)<3
+trigger1 = movehit=1 && HitPauseTime=1
+value = 1
+map = "InfectionLevel"
+ignorehitpause = 1
+persistent = 0
+
 
 [State 0, ChangeAnim]
 type = ChangeAnim

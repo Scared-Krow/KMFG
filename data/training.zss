@@ -1,7 +1,7 @@
 # Mugen style Training Mode global code
 # maps set via Pause Menu (menu.lua)
 # _iksys_trainingDummyControl: 0 - cooperative, 1 - ai, 2 - manual
-# _iksys_trainingGuardMode: 0 - none, 1 - all, 2 - instant, 3 - pushblock
+# _iksys_trainingGuardMode: 0 - none, 1 - all, 2 - auto, 3 - random
 # _iksys_trainingDummyMode: 0 - stand, 1 - crouch, 2 - jump, 3 - wjump
 # _iksys_trainingDistance: 0 - any, 1 - close, 2 - medium, 3 - far
 # _iksys_trainingButtonJam: 0 - none, 1-9 - a/b/c/x/y/z/s/d/w
@@ -12,13 +12,21 @@
 [Function fTrainingRecovery(pid)]
 if player(2), ctrl = 0 {
 	mapSet{map: "_iksys_trainingDummyCounter"; value: 0; redirectId: player(2),id}
-} else if player(2),map(_iksys_trainingDummyCounter) >= 60 && map(_iksys_trainingRegen) != 2 {
+} else if player(2),map(_iksys_trainingDummyCounter) >= 30 && map(_iksys_trainingRegen) != 2 {
 	lifeSet{value: playerId($pid),lifeMax; redirectId: playerId($pid),id}
 	mapSet{map: "_iksys_trainingDummyCounter"; value: 0; redirectId: playerId($pid),id}
 } else {
 	mapAdd{map: "_iksys_trainingDummyCounter"; value: 1; redirectId: playerId($pid),id}
 }
-
+# Power recovery
+if player($pid),ctrl = 0 {
+	mapSet{map: "_iksys_trainingPowerTimer"; value: 0; redirectid: player($pid),id}
+} else if player($pid),map(_iksys_trainingPowerTimer) >= 60 {
+	powerSet{value: player($pid),powerMax; redirectid: player($pid),id}
+	mapSet{map: "_iksys_trainingPowerTimer"; value: 0; redirectid: player($pid),id}
+} else {
+	mapAdd{map: "_iksys_trainingPowerTimer"; value: 1; redirectid: player($pid),id}
+}
 
 [Statedef +1]
 
@@ -187,7 +195,21 @@ if aiLevel = 0 && map(_iksys_trainingDummyControl) = 0 {
 	if map(_iksys_trainingGuardMode) = 1 {
 		assertSpecial{flag: autoguard}
 	}
-
+	else if map(_iksys_trainingGuardMode) = 2 {
+			if moveType = H || stateNo = const(StateDownedGetHit_gettingUp) {
+				map(_iksys_trainingAutoGuardTimer) := 15;
+			} else {
+				map(_iksys_trainingAutoGuardTimer) := (map(_iksys_trainingAutoGuardTimer) - 1);
+			}
+			if map(_iksys_trainingAutoGuardTimer) > 0 {
+				assertSpecial{flag: autoGuard}
+			}
+		}
+	else if map(_iksys_trainingGuardMode) = 3 {
+			if random < 500 {
+				assertSpecial{flag: autoGuard}
+			}
+		}
 	# Fall Recovery
 	if map(_iksys_trainingFallRecovery) = 0 {
 		} else {

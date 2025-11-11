@@ -100,12 +100,12 @@ if numenemy {
 	# Check player control flags
 	# Control is removed instantly
 	# Control is given back instantly if coming out of a hurt state. This accounts for the player being able to block immediately
-	if player($player), ctrl = 0
+	if player($player), ctrl = 0 || (root, stateno = 0 && time = 0)
 	|| (player($player), time <= 0 && player($player), prevstateno = [120, 155])
 	|| (player($player), time <= 0 && player($player), movetype != H && player($player), prevmovetype = H) {
 		mapSet{map: "_pots_attackdata_playerctrl"; value: player($player), ctrl}
 	}
-	if root, ctrl = 0
+	if root, ctrl = 0 || (root, stateno = 0 && time = 0)
 	|| (root, time <= 0 && root, prevstateno = [120, 155])
 	|| (root, time <= 0 && root, movetype != H && root, prevmovetype = H) {
 		mapSet{map: "_pots_attackdata_dummyctrl"; value: root, ctrl}

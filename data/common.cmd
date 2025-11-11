@@ -319,18 +319,30 @@ command = ~D, $B, D, $B, b
 [Command]
 name = "214A"
 command = ~D, DB, B,  x
+[Command]
+name = "214A"
+command = ~D, DB, B+x
 
 [Command]
 name = "214B"
-command = ~D, DB, B,  a
+command = ~D, B,  a
+[Command]
+name = "214B"
+command = ~D, B+a
 
 [Command]
 name = "214C"
 command = ~D, DB, B,  y
+[Command]
+name = "214C"
+command = ~D, DB, B+y
 
 [Command]
 name = "214D"
 command = ~D, DB, B,  b
+[Command]
+name = "214D"
+command = ~D, DB, B+b
 
 [Command]
 name = "236A"
@@ -359,6 +371,7 @@ command = F, D, $F,  a
 [Command]
 name = "623C"
 command = F, D, $F,  y
+time = 20
 
 [Command]
 name = "623D"
@@ -415,22 +428,22 @@ command = ~F, D, B,  b
 [Command]
 name = "22A"    
 command = ~D, D, x
-time = 10
+time = 7
 
 [Command]
 name = "22B"    
 command = ~D, D, a
-time = 10
+time = 7
 
 [Command]
 name = "22C"    
 command = ~D, D, y
-time = 10
+time = 7
 
 [Command]
 name = "22D"    
 command = ~D, D, b
-time = 10
+time = 7
 
 [Command]
 name = "46A"    

@@ -266,13 +266,6 @@ map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
 
-[State -2, INFECTION]
-type = mapset
-trigger1 = movehit=1 && HitPauseTime=1
-value = Map(Infection)+1
-map = "Infection"
-ignorehitpause = 1
-persistent = 0
 
 [State 210, 2]
 type = HitDef
@@ -301,6 +294,7 @@ fall.yvelocity = 0
 air.cornerpush.veloff = -5
 p2facing = 1
 guard.dist = 0
+
 [State 210, 2]
 type = HitDef
 trigger1 = animelem = 6
@@ -328,6 +322,17 @@ fall.yvelocity = 0
 air.cornerpush.veloff = -5
 p2facing = 1
 guard.dist = 0
+
+[State 0, LifeAdd]
+type = LifeAdd
+triggerall = Map(InfectionLevel)>=2
+trigger1 = movehit && hitpausetime = 1
+value = 10
+
+[State 200, 2]
+type = PlaySnd
+trigger1 = Time = 8
+value = F4, 2
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -425,7 +430,7 @@ pausetime = 10,10
 priority = 4, Hit 
 sparkno = 1
 sparkxy = -12,-50
-hitsound   = 9,0
+hitsound   = 9,2
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
@@ -441,6 +446,11 @@ p2facing = 1
 ground.cornerpush.veloff = -5-(Map(PushBack))
 air.cornerpush.veloff = -5
 guard.dist = 0
+
+[State 200, 2]
+type = PlaySnd
+trigger1 = Time = 10
+value = F8, 1
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -531,7 +541,7 @@ pausetime = 10,10
 priority = 4, Hit 
 sparkno = 1
 sparkxy = -12,-50
-hitsound   = 9,0
+hitsound   = 9,1
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 20
@@ -557,6 +567,11 @@ trigger1 = movehit = 1
 value = 5420
 ID = 5420
 ignorehitpause = 1
+
+[State 200, 2]
+type = PlaySnd
+trigger1 = Time = 18
+value = F8, 2
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -618,11 +633,6 @@ map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
 
-[State 400, 1]
-type = PlaySnd
-trigger1 = Time = 1
-value = 0, 0
-
 [State 400, 2]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
@@ -631,7 +641,7 @@ damage = ceil(cond(20*Map(DamageScaling) < 2, 2, 20*Map(DamageScaling)))
 priority  = 1
 animtype  = Light
 hitflag = MAF
-guardflag = MA
+guardflag = LA
 pausetime = 9,9
 priority = 1, Hit 
 sparkno = 0
@@ -654,6 +664,11 @@ air.cornerpush.veloff = -5
 p2facing = 1
 guard.dist = 0
 
+[State 200, 2]
+type = PlaySnd
+trigger1 = Time = 0
+value = F4, 0
+volumescale = 50
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -794,12 +809,6 @@ value = Map(DamageScaling)*.75
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
-[State -2, Repeated Damage Scaling]
-type = mapset
-trigger1 = movehit && combocount>1 && Map(Launcher)>11
-value = Map(DamageScaling)-.5
-map = "DamageScaling"
-ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
@@ -837,15 +846,6 @@ persistent = 0
 ;value2 = A,NT,ST,HT
 ;time = 1
 
-[State -2, INFECTION]
-type = mapset
-trigger1 = movehit=1 && HitPauseTime=1
-value = Map(Infection)+1
-map = "Infection"
-ignorehitpause = 1
-persistent = 0
-
-
 [State 400, 1]
 type = PlaySnd
 trigger1 = Time = 1
@@ -880,6 +880,12 @@ ground.cornerpush.veloff = -5-(Map(PushBack))
 air.cornerpush.veloff = -5
 p2facing = 1
 guard.dist = 0
+
+[State 0, LifeAdd]
+type = LifeAdd
+triggerall = Map(InfectionLevel)>=2
+trigger1 = movehit && hitpausetime = 1
+value = 15
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -954,7 +960,7 @@ pausetime = 10,10
 priority = 4, Hit 
 sparkno = 1
 sparkxy = -5,-10
-hitsound   = 9,0
+hitsound   = 9,2
 guardsound = 6,0
 ground.type = low
 ground.slidetime = 10
@@ -1251,14 +1257,6 @@ map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
 
-[State -2, INFECTION]
-type = mapset
-trigger1 = movehit=1 && HitPauseTime=1
-value = Map(Infection)+1
-map = "Infection"
-ignorehitpause = 1
-persistent = 0
-
 
 [State 630, 2]
 type = HitDef
@@ -1316,8 +1314,8 @@ guard.dist = 0
 
 [State 0, LifeAdd]
 type = LifeAdd
-triggerall = Map(Infection)>=10
-trigger1 = movehit=1
+triggerall = Map(InfectionLevel)>=2
+trigger1 = movehit && hitpausetime = 1
 value = 10
 
 [State 0, VelMul]
@@ -1404,6 +1402,13 @@ value = Map(HitstunScaling)+1
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
+[State -2, Hitstun Scaling]
+type = mapset
+trigger1 = movehit=1 && hitpausetime = 1
+value = Map(jD)+1
+map = "jD"
+ignorehitpause = 1
+persistent = 0
 
 [State 640, 3]
 type = HitDef
@@ -1423,7 +1428,7 @@ ground.slidetime = 12
 ground.hittime  = 18
 ground.velocity = -5, -4
 guard.velocity = -5
-air.velocity = -5, -2
+air.velocity = -5-Map(jD), -2
 air.hittime = ceil(cond(40-Map(HitstunScaling) < 15, 15, 40-Map(HitstunScaling)))
 fall = 1
 air.fall = 1
@@ -1431,7 +1436,7 @@ guard.ctrltime = 14
 guard.hittime = 14
 fall.yvelocity = 0
 p2facing = 1
-air.cornerpush.veloff = -18-(Map(PushBack))
+air.cornerpush.veloff = -18-((Map(jD))*6)
 guard.dist = 0
 
 [State 0, StateTypeSet]
