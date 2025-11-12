@@ -30,7 +30,7 @@ draw.offset = 0,1
 [Velocity]
 walk.fwd  = 2
 walk.back = -1.8    
-run.fwd  = 4.25, 0    
+run.fwd  = 4, 0    
 run.back = -4.5,-3.8 
 jump.neu = 0,-8.5
 jump.back = -2.55    
@@ -115,34 +115,7 @@ triggerall = vel x < 0
 trigger1 = Anim != 21 && Anim != 5
 trigger2 = Anim = 5 && AnimTime = 0
 value = 21
-;---------------------------------------------------------------------------
-; Run forward
-[Statedef 100]
-type    = S
-physics = S
-anim = 100
-sprpriority = 1
-ctrl = 1
 
-[State 100, 1]
-type = VelSet
-trigger1 = 1
-x = const(velocity.run.fwd.x)*cond(Map(BUCKX2)>0,1.25,1)
-
-[State 100, 2] ;Prevent run from canceling into walk
-type = AssertSpecial
-trigger1 = 1
-flag = NoWalk
-
-[State 100, 3] ;Prevent from turning
-type = AssertSpecial
-trigger1 = 1
-flag = NoAutoTurn
-
-[State 100, 4]
-type = ChangeState
-trigger1 = command != "holdfwd"
-value = 101
 
 ;---------------------------------------------------------------------------
 ; Back Dash
@@ -493,7 +466,7 @@ map = "DJCount"
 
 [State -2, AirDash Physics]
 type = mapadd
-trigger1 = movetype = H || statetype != A
+trigger1 = movetype = H || statetype != A || stateno = [40,50]
 value = 0
 map = "ADPhysics"
 [State -2, AirDash Physics]

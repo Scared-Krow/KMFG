@@ -1145,7 +1145,7 @@ changeState{value: 0}
 
 [Statedef -2]
 
-if Map(ADPhysics)>0 && moveType != H {
+if Map(ADPhysics)>0 && moveType != H && stateno != [40,50] {
 	velMul{y:0}
 }
 

@@ -476,6 +476,63 @@ type = AssertSpecial
 trigger1 = 1
 flag = noairguard
 
+[State -2, 8WayBuff]
+type = mapset
+trigger1 = command = "holdfwd"  && command != "holdup" && command != "holddown"
+trigger2 = command != "holdfwd" && command != "holdback"  && command != "holdup" && command != "holddown"
+value = 1
+map = "EightWay"
+ignorehitpause = 1
+persistent = 0
+[State -2, 8WayBuff]
+type = mapset
+trigger1 = command = "holdback" && command != "holdup" && command != "holddown"
+value = 2
+map = "EightWay"
+ignorehitpause = 1
+persistent = 0
+[State -2, 8WayBuff]
+type = mapset
+trigger1 = command = "holdup" && command != "holdfwd" && command != "holdback"
+value = 3
+map = "EightWay"
+ignorehitpause = 1
+persistent = 0
+[State -2, 8WayBuff]
+type = mapset
+trigger1 = command = "holddown"&& command != "holdfwd" && command != "holdback"
+value = 4
+map = "EightWay"
+ignorehitpause = 1
+persistent = 0
+[State -2, 8WayBuff]
+type = mapset
+trigger1 = command = "holdfwd" && command = "holdup"
+value = 5
+map = "EightWay"
+ignorehitpause = 1
+persistent = 0
+[State -2, 8WayBuff]
+type = mapset
+trigger1 = command = "holdback" && command = "holdup"
+value = 6
+map = "EightWay"
+ignorehitpause = 1
+persistent = 0
+[State -2, 8WayBuff]
+type = mapset
+trigger1 = command = "holdfwd" && command = "holddown"
+value = 7
+map = "EightWay"
+ignorehitpause = 1
+persistent = 0
+[State -2, 8WayBuff]
+type = mapset
+trigger1 = command = "holdback" && command = "holddown"
+value = 8
+map = "EightWay"
+ignorehitpause = 1
+persistent = 0
 
 [State -2, Flight]
 type = mapset
@@ -488,50 +545,49 @@ persistent = 0
 [State 0, VelSet]
 type = VelSet
 triggerall = time = 5
-trigger1 = command = "holdfwd"  && command != "holdup" && command != "holddown"
-trigger2 = command != "holdfwd" && command != "holdback"  && command != "holdup" && command != "holddown"
+trigger1 = Map(EightWay)=1
 x = 12
 y = 0
 [State 0, VelSet]
 type = VelSet
 triggerall = time = 3
-trigger1 = command = "holdback" && command != "holdup" && command != "holddown"
+trigger1 = Map(EightWay)=2
 x = -12
 y = 0
 [State 0, VelSet]
 type = VelSet
 triggerall = time = 3
-trigger1 = command = "holdup" && command != "holdfwd" && command != "holdback"
+trigger1 = Map(EightWay)=3
 x = 0
 y = -12
 [State 0, VelSet]
 type = VelSet
 triggerall = time = 3
-trigger1 = command = "holddown"&& command != "holdfwd" && command != "holdback"
+trigger1 = Map(EightWay)=4
 x = 0
 y = 12
 [State 0, VelSet]
 type = VelSet
 triggerall = time = 3
-trigger1 = command = "holdfwd" && command = "holdup"
+trigger1 = Map(EightWay)=5
 x = 7
 y = -7
 [State 0, VelSet]
 type = VelSet
 triggerall = time = 3
-trigger1 = command = "holdback" && command = "holdup"
+trigger1 = Map(EightWay)=6
 x = -7
 y = -7
 [State 0, VelSet]
 type = VelSet
 triggerall = time = 3
-trigger1 = command = "holdfwd" && command = "holddown"
+trigger1 = Map(EightWay)=7
 x = 7
 y = 7
 [State 0, VelSet]
 type = VelSet
 triggerall = time = 3
-trigger1 = command = "holdback" && command = "holddown"
+trigger1 = Map(EightWay)=8
 x = -7
 y = 7
 

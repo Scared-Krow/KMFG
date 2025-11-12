@@ -28,7 +28,7 @@ boundlow = 0
  ;follow the highest player.
  ;Typically .2 for normal-sized backgrounds. You may need to pull this
  ;value up for taller backgrounds.
-verticalfollow = .65
+verticalfollow = .7
 
  ;Minimum vertical distance the highest player has to be from the floor,
  ;before the camera starts to move up to follow him. For extremely
