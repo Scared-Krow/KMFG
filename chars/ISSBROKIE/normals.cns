@@ -165,7 +165,7 @@ ground.type = Low
 ground.slidetime = 10
 ground.hittime  = 18
 ground.velocity = -2.5-(Map(PushBack))
-air.velocity = -2,-2.5
+air.velocity = -2,-1.5
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 15, 15, 25-Map(HitstunScaling)))
 air.fall = 1
 ground.cornerpush.veloff = -4-(Map(PushBack))
@@ -217,12 +217,17 @@ facep2 = 1
 type = PosAdd
 trigger1 = animelem = 1
 trigger2 = animelem = 2
-x = 4
+x = -4
 
 [State 0, PosAdd]
 type = PosAdd
 trigger1 = animelem = 3
-x = 15
+x = 3
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 4
+x = 12
 
 [State -2, PushBack]
 type = mapset
@@ -235,14 +240,14 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.82
+value = Map(DamageScaling)*.85
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.075
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -260,7 +265,7 @@ type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 animtype  = Medium
-damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
+damage = ceil(cond(55*Map(DamageScaling) < 5, 5, 55*Map(DamageScaling)))
 guardflag = MA
 priority = 3
 pausetime = 12,12
@@ -270,10 +275,10 @@ hitsound   = 5,2
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
-ground.hittime  = 22
-ground.velocity = -4-(Map(PushBack))
+ground.hittime  = 20
+ground.velocity = -3-(Map(PushBack))
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 14, 14, 25-Map(HitstunScaling)))
-air.velocity = -1.75,-2.25
+air.velocity = -2,-1.25
 guard.ctrltime = 13
 guard.hittime = 13
 air.fall = 1
@@ -829,7 +834,7 @@ hitsound   = 5,10
 guardsound = 6,0
 ground.slidetime = 17
 ground.hittime  = 17
-ground.velocity = -4,-7
+ground.velocity = -3,-8
 air.velocity = -3,-6
 air.hittime = ceil(cond(42-Map(HitstunScaling) < 10, 10, 42-Map(HitstunScaling)))
 guard.velocity = -7
@@ -996,7 +1001,7 @@ ground.slidetime = 5
 ground.hittime  = 15
 ground.velocity = -4-(Map(PushBack))
 air.velocity = -1,-1
-air.hittime = ceil(cond(15-Map(HitstunScaling) < 5, 5, 15-Map(HitstunScaling)))
+air.hittime = ceil(cond(15-Map(HitstunScaling) < 7, 7, 15-Map(HitstunScaling)))
 air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 10
@@ -1096,7 +1101,7 @@ ground.slidetime = 12
 ground.hittime  = 16
 ground.velocity = -4
 air.velocity = -2,-2
-air.hittime = ceil(cond(21-Map(HitstunScaling) < 12, 12, 21-Map(HitstunScaling)))
+air.hittime = ceil(cond(21-Map(HitstunScaling) < 14, 14, 21-Map(HitstunScaling)))
 air.fall = 1
 fall.yvelocity = 0
 air.cornerpush.veloff = -4

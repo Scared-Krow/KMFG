@@ -222,12 +222,23 @@ y = 0
 type = PosAdd
 trigger1 = animelem = 1
 trigger2 = animelem = 2
-x = 4
+trigger3 = animelem = 3
+x = 3
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = animelem = 4
+x = 1
 
 [State 0, PosAdd]
 type = PosAdd
-trigger1 = animelem = 3
-x = 15
+trigger1 = animelem = 4
+x = 20
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 5
+x = 3
 
 [State -2, PushBack]
 type = mapset
@@ -352,18 +363,23 @@ y = 0
 type = PosAdd
 trigger1 = animelem = 1
 trigger2 = animelem = 2
+trigger3 = animelem = 3
+x = 3
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = animelem = 4
 x = 2
 
 [State 0, PosAdd]
 type = PosAdd
 trigger1 = animelem = 4
-x = 15
+x = 20
 
 [State 0, PosAdd]
 type = PosAdd
 trigger1 = animelem = 5
-trigger2 = animelem = 6
-x = 2
+x = 3
 
 [State -2, PushBack]
 type = mapset
@@ -428,131 +444,6 @@ trigger1 = animelem = 5
 statetype = S       
 movetype = I        
 physics = S  
-
-[State 210, 5]
-type = ChangeState
-triggerall = command = "28"
-trigger1 = movecontact
-value = 60
-ctrl = 0
-[State 210, 5]
-type = ChangeState
-triggerall = command = "holdup"
-trigger1 = movecontact
-value = 40
-ctrl = 0
-
-[State 210, 5]
-type = ChangeState
-trigger1 = command = "b"
-trigger1 = movecontact
-value = 241
-ctrl = 0
-
-[State 210, 4]
-type = SprPriority
-trigger1 = AnimElem = 5
-value = 2
-
-[State 210, 5]
-type = ChangeState
-trigger1 = AnimTime = 0
-value = 0
-ctrl = 1
-;---------------------------------------------------------------------------
-; 5D>5D
-[Statedef 241]
-type    = S
-movetype= A
-physics = S
-ctrl = 0
-anim = 241
-velset = vel x * 1.35
-sprpriority = -1
-facep2 = 1
-
-[State 0, PosAdd]
-type = PosAdd
-trigger1 = animelem = 1
-trigger2 = animelem = 2
-x = 5
-
-[State -2, PushBack]
-type = mapset
-trigger1 = movehit && combocount>3
-value = Map(PushBack)+1
-map = "PushBack"
-ignorehitpause = 1
-persistent = 0
-[State -2, Starter Damage Scaling]
-type = mapset
-trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.9
-map = "DamageScaling"
-ignorehitpause = 1
-persistent = 0
-[State -2, Damage Scaling]
-type = mapset
-trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.15
-map = "DamageScaling"
-ignorehitpause = 1
-persistent = 0
-[State -2, Hitstun Scaling]
-type = mapset
-triggerall = enemy,statetype = A && enemy,movetype = H
-trigger1 = movehit
-value = Map(HitstunScaling)+1.5
-map = "HitstunScaling"
-ignorehitpause = 1
-persistent = 0
-
-[State 210, 2]
-type = HitDef
-trigger1 = !MoveContact && !MoveReversed
-attr = S, NA
-animtype  = Medium
-damage = ceil(cond(55*Map(DamageScaling) < 5, 5, 55*Map(DamageScaling)))
-guardflag = MA
-pausetime = 10,10
-priority = 4, Hit 
-sparkno = 1
-sparkxy = -12,-50
-hitsound   = 5,2
-guardsound = 6,0
-ground.type = High
-ground.slidetime = 12
-ground.hittime  = 22
-ground.velocity = -5.5-(Map(PushBack))
-air.hittime = ceil(cond(30-Map(HitstunScaling) < 18, 18, 30-Map(HitstunScaling)))
-air.velocity = -2.5,-2.75
-air.fall = 1
-guard.ctrltime = 11
-guard.hittime = 11
-fall.yvelocity = 0
-p2facing = 1
-ground.cornerpush.veloff = -12-(Map(PushBack))
-air.cornerpush.veloff = -5
-
-[State 0, StateTypeSet]
-type = StateTypeSet
-trigger1 = animelem = 5
-statetype = S       
-movetype = I        
-physics = S  
-
-[State 210, 5]
-type = ChangeState
-triggerall = command = "28"
-trigger1 = movecontact
-value = 60
-ctrl = 0
-[State 210, 5]
-type = ChangeState
-triggerall = command = "holdup"
-trigger1 = movecontact
-value = 40
-ctrl = 0
 
 [State 210, 4]
 type = SprPriority
@@ -1335,10 +1226,11 @@ guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
 ground.hittime  = 16
-ground.velocity = -4-(Map(PushBack))
-air.velocity = -2,-2
+ground.velocity = -2,-6
+air.velocity = -2,-5
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 15, 15, 25-Map(HitstunScaling)))
-air.fall = 1
+fall = 1
+forcenofall = 1
 fall.yvelocity = 0
 p2facing = 1
 ground.cornerpush.veloff = -10-(Map(PushBack))
@@ -1346,7 +1238,7 @@ air.cornerpush.veloff = -5
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = animelem = 4
+trigger1 = animelem = 5
 statetype = A     
 movetype = I        
 physics = A 
@@ -1354,7 +1246,7 @@ physics = A
 [State 1000, 7]
 type = ChangeState
 triggerall = Map(Flight)>0
-trigger1 = time = 13
+trigger1 = time = 23
 value = 1301
 ctrl = 1
 

@@ -672,6 +672,8 @@ Clsn2Default: 1
 
 ; Bullet
 [Begin Action 1001]
+Clsn2: 1
+  Clsn2[0] = -9, -12, 11, 10
 Clsn1: 1
   Clsn1[0] = -8, -11, 10, 9
 1006,0, 0,0, 10

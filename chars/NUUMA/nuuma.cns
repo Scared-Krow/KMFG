@@ -539,13 +539,6 @@ kill = 0
 absolute = 1
 redirectID = enemy,ID
 
-[State -2, jD]
-type = mapset
-trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
-value = 0
-map = "jD"
-ignorehitpause = 1
-
 [Statedef -3]
 
 ;---------------------------------------------------------------------------
@@ -634,37 +627,18 @@ map = "Tumble"
 ;================================================================
 ;Repeat Damage Scaling
 ;================================================================
-[State -2, 5C Reset]
+[State -2, jD]
 type = mapset
-trigger1 = enemy,movetype != H || enemy,statetype = A
+trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
 value = 0
-map = "stC"
-[State -2, 2C Reset]
+map = "jD"
+ignorehitpause = 1
+[State -2, jD]
 type = mapset
-trigger1 = enemy,movetype != H
+trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
 value = 0
-map = "Launcher"
-[State -2, 2D>D Reset]
-type = mapset
-trigger1 = enemy,movetype != H
-value = 0
-map = "crD"
-[State -2, Gun Reset]
-type = mapset
-trigger1 = enemy,movetype != H
-value = 0
-map = "qcfD"
-[State -2, Gun Reset]
-type = mapset
-trigger1 = enemy,movetype != H
-value = 0
-map = "qcbD"
-[State -2, Gun Reset]
-type = mapset
-trigger1 = enemy,movetype != H
-value = 0
-map = "stanceA"
-
+map = "cleaver"
+ignorehitpause = 1
 
 ;This controller plays a sound everytime KFM lands from a jump, or
 ;from his back-dash.

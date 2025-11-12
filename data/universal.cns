@@ -435,247 +435,107 @@ value = 11
 ctrl = 1
 
 
-;-----------------------------------------------------------------------------
-; Ground Bounce (shaking)
+;---------------------------------------------------------------------------
+; Ground Bounce (shake)
 [Statedef 5430]
 type    = A
 movetype= H
 physics = N
 velset = 0,0
-ctrl = 0
-[State 5020, 1] ;Anim for HIT_LIGHT to HIT_HARD
-type = ChangeAnim
-trigger1 = Time = 0
-trigger1 = GetHitVar(animtype) != [3,5]
-value = ifelse((GetHitVar(airtype) = 1),5000,5010) + GetHitVar(animtype)
+anim = 5090
 
-[State 5020, 2] ;Anim for HIT_BACK
-type = ChangeAnim
-trigger1 = Time = 0
-trigger1 = GetHitVar(animtype) = [3,5]
-value = 5030
-
-[State 5020, 3] ;Anim for HIT_UP/HIT_DIAGUP (only if it exists)
-type = ChangeAnim
-trigger1 = Time = 0
-trigger1 = (GetHitVar(animtype) = [4,5]) && (SelfAnimExist(5047 + GetHitVar(animtype)))
-value = 5047 + GetHitVar(animtype) ;5051 - 4 + type
-
-[State 5020, 4] ;Freeze anim
+[State 5000, 4] ;Freeze anim
 type = ChangeAnim
 trigger1 = Time > 0
 value = anim
 
-[State 5020, 5]
+[State 5000, 7]
 type = ChangeState
-trigger1 = HitShakeOver
+trigger1 = GetHitVar(yvel) != 0 && HitShakeOver|| GetHitVar(fall) && HitShakeOver
+trigger2 = Pos Y != 0 && HitShakeOver
 value = 5431
 
-;Ground Bounce (knocked back)
+;---------------------------------------------------------------------------
+; Ground Bounce Fly
 [Statedef 5431]
 type    = A
 movetype= H
 physics = N
-ctrl = 0
+anim = 5090
 
-[State 5030, 1]
+[State 5000, 4] ;Freeze anim
 type = ChangeAnim
-trigger1 = Anim != [5000, 5199]
-trigger1 = SelfAnimExist(5030)
-value = 5030
+trigger1 = Time > 0
+value = anim
 
 [State 5030, 2]
 type = VelAdd
-trigger1 = 1
+trigger1 = time > 0
 y = GetHitVar(yaccel)
 
 [State 5030, 3]
-type = HitVelSet
+type = velset
+triggerall = alive
 trigger1 = Time = 0
-x = 1
-y = 1
+x = gethitvar(xvel) * facing
+y = gethitvar(yvel)
 
-[State 5030, 5]
+[State 5000, 7]
 type = ChangeState
-triggerall = HitFall
-trigger1 = HitOver
-trigger2 = Vel Y > 0    ;Hit ground
-trigger2 = Pos Y >= Const(movement.air.gethit.groundlevel)
-value = 5432 ;HITA_FALL
+trigger1 = pos y >= 10
+value = 5432
 
-;BOUNCE CUSTOM STATE (falling)
+;---------------------------------------------------------------------------
+; Ground Bounce Splat
 [Statedef 5432]
 type    = A
 movetype= H
 physics = N
-ctrl = 0
+anim = 5170
+velset = 0,0
 
-[State 5050, 1] ;Change anim when done with transition
-type = ChangeAnim
-trigger1 = AnimTime = 0
-trigger1 = Anim = 5035
-trigger2 = Time = 0     ;If no transition anim
-trigger2 = Anim != 5035
-trigger2 = (Anim != [5051, 5059]) && (Anim != [5061, 5069])
-trigger2 = Anim != 5090 ;Not if hit off ground anim
-value = 5050
-
-[State 5050, 2] ;Coming down anim
-type = ChangeAnim
-trigger1 = anim = [5050,5059]
-trigger1 = Vel Y >= ifelse(anim = 5050, Const720p(4), Const720p(-8))
-trigger1 = SelfAnimExist(anim+10)
-value = anim+10
-persistent = 0
-
-[State 5050, 3] ;Gravity
-type = VelAdd
+[State 5081, 4]
+type = PosSet
 trigger1 = 1
-y = GetHitVar(yaccel)
+y = 0
 
-[State 5050, 6]
-type = changestate
-trigger1 = Vel Y > 0
-trigger1 = Pos Y >= ifelse((anim = [5051,5059]) || (anim = [5061,5069]), 0, Const(movement.air.gethit.groundlevel))
-value = 5433;Downed get-hit (hit ground from fall)
+[State 5081, 4]
+type = ChangeState
+trigger1 = time = 2
+value = 5433 
 
-;--------------------------------------------------------------------------------------
-; Ground Bounce (hit ground from fall)
+;---------------------------------------------------------------------------
+; Ground Bounce Fly
 [Statedef 5433]
 type    = A
 movetype= H
 physics = N
+anim = 5160
 
-[State 5100, 2004.04.14 behavior]
-type = null;VelSet
-trigger1 = Time = 0
-trigger1 = GetHitVar(fall.yvel) = 0
-trigger1 = vel x < -1
-x = -1
-
-[State 5100, EnvShake]
-type = FallEnvShake
-trigger1 = Time = 0
-
-[State 5100, Var] ;Save fall velocity
-type = VarSet
-trigger1 = Time = 0
-sysvar(1) = floor(vel y)
-
-[State 5100, 2] ;Hit ground anim (normal)
-type = ChangeAnim
-triggerall = time = 0
-trigger1 = (anim != [5051,5059]) && (anim != [5061,5069])
-trigger2 = !SelfAnimExist(5100 + (anim % 10))
-value = 5100
-
-[State 5100, 3] ;Hit ground anim (for hit up)
-type = ChangeAnim
-trigger1 = time = 0
-trigger1 = (anim = [5051,5059]) || (anim = [5061,5069])
-trigger1 = SelfAnimExist(5100 + (anim % 10))
-value = 5100 + (anim % 10)
-
-[State 5100, 4]
-type = PosSet
-trigger1 = Time = 0
-y = 0
-
-[State 5100, 5]
-type = VelSet
-trigger1 = Time = 0
-y = 0
-
-[State 5100, 6] ;Reduce speed
-type = VelMul
-trigger1 = Time = 0
-x = 0.75
-
-[State 5100, 7]
-type = ChangeState
-trigger1 = Time = 0
-trigger1 = GetHitVar(fall.yvel) = 0
-value = 5100 ;Downed get-hit (lying down)
-
-[State 5100, 8]
-type = Explod
-trigger1 = Time = 1
-anim = F(60 + (sysvar(1) > Const720p(20)) + (sysvar(1) > Const720p(56)))
-pos = 0, 0
-sprpriority = ifelse (sysvar(1) <= Const720p(56), -10, 10)
-
-[State 5100, 9]
-type = HitFallDamage
-trigger1 = Time = 3
-
-[State 5100, 10]
-type = PlaySnd
-trigger1 = Time = 1
-value = F7, (sysvar(1) > Const720p(20)) + (sysvar(1) > Const720p(56))
-
-[State 5100, 11]
-type = PosFreeze
-trigger1 = 1
-
-[State 5100, 12]
-type = ChangeState
-trigger1 = AnimTime = 0
-value = 5434 ;Downed get-hit (bounce off ground)
-
-[State 5100, 13]
-type = ForceFeedback
-trigger1 = Time = 0
-waveform = sinesquare
-ampl = 128,-3,-.2,.005
-time = 20
-
-;---------------------------------------------------------------------------
-; Ground Bounce (bounce off ground)
-[Statedef 5434]
-type    = A
-movetype= H
-physics = N
-
-[State 5101, 1] ;Coming hit ground anim (normal)
-type = ChangeAnim
-triggerall = time = 0
-trigger1 = anim != [5101,5109]
-trigger2 = !SelfAnimExist(5160 + (anim % 10))
-value = 5160
-
-[State 5101, 2] ;Coming hit ground anim (for hit up)
-type = ChangeAnim
-triggerall = time = 0
-trigger1 = anim = [5101,5109]
-trigger1 = SelfAnimExist(5160 + (anim % 10))
-value = 5160 + (anim % 10)
-
-[State 5101, 3]
-type = HitFallVel
-trigger1 = Time = 0
-
-[State 5101, 4]
-type = PosSet
-trigger1 = Time = 0
-y = Const(movement.down.bounce.offset.y)
-
-[State 5101, 5]
-type = PosAdd
-trigger1 = Time = 0
-x = Const(movement.down.bounce.offset.x)
-
-[State 5101, 6] ;Acceleration
+[State 5030, 2]
 type = VelAdd
+trigger1 = time > 0
+y = .2
+
+[State 5030, 3]
+type = velset
+triggerall = alive
+trigger1 = Time = 0
+x = gethitvar(xvel)*facing
+y = -1
+
+[State 5050, 5]; Recover in mid air
+type = SelfState
+triggerall = alive
+triggerall = gethitvar(hittime) = -1
 trigger1 = 1
-y = Const(movement.down.bounce.yaccel)
+value = 5210 
 
-
-[State 5101, 7] ;Hit ground
-trigger1 = Vel Y > 0
-trigger1 = Pos Y >= Const(movement.down.bounce.groundlevel)
-type = selfState
+[State 5081, 4]
+type = SelfState
+triggerall = time > 5
+trigger1 = pos y >= 10 && vel y > 0
 value = 5100
-
 ;---------------------------------------------------------------------------
 ; Air to Ground Restand State
 [Statedef 5440]
@@ -814,8 +674,8 @@ value = fvar(9)
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(Infection) %.0f, Map(InfectionLevel) %.0f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(Infection),Map(InfectionLevel)
+text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(Infection) %.0f, Map(Flight) %.0f, Map(FlightAvailable) %.0f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(Infection),Map(Flight),Map(FlightAvailable)
 
 ;---------REDUCE MECHANIC
 [State -2, Reduce]

@@ -412,6 +412,7 @@ ctrl = 1
 ;---------------------------------------------------------------------------
 ; States that are always executed (use statedef -2)
 ;---------------------------------------------------------------------------
+[Statedef -2]
 
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
@@ -422,7 +423,7 @@ params = Map(Flight)
 [State Test]
 type = Height
 trigger1 = Map(Flight)>0
-value = 0, 100
+value = 0, 15
 ;---------------------------------------------------------------------------
 ; States that are executed when in self's state file (use statedef -3)
 ;---------------------------------------------------------------------------
@@ -464,7 +465,6 @@ value = -1
 map = "Flight"
 ignorehitpause = 1
 persistent = 0
-
 ;---------------------------------------------------------------------------
 ; UNIVERSAL
 ;---------------------------------------------------------------------------
