@@ -906,26 +906,13 @@ movetype= A
 ctrl = 0
 anim = 600
 sprpriority = 2
+velset = vel x, vel y
 facep2 = cond(Map(AirDashing)>0,1,0)
-
-[State 0, VelSet]
-type = VelMul
-triggerall = time = 0
-trigger1 = Map(Flight)>0
-x = 0
-y = 0
-
-[State 0, VelSet]
-type = VelSet
-trigger1 = Map(Flight)=0
-x = vel x
-y = vel y
 
 [State 0, VelMul]
 type = VelMul
-trigger1 = time > 5
+trigger1 = time > 6
 x = .975
-
 
 [State -2, PushBack]
 type = mapset
@@ -956,6 +943,12 @@ value = Map(HitstunScaling)+1
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = Map(Flight)>0
+y = 0 
+
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1026,26 +1019,18 @@ movetype= A
 ctrl = 0
 anim = 610
 sprpriority = 2
+velset = vel x, vel y
 facep2 = cond(Map(AirDashing)>0,1,0)
-
-[State 0, VelSet]
-type = VelMul
-trigger1 = Map(Flight)>0
-x = 0
-y = 0
-
-[State 0, VelSet]
-type = VelSet
-triggerall = time = 0
-trigger1 = Map(Flight)=0
-x = vel x
-y = vel y
 
 [State 0, VelMul]
 type = VelMul
-trigger1 = time > 9
+trigger1 = time > 10
 x = .975
 
+[State 0, VelMul]
+type = VelMul
+trigger1 = Map(Flight)>0
+y = 0 
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1139,25 +1124,18 @@ movetype= A
 ctrl = 0
 anim = 630
 sprpriority = 2
+velset = vel x, vel y
 facep2 = cond(Map(AirDashing)>0,1,0)
-
-[State 0, VelSet]
-type = VelMul
-trigger1 = Map(Flight)>0
-x = 0
-y = 0
-
-[State 0, VelSet]
-type = VelSet
-triggerall = time = 0
-trigger1 = Map(Flight)=0
-x = vel x
-y = vel y
 
 [State 0, VelMul]
 type = VelMul
-trigger1 = time > 9
+trigger1 = time > 11
 x = .975
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = Map(Flight)>0
+y = 0 
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1251,27 +1229,18 @@ movetype= A
 ctrl = 0
 anim = 640
 sprpriority = 2
+velset = vel x, vel y
 facep2 = cond(Map(AirDashing)>0,1,0)
-
-[State 0, VelSet]
-type = VelMul
-trigger1 = Map(Flight)>0
-x = 0
-y = 0
-
-[State 0, VelSet]
-type = VelSet
-triggerall = time = 0
-trigger1 = Map(Flight)=0
-x = vel x
-y = vel y
 
 [State 0, VelMul]
 type = VelMul
-trigger1 = time > 12
+trigger1 = time > 15
 x = .975
 
-
+[State 0, VelMul]
+type = VelMul
+trigger1 = Map(Flight)>0
+y = 0 
 
 [State 0, StateTypeSet]
 type = StateTypeSet
