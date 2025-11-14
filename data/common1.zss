@@ -27,6 +27,7 @@ if cond(anim = 5, animTime = 0, anim != 0) {
 }
 if time = 0 {
 	velSet{y: 0}
+	posSet{y: 0}
 }
 if time = 4 || abs(vel x) < const(movement.stand.friction.threshold) {
 	velSet{x: 0}
@@ -498,7 +499,7 @@ if hitOver {
 
 #-------------------------------------------------------------------------------
 # Stand get-hit (shaking)
-[StateDef 5000; type: S; movetype: H; physics: N; velset: 0, 0;]
+[StateDef 5000; type: S; movetype: H; physics: N; velset: 0, 0; sprPriority: 0;]
 
 call GetHitShaking(ifElse(getHitVar(groundType) = 1, 5000, 5010));
 if (time = 0 && (getHitVar(yVel) || getHitVar(fall))) || pos y != 0 {
@@ -517,12 +518,12 @@ if hitShakeOver {
 
 #-------------------------------------------------------------------------------
 # Stand get-hit (knocked back)
-[StateDef 5001; type: S; movetype: H; physics: S;]
+[StateDef 5001; type: S; movetype: H; physics: S; sprPriority: 0;]
 
 call GetHitKnockedBack(5005 + (getHitVar(groundType) = 2) * 10, 0);
 #-------------------------------------------------------------------------------
 # Crouch get-hit (shaking)
-[StateDef 5010; type: C; movetype: H; physics: N; velset: 0, 0;]
+[StateDef 5010; type: C; movetype: H; physics: N; velset: 0, 0; sprPriority: 0;]
 
 call GetHitShaking(5020);
 if (time = 0 && (getHitVar(yVel) || getHitVar(fall))) || pos y != 0 {
@@ -541,13 +542,13 @@ if anim = 5020 {
 
 #-------------------------------------------------------------------------------
 # Crouch get-hit (knocked back)
-[StateDef 5011; type: C; movetype: H; physics: C;]
+[StateDef 5011; type: C; movetype: H; physics: C; sprPriority: 0;]
 
 call GetHitKnockedBack(5025, 11);
 
 #-------------------------------------------------------------------------------
 # Air get-hit (shaking)
-[StateDef 5020; type: A; movetype: H; physics: N; velset: 0, 0;]
+[StateDef 5020; type: A; movetype: H; physics: N; velset: 0, 0; sprPriority: 0;]
 
 changeAnim{value: 5030}
 
@@ -559,7 +560,7 @@ if hitShakeOver {
 
 #-------------------------------------------------------------------------------
 # Air get-hit (knocked away)
-[StateDef 5030; type: A; movetype: H; physics: N; ctrl: 0;]
+[StateDef 5030; type: A; movetype: H; physics: N; ctrl: 0; sprPriority: 0;]
 
 if anim != [5000, 5199] && selfAnimExist(5030) {
 	changeAnim{value: 5030}
@@ -582,7 +583,7 @@ if animTime = 0 {
 
 #-------------------------------------------------------------------------------
 # Air get-hit (transition)
-[StateDef 5035; type: A; movetype: H; physics: N;]
+[StateDef 5035; type: A; movetype: H; physics: N; sprPriority: 0;]
 
 if time = 0 && selfAnimExist(5035) && anim != [5051, 5059] && anim != 5090 {
 	changeAnim{value: 5035}
@@ -602,7 +603,7 @@ if hitOver || animTime = 0 ||
 
 #-------------------------------------------------------------------------------
 # Air get-hit (will always airtech)
-[StateDef 5040; type: A; movetype: H; physics: N;]
+[StateDef 5040; type: A; movetype: H; physics: N; sprPriority: 0;]
 
 map(Punish) := 0;
 
@@ -633,7 +634,7 @@ if vel y > 0 && pos y >= -10 {
 
 #-------------------------------------------------------------------------------
 # Air get-hit (falling)
-[StateDef 5050; type: A; movetype: H; physics: N;]
+[StateDef 5050; type: A; movetype: H; physics: N; sprPriority: 0;]
 
 if animTime = 0 && anim = 5035 || time = 0 && anim != 5035 &&
 	anim != [5051, 5059] && anim != [5061, 5069] && anim != 5090 {
@@ -655,7 +656,7 @@ if vel y > 0 && pos y >= cond(anim = [5051, 5059] || anim = [5061, 5069], 0, con
 
 #-------------------------------------------------------------------------------
 # Tripped get-hit (shaking)
-[StateDef 5070; type: A; movetype: H; physics: N; velset: 0, 0;]
+[StateDef 5070; type: A; movetype: H; physics: N; velset: 0, 0; sprPriority: 0;]
 
 changeAnim{value: 5070}
 if hitShakeOver {
@@ -667,7 +668,7 @@ if time = 0 {
 
 #-------------------------------------------------------------------------------
 # Tripped get-hit (knocked away)
-[StateDef 5071; type: A; movetype: H; physics: N;]
+[StateDef 5071; type: A; movetype: H; physics: N; sprPriority: 0;]
 
 if time = 0 {
 	hitVelSet{x: 1; y: 1}
@@ -685,7 +686,7 @@ let ret = cond($cond && selfAnimExist($base + anim % 10),
 
 #-------------------------------------------------------------------------------
 # Downed get-hit (shaking)
-[StateDef 5080; type: L; movetype: H; physics: N; velset: 0, 0;]
+[StateDef 5080; type: L; movetype: H; physics: N; velset: 0, 0; sprPriority: 0;]
 
 if time = 0 {
 	sysVar(2) := ifElse(getHitVar(yVel) = 0, 5080, 5090);
@@ -708,7 +709,7 @@ if hitShakeOver {
 
 #-------------------------------------------------------------------------------
 # Downed get-hit (knocked back)
-[StateDef 5081; type: L; movetype: H; physics: C;]
+[StateDef 5081; type: L; movetype: H; physics: C; sprPriority: 0;]
 
 if time = 0 {
 	hitVelSet{x: 1}
@@ -740,7 +741,7 @@ playSnd{value: F7, ($vely > const240p(5)) + ($vely > const240p(14))}
 
 #-------------------------------------------------------------------------------
 # Downed get-hit (hit ground from fall)
-[StateDef 5100; type: L; movetype: H; physics: N;]
+[StateDef 5100; type: L; movetype: H; physics: N; sprPriority: 0;]
 
 
 if time = 0 {mapSet{map: "GroundBounce"; value: 1; redirectID:enemy,ID}}
@@ -774,7 +775,7 @@ if time = 0 {
 
 #-------------------------------------------------------------------------------
 # Downed get-hit (bounce off ground)
-[StateDef 5101; type: A; movetype: H; physics: N;]
+[StateDef 5101; type: A; movetype: H; physics: N; sprPriority: 0;]
 
 #hitBy{value: SCA; time: 100}
 
@@ -795,7 +796,7 @@ if vel y > 0 && pos y >= const(movement.down.bounce.groundlevel) {
 
 #-------------------------------------------------------------------------------
 # Downed get-hit (lying down)
-[StateDef 5110; type: L; movetype: H; physics: N;]
+[StateDef 5110; type: L; movetype: H; physics: N; sprPriority: 0;]
 
 if time = 0 {notHitBy{value: SCA; time: 25}}
 persistent(0) if selfAnimExist(5110 + anim % 10) && anim = [5081, 5089] {
@@ -846,7 +847,7 @@ if time = 0 {
 
 #-------------------------------------------------------------------------------
 # Downed get-hit (getting up)
-[StateDef 5120; type: S; movetype: I; physics: N;]
+[StateDef 5120; type: S; movetype: I; physics: N; sprPriority: 0;]
 
 if time = 0 {
 	let a = call SelfAnimExistAddMod10(anim = [5111, 5119], 5120);
@@ -862,7 +863,7 @@ if animTime = 0 {
 
 #-------------------------------------------------------------------------------
 # Downed get-hit (lying defeated)
-[StateDef 5150; type: L; movetype: H; physics: N; sprpriority: -3; ctrl: 0;]
+[StateDef 5150; type: L; movetype: H; physics: N; sprpriority: -3; ctrl: 0; sprPriority: 0;]
 
 if time = 0 {
 	let a = call SelfAnimExistAddMod10(anim = [5111, 5119] ||
@@ -886,7 +887,7 @@ notHitBy{value: SCA; time: 1}
 
 #-------------------------------------------------------------------------------
 # Air get-hit (fall recovery on ground; still falling)
-[StateDef 5200; type: A; movetype: H; physics: N;]
+[StateDef 5200; type: A; movetype: H; physics: N; sprPriority: 0;]
 
 if anim = 5035 && animTime = 0 {
 	changeAnim{value: 5050}
@@ -900,7 +901,7 @@ if vel y > 0 && pos y >= const(movement.air.gethit.groundrecover.groundlevel) {
 
 #-------------------------------------------------------------------------------
 # Air get-hit (fall recovery on ground)
-[StateDef 5201; type: A; movetype: H; physics: A; anim: 5200;]
+[StateDef 5201; type: A; movetype: H; physics: A; anim: 5200; sprPriority: 0;]
 
 	if p2Dist x < const240p(-5) {
 		turn{}
@@ -925,7 +926,7 @@ notHitBy{value: SCA; time: 1}
 
 #-------------------------------------------------------------------------------
 # Air get-hit (fall recovery in air)
-[StateDef 5210; type: A; movetype: I; physics: N; anim: 5210; ctrl: 0;]
+[StateDef 5210; type: A; movetype: I; physics: N; anim: 5210; ctrl: 0; sprPriority: 0;]
 
 map(Punish) := 0;
 

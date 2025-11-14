@@ -17,9 +17,9 @@ author = "Elecbyte"         ;Stage author name
 startx = 0
 starty = 0
 
-boundleft = -2500
-boundright = 2500
-boundhigh = -4000
+boundleft = -925
+boundright = 925
+boundhigh = -500
 boundlow = 0
 
  ;This is how much the camera will move vertically towards the
@@ -34,11 +34,11 @@ verticalfollow = .7
  ;before the camera starts to move up to follow him. For extremely
  ;tall stages, a floor tension of about 20-30 coupled with a
  ;vertical-follow of .8 allows the camera to follow the action.
-floortension = 200
+floortension = 40
 
  ;Horizontal distance player is from edge before camera starts to move
  ;left or right. Typically 50 or 60.
-tension = 200
+tension = 250
 
 overdrawhigh = 120
 overdrawlow = 120
@@ -49,12 +49,12 @@ cutlow = 0
 [PlayerInfo]
 ;--- Player 1 ---
  ;Player 1 starting coordinates.
-p1startx = -320         ;Starting x coordinates
+p1startx = -90         ;Starting x coordinates
 p1starty = 0            ;Starting y coordinates
 p1facing = 1            ;Direction player faces: 1=right, -1=left
 
 ;--- Player 2 ---
-p2startx = 320
+p2startx = 90
 p2starty = 0
 p2facing = -1
 
@@ -69,15 +69,15 @@ p4starty = 0
 p4facing = -1
 
 ;--- Common ---
-leftbound  = -5000
-rightbound =  5000
+leftbound  = -2000
+rightbound =  2000
 
 ;--------------------------------------------------------
 [Bound]
  ;Distance from left/right edge of screen that player can move to
  ;Typically 15
-screenleft = 75    ;Dist from left of screen that player can move to
-screenright = 75   ;Right edge
+screenleft = 20    ;Dist from left of screen that player can move to
+screenright = 20   ;Right edge
 
 ;--------------------------------------------------------
 [StageInfo]
@@ -85,7 +85,7 @@ screenright = 75   ;Right edge
  ;top of the screen.
  ;Adjust this value to move the ground level up/down in the screen.
  ;***
-zoffset = 810
+zoffset = 175
 
  ;Leave this at 1. It makes the players face each other
 autoturn = 1
@@ -95,11 +95,11 @@ autoturn = 1
 resetBG = 1
 
  ;Width and height of the local coordinate space of the stage.
-localcoord = 1920, 1080
+localcoord = 400, 225
 
  ;Horizontal and vertical scaling factor for drawing.
 xscale = 1
-yscale = 1
+yscale = 1.1
 
   ;Specifies the display scale of the portrait for screenpack rendering
   ;This value overwrites localcoord-compliant display scale
@@ -192,7 +192,7 @@ spr = stage0-720.sff
  ;in your background.
  ;Remember to turn this off when you are done debugging the background,
  ;because it slows down performance.
-debugbg = 0
+debugbg = 1
 
 ;-------------------------------------
 ; IKEMEN GO ONLY, preview animation used in the Select screen
@@ -257,12 +257,12 @@ trans = none
  ;If you turn masking off, the background will take less CPU power to draw,
  ;so remember to turn it off on sprites that don't use it.
  ;If this line is omitted, it's assumed that there will be no masking.
-mask  = 0
+mask  = 1
 
  ;The format for tiling is x,y. For each of them, the value is:
  ;0 to use no tiling, 1 to tile, n where (n>1) to tile n times.
  ;If this line is omitted, it's assumed that there will be no tiling.
-tile  = 1, 0
+tile  = 0, 0
 
  ;This is the x and y space between each tile, for tiled backgrounds
  ;If omitted, default value is 0,0
@@ -284,15 +284,16 @@ tilespacing = 0,0
  ;Uncomment the line below to use it:
 ;windowdelta = 0,0
 
-
 ;----------
 [BG 1]
 type  = parallax
 spriteno = 1, 0
-start = 0, 612
+start = 0, 125
 delta = .78, .75
-xscale = 1, 3
+xscale = 10, 10
 yscalestart = 100
-yscaledelta = .3
-mask = 0
-tile = 1, 1
+yscaledelta = .5
+mask = 1
+tile = 0, 0
+
+

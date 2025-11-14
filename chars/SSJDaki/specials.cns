@@ -307,7 +307,7 @@ type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NP
 animtype  = up
-damage = ceil(cond(30*root,Map(DamageScaling) < 5, 5, 30*root,Map(DamageScaling)))
+damage = ceil(cond(50*root,Map(DamageScaling) < 5, 5, 50*root,Map(DamageScaling)))
 guardflag = MA
 priority = 3, Hit 
 pausetime = 8,8
@@ -437,7 +437,7 @@ trigger1 = command = "holddown"
 y = 3
 [State 0, VelSet]
 type = VelSet
-triggerall = pos y > -165
+triggerall = pos y > -140
 trigger1 = command = "holdup"
 y = -3
 
@@ -445,6 +445,14 @@ y = -3
 type = PosSet
 trigger1 = pos y >= 0
 y = 0
+
+[State -2, 8WayBuff]
+type = mapset
+trigger1 = time = 0
+value = 0
+map = "EightWay"
+ignorehitpause = 1
+persistent = 0
 
 [State 1000, 7]
 type = ChangeState
@@ -476,16 +484,19 @@ type = AssertSpecial
 trigger1 = 1
 flag = noairguard
 
+
+
 [State -2, 8WayBuff]
 type = mapset
+triggerall = time = 0
 trigger1 = command = "holdfwd"  && command != "holdup" && command != "holddown"
-trigger2 = command != "holdfwd" && command != "holdback"  && command != "holdup" && command != "holddown"
 value = 1
 map = "EightWay"
 ignorehitpause = 1
 persistent = 0
 [State -2, 8WayBuff]
 type = mapset
+triggerall = time = 0
 trigger1 = command = "holdback" && command != "holdup" && command != "holddown"
 value = 2
 map = "EightWay"
@@ -493,6 +504,7 @@ ignorehitpause = 1
 persistent = 0
 [State -2, 8WayBuff]
 type = mapset
+triggerall = time = 0
 trigger1 = command = "holdup" && command != "holdfwd" && command != "holdback"
 value = 3
 map = "EightWay"
@@ -500,6 +512,7 @@ ignorehitpause = 1
 persistent = 0
 [State -2, 8WayBuff]
 type = mapset
+triggerall = time = 0
 trigger1 = command = "holddown"&& command != "holdfwd" && command != "holdback"
 value = 4
 map = "EightWay"
@@ -507,6 +520,7 @@ ignorehitpause = 1
 persistent = 0
 [State -2, 8WayBuff]
 type = mapset
+triggerall = time = 0
 trigger1 = command = "holdfwd" && command = "holdup"
 value = 5
 map = "EightWay"
@@ -514,6 +528,7 @@ ignorehitpause = 1
 persistent = 0
 [State -2, 8WayBuff]
 type = mapset
+triggerall = time = 0
 trigger1 = command = "holdback" && command = "holdup"
 value = 6
 map = "EightWay"
@@ -521,6 +536,7 @@ ignorehitpause = 1
 persistent = 0
 [State -2, 8WayBuff]
 type = mapset
+triggerall = time = 0
 trigger1 = command = "holdfwd" && command = "holddown"
 value = 7
 map = "EightWay"
@@ -528,6 +544,7 @@ ignorehitpause = 1
 persistent = 0
 [State -2, 8WayBuff]
 type = mapset
+triggerall = time = 0
 trigger1 = command = "holdback" && command = "holddown"
 value = 8
 map = "EightWay"
@@ -552,7 +569,7 @@ y = 0
 type = VelSet
 triggerall = time = 3
 trigger1 = Map(EightWay)=2
-x = -12
+x = -10
 y = 0
 [State 0, VelSet]
 type = VelSet
@@ -597,21 +614,35 @@ trigger1 = time > 9
 x = .6
 y = .6
 
+
+[State 0, Turn]
+type = Turn
+triggerall = facing = enemy,facing
+trigger1 = time = [11,12]
+
+
 [State 1000, 7]
 type = ChangeState
 trigger1 = pos y >= 0
 value = 0
 ctrl = 1
-
-[State 0, Turn]
-type = Turn
-triggerall = facing = enemy,facing
-trigger1 = time = 11
-
 [State 1000, 7]
 type = ChangeState
 triggerall = time = 12
 trigger1 = pos y < 0
+value = 50
+ctrl = 1
+
+[State 1000, 7]
+type = ChangeState
+triggerall = pos y >= 0
+trigger1 = Map(EightWay)=0
+value = 0
+ctrl = 1
+[State 1000, 7]
+type = ChangeState
+triggerall = pos y < 0 && time = 6
+trigger1 = Map(EightWay)=0
 value = 50
 ctrl = 1
 
@@ -642,3 +673,224 @@ value = 1303
 [State 0, DestroySelf]
 type = DestroySelf
 trigger1 = anim = 1303 && animtime = 0
+
+;---------------------------------------------------------------------------
+; 236C
+[Statedef 1400]
+type    = S
+movetype= A
+physics = N
+ctrl = 0
+anim = 1400
+velset = vel x 
+sprpriority = -1
+facep2 = 1
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 1
+trigger2 = animelem = 2
+trigger3 = animelem = 3
+x = 3
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = animelem = 4
+x = 10
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = time > 17
+x = .985
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 5
+x = 3
+
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount=1
+value = Map(DamageScaling)*.9
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount>1
+value = Map(DamageScaling)-.075
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,statetype = A && enemy,movetype = H
+trigger1 = movehit
+value = Map(HitstunScaling)+1
+map = "HitstunScaling"
+ignorehitpause = 1
+persistent = 0
+
+[State 210, 2]
+type = HitDef
+trigger1 = !MoveContact && !MoveReversed
+attr = S, NA
+animtype  = Medium
+damage = ceil(cond(65*Map(DamageScaling) < 6, 6, 65*Map(DamageScaling)))
+guardflag = MA
+pausetime = 10,10
+priority = 4, Hit 
+sparkno = 1
+sparkxy = -12,-50
+hitsound   = 9,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 20
+ground.velocity = -7,-4
+air.hittime = ceil(cond(30-Map(HitstunScaling) < 18, 18, 30-Map(HitstunScaling)))
+air.velocity = -6,-4
+fall = 1
+guard.ctrltime = 11
+guard.hittime = 11
+fall.yvelocity = 0
+p2facing = 1
+ground.cornerpush.veloff = -5-(Map(PushBack))
+air.cornerpush.veloff = -5
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem = 5
+statetype = S       
+movetype = I        
+physics = S  
+
+[State 210, 4]
+type = SprPriority
+trigger1 = AnimElem = 5
+value = 2
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+
+;-------------------------------------------------------------
+;j236C
+[Statedef 1405]
+type    = A
+movetype= A
+physics = N 
+ctrl = 0
+anim = 1405
+sprpriority = 2
+velset = vel x*.25, 0
+facep2 = 1
+
+[State 640, 2]
+type = PlaySnd
+trigger1 = Time = 2
+value = 0, 1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 16
+x = 8
+y = 12
+
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount=1
+value = Map(DamageScaling)*.95
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount>1
+value = Map(DamageScaling)-.05
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,statetype = A && enemy,movetype = H
+trigger1 = movehit
+value = Map(HitstunScaling)+1
+map = "HitstunScaling"
+ignorehitpause = 1
+persistent = 0
+
+[State 640, 3]
+type = HitDef
+trigger1 = !MoveContact && !MoveReversed
+attr = A, NA
+damage = ceil(cond(65*Map(DamageScaling) < 6, 6, 65*Map(DamageScaling)))
+guardflag = HA
+priority = 4
+pausetime = 15,15
+sparkno = 1
+sparkxy = -10,-40
+hitsound   = 5,3
+guardsound = 6,0
+animtype = Med
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 18
+ground.velocity = -5,12
+guard.velocity = -5
+air.velocity = -4,12
+air.hittime = 60
+fall = 1
+fall.xvelocity = -3
+fall.yvelocity = cond(Map(GroundBounce)=0,-6,0)
+guard.ctrltime = 10
+guard.hittime = 10
+p2facing = 1
+air.cornerpush.veloff = 0
+id = 5420
+
+[State 0, TargetState]
+type = TargetState
+triggerall = Map(GroundBounce)=1
+triggerall = enemy,statetype = A && NumTarget(5420)
+trigger1 = movehit=1
+value = 5420
+ID = 5420
+ignorehitpause = 1
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = pos y >= -5
+value = 1406
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;Land
+[Statedef 1406]
+type    = S
+movetype= I
+physics = S
+anim = 1406
+velset = vel x, 0
+poweradd = 0
+ctrl = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+

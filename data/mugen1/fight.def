@@ -887,7 +887,7 @@ team1.counter.time = 7    ;Ikemen feature: length of the counter shake
 team1.counter.mult = 0.1 ;Ikemen feature: counter shake intensity multiplier
 team1.text.layerno = -1
 ; Ikemen feature (text format %i = combo count, %d = combo damage, %p = combo damage percentage)
-team1.text.text = "HIT %d" ;You can use %i to show count in the text, eg "%i Hit!"
+team1.text.text = "HITS %d \n		%p" ;You can use %i to show count in the text, eg "%i Hit!"
 team1.text.font = 1,4,1
 team1.text.offset = 12,0  ;Offset of text
 team1.displaytime = 90    ;Time to show text
@@ -903,7 +903,7 @@ team2.counter.time = 7    ;Ikemen feature: length of the counter shake
 team2.counter.mult = 0.1 ;Ikemen feature: counter shake intensity multiplier
 team2.text.layerno = -1
 ; Ikemen feature (text format %i = combo count, %d = combo damage, %p = combo damage percentage)
-team2.text.text = "HIT %d" ;You can use %i to show count in the text, eg "%i Hit!"
+team2.text.text = "HITS %d \n		%p" ;You can use %i to show count in the text, eg "%i Hit!"
 team2.text.font = 1,4,-1
 team2.text.offset = 12,0  ;Offset of text
 team2.displaytime = 90    ;Time to show text

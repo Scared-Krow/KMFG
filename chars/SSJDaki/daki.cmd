@@ -328,18 +328,15 @@ trigger1 = command = "start"
 ;============================================================================
 
 ;---------------------------------------------------------------------------
-;632146C
-[State -1, 632146C]
+;236236A
+[State -1, 236236A]
 type = ChangeState
 value = 3000
 triggerall = power>=500
-triggerall = command = "6246C"
-triggerall = statetype != A
+triggerall = command = "236236A"
 trigger1 = ctrl
 trigger2 = var(1)
-trigger3 = ((stateno=1000 || stateno=1005)&& time >= 22) || stateno=1204 && time >= 26
-trigger4 = helper(1002),movecontact || helper(1006),movecontact || helper(1209),MoveContact
-trigger5 = stateno=[1000,2000] && movecontact
+trigger3 = stateno=[1000,2000] && movecontact
 
 ;---------------------------------------------------------------------------
 ;214214A
@@ -401,7 +398,7 @@ trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------
 ;214A
-[State -1, 214]
+[State -1, 214A]
 type = ChangeState
 value = 1300
 triggerall = Map(FlightAvailable)=1
@@ -410,11 +407,29 @@ trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------
 ;8 WAY DASH
-[State -1, 214]
+[State -1, B+D]
 type = ChangeState
 value = 1302
 triggerall = Map(Flight)>0
 triggerall = command = "a" && command = "b"
+trigger1 = ctrl
+trigger2 = var(1)
+;---------------------------------------------------------------------------
+;j236C
+[State -1, 236C]
+type = ChangeState
+value = 1400
+triggerall = command = "236C"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = var(1)
+;---------------------------------------------------------------------------
+;j236C
+[State -1, 236C]
+type = ChangeState
+value = 1405
+triggerall = command = "236C"
+triggerall = statetype = A
 trigger1 = ctrl
 trigger2 = var(1)
 ;===========================================================================

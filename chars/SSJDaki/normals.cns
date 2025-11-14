@@ -65,7 +65,7 @@ ground.velocity = -2.25-(Map(PushBack))
 guard.velocity = -3.5
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
-air.velocity = -1,-1.5        ;X-velocity at which opponent is pushed,
+air.velocity = -1.5,-1.5        ;X-velocity at which opponent is pushed,
 air.hittime = ceil(cond(20-Map(HitstunScaling) < 5, 5, 20-Map(HitstunScaling)))
 air.fall = 1
 fall.yvelocity = 0
@@ -278,7 +278,7 @@ animtype  = Medium
 damage = ceil(cond(45*Map(DamageScaling) < 4, 4, 45*Map(DamageScaling)))
 guardflag = MA
 priority = 3, Hit 
-pausetime = 12,12
+pausetime = 10,10
 sparkno = 1
 sparkxy = -10,-65
 hitsound   = 5,2
@@ -415,7 +415,7 @@ pausetime = 13,13
 priority = 4, Hit 
 sparkno = 1
 sparkxy = -12,-50
-hitsound   = 5,2
+hitsound   = 9,1
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
@@ -545,9 +545,9 @@ ctrl = 1
 ;---------------------------------------------------------------------------
 ;2B
 [Statedef 410]
-type    = C
+type    = S
 movetype= A
-physics = C
+physics = N
 ctrl = 0
 anim = 410
 sprpriority = 2
@@ -593,32 +593,38 @@ map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
 
-
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 12
+x = 10
+[State 0, VelMul]
+type = VelMul
+trigger1 = time > 12
+x = .9
 
 [State 430, 2]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
-attr = S, NA
+attr = C, NA
 damage = ceil(cond(35*Map(DamageScaling) < 3, 3, 35*Map(DamageScaling)))
 animtype  = Light
 hitflag = MAF
-guardflag = MA
+guardflag = LA
 pausetime = 9,9
 priority = 2, Hit 
 sparkno = 0
-sparkxy = -10,-30
+sparkxy = -10,-10
 hitsound   = 5,1
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 20
 ground.hittime  = 20
-ground.velocity = -2-(Map(PushBack))
-air.velocity = -1.5,-3
-down.velocity = -5,0
+ground.velocity = -3-(Map(PushBack))
+air.velocity = -1.5,-2
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 10, 10, 25-Map(HitstunScaling)))
 air.fall = 1
-guard.ctrltime = 14
-guard.hittime = 14
+guard.ctrltime = 15
+guard.hittime = 15
 fall.yvelocity = 0
 ground.cornerpush.veloff = -5-(Map(PushBack))
 air.cornerpush.veloff = -5
@@ -626,23 +632,10 @@ p2facing = 1
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = animelem = 4
+trigger1 = animelem = 5
 statetype = C      
 movetype = I        
 physics = C  
-
-[State 210, 5]
-type = ChangeState
-triggerall = command = "28"
-trigger1 = movehit
-value = 60
-ctrl = 0
-[State 210, 5]
-type = ChangeState
-triggerall = command = "holdup"
-trigger1 = movehit
-value = 40
-ctrl = 0
 
 [State 430, 3]
 type = ChangeState
@@ -707,26 +700,6 @@ value = Map(HitstunScaling)+1.5
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
-
-[State 0, NotHitBy]
-type = NotHitBy
-trigger1 = time = [0,13]
-value = A,AA
-time = 1
-
-[State 0, HitBy]
-type = HitBy
-trigger1 = time = [0,13]
-value = SC,NA,SA,HA,NP,SP,HP
-time = 1
-
-[State 0, HitBy]
-type = HitBy
-trigger1 = time > 13
-value = SCA,NA,SA,HA,NP,SP,HP
-value2 = A,NT,ST,HT
-time = 1
-
 
 [State 400, 1]
 type = PlaySnd
@@ -810,14 +783,8 @@ y = 0
 
 [State 0, PosAdd]
 type = PosAdd
-trigger1 = animelem = 2
-trigger2 = animelem = 3
-x = 2
-
-[State 0, PosAdd]
-type = PosAdd
-trigger1 = animelem = 4
-x = 18
+trigger1 = animelem = 3
+x = 5
 
 [State -2, PushBack]
 type = mapset
@@ -829,14 +796,14 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.9
+value = Map(DamageScaling)*.8
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.05
+value = Map(DamageScaling)-.1
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -844,7 +811,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+.5
+value = Map(HitstunScaling)+1
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -854,27 +821,47 @@ type = PlaySnd
 trigger1 = animelem = 3
 value = 0, 2
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time = [0,13]
+value = A,AA
+time = 1
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = time = [0,13]
+value = SC,NA,SA,HA,NP,SP,HP
+time = 1
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = time > 13
+value = SCA,NA,SA,HA,NP,SP,HP
+value2 = A,NT,ST,HT
+time = 1
+
+
 [State 440, 3]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
-attr = C, NA
+attr = S, NA
 damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
 hitflag = MAF
-guardflag = LA
+guardflag = MA
 pausetime = 10,10
 priority = 4, Hit 
 sparkno = 1
-sparkxy = -5,-10
-hitsound   = 5,2
+sparkxy = -5,-70
+hitsound   = 9,0
 guardsound = 6,0
 ground.type = low
 ground.slidetime = 10
 ground.hittime  = 17
-ground.velocity = -3-(Map(PushBack))
-air.velocity = -2,-3
-air.hittime = ceil(cond(30-Map(HitstunScaling) < 15, 15, 30-Map(HitstunScaling)))
+ground.velocity = -4.5,-5
+air.velocity = -4,-5
+air.hittime = ceil(cond(35-Map(HitstunScaling) < 15, 15, 35-Map(HitstunScaling)))
 guard.velocity = -5
-air.fall = 1
+fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 12
 guard.hittime = 12
@@ -902,12 +889,6 @@ trigger1 = movecontact
 value = 40
 ctrl = 0
 
-[State 210, 5]
-type = ChangeState
-trigger1 = command = "b"
-trigger1 = movecontact
-value = 441
-ctrl = 0
 
 
 [State 440, 4]
@@ -916,115 +897,6 @@ trigger1 = AnimTime = 0
 value = 11
 ctrl = 1
 
-;---------------------------------------------------------------------------
-;2D>D
-[Statedef 441]
-type    = C
-movetype= A
-physics = C
-ctrl = 0
-anim = 441
-sprpriority = 2
-facep2 = 1
-
-[State 0, PosAdd]
-type = PosAdd
-trigger1 = animelem = 2
-trigger2 = animelem = 3
-x = 2
-
-[State 0, PosAdd]
-type = PosAdd
-trigger1 = animelem = 4
-x = 18
-
-[State -2, Repeated Damage Scaling]
-type = mapset
-trigger1 = movehit && combocount>1 && Map(crD)>11
-value = Map(DamageScaling)-.35
-map = "DamageScaling"
-ignorehitpause = 1
-persistent = 0
-[State -2, Damage Scaling]
-type = mapset
-trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.25
-map = "DamageScaling"
-ignorehitpause = 1
-persistent = 0
-[State -2, Hitstun Scaling]
-type = mapset
-triggerall = enemy,statetype = A && enemy,movetype = H
-trigger1 = movehit
-value = Map(HitstunScaling)+1.5
-map = "HitstunScaling"
-ignorehitpause = 1
-persistent = 0
-
-[State 440, 2]
-type = PlaySnd
-trigger1 = animelem = 3
-value = 0, 2
-
-[State 440, 3]
-type = HitDef
-trigger1 = !MoveContact && !MoveReversed
-attr = S, NA
-damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
-hitflag = MAF
-guardflag = MA
-pausetime = 10,10
-priority = 4, Hit 
-sparkno = 1
-sparkxy = -5,-10
-hitsound   = 5,2
-guardsound = 6,0
-ground.type = low
-ground.slidetime = 10
-ground.hittime  = 17
-ground.velocity = -3,-4.75
-air.velocity = -2.5,-4
-air.hittime = ceil(cond(30-Map(HitstunScaling) < 15, 15, 30-Map(HitstunScaling)))
-guard.velocity = -5
-fall = 1
-fall.yvelocity = 0
-guard.ctrltime = 12
-guard.hittime = 12
-air.cornerpush.veloff = -5
-p2facing = 1
-
-[State -2, 2C limiter]
-type = mapadd
-trigger1 = movehit=1
-value = 1
-map = "crD"
-ignorehitpause = 1
-
-[State 0, StateTypeSet]
-type = StateTypeSet
-trigger1 = animelem = 5
-statetype = C      
-movetype = I        
-physics = C  
-
-[State 210, 5]
-type = ChangeState
-triggerall = command = "28"
-trigger1 = movecontact
-value = 60
-ctrl = 0
-[State 210, 5]
-type = ChangeState
-triggerall = command = "holdup"
-trigger1 = movecontact
-value = 40
-ctrl = 0
-
-[State 440, 4]
-type = ChangeState
-trigger1 = AnimTime = 0
-value = 0
-ctrl = 1
 
 ;---------------------------------------------------------------------------
 ;j.A
@@ -1199,7 +1071,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1.5
+value = Map(HitstunScaling)+2
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0

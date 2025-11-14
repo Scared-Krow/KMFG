@@ -319,30 +319,19 @@ command = ~D, $B, D, $B, b
 [Command]
 name = "214A"
 command = ~D, DB, B,  x
-[Command]
-name = "214A"
-command = ~D, DB, B+x
 
 [Command]
 name = "214B"
 command = ~D, B,  a
-[Command]
-name = "214B"
-command = ~D, B+a
 
 [Command]
 name = "214C"
 command = ~D, DB, B,  y
-[Command]
-name = "214C"
-command = ~D, DB, B+y
+
 
 [Command]
 name = "214D"
 command = ~D, DB, B,  b
-[Command]
-name = "214D"
-command = ~D, DB, B+b
 
 [Command]
 name = "236A"
