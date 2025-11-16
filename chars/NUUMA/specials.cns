@@ -818,7 +818,7 @@ persistent = 0
 type = HitDef
 trigger1 = anim = 1015
 trigger1 = animelem = 9
-attr = S, NA
+attr = S, SA
 animtype  = Medium
 damage = ceil(cond(20*Map(DamageScaling) < 6, 6, 20*Map(DamageScaling)))
 guardflag = MA
@@ -850,7 +850,7 @@ p2getp1state = 0
 type = HitDef
 trigger1 = anim = 1016
 trigger1 = animelem = 2
-attr = S, NA
+attr = S, SA
 animtype  = Medium
 damage = ceil(cond(60*Map(DamageScaling) < 6, 6, 60*Map(DamageScaling)))
 guardflag = MA

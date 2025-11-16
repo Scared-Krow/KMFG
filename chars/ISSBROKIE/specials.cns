@@ -624,7 +624,7 @@ ground.hittime  = 10
 ground.velocity = -.75,-6.25
 guard.velocity = -3
 air.hittime = 40
-air.velocity = -.75,-5
+air.velocity = -.75,-5.5
 down.velocity = -.75,-6
 guard.ctrltime = 13
 guard.hittime = 13
@@ -632,7 +632,7 @@ down.hittime = 20
 fall = 1
 ground.cornerpush.veloff = -6
 fall.yvelocity = 0
-yaccel = .35
+yaccel = .325
 p2facing = 1
 
 [State 200, 3]

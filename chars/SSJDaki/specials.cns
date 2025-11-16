@@ -1,4 +1,186 @@
 ;---------------------------------------------------------------------------
+;623B
+[Statedef 1100]
+type    = A
+movetype= A
+physics = N
+anim = 1100
+velset = 0, 0
+poweradd = 0
+ctrl = 0
+facep2 = 1
+
+[State -2, AirDash Physics]
+type = mapset
+trigger1 = time = 0
+value = 0
+map = "ADPhysics"
+[State -2, AirDash Physics]
+type = mapset
+trigger1 = time = 0
+value = 0
+map = "AirDashing"
+
+[State 210, 2]
+type = HitDef
+triggerall = enemy,statetype != A && enemy,movetype != H
+triggerall = anim = 1100
+trigger1 = animelem = 4
+attr = S, ST
+animtype  = Medium
+damage = 0,0
+hitflag = M-
+priority = 1, Hit 
+pausetime = 1,1 
+sparkno = -1
+sparkxy = -10,-10
+hitsound   = -1
+ground.slidetime = 10
+ground.hittime  = 999
+ground.velocity = 0
+air.velocity = 0,0
+air.hittime = 999
+fall = 1
+fall.yvelocity = 0
+;p2stateno = 1105
+p2facing = 1
+guard.dist = 0
+
+[State 210, 2]
+type = HitDef
+trigger1 = anim = 1102 
+attr = S, ST
+animtype  = Medium
+damage = ceil(cond(100*Map(DamageScaling) < 75, 75, 100*Map(DamageScaling)))
+hitflag = MAFD
+priority = 1, Hit 
+pausetime = 4,4
+sparkno = 0
+sparkxy = -10,-25
+hitsound   = -1
+ground.slidetime = 10
+ground.hittime  = 999
+ground.velocity = -5,10
+air.velocity = -5,10
+air.hittime = 999
+fall = 1
+fall.xvelocity = -4
+fall.yvelocity = 0
+p2facing = 1
+guard.dist = 0
+hitonce = 1
+
+[State 0, VelSet]
+type = VelSet
+triggerall = anim = 1100
+trigger1 = animelem = 3
+x = 4
+y = 6
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = anim = 1100
+trigger1 = movehit = 2
+value = 1101
+ignorehitpause = 1
+
+[State 0, ChangeAnim]
+type = ChangeState
+trigger1 = anim = 1101
+trigger1 = movehit = 2
+value = 5030
+ignorehitpause = 1
+redirectid = enemy, id
+[State 0, PosSet]
+type = PosSet
+triggerall = anim = 1101
+trigger1 = movehit = 1
+y = 0
+redirectid = enemy, id
+
+[State 0, VelSet]
+type = VelAdd
+trigger1 = anim = 1101
+x = .2
+y = .4
+
+[State 0, Targetbind]
+type = Targetbind
+trigger1 = anim = 1101
+pos = 40, -10
+time = 99
+persistent = 1
+ignorehitpause = 1
+
+[State Test]
+type = Height
+trigger1 = anim= 1101
+value = 0, -20
+redirectid = enemy,ID
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = anim = 1101
+statetype = A
+movetype = H       ;I,A,H
+physics = N  
+redirectid = enemy,ID
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = anim = 1102
+x = 0
+y = 0
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = anim = 1102
+statetype = S
+movetype = A       ;I,A,H
+physics = S        ;A,C,S,N
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = pos y > 0
+y = 0
+
+;[State 0, PosSet]
+;type = PosSet
+;trigger1 = pos y > 0
+;y = 0
+;redirectID = enemy,ID
+
+[State 1000, 7]
+type = ChangeAnim
+triggerall = anim = 1101
+trigger1 = pos y >= -5
+value = 1102
+
+[State 1000, 7]
+type = ChangeState
+triggerall = anim = 1102
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+
+[State 1000, 7]
+type = ChangeState
+triggerall = anim = 1100
+trigger1 = pos y >= -5
+value = 1406
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;623B HurtState
+[Statedef 1105]
+type    = A
+movetype= A
+physics = N
+anim = 5030
+velset = 0, 0
+poweradd = 0
+ctrl = 0
+facep2 = 1
+;---------------------------------------------------------------------------
 ;22A
 [Statedef 1200]
 type    = U
@@ -571,7 +753,7 @@ persistent = 0
 
 [State 0, VelSet]
 type = VelSet
-triggerall = time = 5
+triggerall = time = 3
 trigger1 = Map(EightWay)=1
 x = 12
 y = 0
@@ -579,7 +761,7 @@ y = 0
 type = VelSet
 triggerall = time = 3
 trigger1 = Map(EightWay)=2
-x = -10
+x = -12
 y = 0
 [State 0, VelSet]
 type = VelSet
@@ -651,11 +833,51 @@ value = 0
 ctrl = 1
 [State 1000, 7]
 type = ChangeState
-triggerall = pos y < 0 && time = 6
+triggerall = pos y < 0 && time = 5
 trigger1 = Map(EightWay)=0
 value = 50
 ctrl = 1
+;---------------------------------------------------------------------------
+;Flight Cancel
+[Statedef 1304]
+type    = A
+movetype= I
+physics = N
+anim = 160
+velset = 0, 0
+poweradd = 0
+ctrl = 0
 
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noairguard
+
+[State -2, Flight]
+type = mapset
+trigger1 = time = 0
+value = 0
+map = "Flight"
+ignorehitpause = 1
+persistent = 0
+
+
+[State 0, Turn]
+type = Turn
+triggerall = facing = enemy,facing
+trigger1 = time = [5,6]
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = pos y >= 0
+value = 0
+ctrl = 1
+[State 1000, 7]
+type = ChangeState
+triggerall = pos y < 0 && time = 5
+trigger1 = Map(EightWay)=0
+value = 50
+ctrl = 1
 ;---------------------------------------------------------------------------
 ;Flight Wings
 [Statedef 1303]
@@ -723,6 +945,24 @@ type = PosAdd
 trigger1 = animelem = 5
 x = 3
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time = [5,18]
+value = SCA,AP
+time = 1
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = time = [0,18]
+value = SCA,AT,AA
+time = 1
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = time > 18
+value = SCA,AA,AT,AP
+time = 1
+
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
@@ -748,23 +988,24 @@ persistent = 0
 
 [State 210, 2]
 type = HitDef
+triggerall = enemy,prevmovetype = A
 trigger1 = !MoveContact && !MoveReversed
-attr = S, NA
+attr = S, SA
 animtype  = Medium
-damage = ceil(cond(65*Map(DamageScaling) < 15, 15, 65*Map(DamageScaling)))
+damage = ceil(cond(75*Map(DamageScaling) < 15, 15, 75*Map(DamageScaling)))
 guardflag = MA
-pausetime = 10,10
+pausetime = 12,12
 priority = 4, Hit 
 sparkno = 1
 sparkxy = -12,-50
-hitsound   = 9,1
+hitsound   = 5,1
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
 ground.hittime  = 20
-ground.velocity = -7,-4
-air.hittime = ceil(cond(30-Map(HitstunScaling) < 18, 18, 30-Map(HitstunScaling)))
-air.velocity = -6,-4
+ground.velocity = -20,-4
+air.hittime = 60
+air.velocity = -20,-3
 fall = 1
 guard.ctrltime = 11
 guard.hittime = 11
@@ -772,6 +1013,54 @@ fall.yvelocity = 0
 p2facing = 1
 ground.cornerpush.veloff = -5-(Map(PushBack))
 air.cornerpush.veloff = -5
+id = 5400
+
+[State 210, 2]
+type = HitDef
+triggerall = enemy,prevmovetype != A
+trigger1 = !MoveContact && !MoveReversed
+attr = S, SA
+animtype  = Medium
+damage = ceil(cond(75*Map(DamageScaling) < 15, 15, 75*Map(DamageScaling)))
+guardflag = MA
+pausetime = 12,12
+priority = 4, Hit 
+sparkno = 1
+sparkxy = -12,-50
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 20
+ground.velocity = -9,-4
+air.hittime = 60
+air.velocity = -7,-3
+fall = 1
+guard.ctrltime = 11
+guard.hittime = 11
+fall.yvelocity = 0
+p2facing = 1
+ground.cornerpush.veloff = -5-(Map(PushBack))
+air.cornerpush.veloff = -5
+id = 5420
+
+
+[State 0, TargetState]
+type = TargetState
+triggerall =  NumTarget(5400)
+trigger1 = movehit=1
+value = 5400
+ID = 5400
+ignorehitpause = 1
+
+[State 0, TargetState]
+type = TargetState
+triggerall = NumTarget(5420)
+trigger1 = movehit=1
+value = 5420
+ID = 5420
+ignorehitpause = 1
+
 
 [State 0, StateTypeSet]
 type = StateTypeSet

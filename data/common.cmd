@@ -189,34 +189,42 @@ time = 1
 name = "holdx"
 command = /x
 time = 1
+buffer.time = 0
 [Command]
 name = "holda"
 command = /a
 time = 1
+buffer.time = 0
 [Command]
 name = "holdy"
 command = /y
 time = 1
+buffer.time = 0
 [Command]
 name = "holdb"
 command = /b
 time = 1
+buffer.time = 0
 [Command]
 name = "holdz"
 command = /z
 time = 1
+buffer.time = 0
 [Command]
 name = "holdc"
 command = /c
 time = 1
+buffer.time = 0
 [Command]
 name = "holdd"
 command = /d
 time = 1
+buffer.time = 0
 [Command]
 name = "holdw"
 command = /w
 time = 1
+buffer.time = 0
 
 ;-| Double Tap |-----------------------------------------------------------
 [Command]

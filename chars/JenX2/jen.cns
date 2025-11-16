@@ -26,6 +26,8 @@ head.pos = -5, -90
 mid.pos = -5, -60    
 shadowoffset = 0     
 draw.offset = 0,1
+attack.dist = 0
+
 
 [Velocity]
 walk.fwd  = 1.8

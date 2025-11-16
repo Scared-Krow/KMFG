@@ -118,11 +118,11 @@ ignorehitpause if !ishelper {
 				pause{time: map(_pots_clashing_cfg_pause); endcmdbuftime: 10; pausebg: 0}
 
 				# Screen flash
-				bgpalfx{
-					time: map(_pots_clashing_cfg_pause);
-					add: 128, 128, 128;
-					sinadd: -128, -128, -128, 120;
-				}
+				#bgpalfx{
+				#	time: map(_pots_clashing_cfg_pause);
+				#	add: 128, 128, 128;
+				#	sinadd: -128, -128, -128, 120;
+				#}
 
 				# Screen shake
 				envshake{
@@ -146,21 +146,13 @@ ignorehitpause if !ishelper {
 
 				# Sound
 				# You can add your own sounds here by adding them to common.snd
+			
 				playsnd{
-					value: F 6, 0;
+					value: F 10, 0;
 					volumescale: 100;
 					freqmul: 1.00;
 				}
-				playsnd{
-					value: F 5, 3;
-					volumescale: 100;
-					freqmul: 2.00;
-				}
-				playsnd{
-					value: F 7, 2;
-					volumescale: 100;
-					freqmul: 2.00;
-				}
+				
 
 				# Find spark position
 

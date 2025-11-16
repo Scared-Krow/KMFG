@@ -31,7 +31,7 @@ sff = fight.sff
 snd = fight.snd
 font1 = enter48.def
 font2 = num48.def
-font3 = name14.def
+font3 = Graffiti.def
 font4 = num1.def
 fightfx.sff = fightfx.sff ;Legacy Mugen common effects
 fightfx.air = fightfx.air ;Legacy Mugen common effects
@@ -46,7 +46,7 @@ scale = 4
 [Lifebar]
 
 ;Player 1
-p1.pos    = 560,40
+p1.pos    = 637,90
 p1.bg0.anim = -1
 p1.bg0.offset = -6,6
 p1.bg1.spr = 11,0
@@ -57,33 +57,34 @@ p1.front.offset = 0,0
 p1.shift.spr = 13,0          ;Ikemen feature
 p1.shift.offset = 0,0      ;Ikemen feature
 p1.shift.palfx.add = 0,-50,0 ;Ikemen feature
-p1.range.x  = 20,-415
-p1.bg1.scale = 4, 4
-p1.front.scale = 4, 4
-p1.mid.scale = 4, 4
-p1.shift.scale = 4, 4
+p1.range.x  = -75,-375
+p1.bg1.scale = 3, 3
+p1.front.scale = 3, 3
+p1.mid.scale = 3, 3
+p1.shift.scale = 3,3
 ;Player 2
-p2.pos    = 720,40
+p2.pos    = 637,90
 p2.bg0.anim = -1
 p2.bg0.offset = 6,6
 p2.bg0.facing = -1
-p2.bg1.spr = 11,0
-p2.bg1.facing = -1
-p2.mid.spr = 12
+p2.bg1.spr = 11,1
+p2.bg1.facing = 1
+p2.mid.spr = 12,1
 p2.mid.offset = 0,0
-p2.mid.facing = -1
-p2.front.spr = 13,0
+p2.mid.facing = 1
+p2.front.spr = 13,1
 p2.front.offset = 0,0
-p2.front.facing = -1
+p2.front.facing = 1
 p2.shift.spr = 13,0          ;Ikemen feature
-p2.shift.offset = 0,0       ;Ikemen feature
-p2.shift.facing = -1         ;Ikemen feature
+p2.shift.offset = 2,0       ;Ikemen feature
+p2.shift.facing = 1         ;Ikemen feature
 p2.shift.palfx.add = 0,-50,0 ;Ikemen feature
-p2.range.x = -20,415
-p2.bg1.scale = 4, 4
-p2.front.scale = 4, 4
-p2.mid.scale = 4, 4
-p2.shift.scale = 4, 4
+p2.range.x = 80,375
+p2.range.offset = 0,0
+p2.bg1.scale = 3, 3
+p2.front.scale = 3, 3
+p2.mid.scale = 3, 3
+p2.shift.scale = 3, 3
 
 [Begin Action 10] ;Darkened lifebar background 
 10,0, 0,0, 1, , AS224D32
@@ -747,12 +748,12 @@ p2.range.x = 6,433
 ;-----------------------------------------------------------
 [Powerbar]
 ;Player 1
-p1.pos    = 400,625
+p1.pos    = 450,615
 p1.bg1.spr = 41,0
 p1.bg1.layerno = 2
 p1.front.spr = 43,0
 p1.front.layerno = 2
-p1.range.x = -5,-305
+p1.range.x = -10,-387
 p1.counter.offset = 10, 0
 p1.counter.layerno = 2
 p1.counter.font = 6,0, 0
@@ -763,7 +764,7 @@ p1.mid.scale = 4, 4
 p1.shift.scale = 4, 4
 
 ;Player 2
-p2.pos    = 880,625
+p2.pos    = 820,615
 p2.bg0.facing = -1
 p2.bg1.spr = 41,0
 p2.bg1.facing = -1
@@ -771,7 +772,7 @@ p2.bg1.layerno = 2
 p2.front.spr = 43,0
 p2.front.facing = -1
 p2.front.layerno = 2
-p2.range.x  = 5, 305
+p2.range.x  = 10, 387
 p2.counter.offset = -10,0
 p2.counter.layerno = 2
 p2.counter.font = 6,0, 0
@@ -794,17 +795,19 @@ level3.snd = 21,0
 ;-----------------------------------------------------------
 [Name]
 ;Player 1
-p1.pos = 142,35
+p1.pos = 230,8
 ;p1.bg. =
 p1.name.font = 3,3, 1
+p1.name.scale = .5,.5
 ;Player 2
-p2.pos = 1138,35
+p2.pos = 1040,8
 ;p2.bg. =
 p2.name.font = 3,1, -1
+p2.name.scale = .5,.5
 
 [Simul Name]
 ;Player 1
-p1.pos = 142,35
+p1.pos = 142,80
 ;p1.bg. =
 p1.name.font = 3,3, 1
 ;Player 2
@@ -867,12 +870,12 @@ p2.name.font = 3,1, -1
 
 ;-----------------------------------------------------------
 [Time]
-pos = 642,84
+pos = 642,90
 ; Uncomment the following line to use a bg component
 ;bg.spr = 
 ; Time count display
 counter.offset = 0,0
-counter.font = 2,0, 0, 255,255,242
+counter.font = 3,1, -1
 ; Ticks for each count
 framespercount = 60
 

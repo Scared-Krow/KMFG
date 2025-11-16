@@ -284,11 +284,18 @@ facep2 = 1
 [State 0, SuperPause]
 type = SuperPause
 trigger1 = time = 0 
-time = 5
+time = cond(enemy, hitdefattr != SCA,NP, SP, HP,15,5)
 anim = -1
 sound = -1
 darken = 0
 unhittable = 1
+movetime = 15
+
+[State 0, PosFreeze]
+type = PosFreeze
+trigger1 = time < 10
+value = 1
+redirectID = enemy,ID
 
 [State 0, NotHitBy]
 type = NotHitBy
@@ -314,10 +321,10 @@ value = 1
 
 [State 700, Flash]
 type = palfx
-trigger1 = time = 1
+trigger1 = time = 0
 ignorehitpause = 1
-add = 255, 30, 0
-sinadd = 255, -30, 0, 60
+add = 100, 100, 100
+sinadd = 0, 0, 0, 60
 time = 15
 
 [State 700, No walking]
@@ -385,17 +392,24 @@ facep2 = 1
 [State 0, SuperPause]
 type = SuperPause
 trigger1 = time = 0 
-time = 5
+time = cond(enemy, hitdefattr != SCA,NP, SP, HP,15,5)
 anim = -1
 sound = -1
 darken = 0
 unhittable = 1
+movetime = 15
 
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = time = [0,5]
 value = SCA
 time = 1
+
+[State 0, PosFreeze]
+type = PosFreeze
+trigger1 = time < 10
+value = 1
+redirectID = enemy,ID
 
 
 [State 0, CtrlSet]
@@ -417,11 +431,12 @@ value = 1
 
 [State 700, Flash]
 type = palfx
-trigger1 = time = 1
+trigger1 = time = 0
 ignorehitpause = 1
-add = 255, 30, 0
-sinadd = 255, -30, 0, 60
+add = 100, 100, 100
+sinadd = 0, 0, 0, 60
 time = 15
+
 
 [State 700, No walking]
 type = assertspecial
@@ -671,11 +686,16 @@ value = fvar(9)
 
 [Statedef -2]
 
+[State 0, PowerSet]
+type = PowerSet
+trigger1 = roundstate = [0,1]
+value = 0
+
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(Infection) %.0f, Map(Flight) %.0f, Map(FlightAvailable) %.0f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(Infection),Map(Flight),Map(FlightAvailable)
+text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(Infection) %.0f, Map(CounterHit) = %.0f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(Infection),Map(CounterHit)
 
 ;---------REDUCE MECHANIC
 [State -2, Reduce]
@@ -764,6 +784,7 @@ trigger1 = 1
 value = 0
 ignorehitpause = 1
 persistent = 1
+
 ;-------COUNTER HITS----------
 
 [State 0, Zoom]
@@ -772,12 +793,21 @@ triggerall = enemy,stateno != 666999 && enemy,prevstateno != 666999
 triggerall = movetype != H
 triggerall = stateno != 200 && stateno != 400
 trigger1= Movecountered 
-scale = 1.25
-lag = .25
+scale = 1.15
+lag = .1
 stagebound = 1
 camerabound = 1
 pos = pos x,-20
 ignorehitpause=1
+[State 0, SuperPause]
+type = SuperPause
+trigger1= Movecountered && time = 0
+time = 1
+anim = -1
+sound = -1
+darken = 0
+ignorehitpause = 1
+
 [State 0, EnvShake]
 type = EnvShake
 triggerall = stateno != 200 && stateno != 400
@@ -787,11 +817,25 @@ freq = 60
 ampl = -4
 phase = 90
 
+[State Fatal Counter]
+type = mapset
+trigger1 = movecountered
+map = "CounterHit"
+value = 1
+ignorehitpause = 1
+[State Fatal Counter]
+type = mapset
+trigger1 = !movecountered
+map = "CounterHit"
+value = 0
+ignorehitpause = 1
+
+
 [State -2, Fatal Counter]
 type = mapset
 triggerall = HitPauseTime=1 && movecountered=1
 trigger1 = Map(FatalCounter)=1
-value = Map(DamageScaling)+.3
+value = Map(DamageScaling)+.25
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -804,7 +848,6 @@ value = Map(DamageScaling)+.1
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
-
 
 [State Fatal Counter]
 type = mapset

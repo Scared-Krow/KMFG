@@ -2389,12 +2389,12 @@ function start.f_selectScreen()
 						local Assist_p1 = ''
 						local Assist_p2 = ''
 						if p1Assist == 1 then
-							Assist_p1 = 'JenX2'
+							Assist_p1 = 'JENX2'
 						elseif p1Assist == 2 then
 							Assist_p1 = 'ISSBROKIE!!'
 						end
 						if p2Assist == 1 then
-							Assist_p2 = 'JenX2'
+							Assist_p2 = 'JENX2'
 						elseif p2Assist == 2 then
 							Assist_p2 = 'ISSBROKIE!!'
 						end

@@ -4,7 +4,7 @@
 ; Player information
 [Info]
 name = "Nuuma"        ;Name of character
-displayname = "Nuuma" ;Name of character to display
+displayname = "NUUMA" ;Name of character to display
 versiondate = 09,27,2025    ;Version date of character (MM-DD-YYYY or X.XX)
 mugenversion = 1.0
 author = "PXN & ScaredCrow"         ;Character author name

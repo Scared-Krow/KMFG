@@ -26,13 +26,15 @@ head.pos = -5, -90
 mid.pos = -5, -60    
 shadowoffset = 0     
 draw.offset = 0,1
+attack.dist = 0
+
 
 [Velocity]
 walk.fwd  = 2.5
 walk.back = -2   
 run.fwd  = 7.25, 0    
 run.back = -4.5,-3.8 
-jump.neu = 0,-8.5
+jump.neu = 0,-8.25
 jump.back = -2.55    
 jump.fwd = 2.5       
 runjump.back = -2.55,-8.1 
