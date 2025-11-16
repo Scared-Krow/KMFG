@@ -874,7 +874,7 @@ pos = 642,90
 ; Uncomment the following line to use a bg component
 ;bg.spr = 
 ; Time count display
-counter.offset = 0,0
+counter.offset = 24,-58
 counter.font = 3,1, -1
 ; Ticks for each count
 framespercount = 60
@@ -966,7 +966,7 @@ team2.hidespeed = 8
 ;-----------------------------------------------------------
 [Round]
 match.wins = 2              ;Rounds needed to win a match (Ikemen feature: depreciated, this setting can be configured in in-game options)
-match.maxdrawgames = 1      ;Max number of drawgames allowed (-1 for infinite)
+match.maxdrawgames = -1      ;Max number of drawgames allowed (-1 for infinite)
 start.waittime = 30         ;Time to wait before starting intro
 
 ; Default position for all components
@@ -979,7 +979,7 @@ round.default.offset = 640, 320
 ; the round number. Use "round.default.anim" for animation instead of
 ; text.
 round.default.font = 1,0, 0
-round.default.text = "Round %i"
+round.default.text = "ROUND %i"
 round.default.displaytime = 60
 round.default.scale = 1,1
 ; Sounds to play for each round (optional, specify up to round 9)
@@ -1034,11 +1034,13 @@ over.time = 270            ;Time to wait before round ends
 win.time = 60              ;Time to wait before showing win/draw message
 win.offset = 640, 320
 win.font = 1,0
-win.text = "%s Wins"
+win.text.size = .75,.75
+win.text = "%s WINS"
 win.displaytime = 540
 ; 2-player win text
 win2.offset = 640, 320
 win2.font = 1,0
+win2.font.size = .75,.75
 win2.text = "%s and %s Win"
 win2.displaytime = 540
 ; Ikemen feature: 3-player win text
@@ -1144,12 +1146,14 @@ useiconupto = 4
 p1.pos = 586,35
 ;p1.bg.spr = 
 p1.text.font = 3,0, -1
-p1.text.text = WINS %s
+p1.text.text = 
+p1.font.size = .75,.75
 
 p2.pos = 696,35
 ;p2.bg.spr = 
 p2.text.font = 3,0, 1
-p2.text.text = WINS %s
+p2.text.text = 
+p2.font.size = .75,.75
 
 p1.enabled.netplayversus = 1
 p1.enabled.versus = 1
