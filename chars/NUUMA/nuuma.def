@@ -7,6 +7,7 @@ name = "Nuuma"        ;Name of character
 displayname = "NUUMA" ;Name of character to display
 versiondate = 09,27,2025    ;Version date of character (MM-DD-YYYY or X.XX)
 mugenversion = 1.0
+ikemenversion = 0.99
 author = "PXN & ScaredCrow"         ;Character author name
 pal.defaults = 1,2,3,4      ;Default palettes in order of preference (up to 4)
                             ;Numbering starts from 1
@@ -20,7 +21,7 @@ st      = nuuma.cns           ;States
 st2	= normals.cns
 st3	= specials.cns
 st4	= supers.cns
-stcommon = common1.zss     ;Common states (from data/ or motif)
+stcommon = common1.zss   ;Common states (from data/ or motif)
 sprite  = nuuma.sff           ;Sprite
 anim    = nuuma.air           ;Animation
 sound   = nuuma.snd           ;Sound

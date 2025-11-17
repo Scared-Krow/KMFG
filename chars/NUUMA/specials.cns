@@ -449,7 +449,7 @@ time = 999
 [State 0, Changestate]
 type = Changestate
 trigger1 = MoveContact || Movereversed
-trigger2 = pos y >= 0
+trigger2 = pos y >= -6
 value = 999
 [State 0, Changestate]
 type = DestroySelf
@@ -1088,7 +1088,7 @@ envshake.time = 10
 envshake.freq = 90
 envshake.phase = 130
 envshake.ampl = -5
-id = 5420 + (map(GroundBounce) = 0)
+id = 5420 
 [State 0, TargetState]
 type = TargetState
 triggerall = Map(GroundBounce)=1
@@ -1102,8 +1102,8 @@ type = TargetState
 triggerall = Map(GroundBounce)=0
 triggerall = enemy,statetype = A && NumTarget(5420)
 trigger1 = movehit=1
-value = 5420
-ID = 5421
+value = 5430
+ID = 5420
 ignorehitpause = 1
 
 [State 210, 5]

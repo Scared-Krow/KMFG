@@ -2,13 +2,11 @@ Version: nightly
 Build Time: 2025-10-08
 
 Error log:
-external/script/main.lua:785: <game end>
+external/script/main.lua:4294: <game end>
 stack traceback:
 	[G]: in function 'refresh'
-	external/script/main.lua:785: in function 'f_refresh'
-	.\external\script\start.lua:2549: in function 'f_selectScreen'
-	.\external\script\start.lua:1629: in function 'f'
-	external/script/main.lua:3232: in function 'loop'
+	external/script/main.lua:4294: in function 'f_menuCommonDraw'
+	external/script/main.lua:3228: in function 'loop'
 	external/script/main.lua:3323: in function 'loop'
 	external/script/main.lua:4501: in main chunk
 	[G]: ?

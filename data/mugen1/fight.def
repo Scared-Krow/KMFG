@@ -870,12 +870,12 @@ p2.name.font = 3,1, -1
 
 ;-----------------------------------------------------------
 [Time]
-pos = 642,90
+pos = 611,89
 ; Uncomment the following line to use a bg component
 ;bg.spr = 
 ; Time count display
 counter.offset = 24,-58
-counter.font = 3,1, -1
+counter.font = 3,1,0
 ; Ticks for each count
 framespercount = 60
 

@@ -1,0 +1,389 @@
+;---------------------------------------------------------------------------
+;632146C
+[Statedef 3000]
+type    = S
+movetype= A
+physics = S
+anim = 3000
+velset = 0,0
+ctrl = 0
+poweradd = -500
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0
+time = 58
+darken = 1
+p2defmul = 1
+movetime = 58
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 8
+x = 4
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 9
+x = 12
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = animelemno(0)=[1,9]
+value = SCA
+time = 1
+
+[State 210, 2]
+type = HitDef
+trigger1 = !MoveContact && !MoveReversed
+attr = S, HA
+animtype  = up
+damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling))),15
+guardflag = MA
+hitflag = MAFD
+pausetime = 12,12
+sparkno = 2
+sparkxy = -10,-65
+hitsound   = 5,3
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 22
+ground.velocity = 0,0
+air.hittime = 45
+air.velocity = 0,0
+guard.ctrltime = 12
+guard.hittime = 12
+guard.velocity = -3
+airguard.velocity = -1
+air.fall = 1
+down.velocity = -3,-3
+down.hittime = 20
+ground.cornerpush.veloff = -4
+air.cornerpush.veloff = -4
+fall.yvelocity = 0
+p2facing = 1
+
+[State 210, 2]
+type = HitDef
+trigger1 = movehit
+attr = S, HA
+animtype  = up
+damage = ceil(cond(90*Map(DamageScaling) < 40, 40, 90*Map(DamageScaling)))
+guardflag = MA
+hitflag = MAFD
+pausetime = 8,8
+sparkno = 2
+sparkxy = -10,-65
+hitsound   = 5,4
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 22
+ground.velocity = -6,-6
+air.hittime = 45
+air.velocity = -5,-4
+guard.ctrltime = 12
+guard.hittime = 12
+fall = 1
+ground.cornerpush.veloff = -16
+air.cornerpush.veloff = -16
+fall.yvelocity = 0
+p2facing = 1
+
+[State -2, Install]
+type = mapset
+trigger1 = animelem = 10 && movehit
+value = 1
+map = "RAWRXD"
+ignorehitpause = 1
+persistent = 0
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;236236D
+[Statedef 3100]
+type    = S
+movetype= A
+physics = S
+anim = 3100
+velset = 25,0
+ctrl = 0
+poweradd = -500
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0
+time = 10
+darken = 1
+p2defmul = 1
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = animelemno(0)=[1,2]
+value = SCA,AP
+time = 1
+
+[State 210, 2]
+type = HitDef
+trigger1 = !MoveContact && !MoveReversed
+attr = S, HA
+animtype  = up
+damage = ceil(cond(50*Map(DamageScaling) < 25, 25, 50*Map(DamageScaling))),15
+guardflag = MA
+hitflag = MAFD
+pausetime = 10,30
+guard.pausetime = 15,10
+sparkno = 2
+sparkxy = -10,-65
+hitsound   = 5,3
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 22
+ground.velocity = 0,0
+air.hittime = 45
+air.velocity = -2,-2
+guard.ctrltime = 7
+guard.hittime = 7
+guard.velocity = -3
+airguard.velocity = -1
+air.fall = 1
+down.velocity = -3,-3
+down.hittime = 20
+ground.cornerpush.veloff = -4
+air.cornerpush.veloff = -4
+fall.yvelocity = 0
+p2facing = 1
+getpower = 0
+
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = movehit
+value = 3101
+ctrl = 0
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;236236D Flurry
+[Statedef 3101]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+anim = 3101
+velset = vel x
+sprpriority = -1
+facep2 = 1
+
+[State 0, Width]
+type = Width
+trigger1 = time > 10
+edge = 0,0
+player = 15,5
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = [15,41]
+x = 3
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 3
+x = 8
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 18
+trigger2 = animelem = 19
+x = 5
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 17
+x = 15
+
+[State 200, 1]
+type = HitDef
+triggerall = time <= 41
+trigger1 = time%2=0
+attr = S,SA                     ;Attribute: Standing, Normal Attack
+damage = ceil(cond(10*Map(DamageScaling) < 3, 3, 10*Map(DamageScaling))),1
+animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
+guardflag = MA                   ;Flags on how move is to be guarded against
+hitflag = MAF                    ;Flags of conditions that move can hit
+priority = 2, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+pausetime = 2,32
+guard.pausetime = 1,1
+sparkno = 1                     ;Spark anim no (Def: set above)
+sparkxy = -20-random%10, -20-random%30               ;X-offset for the "hit spark" rel. to p2,
+hitsound = 5, 0                  ;Sound to play on hit
+guardsound = 6, 0                ;Sound to play on guard
+ground.type = High               ;Type: High, Low, Trip (def: Normal)
+ground.slidetime = 50            ;Time that the opponent slides back
+ground.hittime  = 30
+ground.velocity = -2
+guard.velocity = -2
+guard.slidetime = 12
+airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
+air.velocity = -3,-.25      ;X-velocity at which opponent is pushed,
+air.hittime = 10
+air.fall = 1
+fall.yvelocity = 0
+guard.ctrltime = 10
+guard.hittime = 10
+getpower = 0
+
+
+[State -2, Charge]
+type = mapset
+trigger1 = time = 0
+value = 0
+map = "Charge"
+[State -2, Charge]
+type = mapadd
+trigger1 = time > 39
+value = 1
+map = "Charge"
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = Map(Charge)=14
+time = 3
+add = -25,-75,-25
+mul = 256,100,256
+invertall = 0
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = Map(Charge)>=20
+trigger2 = command != "holdb" && Map(Charge)>=10
+value = 3102
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;236236D Final
+[Statedef 3102]
+type    = S
+movetype= A
+physics = S
+anim = 3102
+velset = 0,0
+ctrl = 0
+
+[State 0, PalFX]
+type = PalFX
+triggerall = Map(Charge)=[14,16]
+trigger1 = time = 0
+time = 12
+add = -25,-75,-25
+mul = 256,100,256
+invertall = 0
+ignorehitpause = 0
+
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = movehit
+value = Map(DamageScaling)-.5
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 1
+x = 10
+
+[State 210, 2]
+type = HitDef
+triggerall = Map(Charge) = [14,16]
+trigger1 = !MoveContact && !MoveReversed
+attr = S, SA
+animtype  = Medium
+damage = ceil(cond(120*Map(DamageScaling) < 75, 75, 120*Map(DamageScaling))),3
+guardflag = MA
+priority = 2
+pausetime = 10,10
+sparkno = 1
+sparkxy = -10,-65
+hitsound   = 5,3
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 70
+ground.velocity = -5,-5
+air.hittime = 70
+air.velocity = -5,-3
+guard.ctrltime = 11
+guard.hittime = 11
+fall = 1
+fall.yvelocity = 0
+p2facing = 1
+ground.cornerpush.veloff = -18
+air.cornerpush.veloff = -18
+envshake.time = 8
+envshake.freq = 80
+envshake.phase = 150
+envshake.ampl = -4
+getpower = 0
+id = 5420
+
+[State 210, 2]
+type = HitDef
+triggerall = Map(Charge) != [14,16]
+trigger1 = !MoveContact && !MoveReversed
+attr = S, SA
+animtype  = Medium
+damage = ceil(cond(70*Map(DamageScaling) < 50, 50, 70*Map(DamageScaling))),3
+guardflag = MA
+priority = 2
+pausetime = 10,10
+sparkno = 1
+sparkxy = -10,-65
+hitsound   = 5,3
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 70
+ground.velocity = -5,-5
+air.hittime = 70
+air.velocity = -5,-3
+guard.ctrltime = 11
+guard.hittime = 11
+fall = 1
+fall.yvelocity = 0
+p2facing = 1
+ground.cornerpush.veloff = -18
+air.cornerpush.veloff = -18
+envshake.time = 8
+envshake.freq = 80
+envshake.phase = 150
+envshake.ampl = -4
+getpower = 0
+
+[State 0, TargetState]
+type = TargetState
+triggerall = enemy,statetype = A && NumTarget(5420)
+trigger1 = movehit=1
+value = 5420
+ID = 5420
+ignorehitpause = 1
+
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
