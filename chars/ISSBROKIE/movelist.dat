@@ -1,19 +1,19 @@
-<#f0f000>:Unique Attacks:</>
-5D>5D
-2D>2D
+
 
 <#f0f000>:Throws:</>
 A+B
 
 <#f0f000>:Special Moves:</>
-623A
-214B
-_!A
-_!C
-_!D
+236A (Hold OK)
+_! B
+_! C
+_! D
+236B
+_! Any Attack
+623C (Hold OK)
 236D (Air OK)
-214D
+63214B (Hold OK)
 
 <#f0f000>:Super Moves:</>
-214214A
 632146C
+236236D (Hold OK)
