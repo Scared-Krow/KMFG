@@ -67,8 +67,8 @@ forcenofall = 1
 fall.yvelocity = 0
 guard.ctrltime = 13
 guard.hittime = 13
-ground.cornerpush.veloff = -4-(Map(PushBack))
-air.cornerpush.veloff = -2
+ground.cornerpush.veloff = -1-(Map(PushBack))
+air.cornerpush.veloff = -1
 p2facing = 1
 guard.dist = 0
 
@@ -114,7 +114,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.825
+value = Map(DamageScaling)*.8
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -171,13 +171,13 @@ ground.velocity = -2-(Map(PushBack))
 air.velocity = -1.5,-1.5
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 15, 15, 25-Map(HitstunScaling)))
 air.fall = 1
-ground.cornerpush.veloff = -4-(Map(PushBack))
+ground.cornerpush.veloff = -2-(Map(PushBack))
 fall.yvelocity = 0
 guard.ctrltime = 12
 guard.hittime = 12
 air.cornerpush.veloff = -2
 p2facing = 1
-guard.dist = 0
+guard.dist = 45
 
 
 [State 0, StateTypeSet]
@@ -235,7 +235,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.82
+value = Map(DamageScaling)*.85
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -277,9 +277,9 @@ air.velocity = -1.75,-3.5
 guard.ctrltime = 13
 guard.hittime = 13
 air.fall = 1
-ground.cornerpush.veloff = -6-(Map(PushBack))
+ground.cornerpush.veloff = -3-(Map(PushBack))
 fall.yvelocity = 0
-air.cornerpush.veloff = -5
+air.cornerpush.veloff = -3
 p2facing = 1
 guard.dist = 0
 
@@ -369,7 +369,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.075
+value = Map(DamageScaling)-.1
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -387,7 +387,7 @@ type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 animtype  = Medium
-damage = ceil(cond(60*Map(DamageScaling) < 6, 6, 60*Map(DamageScaling)))
+damage = ceil(cond(55*Map(DamageScaling) < 5, 5, 55*Map(DamageScaling)))
 guardflag = MA
 pausetime = 10,10
 priority = 4, Hit 
@@ -402,12 +402,12 @@ ground.velocity = -3-(Map(PushBack))
 air.hittime = ceil(cond(30-Map(HitstunScaling) < 18, 18, 30-Map(HitstunScaling)))
 air.velocity = -2.5,-2.75
 air.fall = 1
-guard.ctrltime = 11
-guard.hittime = 11
+guard.ctrltime = 10
+guard.hittime = 10
 fall.yvelocity = 0
 p2facing = 1
-ground.cornerpush.veloff = -5-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -3-(Map(PushBack))
+air.cornerpush.veloff = -3
 guard.dist = 0
 
 
@@ -490,7 +490,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.15
+value = Map(DamageScaling)-.1
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -498,7 +498,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1.5
+value = Map(HitstunScaling)+1
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -517,9 +517,9 @@ sparkxy = -12,-50
 hitsound   = 9,2
 guardsound = 6,0
 ground.type = High
-ground.slidetime = 12
-ground.hittime  = 22
-ground.velocity = -5.5-(Map(PushBack))
+ground.slidetime = 23
+ground.hittime  = 23
+ground.velocity = -4.75-(Map(PushBack))
 air.hittime = ceil(cond(30-Map(HitstunScaling) < 18, 18, 30-Map(HitstunScaling)))
 air.velocity = -2.5,-2.75
 air.fall = 1
@@ -527,8 +527,8 @@ guard.ctrltime = 11
 guard.hittime = 11
 fall.yvelocity = 0
 p2facing = 1
-ground.cornerpush.veloff = -12-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -3-(Map(PushBack))
+air.cornerpush.veloff = -4
 guard.dist = 0
 
 
@@ -636,8 +636,8 @@ air.fall = 1
 guard.ctrltime = 12
 guard.hittime = 12
 fall.yvelocity = 0
-ground.cornerpush.veloff = -5-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -1-(Map(PushBack))
+air.cornerpush.veloff = -1
 p2facing = 1
 guard.dist = 0
 
@@ -726,8 +726,8 @@ air.fall = 1
 guard.ctrltime = 14
 guard.hittime = 14
 fall.yvelocity = 0
-ground.cornerpush.veloff = -5-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -2-(Map(PushBack))
+air.cornerpush.veloff = -2
 p2facing = 1
 guard.dist = 0
 
@@ -854,8 +854,8 @@ fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 10
 guard.hittime = 10
-ground.cornerpush.veloff = -7-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -4-(Map(PushBack))
+air.cornerpush.veloff = -4
 p2facing = 1
 guard.dist = 0
 
@@ -973,10 +973,10 @@ air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 12
 guard.hittime = 12
-ground.cornerpush.veloff = -5-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -2-(Map(PushBack))
+air.cornerpush.veloff = -3
 p2facing = 1
-guard.dist = 0
+guard.dist = 65
 
 
 [State 0, StateTypeSet]
@@ -1310,8 +1310,8 @@ air.hittime = ceil(cond(22-Map(HitstunScaling) < 14, 14, 22-Map(HitstunScaling))
 air.fall = 1
 fall.yvelocity = 0
 p2facing = 1
-ground.cornerpush.veloff = -10-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -4-(Map(PushBack))
+air.cornerpush.veloff = -4
 guard.dist = 0
 
 
@@ -1407,8 +1407,8 @@ guard.hittime = 12
 air.fall = 1
 fall.yvelocity = 0
 p2facing = 1
-ground.cornerpush.veloff = -8-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -4-(Map(PushBack))
+air.cornerpush.veloff = -4
 guard.dist = 0
 
 

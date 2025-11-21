@@ -87,15 +87,6 @@ envshake.phase = 110
 envshake.ampl = -4
 id = 5420
 
-[State 0, TargetState]
-type = TargetState
-triggerall = Map(GroundBounce)=0
-triggerall = enemy,statetype = A && NumTarget(5420)
-trigger1 = movehit=1
-value = 5430
-ID = 5420
-ignorehitpause = 1
-
 
 [State 0, TargetState]
 type = TargetState
@@ -126,6 +117,99 @@ trigger1 = command = "BB" && (time = [16,24] || movecontact)
 type = SprPriority
 trigger1 = AnimElem = 5
 value = 2
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;623B
+[Statedef 1100]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1100
+velset = 0,0
+sprpriority = -1
+facep2 = 1
+
+
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 1101
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;623B>Air
+[Statedef 1101]
+type    = A
+movetype= I
+physics = A
+ctrl = 0
+anim = 1101
+velset = 5,-9
+sprpriority = -1
+facep2 = 1
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = .25
+
+
+[State -1, Run Fwd]
+type = ChangeState
+value = 160
+trigger1 = command = "FF" 
+[State -1, Run Fwd]
+type = ChangeState
+value = 161
+trigger1 = command = "BB" 
+
+;---------------------------------------------------------------------------
+;236A
+[Statedef 1200]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1200
+velset = 0,0
+sprpriority = -1
+facep2 = 1
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 4
+x = 150
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;214A
+[Statedef 1201]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1200
+velset = 0,0
+sprpriority = -1
+facep2 = 1
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 4
+x = -150
 
 [State 210, 5]
 type = ChangeState

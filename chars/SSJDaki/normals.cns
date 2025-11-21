@@ -606,7 +606,7 @@ x = .9
 [State 430, 2]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
-attr = C, NA
+attr = S, NA
 damage = ceil(cond(35*Map(DamageScaling) < 3, 3, 35*Map(DamageScaling)))
 animtype  = Light
 hitflag = MAF
@@ -629,6 +629,7 @@ guard.hittime = 15
 fall.yvelocity = 0
 ground.cornerpush.veloff = -5-(Map(PushBack))
 air.cornerpush.veloff = -5
+guard.dist = 30
 p2facing = 1
 
 [State 0, StateTypeSet]
@@ -1056,7 +1057,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+2
+value = Map(HitstunScaling)+1.75
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1078,7 +1079,7 @@ ground.slidetime = 12
 ground.hittime  = 16
 ground.velocity = -2,-6
 air.velocity = -1.7,-5
-air.hittime = ceil(cond(30-Map(HitstunScaling) < 9, 9, 30-Map(HitstunScaling)))
+air.hittime = ceil(cond(30-Map(HitstunScaling) < 10, 10, 30-Map(HitstunScaling)))
 fall = 1
 forcenofall = 1
 fall.yvelocity = 0
@@ -1403,7 +1404,7 @@ ground.slidetime = 6
 ground.hittime  = 17
 ground.velocity = -4-(Map(PushBack))
 air.velocity = -2.5,2
-air.hittime = ceil(cond(30-Map(HitstunScaling) < 15, 15, 30-Map(HitstunScaling)))
+air.hittime = ceil(cond(30-Map(HitstunScaling) < 16, 16, 30-Map(HitstunScaling)))
 guard.ctrltime = 12
 guard.hittime = 12
 air.fall = 1

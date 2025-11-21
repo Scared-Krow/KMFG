@@ -917,6 +917,7 @@ ctrl = 0
 type = ChangeState
 trigger1 = AnimTime = 0
 value = 11
+ctrl = 1
 ;---------------------------------------------------------------------------
 ;j.A
 [Statedef 600]

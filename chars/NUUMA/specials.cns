@@ -1097,14 +1097,7 @@ trigger1 = movehit=1
 value = 5420
 ID = 5420
 ignorehitpause = 1
-[State 0, TargetState]
-type = TargetState
-triggerall = Map(GroundBounce)=0
-triggerall = enemy,statetype = A && NumTarget(5420)
-trigger1 = movehit=1
-value = 5430
-ID = 5420
-ignorehitpause = 1
+
 
 [State 210, 5]
 type = ChangeState

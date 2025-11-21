@@ -351,38 +351,39 @@ trigger3 = stateno=[640,2000] && movecontact
 ;============================SPECIALS========================================
 ;============================================================================
 ;---------------------------------------------------------------------------
-;214C
-[State -1, 214C]
+;214D
+[State -1, 214D]
 type = ChangeState
 value = 1000
-triggerall = command = "214C"
+triggerall = command = "214D"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------
-;236B
-[State -1, 236B]
+;623B
+[State -1, 623B]
 type = ChangeState
 value = 1100
-triggerall = command = "236B"
+triggerall = command = "623B"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------
-;63214B
-[State -1, 63214B]
+;236A
+[State -1, 236A]
 type = ChangeState
 value = 1200
-triggerall = command = "624B"
+triggerall = command = "236A"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------
-;623C
-[State -1, 623C]
+;214A
+[State -1, 214A]
 type = ChangeState
-value = 1300
-triggerall = command = "623C"
+value = 1201
+triggerall = command = "214A"
+triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 ;===========================================================================

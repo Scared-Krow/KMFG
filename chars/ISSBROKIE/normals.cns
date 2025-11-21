@@ -68,7 +68,7 @@ forcenofall = 1
 fall.yvelocity = 0
 guard.ctrltime = 10
 guard.hittime = 10
-ground.cornerpush.veloff = -4-(Map(PushBack))
+ground.cornerpush.veloff = -1-(Map(PushBack))
 p2facing = 1
 
 [State 0, StateTypeSet]
@@ -168,7 +168,7 @@ ground.velocity = -2.5-(Map(PushBack))
 air.velocity = -2,-1.5
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 15, 15, 25-Map(HitstunScaling)))
 air.fall = 1
-ground.cornerpush.veloff = -4-(Map(PushBack))
+ground.cornerpush.veloff = -2-(Map(PushBack))
 fall.yvelocity = 0
 guard.ctrltime = 14
 guard.hittime = 14
@@ -282,7 +282,7 @@ air.velocity = -2,-1.25
 guard.ctrltime = 13
 guard.hittime = 13
 air.fall = 1
-ground.cornerpush.veloff = -6-(Map(PushBack))
+ground.cornerpush.veloff = -3-(Map(PushBack))
 fall.yvelocity = 0
 p2facing = 1
 
@@ -351,7 +351,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.025
+value = Map(DamageScaling)-.0125
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -517,10 +517,10 @@ guard.velocity = -3
 air.velocity = -1,-1.35
 air.hittime = ceil(cond(22-Map(HitstunScaling) < 5, 5, 22-Map(HitstunScaling)))
 air.fall = 1
-guard.ctrltime = 12
-guard.hittime = 12
+guard.ctrltime = 10
+guard.hittime = 10
 fall.yvelocity = 0
-ground.cornerpush.veloff = -5-(Map(PushBack))
+ground.cornerpush.veloff = -1-(Map(PushBack))
 p2facing = 1
 
 [State 0, StateTypeSet]
@@ -589,7 +589,7 @@ attr = S, NA
 damage = ceil(cond(35*Map(DamageScaling) < 3, 3, 35*Map(DamageScaling)))
 animtype  = Light
 hitflag = MAF
-guardflag = MA
+guardflag = LA
 priority = 2
 pausetime = 9,9
 sparkno = 0
@@ -607,6 +607,7 @@ air.fall = 1
 guard.ctrltime = 14
 guard.hittime = 14
 fall.yvelocity = 0
+guard.dist = 50
 p2facing = 1
 
 [State 0, StateTypeSet]
@@ -722,8 +723,8 @@ air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 12
 guard.hittime = 12
-ground.cornerpush.veloff = -5-(Map(PushBack))
-air.cornerpush.veloff = -7
+ground.cornerpush.veloff = -3-(Map(PushBack))
+air.cornerpush.veloff = -2
 p2facing = 1
 
 [State 210, 5]
@@ -846,8 +847,8 @@ envshake.time = 10
 envshake.freq = 80
 envshake.phase = 100
 envshake.ampl = -4
-ground.cornerpush.veloff = -15
-air.cornerpush.veloff = -15
+ground.cornerpush.veloff = -3
+air.cornerpush.veloff = -3
 p2facing = 1
 
 [State 440, 3]
@@ -921,6 +922,7 @@ ctrl = 0
 type = ChangeState
 trigger1 = AnimTime = 0
 value = 11
+ctrl = 1
 ;---------------------------------------------------------------------------
 ;j.A
 [Statedef 600]
@@ -963,7 +965,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1
+value = Map(HitstunScaling)+.5
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1002,12 +1004,12 @@ ground.hittime  = 15
 ground.velocity = -4-(Map(PushBack))
 air.velocity = -1,-1
 air.hittime = ceil(cond(15-Map(HitstunScaling) < 7, 7, 15-Map(HitstunScaling)))
-air.fall = 1
+forcenofall = 1
 fall.yvelocity = 0
 guard.ctrltime = 10
 guard.hittime = 10
-ground.cornerpush.veloff = -5-(Map(PushBack))
-air.cornerpush.veloff = -4
+ground.cornerpush.veloff = -2-(Map(PushBack))
+air.cornerpush.veloff = -2
 p2facing = 1
 
 [State 0, StateTypeSet]
@@ -1101,11 +1103,11 @@ ground.slidetime = 12
 ground.hittime  = 16
 ground.velocity = -4
 air.velocity = -2,-2
-air.hittime = ceil(cond(21-Map(HitstunScaling) < 14, 14, 21-Map(HitstunScaling)))
-air.fall = 1
+air.hittime = ceil(cond(25-Map(HitstunScaling) < 16, 16, 25-Map(HitstunScaling)))
+forcenofall = 1
 fall.yvelocity = 0
-air.cornerpush.veloff = -4
-ground.cornerpush.veloff = -5-(Map(PushBack))
+air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -4-(Map(PushBack))
 p2facing = 1
 
 [State 0, StateTypeSet]
@@ -1193,14 +1195,14 @@ ground.type = High
 ground.slidetime = 6
 ground.hittime  = 17
 ground.velocity = -4
-air.velocity = -2,-2
-air.hittime = ceil(cond(25-Map(HitstunScaling) < 15, 15, 25-Map(HitstunScaling)))
+air.velocity = -5,-1.7
+air.hittime = ceil(cond(27-Map(HitstunScaling) < 15, 15, 27-Map(HitstunScaling)))
 guard.ctrltime = 12
 guard.hittime = 12
 air.fall = 1
 fall.yvelocity = 0
-ground.cornerpush.veloff = -5-(Map(PushBack)) 
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -4-(Map(PushBack)) 
+air.cornerpush.veloff = -8
 p2facing = 1
 
 [State 0, StateTypeSet]
@@ -1348,7 +1350,7 @@ air.type = High                  ;Type: High, Low, Trip (def: same as ground.typ
 air.velocity = -2,15      ;X-velocity at which opponent is pushed,
 air.hittime = 60
 fall = 1
-fall.yvelocity = 0
+fall.yvelocity = cond(Map(GroundBounce)=0,-6,0)
 guard.ctrltime = 15
 guard.hittime = 15
 envshake.time = 12
@@ -1360,6 +1362,7 @@ id = 5420
 
 [State 0, TargetState]
 type = TargetState
+triggerall = Map(GroundBounce)=1
 triggerall = enemy,statetype = A && NumTarget(5420)
 trigger1 = movehit=1
 value = 5420

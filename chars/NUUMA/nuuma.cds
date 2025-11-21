@@ -63,7 +63,7 @@ type = VarSet
 trigger1 = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,699])
-trigger2 = (movecontact || (enemy,Map(Parry)=1 && MoveReversed))
+trigger2 = movecontact
 var(1) = 1
 
 ;============================================================================
