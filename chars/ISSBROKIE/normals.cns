@@ -68,7 +68,7 @@ forcenofall = 1
 fall.yvelocity = 0
 guard.ctrltime = 10
 guard.hittime = 10
-ground.cornerpush.veloff = -1-(Map(PushBack))
+ground.cornerpush.veloff = -3-(Map(PushBack))
 p2facing = 1
 
 [State 0, StateTypeSet]
@@ -520,7 +520,7 @@ air.fall = 1
 guard.ctrltime = 10
 guard.hittime = 10
 fall.yvelocity = 0
-ground.cornerpush.veloff = -1-(Map(PushBack))
+ground.cornerpush.veloff = -3-(Map(PushBack))
 p2facing = 1
 
 [State 0, StateTypeSet]
@@ -1225,6 +1225,7 @@ facep2 = cond(Map(AirDashing)>0,1,0)
 
 [State 0, Turn]
 type = Turn
+triggerall = time < 20
 trigger1 = facing = enemy,facing
 
 [State 0, VelMul]

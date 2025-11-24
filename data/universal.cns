@@ -254,7 +254,7 @@ map = "Parry"
 
 [State 1300, 2]
 type = ReversalDef
-trigger1 = Time = [0,10]
+trigger1 = Time = [0,8]
 reversal.attr = SA,AA,AP
 pausetime = 0,0
 sparkno = 40
@@ -362,7 +362,7 @@ map = "Parry"
 
 [State 1300, 2]
 type = ReversalDef
-trigger1 = Time = [0,10]
+trigger1 = Time = [0,8]
 reversal.attr = C,AA,AP
 pausetime = 0,0
 sparkno = 40

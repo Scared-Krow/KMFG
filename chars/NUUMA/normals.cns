@@ -438,8 +438,8 @@ sparkxy = -12,-50
 hitsound   = 9,2
 guardsound = 6,0
 ground.type = High
-ground.slidetime = 12
-ground.hittime  = 20
+ground.slidetime = 20
+ground.hittime  = 22
 ground.velocity = -3-(Map(PushBack))
 air.hittime = ceil(cond(30-Map(HitstunScaling) < 18, 18, 30-Map(HitstunScaling)))
 air.velocity = -1.5,-2.5
@@ -488,13 +488,6 @@ velset = vel x
 sprpriority = -1
 facep2 = 1
 
-[State -2, Fatal Counter]
-type = mapset
-trigger1 = 1
-value = 1
-map = "FatalCounter"
-ignorehitpause = 1
-
 [State 0, PosAdd]
 type = PosAdd
 trigger1 = animelem = 1
@@ -512,18 +505,11 @@ trigger1 = animelem = 5
 trigger2 = animelem = 6
 x = 2
 
-[State -2, PushBack]
-type = mapset
-triggerall = enemy,statetype != A
-trigger1 = movehit && combocount>3
-value = Map(PushBack)+1
-map = "PushBack"
-ignorehitpause = 1
-persistent = 0
+
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.9
+value = Map(DamageScaling)*.8
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -538,13 +524,14 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+.5
+value = Map(HitstunScaling)+1
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
 
 [State 210, 2]
 type = HitDef
+triggerall = enemy,movetype = A
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 animtype  = Medium
@@ -560,10 +547,38 @@ ground.type = High
 ground.slidetime = 20
 ground.hittime  = 30
 ground.velocity = -3, 3
-air.hittime = ceil(cond(40-Map(HitstunScaling) < 25, 25, 40-Map(HitstunScaling)))
+air.hittime = 60
 air.velocity = -2.5,4
 fall = 1
-air.fall = 1
+guard.ctrltime = 11
+guard.hittime = 11
+fall.yvelocity = -6
+p2facing = 1
+ground.cornerpush.veloff = -2-(Map(PushBack))
+air.cornerpush.veloff = -2
+guard.dist = 0
+
+[State 210, 2]
+type = HitDef
+triggerall = enemy,movetype != A
+trigger1 = !MoveContact && !MoveReversed
+attr = S, NA
+animtype  = Medium
+damage = ceil(cond(60*Map(DamageScaling) < 6, 6, 60*Map(DamageScaling)))
+guardflag = HA
+pausetime = 10,10
+priority = 4, Hit 
+sparkno = 1
+sparkxy = -12,-50
+hitsound   = 9,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 30
+ground.velocity = -3, 3
+air.hittime = 40
+air.velocity = -2.5,4
+fall = 1
 guard.ctrltime = 11
 guard.hittime = 11
 fall.yvelocity = 0
@@ -575,6 +590,7 @@ id = 5420
 
 [State 0, TargetState]
 type = TargetState
+triggerall = Map(CounterHit)=0
 triggerall = NumTarget(5420)
 trigger1 = movehit = 1
 value = 5420
@@ -753,7 +769,7 @@ guardflag = LA
 pausetime = 9,9
 priority = 2, Hit 
 sparkno = 0
-sparkxy = -10,-30
+sparkxy = -10,-10
 hitsound   = 5,1
 guardsound = 6,0
 ground.type = High
@@ -880,7 +896,7 @@ guardflag = LA
 pausetime = 9,9
 priority = 3, Hit 
 sparkno = 0
-sparkxy = -10,-30
+sparkxy = -10,-10
 hitsound   = S230,0
 guardsound = 6,0
 ground.type = High
@@ -1213,8 +1229,8 @@ air.hittime = ceil(cond(25-Map(HitstunScaling) < 10, 10, 25-Map(HitstunScaling))
 air.fall = 1
 fall.yvelocity = 0
 p2facing = 1
-ground.cornerpush.veloff = -10-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -4-(Map(PushBack))
+air.cornerpush.veloff = -4
 guard.dist = 0
 
 
@@ -1303,8 +1319,8 @@ guard.hittime = 12
 air.fall = 1
 fall.yvelocity = 0
 p2facing = 1
-ground.cornerpush.veloff = -8-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -1-(Map(PushBack))
+air.cornerpush.veloff = -1
 guard.dist = 0
 [State 630, 2]
 type = HitDef
@@ -1330,8 +1346,8 @@ fall 	= 1
 air.fall 	= 1
 fall.yvelocity = 0
 p2facing = 1
-ground.cornerpush.veloff = -8-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -1-(Map(PushBack))
+air.cornerpush.veloff = -1
 guard.dist = 0
 
 [State 0, LifeAdd]
@@ -1436,10 +1452,10 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
-damage = ceil(cond(35*Map(DamageScaling) < 3, 3, 35*Map(DamageScaling)))
+damage = ceil(cond(40*Map(DamageScaling) < 4, 4, 40*Map(DamageScaling)))
 guardflag = HA
 priority = 4
-pausetime = 16,16
+pausetime = 15,15
 sparkno = 1
 sparkxy = -10,-40
 hitsound   = 5,2
@@ -1458,7 +1474,7 @@ guard.ctrltime = 14
 guard.hittime = 14
 fall.yvelocity = 0
 p2facing = 1
-air.cornerpush.veloff = -18-((Map(jD))*6)
+air.cornerpush.veloff = -5-((Map(jD))*6)
 guard.dist = 0
 
 [State 0, StateTypeSet]

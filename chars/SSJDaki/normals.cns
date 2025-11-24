@@ -629,7 +629,7 @@ guard.hittime = 15
 fall.yvelocity = 0
 ground.cornerpush.veloff = -5-(Map(PushBack))
 air.cornerpush.veloff = -5
-guard.dist = 30
+guard.dist = 40
 p2facing = 1
 
 [State 0, StateTypeSet]
