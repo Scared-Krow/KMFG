@@ -988,7 +988,7 @@ persistent = 0
 
 [State 210, 2]
 type = HitDef
-triggerall = enemy,prevmovetype = A
+triggerall = enemy,movetype = A
 trigger1 = !MoveContact && !MoveReversed
 attr = S, SA
 animtype  = Medium
@@ -1003,9 +1003,9 @@ guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
 ground.hittime  = 20
-ground.velocity = -20,-4
+ground.velocity = -20,-6
 air.hittime = 60
-air.velocity = -20,-3
+air.velocity = -20,-5
 fall = 1
 guard.ctrltime = 11
 guard.hittime = 11
@@ -1017,7 +1017,7 @@ id = 5400
 
 [State 210, 2]
 type = HitDef
-triggerall = enemy,prevmovetype != A
+triggerall = enemy,movetype != A
 trigger1 = !MoveContact && !MoveReversed
 attr = S, SA
 animtype  = Medium

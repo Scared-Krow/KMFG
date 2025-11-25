@@ -69,17 +69,17 @@ air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 13
 guard.hittime = 13
-ground.cornerpush.veloff = 0
-air.cornerpush.veloff = 0
 getpower = 0,0
 p2facing = 1
+ground.cornerpush.veloff = -1
+air.cornerpush.veloff = -1
 kill = 0
 
 [State 200, 1]
 type = HitDef
 trigger1 = time = 118
 attr = S, HP                   ;Attribute: Standing, Normal Attack
-damage = ceil(cond(40*Map(DamageScaling) < 20, 20, 40*Map(DamageScaling))),5
+damage = ceil(cond(50*Map(DamageScaling) < 30, 30, 50*Map(DamageScaling))),5
 animtype = Light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -175,6 +175,12 @@ anim = 3001
 velset = 0,0
 ctrl = 0
 
+[State 0, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+time = 99
+pos = 30,-50
+
 
 [State 0, DestroySelf]
 type = DestroySelf
@@ -190,6 +196,11 @@ anim = 3002
 velset = 0,0
 ctrl = 0
 
+[State 0, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+time = 99
+pos = 30,-50
 
 [State 0, DestroySelf]
 type = DestroySelf
