@@ -79,7 +79,7 @@ kill = 0
 type = HitDef
 trigger1 = time = 118
 attr = S, HP                   ;Attribute: Standing, Normal Attack
-damage = ceil(cond(50*Map(DamageScaling) < 30, 30, 50*Map(DamageScaling))),5
+damage = ceil(cond(40*Map(DamageScaling) < 20, 20, 40*Map(DamageScaling))),5
 animtype = Light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit

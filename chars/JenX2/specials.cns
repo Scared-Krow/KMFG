@@ -587,7 +587,7 @@ ctrl = 0
 [State 1000, 7]
 type = ChangeState
 trigger1 = time > 55
-trigger2 = command = "holddown" && time >= 8
+trigger2 = command = "holda" && time >= 5
 value = 1210
 ctrl = 0
 

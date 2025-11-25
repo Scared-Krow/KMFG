@@ -753,3 +753,17 @@ trigger1 = Map(FatalCounter)>0
 map = "FatalCounter"
 value = 0
 ignorehitpause = 1
+
+;-------PUSHBLOCK----------
+[State 0, VelAdd]
+type = VelAdd
+triggerall = stateno = [140,160] && power >= 250
+trigger1 = command = "2Buttons"
+x = -10
+redirectID = enemy,ID
+[State 0, PowerAdd]
+type = PowerAdd
+triggerall = stateno = [140,160]
+trigger1 = command = "2Buttons"
+value = -250
+

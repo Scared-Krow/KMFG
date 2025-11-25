@@ -71,7 +71,7 @@ air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 10
 guard.hittime = 10
-ground.cornerpush.veloff = -4-(Map(PushBack))
+ground.cornerpush.veloff = -3-(Map(PushBack))
 air.cornerpush.veloff = -2
 p2facing = 1
 
@@ -181,7 +181,7 @@ guard.velocity = -4
 air.velocity = -3.5,-1.75
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 15, 15, 25-Map(HitstunScaling)))
 air.fall = 1
-ground.cornerpush.veloff = -4-(Map(PushBack))
+ground.cornerpush.veloff = -3-(Map(PushBack))
 fall.yvelocity = 0
 guard.ctrltime = 12
 guard.hittime = 12
@@ -293,9 +293,9 @@ air.velocity = -3.5,-2.25
 guard.ctrltime = 14
 guard.hittime = 14
 air.fall = 1
-ground.cornerpush.veloff = -6-(Map(PushBack))
+ground.cornerpush.veloff = -4-(Map(PushBack))
 fall.yvelocity = 0
-air.cornerpush.veloff = -5
+air.cornerpush.veloff = -3
 p2facing = 1
 
 [State -2, 5C Scaling]
@@ -429,8 +429,8 @@ guard.ctrltime = 11
 guard.hittime = 11
 fall.yvelocity = 0
 p2facing = 1
-ground.cornerpush.veloff = -5-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -4-(Map(PushBack))
+air.cornerpush.veloff = -4
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -527,8 +527,8 @@ air.fall = 1
 guard.ctrltime = 12
 guard.hittime = 12
 fall.yvelocity = 0
-ground.cornerpush.veloff = -5-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -3-(Map(PushBack))
+air.cornerpush.veloff = -3
 p2facing = 1
 
 [State 0, StateTypeSet]
@@ -721,8 +721,8 @@ forcenofall = 1
 fall.yvelocity = 0
 guard.ctrltime = 12
 guard.hittime = 12
-ground.cornerpush.veloff = -7-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -3-(Map(PushBack))
+air.cornerpush.veloff = -3
 p2facing = 1
 
 [State 210, 5]
@@ -1066,7 +1066,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
-damage = ceil(cond(40*Map(DamageScaling) < 3, 3, 40*Map(DamageScaling)))
+damage = ceil(cond(35*Map(DamageScaling) < 3, 3, 35*Map(DamageScaling)))
 guardflag = HA
 priority = 2
 pausetime = 10,10
@@ -1084,8 +1084,8 @@ fall = 1
 forcenofall = 1
 fall.yvelocity = 0
 p2facing = 1
-ground.cornerpush.veloff = -10-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -5-(Map(PushBack))
+air.cornerpush.veloff = -3
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1190,8 +1190,8 @@ guard.hittime = 12
 air.fall = 1
 fall.yvelocity = 0
 p2facing = 1
-ground.cornerpush.veloff = -8-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -5-(Map(PushBack))
+air.cornerpush.veloff = -3
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1410,8 +1410,8 @@ guard.hittime = 12
 air.fall = 1
 fall.yvelocity = 0
 p2facing = 1
-ground.cornerpush.veloff = -8-(Map(PushBack))
-air.cornerpush.veloff = -5
+ground.cornerpush.veloff = -4-(Map(PushBack))
+air.cornerpush.veloff = -3
 
 [State 0, StateTypeSet]
 type = StateTypeSet

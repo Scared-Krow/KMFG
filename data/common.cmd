@@ -124,6 +124,37 @@ time = 1
 buffer.time = 1
 
 [Command]
+name = "2Buttons"
+command = x + a
+time = 1
+buffer.time = 1
+[Command]
+name = "2Buttons"
+command = x + y
+time = 1
+buffer.time = 1
+[Command]
+name = "2Buttons"
+command = x + b
+time = 1
+buffer.time = 1
+[Command]
+name = "2Buttons"
+command = a + y
+time = 1
+buffer.time = 1
+[Command]
+name = "2Buttons"
+command = a + b
+time = 1
+buffer.time = 1
+[Command]
+name = "2Buttons"
+command = y + b
+time = 1
+buffer.time = 1
+
+[Command]
 name = "menu"
 command = m
 time = 1
