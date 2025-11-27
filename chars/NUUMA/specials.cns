@@ -153,7 +153,7 @@ redirectID = root,ID
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S,NP                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(50*root,Map(DamageScaling) < 5, 5, 50*root,Map(DamageScaling))),15
+damage = ceil(cond(55*root,Map(DamageScaling) < 5, 5, 55*root,Map(DamageScaling))),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -164,8 +164,9 @@ sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
 hitsound = 9, 1
 guardsound = 6, 0
 ground.type = High
-ground.slidetime = 5
+ground.slidetime = 10
 ground.hittime  = 15
+guard.slidetime = 15
 ground.velocity = -5
 guard.velocity = -10
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
@@ -279,7 +280,7 @@ redirectID = root,ID
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S,NP                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(50*root,Map(DamageScaling) < 5, 5, 50*root,Map(DamageScaling))),15
+damage = ceil(cond(55*root,Map(DamageScaling) < 5, 5, 55*root,Map(DamageScaling))),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -290,8 +291,9 @@ sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
 hitsound = 9, 1
 guardsound = 6, 0
 ground.type = High
-ground.slidetime = 5
+ground.slidetime = 10
 ground.hittime  = 15
+guard.slidetime = 15
 ground.velocity = -5
 guard.velocity = -10
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
@@ -400,7 +402,7 @@ redirectID = root,ID
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S,NP                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(50*root,Map(DamageScaling) < 5, 5, 50*root,Map(DamageScaling))),15
+damage = ceil(cond(55*root,Map(DamageScaling) < 5, 5, 55*root,Map(DamageScaling))),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -411,8 +413,9 @@ sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
 hitsound = 9, 1
 guardsound = 6, 0
 ground.type = High
-ground.slidetime = 5
+ground.slidetime = 10
 ground.hittime  = 15
+guard.slidetime = 15
 ground.velocity = -1, -4
 guard.velocity = -10
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
@@ -483,6 +486,14 @@ ampl = -3
 phase = 120
 ignorehitpause = 1
 
+[State -2, Hitstun Scaling]
+type = mapset
+trigger1 = movehit=1 && hitpausetime = 1
+value = Map(DCleaver)+1
+map = "DCleaver"
+ignorehitpause = 1
+persistent = 0
+redirectID=root,ID
 
 [State -2, Starter Damage Scaling]
 type = mapset
@@ -504,7 +515,7 @@ redirectID = root,ID
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit=1
-value = root,Map(HitstunScaling)+1
+value = root,Map(HitstunScaling)+1.5
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -514,7 +525,7 @@ redirectID = root,ID
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S,NP                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(50*root,Map(DamageScaling) < 5, 5, 50*root,Map(DamageScaling))),15
+damage = ceil(cond(55*root,Map(DamageScaling) < 5, 5, 55*root,Map(DamageScaling))),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -525,13 +536,14 @@ sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
 hitsound = 9, 1
 guardsound = 6, 0
 ground.type = High
-ground.slidetime = 5
+ground.slidetime = 10
 ground.hittime  = 15
+guard.slidetime = 15
 ground.velocity = -5, -2
 guard.velocity = -10
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
-air.velocity = -5, -2.5     ;X-velocity at which opponent is pushed,
+air.velocity = -5-root,Map(DCleaver), -2.5     ;X-velocity at which opponent is pushed,
 air.hittime = ceil(cond(21-root,Map(HitstunScaling) < 2, 2, 21-root,Map(HitstunScaling)))
 fall.yvelocity = 0
 guard.ctrltime = 5
@@ -696,6 +708,12 @@ map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
 
+[State -2, Counterhit]
+type = mapset
+trigger1 = enemy,movetype = A
+value = 1
+map = "extendedCH"
+
 [State 440, 3]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
@@ -743,7 +761,7 @@ ground.slidetime = 10
 ground.hittime  = 17
 ground.velocity = -0.5, -7
 air.velocity = -0.5,-8
-air.hittime = ceil(cond(40-Map(HitstunScaling) < 15, 15, 40-Map(HitstunScaling)))
+air.hittime = ceil(cond(40-Map(HitstunScaling) < 15, 15, 40-Map(HitstunScaling)))+100*Map(extendedCH)
 guard.velocity = -5
 fall = 1
 air.fall = 1
@@ -754,6 +772,12 @@ ground.cornerpush.veloff = -5-(Map(PushBack))
 air.cornerpush.veloff = -5
 p2facing = 1
 guard.dist = 0
+
+[State -2, Counterhit]
+type = mapset
+trigger1 = animelem = 8 
+value = 0
+map = "extendedCH"
 
 ;Anti Air
 [State 0, NotHitBy]
@@ -836,7 +860,7 @@ ground.velocity = 0
 air.velocity = -1.5,-1.5
 air.hittime = 999
 forcenofall = 1
-ground.cornerpush.veloff = -4-(Map(PushBack))
+ground.cornerpush.veloff = 0
 fall.yvelocity = 0
 guard.ctrltime = 12
 guard.hittime = 12
@@ -861,10 +885,10 @@ sparkxy = -12,-50
 hitsound   = S230,1
 guardsound = 6,0
 ground.type = High
-ground.slidetime = 26
-ground.hittime  = 26
+ground.slidetime = 27
+ground.hittime  = 27
 ground.velocity = -3-(Map(PushBack))
-air.hittime = 26
+air.hittime = 27
 air.velocity = -2.5,-2.75
 air.fall = 1
 guard.ctrltime = 5

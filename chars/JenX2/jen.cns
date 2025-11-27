@@ -155,6 +155,24 @@ physics = S
 ctrl = 0
 anim = 105
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time=[0,5]
+value = SCA,NT,ST,HT
+time = 1
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP
+time = 1
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = time > 5
+value = SCA,NA,SA,HA,NT,ST,HT,NP,SP,HP
+time = 1
+
 [State 0, AssertSpecial]
 type = AssertSpecial
 trigger1 = 1
@@ -162,8 +180,8 @@ flag = nowalk
 
 [State 0, VelAdd]
 type = VelSet
-trigger1 = animelem = 1
-x = -6
+trigger1 = time > 1 && time < 7
+x = -6.5
 
 [State 0, ChangeState]
 type = ChangeState

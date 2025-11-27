@@ -494,12 +494,22 @@ anim = 1206
 velset = 0,0
 ctrl = 0
 
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movehit=1 && combocount=1
+value = root,Map(DamageScaling)*.9
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+redirectID = root,ID
+
 [State 210, 2]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NP
 animtype  = up
-damage = ceil(cond(50*root,Map(DamageScaling) < 5, 5, 50*root,Map(DamageScaling)))
+damage = ceil(cond(60*root,Map(DamageScaling) < 6, 6, 60*root,Map(DamageScaling)))
+hitflag = MAF
 guardflag = MA
 priority = 3, Hit 
 pausetime = 8,8
@@ -513,6 +523,7 @@ ground.hittime  = 22
 ground.velocity = -.5,-5.5
 guard.velocity = 5
 air.hittime = ceil(cond(45-root,Map(HitstunScaling) < 20, 20, 45-root,Map(HitstunScaling)))
+down.hittime = ceil(cond(25-root,Map(HitstunScaling) < 20, 10, 25-root,Map(HitstunScaling)))
 air.velocity = -.5,-4.5
 guard.ctrltime = 10
 guard.hittime = 10
@@ -1107,7 +1118,7 @@ y = 12
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.95
+value = Map(DamageScaling)*.9
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1131,7 +1142,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
-damage = ceil(cond(65*Map(DamageScaling) < 15, 15, 65*Map(DamageScaling)))
+damage = ceil(cond(75*Map(DamageScaling) < 10, 10, 75*Map(DamageScaling)))
 guardflag = HA
 priority = 4
 pausetime = 15,15

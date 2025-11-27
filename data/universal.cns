@@ -162,6 +162,14 @@ anim = 700
 velset = 3,0
 facep2 = 1
 
+[State -2, Damage Scaling]
+type = mapadd
+trigger1 = time = 0
+value = .025
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+
 [State 0, PowerAdd]
 type = PowerAdd
 trigger1 = time = 0
@@ -592,8 +600,8 @@ value = 0
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(Infection) %.0f, Map(CounterHit) = %.0f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(Infection),Map(CounterHit)
+text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(Infection) %.0f, vel x = %.4f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(Infection),vel x
 
 ;---------REDUCE MECHANIC
 [State -2, Reduce]

@@ -126,6 +126,24 @@ physics = S
 ctrl = 0
 anim = 105
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time=[0,5]
+value = SCA,NT,ST,HT
+time = 1
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP
+time = 1
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = time > 5
+value = SCA,NA,SA,HA,NT,ST,HT,NP,SP,HP
+time = 1
+
 [State 0, AssertSpecial]
 type = AssertSpecial
 trigger1 = 1

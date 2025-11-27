@@ -167,6 +167,24 @@ physics = S
 ctrl = 0
 anim = 105
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time=[0,5]
+value = SCA,NT,ST,HT
+time = 1
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP
+time = 1
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = time > 5
+value = SCA,NA,SA,HA,NT,ST,HT,NP,SP,HP
+time = 1
+
 [State 0, AssertSpecial]
 type = AssertSpecial
 trigger1 = 1
@@ -451,6 +469,45 @@ value = 0
 type = AttackMulSet
 trigger1 = Map(RAWRXD)=0
 value = 1
+
+[State 0, Explod]
+type = Explod
+triggerall = teamside = 1
+trigger1 = Map(RAWRXD)=1 && numexplod(3001)<1
+anim = 3001
+ID = 3001
+pos = 125,35
+postype = left  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = -2
+supermovetime = 9999999
+pausemovetime = 999999
+scale = .6,.6
+sprpriority = -6
+ontop = 0
+ownpal = 1
+removeongethit = 0
+[State 0, Explod]
+type = Explod
+triggerall = teamside = 2
+trigger1 = Map(RAWRXD)=1 && numexplod(3001)<1
+anim = 3001
+ID = 3001
+pos = -125,35
+postype = right ;P2, Front, Back, Left, Right
+facing = -1
+vfacing = 1
+bindtime = 1
+removetime = -2
+supermovetime = 9999999
+pausemovetime = 999999
+scale = .6,.6
+sprpriority = -6
+ontop = 0
+ownpal = 1
+removeongethit = 0
 
 ;---------------------------------------------------------------------------
 ; UNIVERSAL

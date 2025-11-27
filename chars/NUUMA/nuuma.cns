@@ -236,6 +236,24 @@ physics = S
 ctrl = 0
 anim = 105
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time=[0,5]
+value = SCA,NT,ST,HT
+time = 1
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP
+time = 1
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = time > 5
+value = SCA,NA,SA,HA,NT,ST,HT,NP,SP,HP
+time = 1
+
 [State 0, AssertSpecial]
 type = AssertSpecial
 trigger1 = 1
@@ -243,8 +261,8 @@ flag = nowalk
 
 [State 0, VelAdd]
 type = VelSet
-trigger1 = animelem = 1
-x = -6
+trigger1 = time = 1
+x = -8
 
 [State 0, ChangeState]
 type = ChangeState
@@ -540,6 +558,13 @@ kill = 0
 absolute = 1
 redirectID = enemy,ID
 
+[State 0, StateTypeSet]
+type = StateTypeSet
+triggerall = enemy,movetype != H
+trigger1 = Map(InfectionLevel)=3
+movetype = A       
+redirectID = enemy,ID
+
 [Statedef -3]
 
 ;---------------------------------------------------------------------------
@@ -638,7 +663,7 @@ ignorehitpause = 1
 type = mapset
 trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
 value = 0
-map = "cleaver"
+map = "DCleaver"
 ignorehitpause = 1
 
 ;This controller plays a sound everytime KFM lands from a jump, or

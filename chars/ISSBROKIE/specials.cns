@@ -65,7 +65,7 @@ ignorehitpause = 0
 type = mapset
 triggerall = Map(Charge)=[14,16]
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.05
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -73,7 +73,7 @@ persistent = 0
 type = mapset
 triggerall = Map(Charge)!=[14,16]
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.15
+value = Map(DamageScaling)-.1
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
