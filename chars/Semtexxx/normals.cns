@@ -458,6 +458,13 @@ anim = 400
 sprpriority = 2
 facep2 = 1
 
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 2
+trigger2 = animelem = 3
+trigger3 = animelem = 4
+x = 2
+
 [State -2, PushBack]
 type = mapset
 triggerall = enemy,statetype != A
@@ -502,11 +509,11 @@ damage = ceil(cond(20*Map(DamageScaling) < 2, 2, 20*Map(DamageScaling)))
 priority  = 3
 animtype  = Light
 hitflag = MAF
-guardflag = MA
+guardflag = LA
 priority = 1
 pausetime = 9,9
 sparkno = 0
-sparkxy = -10,-42
+sparkxy = -10,-10
 hitsound   = 5,0
 guardsound = 6,0
 ground.type = Low

@@ -133,7 +133,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.11
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -531,7 +531,7 @@ persistent = 0
 
 [State 210, 2]
 type = HitDef
-triggerall = enemy,movetype = A
+triggerall = Map(CounterHit)=1
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 animtype  = Medium
@@ -560,7 +560,7 @@ guard.dist = 0
 
 [State 210, 2]
 type = HitDef
-triggerall = enemy,movetype != A
+triggerall = Map(CounterHit)=0
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 animtype  = Medium
@@ -766,7 +766,7 @@ damage = ceil(cond(35*Map(DamageScaling) < 3, 3, 35*Map(DamageScaling)))
 animtype  = Light
 hitflag = MAF
 guardflag = LA
-pausetime = 9,9
+pausetime = 8,8
 priority = 2, Hit 
 sparkno = 0
 sparkxy = -10,-10
@@ -965,7 +965,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.125
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1339,7 +1339,7 @@ ground.slidetime = 6
 ground.hittime  = 17
 ground.velocity = -0-(Map(PushBack)), -8
 air.velocity = -0,-7
-air.hittime = ceil(cond(30-Map(HitstunScaling) < 10, 10, 30-Map(HitstunScaling)))
+air.hittime = ceil(cond(30-Map(HitstunScaling) < 15, 15, 30-Map(HitstunScaling)))
 guard.ctrltime = 12
 guard.hittime = 12
 fall 	= 1
@@ -1474,7 +1474,7 @@ guard.ctrltime = 14
 guard.hittime = 14
 fall.yvelocity = 0
 p2facing = 1
-air.cornerpush.veloff = -5-((Map(jD))*5)
+air.cornerpush.veloff = -5-((Map(jD))*4)
 guard.dist = 0
 id = 5400
 
@@ -1497,7 +1497,7 @@ ground.slidetime = 12
 ground.hittime  = 18
 ground.velocity = -5, -4
 guard.velocity = -5
-air.velocity = -5.5-(Map(jD)*.75), -2
+air.velocity = -5-(Map(jD)*.75), -2
 air.hittime = ceil(cond(40-Map(HitstunScaling) < 15, 15, 40-Map(HitstunScaling)))
 fall = 1
 guard.ctrltime = 14

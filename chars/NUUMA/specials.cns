@@ -134,7 +134,7 @@ redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.05
+value = root,Map(DamageScaling)-.08
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -261,7 +261,7 @@ redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.05
+value = root,Map(DamageScaling)-.08
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -383,7 +383,7 @@ redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.05
+value = root,Map(DamageScaling)-.08
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -420,7 +420,7 @@ ground.velocity = -1, -4
 guard.velocity = -10
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
-air.velocity = -5, -2.5       ;X-velocity at which opponent is pushed,
+air.velocity = -4, -2.5       ;X-velocity at which opponent is pushed,
 air.hittime = ceil(cond(21-root,Map(HitstunScaling) < 2, 2, 21-root,Map(HitstunScaling)))
 fall.yvelocity = 0
 guard.ctrltime = 5
@@ -506,7 +506,7 @@ redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.05
+value = root,Map(DamageScaling)-.08
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -539,7 +539,7 @@ ground.type = High
 ground.slidetime = 10
 ground.hittime  = 15
 guard.slidetime = 15
-ground.velocity = -5, -2
+ground.velocity = -4,-4
 guard.velocity = -10
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
@@ -691,6 +691,10 @@ y = -6
 type = VelAdd
 trigger1 = animelemno(0) < 9
 y = -0.25
+[State 0, PosAdd]
+type = VelAdd
+trigger1 = time > 40
+y = 0.125
 
 [State -2, Damage Scaling]
 type = mapset
@@ -699,18 +703,17 @@ value = Map(DamageScaling)-.25
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
-[State -2, Hitstun Scaling]
+[State -2, Damage Scaling]
 type = mapset
-triggerall = enemy,statetype = A && enemy,movetype = H
-trigger1 = movehit
-value = Map(HitstunScaling)+.5
-map = "HitstunScaling"
+trigger1 = movehit && combocount>1
+value = Map(DamageScaling)-.05
+map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 
 [State -2, Counterhit]
 type = mapset
-trigger1 = enemy,movetype = A
+trigger1 = Map(CounterHit)=1
 value = 1
 map = "extendedCH"
 
@@ -761,10 +764,9 @@ ground.slidetime = 10
 ground.hittime  = 17
 ground.velocity = -0.5, -7
 air.velocity = -0.5,-8
-air.hittime = ceil(cond(40-Map(HitstunScaling) < 15, 15, 40-Map(HitstunScaling)))+100*Map(extendedCH)
+air.hittime = 40+100*Map(extendedCH)
 guard.velocity = -5
-fall = 1
-air.fall = 1
+forcenofall = 1
 fall.yvelocity = 0
 guard.ctrltime = 12
 guard.hittime = 12
@@ -842,9 +844,9 @@ persistent = 0
 type = HitDef
 trigger1 = anim = 1015
 trigger1 = animelem = 9
-attr = S, SA
+attr = S, ST
 animtype  = Medium
-damage = ceil(cond(20*Map(DamageScaling) < 6, 6, 20*Map(DamageScaling)))
+damage = ceil(cond(20*Map(DamageScaling) < 2, 2, 20*Map(DamageScaling)))
 guardflag = MA
 priority = 2, Hit 
 pausetime = 1,1 
@@ -984,7 +986,7 @@ trigger1 = anim = 1015
 trigger1 = animelem = 9
 attr = S, NA
 animtype  = Medium
-damage = ceil(cond(20*Map(DamageScaling) < 6, 6, 20*Map(DamageScaling)))
+damage = ceil(cond(20*Map(DamageScaling) < 2, 2, 20*Map(DamageScaling)))
 guardflag = MA
 hitflag	= AF
 priority = 2, Hit 
@@ -1076,7 +1078,7 @@ ignorehitpause = 1
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.07
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1085,7 +1087,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S,SA                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(60*Map(DamageScaling) < 15, 15, 60*Map(DamageScaling)))
+damage = ceil(cond(60*Map(DamageScaling) < 10, 10, 60*Map(DamageScaling)))
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = AF                    ;Flags of conditions that move can hit

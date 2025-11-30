@@ -172,6 +172,9 @@ if time = 0 {
 } else if time = 3 {
 	ctrlSet{value: 1}
 }
+if facing = enemy,facing {
+		turn{}
+	}
 if abs(vel x) < const(movement.stand.friction.threshold) {
 	velSet{x: 0}
 }
@@ -858,7 +861,7 @@ if time = 0 {
 if getHitVar(fall.yVel) = 0 { notHitBy{value: SCA; time: 1} }
 if animTime = 0 {
 	hitFallSet{value: 1}
-	notHitBy{value: SCA; time: 1}
+	notHitBy{value: SCA; time: 2}
 	notHitBy{value: , NT,ST,HT; time: 5}
 	changeState{value: 0; ctrl: 1}
 }

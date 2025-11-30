@@ -75,17 +75,17 @@ var(1) = 1
 type = ChangeState
 value = 100
 triggerall = stateno!= 100
-trigger1 = command = "FF"
-trigger1 = statetype != A
-trigger1 = ctrl
+triggerall = statetype != A
+triggerall = ctrl
+trigger1 = command="FF" 
 ;---------------------------------------------------------------------------
 ;Run Back
 [State -1, Run Back]
 type = ChangeState
 value = 105
-trigger1 = command = "BB"
-trigger1 = statetype != A
-trigger1 = ctrl
+triggerall = statetype != A
+triggerall = ctrl
+trigger1 = command="BB"
 ;---------------------------------------------------------------------------
 ;Air Dash Fwd
 [State -1, Run Fwd]

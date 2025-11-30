@@ -262,7 +262,7 @@ buffer.time = 0
 name = "FF"     
 command = F, F
 time = 12
-buffer.time = 6
+buffer.time = 8
 
 [Command]
 name = "FADash"     
@@ -274,7 +274,7 @@ buffer.time = 8
 name = "BB"     
 command = B, B
 time = 12
-buffer.time = 6
+buffer.time = 8
 
 [Command]
 name = "BADash"     
@@ -292,7 +292,7 @@ buffer.time = 6
 name = "28"    
 command = ~$D, $U
 time = 4
-buffer.time = 1
+buffer.time = 0
 
 
 ;-SUPER INPUTS-
@@ -390,19 +390,26 @@ command = ~D, DF, F,  b
 [Command]
 name = "623A"
 command = F, D, $F,  x
+time = 15
+buffer.time = 3
 
 [Command]
 name = "623B"
 command = F, D, $F,  a
+time = 15
+buffer.time = 3
 
 [Command]
 name = "623C"
 command = F, D, $F,  y
-time = 20
+time = 15
+buffer.time = 3
 
 [Command]
 name = "623D"
 command = F, D, $F,  b
+time = 15
+buffer.time = 3
 
 [Command]
 name = "421A"

@@ -386,6 +386,24 @@ triggerall = command = "214A"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
+;---------------------------------------------------------------------------
+;j236A
+[State -1, 236A]
+type = ChangeState
+value = 1205
+triggerall = command = "236A"
+triggerall = statetype = A
+trigger1 = ctrl
+trigger2 = var(1)
+;---------------------------------------------------------------------------
+;j214A
+[State -1, 214A]
+type = ChangeState
+value = 1206
+triggerall = command = "214A"
+triggerall = statetype = A
+trigger1 = ctrl
+trigger2 = var(1)
 ;===========================================================================
 
 ;---------------------------------------------------------------------------
@@ -451,7 +469,7 @@ triggerall = command = "x"
 triggerall = command = "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = 200 || stateno = 400) && movecontact
+trigger2 = (stateno = 200) && movecontact
 ;---------------------------------------------------------------------------
 ;2B
 [State -1, 2B]

@@ -504,7 +504,7 @@ animtype  = Light
 hitflag = MAF
 guardflag = MA
 priority = 1
-pausetime = 9,9
+pausetime = 7,7
 sparkno = 0
 sparkxy = -10,-42
 hitsound   = 5,0
@@ -513,7 +513,7 @@ ground.type = Low
 ground.slidetime = 4
 ground.hittime  = 13
 ground.velocity = -3-(Map(PushBack))
-guard.velocity = -3
+guard.velocity = -3.25
 air.velocity = -1,-1.35
 air.hittime = ceil(cond(22-Map(HitstunScaling) < 5, 5, 22-Map(HitstunScaling)))
 air.fall = 1
@@ -545,6 +545,12 @@ ctrl = 0
 anim = 410
 sprpriority = 2
 facep2 = 1
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 2
+trigger2 = animelem = 3
+x = 4
 
 [State 430, 1]
 type = PlaySnd
@@ -604,8 +610,8 @@ air.velocity = -1.5,-3
 down.velocity = -5,0
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 10, 10, 25-Map(HitstunScaling)))
 air.fall = 1
-guard.ctrltime = 14
-guard.hittime = 14
+guard.ctrltime = 12
+guard.hittime = 12
 fall.yvelocity = 0
 guard.dist = 50
 p2facing = 1

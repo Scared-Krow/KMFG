@@ -2,7 +2,7 @@
 life = 1000
 attack = 100
 defence = 100
-liedown.time = 15
+liedown.time = 20
 sparkno = 2
 guard.sparkno = 40
 KO.echo = 0
@@ -532,7 +532,7 @@ map = "InfectionLevel"
 ignorehitpause = 1
 persistent = 0
 
-
+;----------- DOT ---------------
 [State 0, LifeAdd]
 type = LifeAdd
 triggerall = Map(InfectionLevel)=1
@@ -558,12 +558,50 @@ kill = 0
 absolute = 1
 redirectID = enemy,ID
 
-[State 0, StateTypeSet]
-type = StateTypeSet
-triggerall = enemy,movetype != H
+
+;---------------- FORCED CH ----------------
+[State -2, INFECTION Level 4]
+type = mapset
 trigger1 = Map(InfectionLevel)=3
-movetype = A       
-redirectID = enemy,ID
+value = 1
+map = "CounterHit"
+ignorehitpause = 1
+persistent = 1
+
+[State 0, Zoom]
+type = zoom
+triggerall = enemy,stateno != 666999 && enemy,prevstateno != 666999
+triggerall = movetype != H && combocount < 2
+triggerall = stateno != 200 && stateno != 400
+trigger1= Map(InfectionLevel)=3 && MoveContact=1
+scale = 1.15
+lag = .1
+stagebound = 1
+camerabound = 1
+pos = pos x,-20
+ignorehitpause=1
+
+[State 0, SuperPause]
+type = SuperPause
+triggerall = combocount<2
+trigger1= Map(InfectionLevel)=3 && MoveContact=1 && time = 0
+time = 1
+anim = -1
+sound = -1
+darken = 0
+ignorehitpause = 1
+
+[State 0, EnvShake]
+type = EnvShake
+triggerall = combocount < 2
+triggerall = stateno != 200 && stateno != 400
+trigger1= Map(InfectionLevel)=3 && MoveContact=1 && time = 0
+time = 10
+freq = 60
+ampl = -4
+phase = 90
+
+
 
 [Statedef -3]
 

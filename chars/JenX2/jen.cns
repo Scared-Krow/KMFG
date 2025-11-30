@@ -2,7 +2,7 @@
 life = 1000
 attack = 100
 defence = 100
-liedown.time = 15
+liedown.time = 20
 sparkno = 2
 guard.sparkno = 40
 KO.echo = 0
