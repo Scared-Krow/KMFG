@@ -1309,6 +1309,8 @@ air.velocity = -2,-2
 air.hittime = ceil(cond(22-Map(HitstunScaling) < 14, 14, 22-Map(HitstunScaling)))
 air.fall = 1
 fall.yvelocity = 0
+guard.ctrltime = 14
+guard.hittime = 14
 p2facing = 1
 ground.cornerpush.veloff = -4-(Map(PushBack))
 air.cornerpush.veloff = -4
@@ -1364,7 +1366,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.9
+value = Map(DamageScaling)*.825
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0

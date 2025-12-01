@@ -1015,7 +1015,7 @@ guard.dist = 0
 type = Targetbind
 trigger1 = movehit = 1
 pos = 10, -30
-time = 30
+time = 99
 persistent = 1
 ignorehitpause = 1
 
@@ -1056,6 +1056,7 @@ trigger1 = statetype = A
 x = 0
 y = 0.25
 
+
 [State 0, StateTypeSet]
 type = StateTypeSet
 trigger1 = pos y >= 0
@@ -1078,7 +1079,7 @@ ignorehitpause = 1
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.07
+value = Map(DamageScaling)-.075
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1115,6 +1116,7 @@ envshake.freq = 90
 envshake.phase = 130
 envshake.ampl = -5
 id = 5420 
+
 [State 0, TargetState]
 type = TargetState
 triggerall = Map(GroundBounce)=1
