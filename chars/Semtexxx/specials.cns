@@ -169,7 +169,7 @@ value = 0, 14
 [State -1, Run Fwd]
 type = ChangeState
 value = 1111
-trigger1 = command = "holda" 
+trigger1 = command = "a" 
 
 [State -1, Run Fwd]
 type = ChangeState

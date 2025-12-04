@@ -227,6 +227,10 @@ type = ChangeState
 trigger1 = !animtime
 value = 0
 
+[State 100, 4]
+type = ChangeState
+trigger1 = command = "up"
+value = 40
 ;---------------------------------------------------------------------------
 ; Back Dash
 [Statedef 105]

@@ -7,6 +7,12 @@ anim = 1001
 velset = vel x * 0.5, -3
 ctrl = 0
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,AA,AT,AP
+time = 1
+
 [State 0, AngleDraw]
 type = AngleDraw
 trigger1 = 1

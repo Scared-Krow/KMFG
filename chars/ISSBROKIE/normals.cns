@@ -120,7 +120,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.11
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -455,6 +455,7 @@ movetype= A
 physics = C
 ctrl = 0
 anim = 400
+velset = vel x * .8
 sprpriority = 2
 facep2 = 1
 
@@ -806,7 +807,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.125
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1079,7 +1080,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.125
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1096,7 +1097,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
-damage = ceil(cond(40*Map(DamageScaling) < 4, 4, 40*Map(DamageScaling)))
+damage = ceil(cond(35*Map(DamageScaling) < 3, 3, 35*Map(DamageScaling)))
 guardflag = HA
 priority = 2
 pausetime = 10,10
@@ -1172,7 +1173,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.125
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1189,13 +1190,13 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
-damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
+damage = ceil(cond(45*Map(DamageScaling) < 4, 4, 45*Map(DamageScaling)))
 guardflag = HA
 priority = 3
 pausetime = 12,12
 sparkno = 1
 sparkxy = -5,-45
-hitsound   = 5,0
+hitsound   = 5,2
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 6
@@ -1358,8 +1359,8 @@ air.velocity = -2,15      ;X-velocity at which opponent is pushed,
 air.hittime = 60
 fall = 1
 fall.yvelocity = cond(Map(GroundBounce)=0,-6,0)
-guard.ctrltime = 15
-guard.hittime = 15
+guard.ctrltime = 10
+guard.hittime = 10
 envshake.time = 12
 envshake.freq = 100
 envshake.phase = 150
@@ -1382,6 +1383,7 @@ trigger1 = animelem = 2
 statetype = S       
 movetype = I        
 physics = S  
+
 
 [State 210, 5]
 type = ChangeState

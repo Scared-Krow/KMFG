@@ -149,7 +149,7 @@ if time = 2 {
 
 #-------------------------------------------------------------------------------
 # Jump Up
-[StateDef 50; type: A; physics: A;]
+[StateDef 50; type: A; physics: A; facep2: 1;]
 
 if time = 0 {
 	sysVar(1) := 0;
@@ -614,6 +614,8 @@ if hitOver || animTime = 0 ||
 
 map(Punish) := 0;
 
+
+
 if !alive {
 	changeState{value: 5050; ctrl: 0}
 }
@@ -861,11 +863,10 @@ if time = 0 {
 	changeAnim{value: $a}
 	velSet{x: 0}
 }
-if getHitVar(fall.yVel) = 0 { notHitBy{value: SCA; time: 1} }
+if animTime != 0 { notHitBy{value: SCA; time: 1} }
 if animTime = 0 {
 	hitFallSet{value: 1}
-	notHitBy{value: SCA; time: 2}
-	notHitBy{value: , NT,ST,HT; time: 5}
+	notHitBy{value: SCA; time: 1}
 	changeState{value: 0; ctrl: 1}
 }
 
@@ -1162,3 +1163,8 @@ if ishelper && stateno!=[4000,4999] {
 	destroyself{recursive: 1}
 }
 
+[Statedef -3]
+
+if prevstateno = 5120 && time = 1 {
+	notHitBy{value: ,NT,ST,HT; time: 5}
+}

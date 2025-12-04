@@ -68,7 +68,7 @@ forcenofall = 1
 fall.yvelocity = 0
 guard.ctrltime = 10
 guard.hittime = 10
-ground.cornerpush.veloff = -4-(Map(PushBack))
+ground.cornerpush.veloff = -3-(Map(PushBack))
 p2facing = 1
 
 [State 0, StateTypeSet]
@@ -455,6 +455,7 @@ movetype= A
 physics = C
 ctrl = 0
 anim = 400
+velset = vel x * .8
 sprpriority = 2
 facep2 = 1
 
@@ -476,14 +477,14 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.75
+value = Map(DamageScaling)*.7
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.05
+value = Map(DamageScaling)-.1
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -518,7 +519,7 @@ hitsound   = 5,0
 guardsound = 6,0
 ground.type = Low
 ground.slidetime = 4
-ground.hittime  = 13
+ground.hittime  = 14
 ground.velocity = -3-(Map(PushBack))
 guard.velocity = -3.5
 air.velocity = -1,-1.35
@@ -527,7 +528,7 @@ air.fall = 1
 guard.ctrltime = 10
 guard.hittime = 10
 fall.yvelocity = 0
-ground.cornerpush.veloff = -5-(Map(PushBack))
+ground.cornerpush.veloff = -4-(Map(PushBack))
 p2facing = 1
 
 [State 0, StateTypeSet]

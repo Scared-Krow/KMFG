@@ -67,8 +67,8 @@ forcenofall = 1
 fall.yvelocity = 0
 guard.ctrltime = 13
 guard.hittime = 13
-ground.cornerpush.veloff = -1-(Map(PushBack))
-air.cornerpush.veloff = -1
+ground.cornerpush.veloff = -2.25-(Map(PushBack))
+air.cornerpush.veloff = -1.25
 p2facing = 1
 guard.dist = 0
 
@@ -225,13 +225,6 @@ value = Map(PushBack)+1
 map = "PushBack"
 ignorehitpause = 1
 persistent = 0
-[State -2, Damage Scaling]
-type = mapset
-trigger1 = movehit && Map(stC)>13
-value = Map(DamageScaling)-.1
-map = "DamageScaling"
-ignorehitpause = 1
-persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
@@ -282,14 +275,6 @@ fall.yvelocity = 0
 air.cornerpush.veloff = -3
 p2facing = 1
 guard.dist = 0
-
-
-[State -2, 5C Scaling]
-type = mapadd
-trigger1 = movehit && enemy,statetype != A
-value = 1
-map = "stC"
-ignorehitpause = 1
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -636,8 +621,8 @@ air.fall = 1
 guard.ctrltime = 12
 guard.hittime = 12
 fall.yvelocity = 0
-ground.cornerpush.veloff = -1-(Map(PushBack))
-air.cornerpush.veloff = -1
+ground.cornerpush.veloff = -2-(Map(PushBack))
+air.cornerpush.veloff = -1.5
 p2facing = 1
 guard.dist = 0
 
@@ -688,7 +673,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.11
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
