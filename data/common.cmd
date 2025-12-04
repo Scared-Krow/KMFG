@@ -362,7 +362,7 @@ buffer.shared = 1
 
 [Command]
 name = "214B"
-command = ~D,  a
+command = ~D, B,  a
 buffer.shared = 1
 
 [Command]
