@@ -182,22 +182,22 @@ time = 1
 name = "holdfwdB"
 command = /$F
 time = 1
-buffer.time = 3
+buffer.time = 0
 [Command]
 name = "holdbackB"
 command = /$B
 time = 1
-buffer.time = 3
+buffer.time = 0
 [Command]
 name = "holdupB"
 command = /$U
 time = 1
-buffer.time = 3
+buffer.time = 0
 [Command]
 name = "holddownB"
 command = /$D
 time = 1
-buffer.time = 3
+buffer.time = 0
 
 [Command]
 name = "holdfwd"
@@ -357,57 +357,89 @@ command = ~D, $B, D, $B, b
 
 [Command]
 name = "214A"
-command = ~D, DB, B,  x
+command = ~D, B,  x
+buffer.shared = 1
 
 [Command]
 name = "214B"
-command = ~D, B,  a
+command = ~D,  a
+buffer.shared = 1
 
 [Command]
 name = "214C"
-command = ~D, DB, B,  y
+command = ~D, B,  y
+buffer.shared = 1
 
 [Command]
 name = "214D"
-command = ~D, DB, B,  b
+command = ~D, B,  b
+buffer.shared = 1
 
 [Command]
 name = "236A"
-command = ~D, DF, F,  x
+command = ~D, F,  x
+buffer.shared = 1
 
 [Command]
 name = "236B"
-command = ~D, DF, F, a
+command = ~D, F, a
+buffer.shared = 1
 
 [Command]
 name = "236C"
-command = ~D, DF, F,  y
+command = ~D, F,  y
+buffer.shared = 1
 
 [Command]
 name = "236D"
-command = ~D, DF, F,  b
+command = ~D, F,  b
+buffer.shared = 1
 
 [Command]
 name = "623A"
 command = F, D, $F,  x
-time = 15
+time = 18
 buffer.time = 3
 
 [Command]
 name = "623B"
 command = F, D, $F,  a
-time = 15
+time = 18
 buffer.time = 3
 
 [Command]
 name = "623C"
 command = F, D, $F,  y
-time = 15
+time = 18
 buffer.time = 3
 
 [Command]
 name = "623D"
 command = F, D, $F,  b
+time = 18
+buffer.time = 3
+
+[Command]
+name = "623A"
+command = F, D, $F+x
+time = 15
+buffer.time = 3
+
+[Command]
+name = "623B"
+command = F, D, $F+a
+time = 15
+buffer.time = 3
+
+[Command]
+name = "623C"
+command = F, D, $F+y
+time = 15
+buffer.time = 3
+
+[Command]
+name = "623D"
+command = F, D, $F+b
 time = 15
 buffer.time = 3
 
@@ -465,6 +497,7 @@ command = ~D, D, x
 time = 10
 buffer.time = 1
 
+
 [Command]
 name = "22B"    
 command = ~D, D, a
@@ -477,11 +510,13 @@ command = ~D, D, y
 time = 10
 buffer.time = 1
 
+
 [Command]
 name = "22D"    
 command = ~D, D, b
 time = 10
 buffer.time = 1
+
 
 [Command]
 name = "46A"    
