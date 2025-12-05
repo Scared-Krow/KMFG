@@ -201,7 +201,14 @@ freq = 30+time*2
 ampl = -2+(time/7)
 phase = 50+time*5
 
-
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movehit=1 && combocount=1
+value = root,Map(DamageScaling)*.75
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
@@ -215,12 +222,12 @@ type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 animtype  = Medium
-damage = ceil(cond(155*root,Map(DamageScaling) < 65, 65, 155*root,Map(DamageScaling)))
+damage = ceil(cond(150*root,Map(DamageScaling) < 50, 50, 150*root,Map(DamageScaling)))
 guardflag = MA
 pausetime = 15,15
 sparkno = 1
 sparkxy = -10,-65
-hitsound   = 5,2
+hitsound   = 5,10
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 20
@@ -230,6 +237,7 @@ air.hittime = 60
 air.velocity = -22+cond(root,Map(WallBounce)=0,0,6),-4.7
 guard.ctrltime = 15
 guard.hittime = 15
+guard.velocity = -6
 fall = 1
 fall.yvelocity = 0
 p2facing = 1

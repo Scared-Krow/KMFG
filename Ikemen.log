@@ -2,10 +2,11 @@ Version: nightly
 Build Time: 2025-10-08
 
 Error log:
-external/script/main.lua:4294: <game end>
+external/script/main.lua:2816: read tcp 26.218.122.243:7500->26.65.18.31:58575: wsarecv: An existing connection was forcibly closed by the remote host.
 stack traceback:
-	[G]: in function 'refresh'
-	external/script/main.lua:4294: in function 'f_menuCommonDraw'
-	external/script/main.lua:3228: in function 'loop'
+	[G]: in function 'synchronize'
+	external/script/main.lua:2816: in function <external/script/main.lua:2813>
+	external/script/main.lua:3335: in function 'loop'
+	external/script/main.lua:3323: in function 'loop'
 	external/script/main.lua:4501: in main chunk
 	[G]: ?

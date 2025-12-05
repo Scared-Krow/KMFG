@@ -262,8 +262,9 @@ map = "Parry"
 
 [State 1300, 2]
 type = ReversalDef
+triggerall = P2, HitDefVar(guardflag) = M || P2, HitDefVar(guardflag) = H
 trigger1 = Time = [0,8]
-reversal.attr = SA,AA,AP
+reversal.attr = SCA,AA,AP
 pausetime = 0,0
 sparkno = 40
 sparkxy = 40,0
@@ -370,8 +371,9 @@ map = "Parry"
 
 [State 1300, 2]
 type = ReversalDef
+triggerall = P2, HitDefVar(guardflag) = L
 trigger1 = Time = [0,8]
-reversal.attr = C,AA,AP
+reversal.attr = SCA,AA,AP
 pausetime = 0,0
 sparkno = 40
 sparkxy = 40,0
@@ -765,13 +767,13 @@ ignorehitpause = 1
 ;-------PUSHBLOCK----------
 [State 0, VelAdd]
 type = VelAdd
-triggerall = stateno = [140,150] && power >= 250
+triggerall = stateno = [130,159] && power >= 250
 trigger1 = command = "2Buttons"
 x = -10
 redirectID = enemy,ID
 [State 0, PowerAdd]
 type = PowerAdd
-triggerall = stateno = [140,150] && power >= 250
+triggerall = stateno = [130,159] && power >= 250
 trigger1 = command = "2Buttons"
 value = -250
 
