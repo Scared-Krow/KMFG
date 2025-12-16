@@ -1,13 +1,15 @@
 <#f0f000>:Unique Attacks:</>
-6D
+j.2D
 
 <#f0f000>:Throws:</>
 A+B
 
 <#f0f000>:Special Moves:</>
-22C (Only while Stand is out)
-214C
-236D (Hold OK)
+22ANY (AIR OK)
+236C (AIR OK)
+214A (AIR OK)
+_! 2 Buttons
+_! 214A
 
 <#f0f000>:Super Moves:</>
 236236A

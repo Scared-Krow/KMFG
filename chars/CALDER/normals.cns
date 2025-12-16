@@ -968,26 +968,6 @@ map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
 
-[State 0, NotHitBy]
-type = NotHitBy
-trigger1 = time = [0,13]
-value = A,AA
-time = 1
-
-[State 0, HitBy]
-type = HitBy
-trigger1 = time = [0,13]
-value = SC,NA,SA,HA,NP,SP,HP
-time = 1
-
-[State 0, HitBy]
-type = HitBy
-trigger1 = time > 13
-value = SCA,NA,SA,HA,NP,SP,HP
-value2 = A,NT,ST,HT
-time = 1
-
-
 [State 400, 1]
 type = PlaySnd
 trigger1 = Time = 1

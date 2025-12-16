@@ -284,6 +284,13 @@ velset = 3,0
 ctrl = 0
 sprPriority = -6
 
+[State 3000, StayOnTarget]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,0
+
+
 [State 0, VelMul]
 type = VelMul
 trigger1 = 1

@@ -357,10 +357,10 @@ trigger5 = stateno=[1000,2000] && movecontact
 
 ;---------------------------------------------------------------------------
 ;22C
-[State -1, 22C]
+[State -1, 22D]
 type = ChangeState
 value = 1000
-triggerall = command = "22C"
+triggerall = command = "22D"
 triggerall = stateno!=1000
 triggerall = numhelper(500)>0
 trigger1 = ctrl
@@ -372,6 +372,7 @@ trigger3 = var(1)
 type = ChangeState
 value = 1100
 triggerall = command = "214C"
+triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = helper(500), movecontact
 trigger3 = var(1)
@@ -380,18 +381,20 @@ trigger3 = var(1)
 [State -1, 214D]
 type = ChangeState
 value = 1200
-triggerall = command = "236D"
+triggerall = command = "236D" && helper(500),stateno != [1200,1299]
+triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = helper(500), movecontact && helper(500),stateno = [500,598]
+trigger2 = helper(500), movecontact
 trigger3 = var(1)
 ;---------------------------------------------------------------------------
 ;214D
 [State -1, 214D]
 type = ChangeState
 value = 1250
-triggerall = command = "214D"
+triggerall = command = "214D" && helper(500),stateno != [1200,1299]
+triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = helper(500), movecontact && helper(500),stateno = [500,598]
+trigger2 = helper(500), movecontact 
 trigger3 = var(1)
 
 ;===========================================================================
