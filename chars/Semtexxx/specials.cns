@@ -152,14 +152,27 @@ movetype= I
 physics = A
 ctrl = 0
 anim = 1101
-velset = 5,-9
+velset = 5.125,-8.75
 sprpriority = -1
 facep2 = 1
+
+[State -3, Lv1 Shadows]
+type = afterimage
+trigger1 = time = 0
+time = 18
+length = 3
+framegap = 1
+timegap = 3
+paladd = 0, 0, 0
+palmul = 1, 1,1
+palcontrast = 150, 150, 150
+palpostbright = 0, 0, 0
+trans = add1
 
 [State 0, VelAdd]
 type = VelAdd
 trigger1 = 1
-y = .25
+y = .255
 
 [State Test]
 type = Height
@@ -250,7 +263,7 @@ priority = 4
 pausetime = 15,15
 sparkno = 1
 sparkxy = -10,-40
-hitsound   = 9,2
+hitsound   = 5,2
 guardsound = 6,0
 animtype = Med
 ground.type = High

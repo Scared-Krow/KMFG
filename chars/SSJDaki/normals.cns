@@ -606,7 +606,7 @@ x = .9
 [State 430, 2]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
-attr = S, NA
+attr = C, NA
 damage = ceil(cond(35*Map(DamageScaling) < 3, 3, 35*Map(DamageScaling)))
 animtype  = Light
 hitflag = MAF
@@ -809,22 +809,23 @@ value = 0, 2
 
 [State 0, NotHitBy]
 type = NotHitBy
-trigger1 = time = [0,13]
+trigger1 = time = [4,13]
 value = A,AA
 time = 1
 
 [State 0, HitBy]
 type = HitBy
-trigger1 = time = [0,13]
+trigger1 = time = [4,13]
 value = SC,NA,SA,HA,NP,SP,HP
 time = 1
 
 [State 0, HitBy]
 type = HitBy
-trigger1 = time > 13
+trigger1 = time < 4 || time > 13
 value = SCA,NA,SA,HA,NP,SP,HP
 value2 = A,NT,ST,HT
 time = 1
+
 
 
 [State 440, 3]

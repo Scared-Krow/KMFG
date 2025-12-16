@@ -592,7 +592,7 @@ persistent = 0
 [State 430, 2]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
-attr = S, NA
+attr = C, NA
 damage = ceil(cond(35*Map(DamageScaling) < 3, 3, 35*Map(DamageScaling)))
 animtype  = Light
 hitflag = MAF

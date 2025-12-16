@@ -1,0 +1,476 @@
+;---------------------------------------------------------------------------
+;22C
+[Statedef 1000]
+type    = U
+movetype= I
+physics = N
+ctrl = 0
+anim = 1000
+velset = 0,0
+sprpriority = -1
+facep2 = 1
+
+[State -2, StoreBiney]
+type = mapset
+trigger1 = time = 0
+value = helper(500), vel x
+map = "BineyVelX"
+ignorehitpause = 1
+persistent = 0
+[State -2, StoreBiney]
+type = mapset
+trigger1 = time = 0
+value = helper(500), vel y
+map = "BineyVelY"
+ignorehitpause = 1
+persistent = 0
+
+[State -2, StoreBiney]
+type = mapset
+trigger1 = time = 0
+value = helper(500), pos x
+map = "BineyPosX"
+ignorehitpause = 1
+persistent = 0
+[State -2, StoreBiney]
+type = mapset
+trigger1 = time = 0
+value = helper(500), pos y
+map = "BineyPosY"
+ignorehitpause = 1
+persistent = 0
+
+
+[State 0, PosAdd]
+type = PosSet
+trigger1 = animelem = 4
+x = Map(BineyPosX) + 20
+y = Map(BineyPosY) - 20
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = animelem = 5
+value = 599
+ctrl = 0
+redirectID = helper(500),ID
+
+[State 0, Turn]
+type = Turn
+triggerall = facing = enemy,facing
+trigger1 = animelem = 7
+
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelem = 5
+x = Map(BineyVelX)*.4
+y = Map(BineyVelY)*.4
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = 1
+x = .975
+y = .975
+
+[State 210, 5]
+type = ChangeState
+triggerall = pos y = 0
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+[State 210, 5]
+type = ChangeState
+triggerall = pos y < 0
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;214C
+[Statedef 1100]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+anim = 1100
+velset = vel x * .9
+sprpriority = 4
+facep2 = 1
+
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount>1
+value = Map(DamageScaling)-.1
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = time = 8
+time = 6
+freq = 40
+ampl = -3
+phase = 90
+ignorehitpause = 1
+
+[State 210, 2]
+type = HitDef
+trigger1 = animelem = 3
+trigger2 = animelem = 4
+trigger3 = animelem = 5
+attr = S, SA
+animtype  = Medium
+damage = ceil(cond(12*Map(DamageScaling) < 3, 3, 12*Map(DamageScaling))),3
+guardflag = MA
+priority = 3, Hit 
+guard.pausetime = 3,5
+pausetime = 3,12
+sparkno = 1
+sparkxy = -10,-65
+hitsound   = 5,2
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 20
+ground.velocity = 0
+guard.velocity = -6
+air.hittime = 30
+air.velocity = 0,0
+guard.ctrltime = 10
+guard.hittime = 10
+forcenofall = 1
+ground.cornerpush.veloff = 0
+fall.yvelocity = 0
+air.cornerpush.veloff = 0
+p2facing = 1
+guard.dist = 0
+maxdist = cond(movehit,50,999),0
+id = 5440
+
+[State 0, TargetState]
+type = TargetState
+triggerall = enemy,statetype = A && NumTarget(5440)
+trigger1 = movehit 
+value = 5440
+ID = 5440
+ignorehitpause = 1
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = animelem = 6 && movehit
+value = 1101
+
+[State 0, SprPriority]
+type = SprPriority
+trigger1 = anim = 1101
+value = -7
+[State 0, Width]
+type = Width
+trigger1 = anim = 1101
+edge = 0,0
+player = -20,-20
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = anim = 1101
+value = -1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = anim = 1101 && animelemno(0) = [0,2]
+x = 10
+[State 0, VelSet]
+type = VelMul
+trigger1 = anim = 1101 && animtime = 0
+x = 0
+
+[State 0, Turn]
+type = Turn
+trigger1 = anim = 1101 && animelem = 3
+
+
+[State 210, 2]
+type = HitDef
+trigger1 = animelem = 2
+attr = S, SA
+animtype  = Medium
+damage = ceil(cond(44*Map(DamageScaling) < 6, 6, 44*Map(DamageScaling))),3
+guardflag = MA
+priority = 3, Hit 
+pausetime = 0,11
+sparkno = 1
+sparkxy = -10,-65
+hitsound   = 5,2
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 13
+ground.hittime  = 13
+ground.velocity = -6
+guard.velocity = -6
+air.hittime = 30
+air.velocity = 0,0
+guard.ctrltime = 10
+guard.hittime = 10
+forcenofall = 1
+ground.cornerpush.veloff = 0
+fall.yvelocity = 0
+air.cornerpush.veloff = 0
+p2facing = 1
+guard.dist = 0
+maxdist = 50,0
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem = 6
+statetype = S       
+movetype = I        
+physics = S  
+
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; 236D
+[Statedef 1200]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+anim = 1199
+velset = vel x * .9
+sprpriority = -1
+facep2 = 1
+
+[State 0, Helper]
+type = Helper
+triggerall = numhelper(500)<1
+trigger1 = animelem = 1
+helpertype = Normal ;Player
+name = "Biney"
+ID = 500
+stateno = 1201
+pos = -20,-7
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 0
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = time = 0
+trigger1 = numhelper(500)=1
+value = 1201
+redirectID = helper(500),ID
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;236D Biney
+[Statedef 1201]
+type    = U
+movetype= A
+physics = N
+anim = 1200
+velset = 3,0
+ctrl = 0
+sprPriority = -6
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = 1
+x = .92
+y = .9
+
+[State 0, VelSet]
+type = VelSet
+triggerall = anim = 1201
+trigger1 = animelem = 2
+x = 9
+
+[State 0, VelSet]
+type = VelSet
+triggerall = anim = 1201
+trigger1 = animelemno(0) = [3,5]
+x = 6
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = time > 20
+x = .8
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,AT
+time = 1
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AA,AP
+time = 1
+
+[State 1300, 2]
+type = ReversalDef
+trigger1 = 1
+reversal.attr = SCA,AA,AP
+pausetime = 0,0
+sparkno = -1
+sparkxy = -1,0
+hitsound = -1,0
+p1stateno = 599
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = anim = 1200 && time != [14,21]
+trigger1 = root,command != "holdb" && time >= 12
+trigger2 = time >= 100
+value = 1201
+
+[State 0, Turn]
+type = Turn
+triggerall = anim = 1200
+trigger1 = animelem = 4
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = pos y >= 0
+y = 0
+
+[State 0, PosSet]
+type = PosSet
+triggerall = anim = 1200
+trigger1 = time = 16
+x = enemy, pos x-(50*facing)
+y = enemy, pos y
+
+[State 0, PosAdd]
+type = veladd
+trigger1 = anim = 1200
+trigger1 = time > 16
+x = (enemy, vel x * .25)*cond(facing=enemy,facing,1,-1)
+y = enemy, vel y * .1
+
+
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movehit=1 && combocount=1
+value = root,Map(DamageScaling)*.85
+map = "DamageScaling"
+persistent = 0
+redirectID = root,ID
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = movehit=1 && combocount>1
+value = root,Map(DamageScaling)-.1
+map = "DamageScaling"
+persistent = 0
+redirectID = root,ID
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,statetype = A && enemy,movetype = H
+trigger1 = movehit=1
+value = root,Map(HitstunScaling)+1
+map = "HitstunScaling"
+persistent = 0
+redirectID = root,ID
+
+[State 200, 1]
+type = HitDef
+triggerall = anim = 1201
+trigger1 = animelem = 2
+attr = S,NP                     ;Attribute: Standing, Normal Attack
+damage = ceil(cond(40*root,Map(DamageScaling) < 4, 4, 40*root,Map(DamageScaling))),5
+animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
+guardflag = MA                   ;Flags on how move is to be guarded against
+hitflag = MAF                    ;Flags of conditions that move can hit
+priority = 1, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+pausetime = 5,5                ;Time attacker pauses, time opponent shakes
+sparkno = 2                     ;Spark anim no (Def: set above)
+sparkxy = -10, -50               ;X-offset for the "hit spark" rel. to p2,
+hitsound = 5, 4                  ;Sound to play on hit
+guardsound = 6, 0                ;Sound to play on guard
+ground.type = High               ;Type: High, Low, Trip (def: Normal)
+ground.slidetime = 20            ;Time that the opponent slides back
+ground.hittime  = 20
+ground.velocity = -13+(p2dist x/8)
+guard.velocity = -16+(p2dist x/8)
+airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
+air.velocity = -12+(p2dist x/8),cond(root,Map(WallBounce)=0,-3,-1)       ;X-velocity at which opponent is pushed,
+air.hittime = (cond(35-root,Map(HitstunScaling) < 20, 20, 35-root,Map(HitstunScaling)))
+forcenofall = 1
+fall.yvelocity = 0
+guard.ctrltime = 8
+guard.hittime = 8
+p2facing = 1
+guard.dist = 0
+
+[State 200, 1]
+type = HitDef
+triggerall = anim = 1201
+trigger1 = animelem = 6
+attr = S,NP                     ;Attribute: Standing, Normal Attack
+damage = ceil(cond(55*root,Map(DamageScaling) < 5, 5, 55*root,Map(DamageScaling))),5
+animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
+guardflag = MA                   ;Flags on how move is to be guarded against
+hitflag = MAF                    ;Flags of conditions that move can hit
+priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+pausetime = 6,6                ;Time attacker pauses, time opponent shakes
+sparkno = 2                     ;Spark anim no (Def: set above)
+sparkxy = -10, -50               ;X-offset for the "hit spark" rel. to p2,
+hitsound = 5, 4                  ;Sound to play on hit
+guardsound = 6, 0                ;Sound to play on guard
+ground.type = High               ;Type: High, Low, Trip (def: Normal)
+ground.slidetime = 10             ;Time that the opponent slides back
+ground.hittime  = 45
+ground.velocity = cond(root,Map(WallBounce)=0,-20,-7),-5
+guard.velocity = -8
+airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
+air.velocity = cond(root,Map(WallBounce)=0,-20,-7),cond(root,Map(WallBounce)=0,-4.5,-2)       ;X-velocity at which opponent is pushed,
+air.hittime = 60
+fall = 1
+fall.yvelocity = 0
+guard.ctrltime = 8
+guard.hittime = 8
+p2facing = 1
+guard.dist = 0
+id = 5400
+
+[State 0, TargetState]
+type = TargetState
+triggerall = root,Map(WallBounce)=0
+triggerall = enemy,statetype = A && NumTarget(5400)
+trigger1 = movehit=1
+value = 5400
+ID = 5400
+ignorehitpause = 1
+
+[State 0, TargetState]
+type = TargetState
+triggerall = root,Map(WallBounce)=1
+triggerall = enemy,statetype = A && NumTarget(5400)
+trigger1 = movehit=1
+value = 5420
+ID = 5400
+ignorehitpause = 1
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = root,movetype = H
+value = 599
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = animtime = 0

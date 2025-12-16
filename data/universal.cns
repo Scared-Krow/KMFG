@@ -262,9 +262,9 @@ map = "Parry"
 
 [State 1300, 2]
 type = ReversalDef
-triggerall = P2, HitDefVar(guardflag) = M || P2, HitDefVar(guardflag) = H
 trigger1 = Time = [0,8]
-reversal.attr = SCA,AA,AP
+;trigger1 = (P2, HitDefVar(guardflag) = M || P2, HitDefVar(guardflag) = H)
+reversal.attr = SA,AA,AP
 pausetime = 0,0
 sparkno = 40
 sparkxy = 40,0
@@ -371,9 +371,9 @@ map = "Parry"
 
 [State 1300, 2]
 type = ReversalDef
-triggerall = P2, HitDefVar(guardflag) = L
+;triggerall = P2, HitDefVar(guardflag) = L
 trigger1 = Time = [0,8]
-reversal.attr = SCA,AA,AP
+reversal.attr = C,AA,AP
 pausetime = 0,0
 sparkno = 40
 sparkxy = 40,0
@@ -737,16 +737,6 @@ trigger1 = enemy,movetype != A && Map(InfectionLevel)<=2
 map = "CounterHit"
 value = 0
 ignorehitpause = 1
-
-
-[State -2, Fatal Counter]
-type = mapset
-triggerall = HitPauseTime=1 && movecountered=1
-trigger1 = Map(FatalCounter)=1
-value = Map(DamageScaling)+.25
-map = "DamageScaling"
-ignorehitpause = 1
-persistent = 0
 
 [State -2, Counter Hit]
 type = mapset

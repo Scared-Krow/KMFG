@@ -637,7 +637,7 @@ if time > 0 {
 if alive && gethitvar(hittime) = -1 {
 		changeState{value: 5210}
 }
-if vel y > 0 && pos y >= -10 {
+if vel y > 0 && pos y >= -5 {
 	changeState{value: 5210}
 }
 
@@ -1003,8 +1003,6 @@ if hitShakeOver {
 
 if time = 0 { hitVelSet {x:1;y:1;} }
 
-if time = 0 {mapSet{map: "WallBounce"; value: 1; redirectID:enemy,ID}}
-
 if time = 0 {
 	posAdd {y:-15}
 }
@@ -1021,6 +1019,8 @@ if vel y > 0 && pos y >= 0 && time > 10 { selfState {value: 5100} }
 #-------------------------------------------------------------------------------
 # Wall Bounce (stick)
 [StateDef 5402; type: A; movetype: H; physics: N; velset: 0,0;]
+
+if time = 0 {mapSet{map: "WallBounce"; value: 1; redirectID:enemy,ID}}
 
 changeAnim{value:5402}
 if time = 8 { changeState {value: 5403} }

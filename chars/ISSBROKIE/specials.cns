@@ -121,7 +121,7 @@ type = HitDef
 triggerall = Map(Charge)!=[14,16]
 trigger1 = !MoveContact && !MoveReversed
 attr = S,SA                   ;Attribute: Standing, Normal Attack
-damage = ceil(cond(25*Map(DamageScaling) < 5, 5, 25*Map(DamageScaling))),5
+damage = ceil(cond(15*Map(DamageScaling) < 2, 2, 15*Map(DamageScaling))),5
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -1104,12 +1104,12 @@ type = HitDef
 triggerall = Map(Charge)=[16,18]
 trigger1 = !MoveContact && !MoveReversed
 attr = S,SA                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(80*Map(DamageScaling) < 25, 25, 80*Map(DamageScaling))),10
+damage = ceil(cond(100*Map(DamageScaling) < 25, 25, 100*Map(DamageScaling))),10
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 4, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
-pausetime = 15,15                ;Time attacker pauses, time opponent shakes
+pausetime = 12,15                ;Time attacker pauses, time opponent shakes
 sparkno = 1                     ;Spark anim no (Def: set above)
 sparkxy = -10, -50               ;X-offset for the "hit spark" rel. to p2,
 hitsound = 5, 4                  ;Sound to play on hit
@@ -1117,19 +1117,19 @@ guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
 ground.slidetime = 20            ;Time that the opponent slides back
 ground.hittime  = 20
-ground.velocity = cond(Map(WallBounce)=0,-20,-6),cond(Map(WallBounce)=0,-6,-3) 
+ground.velocity = -4
 guard.velocity = -5
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
-air.velocity = cond(Map(WallBounce)=0,-20,-6),cond(Map(WallBounce)=0,-5,-3)   ;X-velocity at which opponent is pushed,
+air.velocity = -4,-4
 air.hittime = ceil(cond(50-Map(HitstunScaling) < 20, 20, 50-Map(HitstunScaling)))
-fall = 1
+air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 16
 guard.hittime = 16
 ground.cornerpush.veloff = -2
 air.cornerpush.veloff = -2
-id = 5410
+
 
 [State 200, 1]
 type = HitDef
@@ -1149,37 +1149,19 @@ guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
 ground.slidetime = 16           ;Time that the opponent slides back
 ground.hittime  = 16
-ground.velocity = -6,-3
+ground.velocity = -4
 guard.velocity = -4
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
-air.velocity = -6,-3      ;X-velocity at which opponent is pushed,
+air.velocity = -5,-3      ;X-velocity at which opponent is pushed,
 air.hittime = ceil(cond(35-Map(HitstunScaling) < 15, 15, 35-Map(HitstunScaling)))
-fall = 1
+air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 16
 guard.hittime = 16
 ground.cornerpush.veloff = -2
 air.cornerpush.veloff = -2
-id = 5410
 
-[State 0, TargetState]
-type = TargetState
-triggerall = Map(WallBounce)=0 && Map(Charge)=[16,18]
-triggerall = NumTarget(5410)
-trigger1 = movehit=1
-value = 5400
-ID = 5410
-ignorehitpause = 1
-
-[State 0, TargetState]
-type = TargetState
-triggerall = Map(WallBounce)=1 ||Map(Charge)!=[16,18]
-triggerall = NumTarget(5410)
-trigger1 = movehit=1
-value = 5410
-ID = 5410
-ignorehitpause = 1
 
 [State 210, 5]
 type = ChangeState
