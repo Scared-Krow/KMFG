@@ -520,32 +520,80 @@ buffer.time = 1
 
 [Command]
 name = "46A"    
-command = ~40$B, F, x
+command = ~30$B, $F, x
 
 [Command]
 name = "46B"    
-command = ~40$B, F, a
+command = ~30$B, $F, a
 
 [Command]
 name = "46C"    
-command = ~40$B, F, y
+command = ~30$B, $F, y
 
 [Command]
 name = "46D"    
-command = ~40$B, F, b
+command = ~30$B, $F, b
+
+[Command]
+name = "46A"    
+command = ~30$B, $F, ~x
+
+[Command]
+name = "46B"    
+command = ~30$B, $F, ~a
+
+[Command]
+name = "46C"    
+command = ~30$B, $F, ~y
+
+[Command]
+name = "46D"    
+command = ~30$B, $F, ~b
 
 [Command]
 name = "28A"    
-command = ~40$D, U, x
+command = ~30$D, $U, x
+time = 20
+buffer.time = 5
 
 [Command]
 name = "28B"    
-command = ~40$D, U, a
+command = ~30$D, $U, a
+time = 20
+buffer.time = 5
 
 [Command]
 name = "28C"    
-command = ~40$D, U, y
+command = ~30$D, $U, y
+time = 20
+buffer.time = 5
 
 [Command]
 name = "28D"    
-command = ~40$D, U, b
+command = ~30$D, $U, b
+time = 20
+buffer.time = 5
+
+[Command]
+name = "28A"    
+command = ~30$D, $U, ~x
+time = 20
+buffer.time = 5
+
+[Command]
+name = "28B"    
+command = ~30$D, $U, ~a
+time = 20
+buffer.time = 5
+
+[Command]
+name = "28C"    
+command = ~30$D, $U, ~y
+time = 20
+buffer.time = 5
+
+[Command]
+name = "28D"    
+command = ~30$D, $U, ~b
+time = 20
+buffer.time = 5

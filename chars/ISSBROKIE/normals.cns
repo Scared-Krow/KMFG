@@ -82,7 +82,7 @@ physics = S
 [State 200, 2]
 type = PlaySnd
 trigger1 = Time = 1
-value = 0, 0
+value = F4, 1
 
 [State 200, 3]
 type = ChangeState
@@ -143,10 +143,10 @@ type = PosAdd
 trigger1 = animelem = 3
 x = 12
 
-[State 230, 1]
+[State 200, 2]
 type = PlaySnd
 trigger1 = Time = 2
-value = 0, 1
+value = F4, 1
 
 [State 230, 2]
 type = HitDef
@@ -293,10 +293,10 @@ statetype = S
 movetype = I        
 physics = S  
 
-[State 210, 4]
-type = SprPriority
-trigger1 = AnimElem = 4
-value = 2
+[State 200, 2]
+type = PlaySnd
+trigger1 = Time = 7
+value = F4, 3
 
 [State 210, 5]
 type = ChangeState
@@ -490,10 +490,10 @@ map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
 
-[State 400, 1]
+[State 200, 2]
 type = PlaySnd
 trigger1 = Time = 1
-value = 0, 0
+value = F4, 0
 
 [State 400, 2]
 type = HitDef

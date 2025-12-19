@@ -292,14 +292,6 @@ triggerall = statetype != A
 trigger1 = (stateno = 706 || stateno = 711) && (command = "cNB" || (command = "y" && command = "b"))
 trigger2 = ctrl
 ;---------------------------------------------------------------------------
-;Super Jump
-[State -1, SJ]
-type = ChangeState
-value = 60
-triggerall = statetype != A
-triggerall = command = "28"
-trigger1 = ctrl
-;---------------------------------------------------------------------------
 ;Double Jump
 [State -1, DJ]
 type = ChangeState
@@ -396,7 +388,16 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = helper(500), movecontact 
 trigger3 = var(1)
-
+;---------------------------------------------------------------------------
+;[2]8B
+[State -1, 28B]
+type = ChangeState
+value = 1300
+triggerall = command = "28B"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = helper(500), movecontact 
+trigger3 = var(1)
 ;===========================================================================
 
 ;---------------------------------------------------------------------------
@@ -408,7 +409,14 @@ triggerall = command = "x" && command = "a"
 triggerall = statetype != A
 trigger1 = ctrl
 
-
+;---------------------------------------------------------------------------
+;Super Jump
+[State -1, SJ]
+type = ChangeState
+value = 60
+triggerall = statetype != A && command != "28B"
+triggerall = command = "28"
+trigger1 = ctrl
 
 ;===========================================================================
 ;---------------------------------------------------------------------------
