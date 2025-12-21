@@ -79,7 +79,7 @@ triggerall = time < 49
 trigger1 = time%2=0
 attr = S, HP
 animtype  = up
-damage = ceil(cond(5*root,Map(DamageScaling) < 2, 2, 5*root,Map(DamageScaling)))
+damage = ceil(cond(5*root,Map(DamageScaling) < 2, 2, 5*root,Map(DamageScaling))),1
 hitflag = MAFD
 guardflag = MA
 priority = 3, Hit 
@@ -109,7 +109,7 @@ type = HitDef
 trigger1 = time = 50
 attr = S, HP
 animtype  = up
-damage = ceil(cond(100*root,Map(DamageScaling) < 35, 35, 100*root,Map(DamageScaling)))
+damage = ceil(cond(100*root,Map(DamageScaling) < 35, 35, 100*root,Map(DamageScaling))),5
 hitflag = MAFD
 guardflag = MA
 priority = 3, Hit 

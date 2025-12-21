@@ -395,7 +395,7 @@ type = ChangeState
 value = 1300
 triggerall = command = "28B"
 triggerall = statetype != A
-trigger1 = ctrl
+trigger1 = ctrl || stateno = 40 || stateno = 60
 trigger2 = helper(500), movecontact 
 trigger3 = var(1)
 ;===========================================================================

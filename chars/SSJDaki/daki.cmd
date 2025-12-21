@@ -362,39 +362,15 @@ trigger5 = stateno=[1000,2000] && movecontact
 [State -1, 22X]
 type = ChangeState
 value = 1210
-triggerall = (command = "22A" && numhelper(1200)=1) ||(command = "22B" && numhelper(1201)=1) ||(command = "22C" && numhelper(1202)=1) ||(command = "22D" && numhelper(1203)=1)
-trigger1 = ctrl
-trigger2 = var(1)
-;---------------------------------------------------------------------------
-;22A
-[State -1, 22A]
-type = ChangeState
-value = 1200
-triggerall = command = "22A"
+triggerall = (command = "22B" && numhelper(1200)=1)
 trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------
 ;22B
 [State -1, 22A]
 type = ChangeState
-value = 1201
+value = 1200
 triggerall = command = "22B"
-trigger1 = ctrl
-trigger2 = var(1)
-;---------------------------------------------------------------------------
-;22C
-[State -1, 22A]
-type = ChangeState
-value = 1202
-triggerall = command = "22C"
-trigger1 = ctrl
-trigger2 = var(1)
-;---------------------------------------------------------------------------
-;22D
-[State -1, 22A]
-type = ChangeState
-value = 1203
-triggerall = command = "22D"
 trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------

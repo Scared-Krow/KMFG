@@ -61,7 +61,7 @@ guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
 ground.slidetime = 5             ;Time that the opponent slides back
 ground.hittime  = 13
-ground.velocity = -2.25-(Map(PushBack))
+ground.velocity = -2.5-(Map(PushBack))
 guard.velocity = -3.5
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
@@ -149,11 +149,11 @@ trigger2 = animelem = 2
 trigger3 = animelem = 3
 trigger4 = animelem = 5
 trigger4 = animelem = 6
-x = 3
+x = 2.5
 [State 0, PosAdd]
 type = PosAdd
 trigger1 = animelem = 4
-x = 12
+x = 10
 
 [State 230, 1]
 type = PlaySnd
@@ -180,7 +180,7 @@ ground.velocity = -3-(Map(PushBack))
 guard.velocity = -4
 air.velocity = -3.5,-1.75
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 15, 15, 25-Map(HitstunScaling)))
-air.fall = 1
+forcenofall = 1
 ground.cornerpush.veloff = -3-(Map(PushBack))
 fall.yvelocity = 0
 guard.ctrltime = 12
@@ -290,8 +290,8 @@ ground.hittime  = 20
 ground.velocity = -4-(Map(PushBack))
 air.hittime = ceil(cond(30-Map(HitstunScaling) < 16, 16, 30-Map(HitstunScaling)))
 air.velocity = -3.5,-2.25
-guard.ctrltime = 13
-guard.hittime = 13
+guard.ctrltime = 11
+guard.hittime = 11
 air.fall = 1
 ground.cornerpush.veloff = -4-(Map(PushBack))
 fall.yvelocity = 0
@@ -519,13 +519,13 @@ guardsound = 6,0
 ground.type = Low
 ground.slidetime = 4
 ground.hittime  = 13
-ground.velocity = -3-(Map(PushBack))
-guard.velocity = -3
+ground.velocity = -3.5-(Map(PushBack))
+guard.velocity = -4
 air.velocity = -1,-1.35
 air.hittime = ceil(cond(22-Map(HitstunScaling) < 5, 5, 22-Map(HitstunScaling)))
 air.fall = 1
-guard.ctrltime = 12
-guard.hittime = 12
+guard.ctrltime = 8
+guard.hittime = 8
 fall.yvelocity = 0
 ground.cornerpush.veloff = -3-(Map(PushBack))
 air.cornerpush.veloff = -3
@@ -968,6 +968,7 @@ ground.type = High
 ground.slidetime = 5
 ground.hittime  = 15
 ground.velocity = -4-(Map(PushBack))
+guard.velocity = -5.6
 air.velocity = -1,-1
 air.hittime = ceil(cond(22-Map(HitstunScaling) < 5, 5, 22-Map(HitstunScaling)))
 air.fall = 1
@@ -987,13 +988,13 @@ physics = A
 
 [State 600, 3]
 type = CtrlSet
-trigger1 = Time = 12
+trigger1 = Time = 15
 value = 1
 
 [State 1000, 7]
 type = ChangeState
 triggerall = Map(Flight)>0
-trigger1 = time = 13
+trigger1 = time = 15
 value = 1301
 ctrl = 1
 
@@ -1080,6 +1081,7 @@ ground.slidetime = 12
 ground.hittime  = 16
 ground.velocity = -2,-6
 air.velocity = -1.7,-5
+guard.velocity = -4
 air.hittime = ceil(cond(30-Map(HitstunScaling) < 10, 10, 30-Map(HitstunScaling)))
 fall = 1
 forcenofall = 1
@@ -1291,27 +1293,18 @@ ground.slidetime = 12
 ground.hittime  = 18
 ground.velocity = -5-(Map(PushBack))
 guard.velocity = -5
-air.velocity = -4,6
-air.hittime = 60
+air.velocity = -5.5,-2
+air.hittime = ceil(cond(30-Map(HitstunScaling) < 15, 15, 30-Map(HitstunScaling)))
 air.fall = 1
 guard.ctrltime = 14
 guard.hittime = 14
 fall.yvelocity = 0
 p2facing = 1
 air.cornerpush.veloff = 0
-id = 5420
-
-[State 0, TargetState]
-type = TargetState
-triggerall = enemy,statetype = A && NumTarget(5420)
-trigger1 = movehit 
-value = 5420
-ID = 5420
-ignorehitpause = 1
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = animelem = 7
+trigger1 = animelem = 5
 statetype = A     
 movetype = I        
 physics = A 
@@ -1319,7 +1312,7 @@ physics = A
 [State 1000, 7]
 type = ChangeState
 triggerall = Map(Flight)>0
-trigger1 = time = 20
+trigger1 = time = 30
 value = 1301
 ctrl = 1
 
