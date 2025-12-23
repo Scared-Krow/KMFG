@@ -1,5 +1,5 @@
 ;---------------------------------------------------------------------------
-;22C
+;22D
 [Statedef 1000]
 type    = U
 movetype= I
@@ -45,7 +45,7 @@ persistent = 0
 type = PosSet
 trigger1 = animelem = 4
 x = Map(BineyPosX) + 20
-y = Map(BineyPosY) - 20
+y = cond(Map(BineyPosY)<0,Map(BineyPosY) - 20,-5)
 
 [State 0, ChangeState]
 type = ChangeState
@@ -64,7 +64,7 @@ trigger1 = animelem = 7
 type = VelSet
 trigger1 = animelem = 5
 x = Map(BineyVelX)*.4
-y = Map(BineyVelY)*.4
+y = cond(Map(BineyPosY)<=0,Map(BineyVelY)*.4,0)
 
 [State 0, VelMul]
 type = VelMul
@@ -280,7 +280,7 @@ type    = U
 movetype= A
 physics = N
 anim = 1200
-velset = 3,0
+velset = cond((p2dist x > 80)&&prevstateno=500,vel x*.6,3),0
 ctrl = 0
 sprPriority = -6
 
@@ -358,7 +358,7 @@ type = PosSet
 triggerall = anim = 1200
 trigger1 = time = 16
 x = enemy, pos x-(50*facing)
-y = enemy, pos y
+y = enemy, pos y-5
 
 [State 0, PosAdd]
 type = veladd
@@ -378,7 +378,7 @@ redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.1
+value = root,Map(DamageScaling)-.1-cond(root,Map(qcfD),.1,0)
 map = "DamageScaling"
 persistent = 0
 redirectID = root,ID
@@ -396,7 +396,7 @@ type = HitDef
 triggerall = anim = 1201
 trigger1 = animelem = 2
 attr = S,NP                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(40*root,Map(DamageScaling) < 4, 4, 40*root,Map(DamageScaling))),5
+damage = ceil(cond(35*root,Map(DamageScaling) < 3, 3, 35*root,Map(DamageScaling))),5
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -427,7 +427,7 @@ type = HitDef
 triggerall = anim = 1201
 trigger1 = animelem = 6
 attr = S,NP                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(55*root,Map(DamageScaling) < 5, 5, 55*root,Map(DamageScaling))),5
+damage = ceil(cond(50*root,Map(DamageScaling) < 5, 5, 50*root,Map(DamageScaling))),5
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -477,13 +477,20 @@ type = ChangeState
 trigger1 = root,movetype = H
 value = 599
 
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = animelem = 6
+value = 1
+map = "qcfD"
+persistent = 1
+redirectID = root,ID
 
 [State 0, DestroySelf]
 type = DestroySelf
 trigger1 = animtime = 0
 
 ;---------------------------------------------------------------------------
-;623C
+;[2]8B
 [Statedef 1300]
 type    = A
 movetype= A
@@ -533,7 +540,7 @@ x = .9675
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S,SA                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(40*Map(DamageScaling) < 5, 5, 40*Map(DamageScaling)))
+damage = ceil(cond(60*Map(DamageScaling) < 10, 10, 60*Map(DamageScaling)))
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -546,11 +553,11 @@ guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
 ground.slidetime = 50            ;Time that the opponent slides back
 ground.hittime  = 60
-ground.velocity = -4,-7
+ground.velocity = -2,-8
 guard.velocity = -6
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
-air.velocity = -4,-6    ;X-velocity at which opponent is pushed,
+air.velocity = -2,-8    ;X-velocity at which opponent is pushed,
 air.hittime = ceil(cond(40-Map(HitstunScaling) < 15, 15, 40-Map(HitstunScaling)))
 fall = 1
 fall.yvelocity = 0

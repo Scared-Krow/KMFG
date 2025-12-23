@@ -646,36 +646,12 @@ map = "Tumble"
 ;================================================================
 ;Repeat Damage Scaling
 ;================================================================
-[State -2, 5C Reset]
-type = mapset
-trigger1 = enemy,movetype != H || enemy,statetype = A
-value = 0
-map = "stC"
-[State -2, 2C Reset]
-type = mapset
-trigger1 = enemy,movetype != H
-value = 0
-map = "Launcher"
-[State -2, 2D>D Reset]
-type = mapset
-trigger1 = enemy,movetype != H
-value = 0
-map = "crD"
-[State -2, Gun Reset]
+
+[State -2, 236D Reset]
 type = mapset
 trigger1 = enemy,movetype != H
 value = 0
 map = "qcfD"
-[State -2, Gun Reset]
-type = mapset
-trigger1 = enemy,movetype != H
-value = 0
-map = "qcbD"
-[State -2, Gun Reset]
-type = mapset
-trigger1 = enemy,movetype != H
-value = 0
-map = "stanceA"
 
 
 ;This controller plays a sound everytime KFM lands from a jump, or
