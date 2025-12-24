@@ -272,7 +272,7 @@ triggerall = command = "holdfwd" && command != "holddown" &&(command = "c" || (c
 triggerall = statetype != A
 triggerall = stateno != 700
 trigger1 = movecontact && power >= 250
-trigger2 = ((stateno=[240,250] || stateno=[440,450]) && time >= 7) && power >= 250
+trigger2 = ((stateno=[240,250] || stateno=[440,450] || stateno = [1200,1299]) && time >= 7) && power >= 250
 ;---------------------------------------------------------------------------
 ;5K
 [State -1, 5K]

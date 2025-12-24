@@ -10,6 +10,12 @@ velset = 0,0
 sprpriority = -1
 facep2 = 1
 
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = pos y > 0
+y = 0
+
 [State -2, StoreBiney]
 type = mapset
 trigger1 = time = 0
@@ -146,6 +152,7 @@ fall.yvelocity = 0
 air.cornerpush.veloff = 0
 p2facing = 1
 guard.dist = 0
+mindist = cond(movehit,50,0),0
 maxdist = cond(movehit,50,999),0
 id = 5440
 
@@ -195,7 +202,7 @@ type = HitDef
 trigger1 = animelem = 2
 attr = S, SA
 animtype  = Medium
-damage = ceil(cond(44*Map(DamageScaling) < 6, 6, 44*Map(DamageScaling))),3
+damage = ceil(cond(44*Map(DamageScaling) < 10, 10, 44*Map(DamageScaling))),3
 guardflag = MA
 priority = 3, Hit 
 pausetime = 0,11
@@ -499,8 +506,6 @@ anim = 1300
 velset = vel x *.5,0
 ctrl = 0
 
-
-
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = time = [0,12]
@@ -529,19 +534,43 @@ y = -5
 [State 0, VelAdd]
 type = VelAdd
 trigger1 = time > 10
-y = .35
+y = .355
 
 [State 0, VelMul]
 type = VelMul
 trigger1 = time > 12 
 x = .9675
 
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount=1
+value = Map(DamageScaling)*.95
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount>1
+value = Map(DamageScaling)-.05
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,statetype = A && enemy,movetype = H
+trigger1 = movehit
+value = Map(HitstunScaling)+1
+map = "HitstunScaling"
+ignorehitpause = 1
+persistent = 0
+
+
 [State 200, 1]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S,SA                     ;Attribute: Standing, Normal Attack
 damage = ceil(cond(60*Map(DamageScaling) < 10, 10, 60*Map(DamageScaling)))
-animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
+animtype = up                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 3, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
@@ -558,8 +587,8 @@ guard.velocity = -6
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
 air.velocity = -2,-8    ;X-velocity at which opponent is pushed,
-air.hittime = ceil(cond(40-Map(HitstunScaling) < 15, 15, 40-Map(HitstunScaling)))
-fall = 1
+air.hittime = ceil(cond(60-Map(HitstunScaling) < 15, 15, 60-Map(HitstunScaling)))
+forcenofall = 1
 fall.yvelocity = 0
 guard.ctrltime = 10
 guard.hittime = 10

@@ -398,24 +398,15 @@ x = .8
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = SCA,AT
+value = SCA,AA,AP,AT
 time = 1
 
-[State 0, HitBy]
-type = HitBy
-trigger1 = 1
-value = SCA,AA,AP
-time = 1
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = ClsnOverlap(clsn2, enemynear,ID, clsn1)
+value = 599
+ctrl = 0
 
-[State 1300, 2]
-type = ReversalDef
-trigger1 = 1
-reversal.attr = SCA,AA,AP
-pausetime = 0,0
-sparkno = -1
-sparkxy = -1,0
-hitsound = -1,0
-p1stateno = 599
 
 [State -2, Starter Damage Scaling]
 type = mapset
@@ -448,7 +439,7 @@ type = HitDef
 triggerall = animelemno(0) = 4
 trigger1 = !MoveContact && !MoveReversed
 attr = S,NP                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(50*root,Map(DamageScaling) < 5, 5, 50*root,Map(DamageScaling)))
+damage = ceil(cond(55*root,Map(DamageScaling) < 5, 5, 55*root,Map(DamageScaling)))
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -517,24 +508,15 @@ y = .9
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = SCA,AT
+value = SCA,AA,AP,AT
 time = 1
 
-[State 0, HitBy]
-type = HitBy
-trigger1 = 1
-value = SCA,AA,AP
-time = 1
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = ClsnOverlap(clsn2, enemynear,ID, clsn1)
+value = 599
+ctrl = 0
 
-[State 1300, 2]
-type = ReversalDef
-trigger1 = 1
-reversal.attr = SCA,AA,AP
-pausetime = 0,0
-sparkno = -1
-sparkxy = -1,0
-hitsound = -1,0
-p1stateno = 599
 
 [State -2, Starter Damage Scaling]
 type = mapset
@@ -567,7 +549,7 @@ type = HitDef
 triggerall = animelemno(0) = 5
 trigger1 = !MoveContact && !MoveReversed
 attr = S,NP                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(50*root,Map(DamageScaling) < 5, 5, 50*root,Map(DamageScaling)))
+damage = ceil(cond(55*root,Map(DamageScaling) < 5, 5, 55*root,Map(DamageScaling)))
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = AF                    ;Flags of conditions that move can hit
@@ -632,24 +614,15 @@ x = .8
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = SCA,AT
+value = SCA,AA,AP,AT
 time = 1
 
-[State 0, HitBy]
-type = HitBy
-trigger1 = 1
-value = SCA,AA,AP
-time = 1
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = ClsnOverlap(clsn2, enemynear,ID, clsn1)
+value = 599
+ctrl = 0
 
-[State 1300, 2]
-type = ReversalDef
-trigger1 = 1
-reversal.attr = SCA,AA,AP
-pausetime = 0,0
-sparkno = -1
-sparkxy = -1,0
-hitsound = -1,0
-p1stateno = 599
 
 [State -2, Starter Damage Scaling]
 type = mapset
@@ -758,24 +731,14 @@ y = .8
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = SCA,AT
+value = SCA,AA,AP,AT
 time = 1
 
-[State 0, HitBy]
-type = HitBy
-trigger1 = 1
-value = SCA,AA,AP
-time = 1
-
-[State 1300, 2]
-type = ReversalDef
-trigger1 = 1
-reversal.attr = SCA,AA,AP
-pausetime = 0,0
-sparkno = -1
-sparkxy = -1,0
-hitsound = -1,0
-p1stateno = 599
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = ClsnOverlap(clsn2, enemynear,ID, clsn1)
+value = 599
+ctrl = 0
 
 [State -2, Starter Damage Scaling]
 type = mapset
@@ -807,7 +770,7 @@ redirectID = root,ID
 type = HitDef
 triggerall = animelemno(0) = 3
 trigger1 = !MoveContact && !MoveReversed
-attr = S,NP                     ;Attribute: Standing, Normal Attack
+attr = A,NP                     ;Attribute: Standing, Normal Attack
 damage = ceil(cond(55*root,Map(DamageScaling) < 5, 5, 55*root,Map(DamageScaling)))
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
@@ -1245,7 +1208,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1
+value = Map(HitstunScaling)+.75
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1362,7 +1325,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1
+value = Map(HitstunScaling)+.75
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
