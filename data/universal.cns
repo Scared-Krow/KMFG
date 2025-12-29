@@ -248,7 +248,7 @@ ctrl = 1
 [Statedef 705]
 type = S
 physics = S
-movetype = A
+movetype = I
 anim = 705
 velset = 0, 0
 ctrl = 0
@@ -278,6 +278,13 @@ hitsound = 6,0
 p1stateno = 706
 p1sprpriority = 2 ;Set P1's sprite in front of P2's
 p2sprpriority = 1
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = time = 9 
+statetype = S       
+movetype = A        
+physics = S        
 
 [State 700, End]
 type = changestate
@@ -357,7 +364,7 @@ ctrl = 1
 [Statedef 710]
 type = S
 physics = S
-movetype = A
+movetype = I
 anim = 710
 velset = 0, 0
 ctrl = 0
@@ -387,6 +394,13 @@ hitsound = 6,0
 p1stateno = 711
 p1sprpriority = 2 ;Set P1's sprite in front of P2's
 p2sprpriority = 1
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = time = 9 
+statetype = S       
+movetype = A        
+physics = S 
 
 [State 700, End]
 type = changestate
@@ -463,6 +477,126 @@ flag = nowalk
 type = changestate
 trigger1 = animtime = 0
 value = 11
+ctrl = 1
+
+;Air Parry
+[Statedef 715]
+type = A
+physics = A
+movetype = I
+anim = 715
+ctrl = 0
+sprpriority = 2
+facep2 = 1
+
+[State -2 Parry]
+type = mapset
+trigger1 = time = 0
+value = 1
+map = "Parry"
+[State -2, Parry]
+type = mapset
+trigger1 = time = 11
+value = 0
+map = "Parry"
+
+[State 1300, 2]
+type = ReversalDef
+trigger1 = Time = [0,8]
+;trigger1 = (P2, HitDefVar(guardflag) = M || P2, HitDefVar(guardflag) = H)
+reversal.attr = SCA,AA,AP
+pausetime = 0,0
+sparkno = 40
+sparkxy = 40,0
+hitsound = 6,0
+p1stateno = 716
+p1sprpriority = 2 ;Set P1's sprite in front of P2's
+p2sprpriority = 1
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = time = 9 
+statetype = A       
+movetype = A        
+physics = A        
+
+[State 700, End]
+type = changestate
+trigger1 = animtime = 0
+value = 50
+ctrl = 1
+
+;Air Parry Success
+[Statedef 716]
+type = A
+physics = A
+movetype = I
+anim = 715
+ctrl = 0
+sprpriority = 2
+facep2 = 1
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0 
+time = cond(enemy, hitdefattr != SCA,NP, SP, HP,15,5)
+anim = -1
+sound = -1
+darken = 0
+unhittable = 1
+movetime = 15
+
+[State 0, PosFreeze]
+type = PosFreeze
+trigger1 = time < 10
+value = 1
+redirectID = enemy,ID
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time = [0,5]
+value = SCA
+time = 1
+
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = time = 5
+ignorehitpause = 1
+value = 1
+
+[State 700, Snd]
+type = playsnd
+trigger1 = !time
+value = S6700, 0
+
+[State 700, Stop]
+type = posfreeze
+trigger1 = time <= 12
+value = 1
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = time = 13
+x = .8
+y = .6
+
+[State 700, Flash]
+type = palfx
+trigger1 = time = 0
+ignorehitpause = 1
+add = 100, 100, 100
+sinadd = 0, 0, 0, 60
+time = 15
+
+[State 700, No walking]
+type = assertspecial
+trigger1 = 1
+flag = nowalk
+
+[State 700, End]
+type = changestate
+trigger1 = animtime = 0
+value = 50
 ctrl = 1
 
 ;---------------------------------------------------------------------------

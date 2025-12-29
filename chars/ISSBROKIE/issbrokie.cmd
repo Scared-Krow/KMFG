@@ -292,6 +292,15 @@ triggerall = statetype != A
 trigger1 = (stateno = 706 || stateno = 711) && (command = "cNB" || (command = "y" && command = "b"))
 trigger2 = ctrl
 ;---------------------------------------------------------------------------
+;jK
+[State -1, jK]
+type = ChangeState
+value = 715
+triggerall = (command = "c" || (command = "y" && command = "b"))
+triggerall = statetype = A
+trigger1 = (stateno = 716) && (command = "cNB" || (command = "y" && command = "b"))
+trigger2 = ctrl
+;---------------------------------------------------------------------------
 ;Super Jump
 [State -1, SJ]
 type = ChangeState
@@ -395,6 +404,15 @@ value = 800
 triggerall = command = "x" && command = "a"
 triggerall = statetype != A
 trigger1 = ctrl
+;---------------------------------------------------------------------------
+;Air Throw
+[State -1, Kung Fu Throw]
+type = ChangeState
+value = 900
+triggerall = command = "x" && command = "a"
+triggerall = statetype = A
+trigger1 = ctrl
+
 
 
 
