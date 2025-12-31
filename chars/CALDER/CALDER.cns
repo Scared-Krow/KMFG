@@ -28,6 +28,7 @@ shadowoffset = 0
 draw.offset = 0,1
 attack.dist = 0
 stand.sizebox = -12, -45, 12, 0
+air.sizebox = -12, -45, 12, 0
 
 [Velocity]
 walk.fwd  = 1.95

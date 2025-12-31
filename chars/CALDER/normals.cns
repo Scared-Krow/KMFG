@@ -1626,7 +1626,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.825
+value = Map(DamageScaling)*.85
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1655,23 +1655,32 @@ guardflag = HA
 priority = 3
 pausetime = 12,12
 sparkno = 1
-sparkxy = -5,-45
-hitsound   = 9,0
+sparkxy = -12,-12
+hitsound   = 5,3
 guardsound = 6,0
 ground.type = High
-ground.slidetime = 6
-ground.hittime  = 17
-ground.velocity = -4-(Map(PushBack))
-air.velocity = -2,-2
-air.hittime = ceil(cond(25-Map(HitstunScaling) < 14, 14, 25-Map(HitstunScaling)))
-guard.ctrltime = 12
-guard.hittime = 12
+ground.slidetime = 12
+ground.hittime  = 18
+ground.velocity = -5-(Map(PushBack))
+guard.velocity = -5
+air.velocity = -4,6
+air.hittime = 60
 air.fall = 1
+guard.ctrltime = 14
+guard.hittime = 14
 fall.yvelocity = 0
 p2facing = 1
-ground.cornerpush.veloff = -4-(Map(PushBack))
-air.cornerpush.veloff = -4
+air.cornerpush.veloff = 0
 guard.dist = 0
+id = 5420
+
+[State 0, TargetState]
+type = TargetState
+triggerall = enemy,statetype = A && NumTarget(5420)
+trigger1 = movehit 
+value = 5420
+ID = 5420
+ignorehitpause = 1
 
 
 [State 0, StateTypeSet]
@@ -2035,6 +2044,13 @@ value = 902
 
 [State 0, ChangeState]
 type = ChangeState
+triggerall = target,Map(CanTT) = 1
+trigger1 = target, command = "x" && target, command = "a"
+value = 902
+ctrl = 0
+
+[State 0, ChangeState]
+type = ChangeState
 trigger1 = animtime = 0
 value = 910
 ctrl = 0
@@ -2058,13 +2074,13 @@ time = 10
 
 [State 0, VelSet]
 type = VelSet
-trigger1 = 1
+trigger1 = time = 0
 x = -5
 
 [State 0, VelMul]
 type = VelMul
 trigger1 = 1
-x = .9
+x = .925
 
 [State 0, ChangeState]
 type = SelfState

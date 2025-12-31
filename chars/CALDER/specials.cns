@@ -119,13 +119,6 @@ velset = vel x * .9
 sprpriority = 4
 facep2 = 1
 
-[State -2, Damage Scaling]
-type = mapset
-trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
-map = "DamageScaling"
-ignorehitpause = 1
-persistent = 0
 
 [State 0, EnvShake]
 type = EnvShake
@@ -217,7 +210,7 @@ type = HitDef
 trigger1 = animelem = 2
 attr = S, SA
 animtype  = Medium
-damage = ceil(cond(44*Map(DamageScaling) < 10, 10, 44*Map(DamageScaling))),3
+damage = ceil(cond(39*Map(DamageScaling) < 10, 10, 39*Map(DamageScaling))),3
 guardflag = MA
 priority = 3, Hit 
 pausetime = 0,11
@@ -241,6 +234,14 @@ air.cornerpush.veloff = 0
 p2facing = 1
 guard.dist = 0
 maxdist = 50,0
+
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = animelem = 2 && anim = 1101 && movehit
+value = Map(DamageScaling)-.2
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
 
 [State 0, StateTypeSet]
 type = StateTypeSet

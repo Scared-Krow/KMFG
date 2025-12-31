@@ -1703,6 +1703,13 @@ value = 902
 
 [State 0, ChangeState]
 type = ChangeState
+triggerall = target,Map(CanTT) = 1
+trigger1 = target, command = "x" && target, command = "a"
+value = 902
+ctrl = 0
+
+[State 0, ChangeState]
+type = ChangeState
 trigger1 = animtime = 0
 value = 910
 ctrl = 0
@@ -1726,13 +1733,13 @@ time = 10
 
 [State 0, VelSet]
 type = VelSet
-trigger1 = 1
+trigger1 = time = 0
 x = -5
 
 [State 0, VelMul]
 type = VelMul
 trigger1 = 1
-x = .9
+x = .925
 
 [State 0, ChangeState]
 type = SelfState

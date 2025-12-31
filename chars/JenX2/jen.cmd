@@ -320,13 +320,6 @@ triggerall = statetype = A
 triggerall = command = "up"
 trigger1 = ctrl
 trigger2 = var(1)
-;---------------------------------------------------------------------------
-;Taunt
-[State -1, Taunt]
-type = ChangeState
-value = 195
-triggerall = stateno != 195
-trigger1 = command = "start"
 
 ;============================================================================
 ;=============================SUPERS=========================================

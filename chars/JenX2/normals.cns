@@ -484,7 +484,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.15
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -511,8 +511,8 @@ sparkxy = -12,-50
 hitsound   = 9,2
 guardsound = 6,0
 ground.type = High
-ground.slidetime = 21
-ground.hittime  = 21
+ground.slidetime = 23
+ground.hittime  = 23
 ground.velocity = -4.75-(Map(PushBack))
 air.hittime = ceil(cond(30-Map(HitstunScaling) < 18, 18, 30-Map(HitstunScaling)))
 air.velocity = -2.5,-2.75
@@ -928,7 +928,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.9
+value = Map(DamageScaling)*.875
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1054,7 +1054,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.25
+value = Map(DamageScaling)-.2
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1313,7 +1313,7 @@ priority = 2
 pausetime = 10,10
 sparkno = 1
 sparkxy = -10,-25
-hitsound   = 5,3
+hitsound   = 5,4
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
@@ -1857,6 +1857,13 @@ value = 902
 
 [State 0, ChangeState]
 type = ChangeState
+triggerall = target,Map(CanTT) = 1
+trigger1 = target, command = "x" && target, command = "a"
+value = 902
+ctrl = 0
+
+[State 0, ChangeState]
+type = ChangeState
 trigger1 = animtime = 0
 value = 910
 ctrl = 0
@@ -1880,13 +1887,13 @@ time = 10
 
 [State 0, VelSet]
 type = VelSet
-trigger1 = 1
+trigger1 = time = 0
 x = -5
 
 [State 0, VelMul]
 type = VelMul
 trigger1 = 1
-x = .9
+x = .925
 
 [State 0, ChangeState]
 type = SelfState
