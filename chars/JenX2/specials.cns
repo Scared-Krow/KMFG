@@ -1133,6 +1133,7 @@ physics = A
 anim = 1250
 velset = vel x * .8 , vel y * .5
 ctrl = 0
+facep2 = 1
 
 [State 0, VelMul]
 type = VelMul
@@ -1171,7 +1172,6 @@ type    = A
 movetype= I
 physics = A
 anim = 1251
-velset = 0,0
 ctrl = 0
 
 [State 1000, 7]
@@ -1242,11 +1242,11 @@ guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
 ground.slidetime = 5             ;Time that the opponent slides back
 ground.hittime  = 14
-ground.velocity = -.05,-8
+ground.velocity = -.05,-2-(p2dist y/20)
 guard.velocity = -1
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
-air.velocity =  -.05,-(p2dist y/20)
+air.velocity =  -.05,-2-(p2dist y/20)
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 15, 15, 25-Map(HitstunScaling)))
 fall = 1
 fall.yvelocity = 0
@@ -1274,7 +1274,7 @@ ground.velocity = -.05,-5
 guard.velocity = -1
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
-air.velocity =  -.05,-3-(p2dist y/20)
+air.velocity =  -.05,-3-(p2dist y/10)
 down.velocity = -.1,0
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 15, 15, 25-Map(HitstunScaling)))
 fall = 1
@@ -1306,7 +1306,7 @@ air.type = High                  ;Type: High, Low, Trip (def: same as ground.typ
 air.velocity =  -.05,-5
 down.velocity = -.1,0
 air.hittime = ceil(cond(35-Map(HitstunScaling) < 15, 15, 35-Map(HitstunScaling)))
-fall = 1
+forcenofall = 1
 fall.yvelocity = 0
 guard.ctrltime = 7
 guard.hittime = 7
