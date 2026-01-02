@@ -145,8 +145,9 @@ command.time = 16
 ; maximum 30.
 command.buffer.time = 3
 
-
-
+[Command]
+name = "FFB"
+command = ~F, F, a
 ;---------------------------------------------------------------------------
 ; 2. State entry
 ; --------------
@@ -454,7 +455,18 @@ trigger1 = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = 200 || stateno = 400) && movecontact
 ;---------------------------------------------------------------------------
-;5M
+;66B
+[State -1, 6B]
+type = ChangeState
+value = 250
+triggerall = stateno != 250
+triggerall = command = "FFB"
+triggerall = command != "holddown"
+trigger1 = statetype != A
+trigger1 = ctrl
+trigger2 = (stateno = [200,440])&& movecontact 
+;---------------------------------------------------------------------------
+;5B
 [State -1, 5B]
 type = ChangeState
 value = 210

@@ -574,11 +574,26 @@ type = posfreeze
 trigger1 = time <= 12
 value = 1
 
+[State -2, StoreVelX]
+type = mapset
+trigger1 = time = 0
+value = vel x
+map = "VelX"
+ignorehitpause = 1
+persistent = 0
+[State -2, StoreVelY]
+type = mapset
+trigger1 = time = 0
+value = vel y
+map = "VelY"
+ignorehitpause = 1
+persistent = 0
+
 [State 0, VelMul]
-type = VelMul
-trigger1 = time = 13
-x = .8
-y = .6
+type = VelSet
+trigger1 = time < 13
+x = Map(VelX) * .6
+y = Map(VelY) * .2
 
 [State 700, Flash]
 type = palfx

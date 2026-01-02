@@ -196,7 +196,7 @@ facep2 = 1
 [State 0, VelMul]
 type = VelMul
 trigger1 = 1
-x = .975
+x = .92
 
 
 [State 0, Helper]
@@ -379,7 +379,7 @@ ctrl = 0
 [State 0, VelMul]
 type = VelMul
 trigger1 = 1
-x = .975
+x = .92
 
 
 [State 0, PosSet]
@@ -967,8 +967,8 @@ ground.velocity = -20,-6
 air.hittime = 60
 air.velocity = -20,-5
 fall = 1
-guard.ctrltime = 11
-guard.hittime = 11
+guard.ctrltime = 12
+guard.hittime = 12
 fall.yvelocity = 0
 p2facing = 1
 ground.cornerpush.veloff = -5-(Map(PushBack))
@@ -996,9 +996,10 @@ ground.velocity = -9,-4
 air.hittime = 60
 air.velocity = -7,-3
 fall = 1
-guard.ctrltime = 11
-guard.hittime = 11
+guard.ctrltime = 12
+guard.hittime = 12
 fall.yvelocity = 0
+guard.velocity = -12
 p2facing = 1
 ground.cornerpush.veloff = -5-(Map(PushBack))
 air.cornerpush.veloff = -5
