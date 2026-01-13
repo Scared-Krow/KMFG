@@ -509,7 +509,7 @@ x = 2
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.8
+value = Map(DamageScaling)*.85
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -839,7 +839,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.9
+value = Map(DamageScaling)*.85
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -889,7 +889,7 @@ value = 0, 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = C, NA
-damage = ceil(cond(55*Map(DamageScaling) < 5, 5, 55*Map(DamageScaling)))
+damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
 animtype  = Light
 hitflag = MAF
 guardflag = LA
@@ -1423,7 +1423,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.95
+value = Map(DamageScaling)*.9
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0

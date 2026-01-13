@@ -670,11 +670,11 @@ ctrl = 1
 ;---------------------------------------------------------------------------
 ;22D
 [Statedef 1020]
-type    = S
+type    = A
 movetype= A
 physics = S
 anim = 1020
-velset = vel x * 0.25, 0
+velset = vel x * 0.25, -1
 poweradd = 0
 ctrl = 0
 
@@ -684,10 +684,6 @@ trigger1 = animelem = 1
 statetype = A       ;S,A,C,L
 movetype = A        ;I,A,H
 physics = A         ;A,C,S,N 
-[State 0, PosAdd]
-type = PosAdd
-trigger1 = animelem = 1
-y = -5
 [State 0, PosAdd]
 type = VelAdd
 trigger1 = animelem = 2 || animelem = 7
@@ -794,25 +790,66 @@ trigger1 = time = [0,13]
 value = A,AA
 time = 1
 
-[State 0, HitBy]
-type = HitBy
-trigger1 = time = [0,13]
-value = SC,NA,SA,HA,NP,SP,HP
-time = 1
-
-[State 0, HitBy]
-type = HitBy
-trigger1 = time > 13
-value = SCA,NA,SA,HA,NP,SP,HP
-value2 = A,NT,ST,HT
-time = 1
-
 [State 1000, 7]
 type = ChangeState
 trigger1 = animtime = 0
 value = 50
 ctrl = 1
 
+;---------------------------------------------------------------------------
+;22C (No Install)
+[Statedef 1050]
+type    = S
+movetype= A
+physics = S
+anim = 1050
+velset = vel x*.4,0
+poweradd = 0
+ctrl = 0
+
+[State -2, Install]
+type = mapset
+trigger1 = animelem = 3
+value = 1
+map = "HEARTLESS"
+
+[State 0, LifeAdd]
+type = LifeAdd
+trigger1 = animelem = 3
+value = -30
+kill = 1
+absolute = 1
+
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+;---------------------------------------------------------------------------
+;22C (During Install)
+[Statedef 1051]
+type    = S
+movetype= A
+physics = S
+anim = 1050
+velset = vel x*.4,0
+poweradd = 0
+ctrl = 0
+
+[State -2, Install]
+type = mapset
+trigger1 = animelem = 3
+value = 0
+map = "HEARTLESS"
+
+
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
 ;---------------------------------------------------------------------------
 ; Hitgrab
 [Statedef 1025]
@@ -852,7 +889,7 @@ trigger1 = anim = 1015
 trigger1 = animelem = 9
 attr = S, ST
 animtype  = Medium
-damage = ceil(cond(20*Map(DamageScaling) < 2, 2, 20*Map(DamageScaling)))
+damage = ceil(cond(10*Map(DamageScaling) < 1, 1, 10*Map(DamageScaling)))
 guardflag = MA
 priority = 2, Hit 
 pausetime = 1,1 
@@ -884,7 +921,7 @@ trigger1 = anim = 1016
 trigger1 = animelem = 2
 attr = S, SA
 animtype  = Medium
-damage = ceil(cond(60*Map(DamageScaling) < 6, 6, 60*Map(DamageScaling)))
+damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
 guardflag = MA
 pausetime = 10,10
 priority = 4, Hit 
@@ -903,28 +940,14 @@ guard.ctrltime = 5
 guard.hittime = 5
 fall.yvelocity = 0
 p2facing = 1
-ground.cornerpush.veloff = -5-(Map(PushBack))
+ground.cornerpush.veloff = -5
 air.cornerpush.veloff = -5
 guard.dist = 0
 
-[State -2, INFECTION]
-type = mapset
-triggerall = anim = 1016
-trigger1 = movehit=1 && HitPauseTime=1
-value = 360
-map = "Infection"
-ignorehitpause = 1
-persistent = 0
-
-[State -2, INFECTION LEVEL]
-type = mapadd
-triggerall = anim = 1016 && Map(InfectionLevel)<3
-trigger1 = movehit=1 && HitPauseTime=1
-value = 1
-map = "InfectionLevel"
-ignorehitpause = 1
-persistent = 0
-
+[State 0, LifeAdd]
+type = LifeAdd
+trigger1 = anim = 1016 ** animelem = 2
+value = 10
 
 [State 0, ChangeAnim]
 type = ChangeAnim
@@ -992,7 +1015,7 @@ trigger1 = anim = 1015
 trigger1 = animelem = 9
 attr = S, NA
 animtype  = Medium
-damage = ceil(cond(20*Map(DamageScaling) < 2, 2, 20*Map(DamageScaling)))
+damage = ceil(cond(10*Map(DamageScaling) < 2, 2, 10*Map(DamageScaling)))
 guardflag = MA
 hitflag	= AF
 priority = 2, Hit 
@@ -1094,7 +1117,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S,SA                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(60*Map(DamageScaling) < 10, 10, 60*Map(DamageScaling)))
+damage = ceil(cond(75*Map(DamageScaling) < 10, 10, 75*Map(DamageScaling)))
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = AF                    ;Flags of conditions that move can hit
@@ -1138,3 +1161,4 @@ type = ChangeState
 trigger1 = Animelem = 6
 value = 0
 ctrl = 1
+

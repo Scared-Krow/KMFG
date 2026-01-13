@@ -79,14 +79,14 @@ triggerall = time < 49
 trigger1 = time%2=0
 attr = S, HP
 animtype  = up
-damage = ceil(cond(5*root,Map(DamageScaling) < 2, 2, 5*root,Map(DamageScaling))),1
+damage = ceil(cond(4*root,Map(DamageScaling) < 1, 1, 4*root,Map(DamageScaling))),1
 hitflag = MAFD
 guardflag = MA
 priority = 3, Hit 
 pausetime = 1,1
 sparkno = 1
 sparkxy = 0,0
-hitsound   = 5,2
+hitsound   = 5,0
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
@@ -109,7 +109,7 @@ type = HitDef
 trigger1 = time = 50
 attr = S, HP
 animtype  = up
-damage = ceil(cond(100*root,Map(DamageScaling) < 35, 35, 100*root,Map(DamageScaling))),5
+damage = ceil(cond(100*root,Map(DamageScaling) < 25, 25, 100*root,Map(DamageScaling))),5
 hitflag = MAFD
 guardflag = MA
 priority = 3, Hit 

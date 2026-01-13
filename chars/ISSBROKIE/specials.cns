@@ -255,7 +255,7 @@ guard.velocity = -2
 guard.slidetime = 12
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
-air.velocity = -3,-.75      ;X-velocity at which opponent is pushed,
+air.velocity = -3,-.8      ;X-velocity at which opponent is pushed,
 air.hittime = 10
 air.fall = 1
 fall.yvelocity = 0
@@ -287,8 +287,8 @@ guard.hittime = 11
 air.fall = 1
 fall.yvelocity = 0
 p2facing = 1
-ground.cornerpush.veloff = -10
-air.cornerpush.veloff = -10
+ground.cornerpush.veloff = -8
+air.cornerpush.veloff = -8
 envshake.time = 8
 envshake.freq = 80
 envshake.phase = 150
@@ -380,7 +380,7 @@ physics = N
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A,NA                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(60*Map(DamageScaling) < 15, 15, 60*Map(DamageScaling)))
+damage = ceil(cond(60*Map(DamageScaling) < 15, 15, 60*Map(DamageScaling))),25
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = HA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -477,7 +477,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S,SA                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(60*Map(DamageScaling) < 6, 6, 60*Map(DamageScaling)))
+damage = ceil(cond(60*Map(DamageScaling) < 6, 6, 60*Map(DamageScaling))),10
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -979,61 +979,23 @@ size.yscale = .4
 type = DestroySelf
 trigger1 = time = 0
 ;---------------------------------------------------------------------------
-;63214B
+;214B
 [Statedef 1200]
 type    = S
 movetype= I
 physics = S
 anim = 1200
-velset = 0,0
+velset = -6,0
 ctrl = 0
 
-[State -2, Charge]
-type = mapset
-trigger1 = time = 0
-value = 0
-map = "Charge"
-[State -2, Charge]
-type = mapadd
-trigger1 = 1
-value = 1
-map = "Charge"
-
-[State 0, NotHitBy]
-type = NotHitBy
-trigger1 = time = [4,12]
-value = SCA
-time = 1
-
-[State 0, HitBy]
-type = HitBy
-trigger1 = time < 4 || time > 12
-value = SCA,NA,SA,HA,NT,ST,HT,NP,SP,HP
-time = 1
-
-
-[State 0, PalFX]
-type = PalFX
-trigger1 = Map(Charge)=16
-time = 3
-add = -25,-75,-25
-mul = 256,100,256
-invertall = 0
-
-[State 0, PosAdd]
-type = velSet
-trigger1 = time = 0
-x = -6
-
-[State 1000, 7]
+[State 200, 3]
 type = ChangeState
-trigger1 = Map(Charge)>=20
-trigger2 = command != "holda" && Map(Charge)>=12
-value = 1201
-ctrl = 0
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
 
 ;---------------------------------------------------------------------------
-;63214B~Attack
+;214B~Attack
 [Statedef 1201]
 type    = S
 movetype= A
@@ -1185,19 +1147,6 @@ ctrl = 0
 type = NotHitBy
 trigger1 = time = [0,12]
 value = A,AA
-time = 1
-
-[State 0, HitBy]
-type = HitBy
-trigger1 = time = [0,12]
-value = SC,NA,SA,HA,NP,SP,HP
-time = 1
-
-[State 0, HitBy]
-type = HitBy
-trigger1 = time > 12
-value = SCA,NA,SA,HA,NP,SP,HP
-value2 = A,NT,ST,HT
 time = 1
 
 [State 0, VelSet]

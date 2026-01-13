@@ -377,7 +377,7 @@ triggerall = command = "214B"
 triggerall = statetype = A
 trigger1 = ctrl
 trigger2 = var(1)
-trigger3 = Map(BUCKX2)>0 && ((stateno =[1000,2000] && movecontact) || stateno = 1204 && time > 24)
+trigger3 = Map(BUCKX2)>0 && ((stateno =[1000,2000] && movecontact) || stateno = 1256 && time > 16)
 ;---------------------------------------------------------------------------
 ;214D
 [State -1, 214D]

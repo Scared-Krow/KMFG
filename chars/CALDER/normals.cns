@@ -1234,13 +1234,7 @@ value = Map(DamageScaling)*.75
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
-[State -2, Repeated Damage Scaling]
-type = mapset
-trigger1 = movehit && combocount>1 && Map(Launcher)>11
-value = Map(DamageScaling)-.5
-map = "DamageScaling"
-ignorehitpause = 1
-persistent = 0
+
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
@@ -1291,13 +1285,6 @@ air.cornerpush.veloff = -4
 p2facing = 1
 guard.dist = 0
 
-
-[State -2, 2C limiter]
-type = mapadd
-trigger1 = movehit=1
-value = 1
-map = "Launcher"
-ignorehitpause = 1
 
 [State 210, 5]
 type = ChangeState

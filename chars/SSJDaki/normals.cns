@@ -930,21 +930,6 @@ trigger1 = time = [4,13]
 value = A,AA
 time = 1
 
-[State 0, HitBy]
-type = HitBy
-trigger1 = time = [4,13]
-value = SC,NA,SA,HA,NP,SP,HP
-time = 1
-
-[State 0, HitBy]
-type = HitBy
-trigger1 = time < 4 || time > 13
-value = SCA,NA,SA,HA,NP,SP,HP
-value2 = A,NT,ST,HT
-time = 1
-
-
-
 [State 440, 3]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
@@ -1176,7 +1161,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1.75
+value = Map(HitstunScaling)+1.5
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0

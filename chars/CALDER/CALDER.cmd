@@ -317,12 +317,12 @@ trigger2 = var(1)
 ;============================================================================
 
 ;---------------------------------------------------------------------------
-;632146C
-[State -1, 632146C]
+;236236C G
+[State -1, 236236CC]
 type = ChangeState
 value = 3000
 triggerall = power>=500
-triggerall = command = "6246C"
+triggerall = command = "236236C"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
@@ -331,14 +331,13 @@ trigger4 = helper(1002),movecontact || helper(1006),movecontact || helper(1209),
 trigger5 = stateno=[1000,2000] && movecontact
 
 ;---------------------------------------------------------------------------
-;214214A
-[State -1, 214214B]
+;236236C A
+[State -1, 236236C]
 type = ChangeState
 value = 3100
-triggerall = Map(BUCKX2) <= 0
 triggerall = power>=500
-triggerall = command = "214214A"
-triggerall = statetype != A
+triggerall = command = "236236C"
+triggerall = statetype = A
 trigger1 = ctrl
 trigger2 = var(1)
 trigger3 = ((stateno=1000 || stateno=1005)&& time >= 21)

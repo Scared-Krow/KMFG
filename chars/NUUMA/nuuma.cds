@@ -209,30 +209,48 @@ trigger5 = stateno=[1000,2000] && movecontact
 ;============================================================================
 ;============================SPECIALS========================================
 ;============================================================================
-;22D - Cleaver
-[State -1, 236D]
+;63214B - Hitgrab
+[State -1, 63214B]
 type = ChangeState
 value = 1025
 triggerall = command = "624B"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
-;22D - Cleaver
-[State -1, 236D]
+;63214B - Air Hitgrab
+[State -1, 63214B]
 type = ChangeState
 value = 1026
 triggerall = command = "624B"
 triggerall = statetype = A
 trigger1 = ctrl
 trigger2 = var(1)
-;22D - Cleaver
+;22C - Heartless Activate
+[State -1, 63214B]
+type = ChangeState
+value = 1050
+triggerall = Map(HEARTLESS)=0
+triggerall = command = "22C"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = var(1)
+;22C - Heartless Retract
+[State -1, 63214B]
+type = ChangeState
+value = 1051
+triggerall = Map(HEARTLESS)=1
+triggerall = command = "22C"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = var(1)
+;22D - Anti-Air
 [State -1, 236D]
 type = ChangeState
 value = 1020
 triggerall = command = "22D"
 trigger1 = ctrl
 trigger2 = var(1)
-;236D - Cleaver
+;236D - Air Cleaver
 [State -1, 236D]
 type = ChangeState
 value = 1010
@@ -241,7 +259,7 @@ triggerall = statetype = A
 triggerall = !numhelper(1000)
 trigger1 = ctrl
 trigger2 = var(1)
-;236C - Cleaver
+;236C - Air Cleaver
 [State -1, 236D]
 type = ChangeState
 value = 1015
@@ -250,7 +268,6 @@ triggerall = statetype = A
 triggerall = !numhelper(1000)
 trigger1 = ctrl
 trigger2 = var(1)
-
 ;236D - Cleaver
 [State -1, 236D]
 type = ChangeState
