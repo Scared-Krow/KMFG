@@ -243,7 +243,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.825
+value = Map(DamageScaling)*.83
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -429,7 +429,7 @@ ctrl = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount=1
-value = root,Map(DamageScaling)*.85
+value = root,Map(DamageScaling)*.875
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -546,7 +546,7 @@ ctrl = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount=1
-value = root,Map(DamageScaling)*.85
+value = root,Map(DamageScaling)*.875
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -782,7 +782,7 @@ ctrl = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount=1
-value = root,Map(DamageScaling)*.85
+value = root,Map(DamageScaling)*.875
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -915,7 +915,7 @@ ctrl = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount=1
-value = root,Map(DamageScaling)*.85
+value = root,Map(DamageScaling)*.875
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
