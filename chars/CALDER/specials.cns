@@ -1,7 +1,7 @@
 ;---------------------------------------------------------------------------
 ;22D
 [Statedef 1000]
-type    = U
+type    = A
 movetype= I
 physics = N
 ctrl = 0
@@ -515,21 +515,8 @@ ctrl = 0
 
 [State 0, NotHitBy]
 type = NotHitBy
-trigger1 = time = [0,12]
-value = A,AA
-time = 1
-
-[State 0, HitBy]
-type = HitBy
-trigger1 = time = [0,12]
-value = SC,NA,SA,HA,NP,SP,HP
-time = 1
-
-[State 0, HitBy]
-type = HitBy
-trigger1 = time > 12
-value = SCA,NA,SA,HA,NP,SP,HP
-value2 = A,NT,ST,HT
+trigger1 = time = [1,13]
+value = A
 time = 1
 
 [State 0, VelSet]
@@ -731,7 +718,7 @@ persistent = 0
 type = HitDef
 trigger1 = time = 0
 attr = S, ST
-damage = 120, 0
+damage = 125, 0
 animtype = light
 guardflag =
 hitflag = MAFD

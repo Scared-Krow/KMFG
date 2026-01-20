@@ -95,6 +95,7 @@ if vel x > 0 {
 
 if time = 0 {
 	sysVar(1) := 0;
+	notHitBy{value: ,NT,ST,HT; time: 4}
 }
 if command = "holdback" {
 	sysVar(1) := -1;

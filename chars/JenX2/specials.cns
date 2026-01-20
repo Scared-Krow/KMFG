@@ -87,7 +87,7 @@ redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.07
+value = root,Map(DamageScaling)-.075
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -404,7 +404,7 @@ redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.07
+value = root,Map(DamageScaling)-.075
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -747,7 +747,7 @@ airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
 air.velocity = -1,5       ;X-velocity at which opponent is pushed,
 air.hittime = ceil(cond(30-Map(HitstunScaling) < 15, 15, 30-Map(HitstunScaling)))
-down.hittime = ceil(cond(35-Map(HitstunScaling) < 14, 14, 35-Map(HitstunScaling)))
+down.hittime = ceil(cond(35-Map(HitstunScaling) < 12, 12, 35-Map(HitstunScaling)))
 air.fall = 1
 fall.yvelocity = 0
 down.velocity = -1,-5
@@ -787,7 +787,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+2
+value = Map(HitstunScaling)+2.5
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1478,7 +1478,7 @@ attr = S,NP                     ;Attribute: Standing, Normal Attack
 damage = ceil(cond(90*root,Map(DamageScaling) < 15, 15, 90*root,Map(DamageScaling))),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = HA                   ;Flags on how move is to be guarded against
-hitflag = MAFD                    ;Flags of conditions that move can hit
+hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 8,8                ;Time attacker pauses, time opponent shakes
 sparkno = 2                     ;Spark anim no (Def: set above)

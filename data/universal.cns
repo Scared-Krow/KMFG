@@ -10,7 +10,7 @@ anim = 40
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = SC,ST,HT
+value = ,NT,ST,HT
 time = 1
 
 [State 45, 6]
@@ -757,8 +757,8 @@ value = 0
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(Infection) %.0f, vel x = %.4f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(Infection),vel x
+text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(AMP) %.0f, vel x = %.4f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(AMP),vel x
 
 ;---------REDUCE MECHANIC
 [State -2, Reduce]

@@ -618,7 +618,7 @@ pausetime = 2,2
 priority = 1
 sparkno = 1
 sparkxy = -10,-65
-hitsound   = 5,2
+hitsound   = 5,4
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
@@ -800,7 +800,7 @@ priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 defa
 pausetime = 1,1                ;Time attacker pauses, time opponent shakes
 sparkno = 2                      ;Spark anim no (Def: set above)
 sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
-hitsound = 5, 2                  ;Sound to play on hit
+hitsound = 5, 3                  ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
 ground.slidetime = 75            ;Time that the opponent slides back
@@ -830,7 +830,7 @@ priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 defa
 pausetime = 1,1                ;Time attacker pauses, time opponent shakes
 sparkno = 2                     ;Spark anim no (Def: set above)
 sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
-hitsound = 5, 2                  ;Sound to play on hit
+hitsound = 5, 0                  ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
 ground.slidetime = 16           ;Time that the opponent slides back
@@ -1146,8 +1146,9 @@ ctrl = 0
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = time = [0,12]
-value = A,AA
+value = A
 time = 1
+
 
 [State 0, VelSet]
 type = VelSet

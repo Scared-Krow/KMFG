@@ -233,6 +233,7 @@ type    = A
 physics = A
 anim 	= 41
 ctrl 	= 1
+facep2 = 1
 
 [State 0, CtrlSet]
 type = CtrlSet

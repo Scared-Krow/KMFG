@@ -783,12 +783,12 @@ trigger1 = animelem = 8
 value = 0
 map = "extendedCH"
 
-;Anti Air
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = time = [0,13]
-value = A,AA
+value = A
 time = 1
+
 
 [State 1000, 7]
 type = ChangeState

@@ -118,14 +118,14 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.8
+value = Map(DamageScaling)*.785
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.12
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -173,7 +173,7 @@ ground.slidetime = 10
 ground.hittime  = 18
 ground.velocity = -2-(Map(PushBack))
 air.velocity = -1.5,-1.5
-air.hittime = ceil(cond(25-Map(HitstunScaling) < 15, 15, 25-Map(HitstunScaling)))
+air.hittime = ceil(cond(25-Map(HitstunScaling) < 10, 10, 25-Map(HitstunScaling)))
 air.fall = 1
 ground.cornerpush.veloff = -2-(Map(PushBack))
 fall.yvelocity = 0
@@ -812,20 +812,7 @@ persistent = 0
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = time = [4,13]
-value = A,AA
-time = 1
-
-[State 0, HitBy]
-type = HitBy
-trigger1 = time = [4,13]
-value = SC,NA,SA,HA,NP,SP,HP
-time = 1
-
-[State 0, HitBy]
-type = HitBy
-trigger1 = time < 4 || time > 13
-value = SCA,NA,SA,HA,NP,SP,HP
-value2 = A,NT,ST,HT
+value = A
 time = 1
 
 
@@ -935,7 +922,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.05
+value = Map(DamageScaling)-.075
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1067,7 +1054,7 @@ ignorehitpause = 1
 persistent = 0
 [State -2, Hitstun Scaling]
 type = mapset
-triggerall = enemy,statetype = A && enemy,movetype = H
+triggerall = enemy,movetype = H
 trigger1 = movehit
 value = Map(HitstunScaling)+1.5
 map = "HitstunScaling"
@@ -1314,7 +1301,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
-damage = ceil(cond(40*Map(DamageScaling) < 4, 4, 40*Map(DamageScaling)))
+damage = ceil(cond(40*Map(DamageScaling) < 3, 3, 40*Map(DamageScaling)))
 guardflag = HA
 priority = 2
 pausetime = 10,10
@@ -1411,7 +1398,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
-damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
+damage = ceil(cond(50*Map(DamageScaling) < 4, 4, 50*Map(DamageScaling)))
 guardflag = HA
 priority = 3
 pausetime = 12,12
@@ -1511,7 +1498,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
-damage = ceil(cond(65*Map(DamageScaling) < 6, 6, 65*Map(DamageScaling)))
+damage = ceil(cond(65*Map(DamageScaling) < 5, 5, 65*Map(DamageScaling)))
 guardflag = HA
 priority = 4
 pausetime = 16,16

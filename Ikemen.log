@@ -2,8 +2,8 @@ Version: nightly
 Build Time: 2025-10-08
 
 Error log:
-.\external\script\start.lua:1602: chars/SSJDaki/specials.cns:324:
-Missing trigger1
+.\external\script\start.lua:1602: chars/CACITY/Cacity.cmd:394:
+Command doesn't exist: EX28C
 stack traceback:
 	[G]: in function 'game'
 	.\external\script\start.lua:1602: in function 'f_game'

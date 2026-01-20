@@ -243,7 +243,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.85
+value = Map(DamageScaling)*.83
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -349,36 +349,100 @@ value = 0
 ctrl = 1
 
 ;---------------------------------------------------------------------------
-; 6D
+;3B
 [Statedef 250]
-type    = S
+type    = C
 movetype= A
-physics = S
+physics = C
 ctrl = 0
-anim = 240
-velset = vel x * .9
-sprpriority = -1
+anim = 250
+sprpriority = 2
 facep2 = 1
 
-[State 0, Helper]
-type = Helper
+[State 430, 1]
+type = PlaySnd
+trigger1 = Time = 1
+value = 0, 0
+
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount=1
+value = Map(DamageScaling)*.8
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount>1
+value = Map(DamageScaling)-.11
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,statetype = A && enemy,movetype = H
+trigger1 = movehit
+value = Map(HitstunScaling)+1
+map = "HitstunScaling"
+ignorehitpause = 1
+persistent = 0
+
+[State 0, PosAdd]
+type = PosAdd
 trigger1 = animelem = 1
-helpertype = Normal ;Player
-name = "Biney"
-ID = 500
-stateno = 550
-pos = -30,0
-postype = P1    ;P2, Front, Back, Left, Right
-facing = 1
-keyctrl = 0
-ownpal = 0
+trigger2 = animelem = 2
+trigger3 = animelem = 3
+x = 8
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelem = 3
+x = 8
+
+[State 400, 2]
+type = HitDef
+trigger1 = !MoveContact && !MoveReversed
+attr = C, NA
+damage = ceil(cond(45*Map(DamageScaling) < 4, 4, 45*Map(DamageScaling)))
+priority  = 3
+animtype  = up
+hitflag = MAF
+guardflag = LA
+pausetime = 8,8
+sparkno = 0
+sparkxy = -10,-8
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = Low
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -2.75,-4.4
+air.velocity = -2.75,-3.5
+air.hittime = ceil(cond(33-Map(HitstunScaling) < 20, 20, 33-Map(HitstunScaling)))
+fall = 1
+fall.yvelocity = 0
+guard.ctrltime = 14
+guard.hittime = 14
+guard.velocity = -5
+ground.cornerpush.veloff = -4-(Map(PushBack))
+air.cornerpush.veloff = -4
+p2facing = 1
+guard.dist = 0
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem = 5
+statetype = C      
+movetype = I        
+physics = C  
 
 
-[State 210, 5]
+[State 430, 3]
 type = ChangeState
 trigger1 = AnimTime = 0
 value = 0
 ctrl = 1
+
 
 ;---------------------------------------------------------------------------
 ;5D Biney
@@ -1275,7 +1339,7 @@ ground.slidetime = 4
 ground.hittime  = 20
 ground.velocity = -4-(Map(PushBack))
 air.velocity = -1.75,-2
-air.hittime = ceil(cond(33-Map(HitstunScaling) < 14, 14, 33-Map(HitstunScaling)))
+air.hittime = ceil(cond(33-Map(HitstunScaling) < 10, 10, 33-Map(HitstunScaling)))
 air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 10
