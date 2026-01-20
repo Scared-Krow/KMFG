@@ -33,7 +33,7 @@ air.sizebox = -12, -45, 12, 0
 [Velocity]
 walk.fwd  = 1.5
 walk.back = -1.2    
-run.fwd  = 4.35, 0    
+run.fwd  = 4.45, 0    
 run.back = -4.5,-3.8 
 jump.neu = 0,-8.5
 jump.back = -2.55    

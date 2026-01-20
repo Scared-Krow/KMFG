@@ -344,8 +344,8 @@ value = SCA,AA,AP,AT
 time = 1
 
 [State 0, ChangeState]
-type = ChangeState
-triggerall = enemy,movetype = A
+type = ChangeState 
+triggerall = enemy,movetype = A && enemynear,HitDefAttr = SCA,AA,AP
 trigger1 = ClsnOverlap(clsn2, enemynear,ID, clsn1)
 value = 599
 ctrl = 0

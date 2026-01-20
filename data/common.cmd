@@ -520,89 +520,89 @@ buffer.time = 1
 
 [Command]
 name = "46A"    
-command = ~30$B, $F, x
+command = ~25$B, $F, x
 time = 10
 
 [Command]
 name = "46B"    
-command = ~30$B, $F, a
+command = ~25$B, $F, a
 time = 10
 
 [Command]
 name = "46C"    
-command = ~30$B, $F, y
+command = ~25$B, $F, y
 time = 10
 
 [Command]
 name = "46D"    
-command = ~30$B, $F, b
+command = ~25$B, $F, b
 time = 10
 
 [Command]
 name = "46A"    
-command = ~30$B, $F, ~x
+command = ~25$B, $F, ~x
 time = 10
 
 [Command]
 name = "46B"    
-command = ~30$B, $F, ~a
+command = ~25$B, $F, ~a
 time = 10
 
 [Command]
 name = "46C"    
-command = ~30$B, $F, ~y
+command = ~25$B, $F, ~y
 time = 10
 
 [Command]
 name = "46D"    
-command = ~30$B, $F, ~b
+command = ~25$B, $F, ~b
 time = 10
 
 [Command]
 name = "28A"    
-command = ~30$D, $U, x
-time = 20
+command = ~25$D, $U, x
+time = 15
 buffer.time = 5
 
 [Command]
 name = "28B"    
-command = ~30$D, $U, a
-time = 20
+command = ~25$D, $U, a
+time = 15
 buffer.time = 5
 
 [Command]
 name = "28C"    
-command = ~30$D, $U, y
-time = 20
+command = ~25$D, $U, y
+time = 15
 buffer.time = 5
 
 [Command]
 name = "28D"    
-command = ~30$D, $U, b
-time = 20
+command = ~25$D, $U, b
+time = 15
 buffer.time = 5
 
 [Command]
 name = "28A"    
-command = ~30$D, $U, ~x
-time = 20
+command = ~25$D, $U, ~x
+time = 15
 buffer.time = 5
 
 [Command]
 name = "28B"    
-command = ~30$D, $U, ~a
+command = ~25$D, $U, ~a
 time = 20
 buffer.time = 5
 
 [Command]
 name = "28C"    
-command = ~30$D, $U, ~y
+command = ~25$D, $U, ~y
 time = 20
 buffer.time = 5
 
 [Command]
 name = "28D"    
-command = ~30$D, $U, ~b
+command = ~25$D, $U, ~b
 time = 20
 buffer.time = 5
 
@@ -610,33 +610,33 @@ buffer.time = 5
 
 [Command]
 name = "EX28A"    
-command = ~30$D, $U, x + a 
+command = ~25$D, $U, x + a 
 time = 20
 buffer.time = 5
 [Command]
 name = "EX28A"    
-command = ~30$D, $U, x + y 
+command = ~25$D, $U, x + y 
 time = 20
 buffer.time = 5
 [Command]
 name = "EX28A"    
-command = ~30$D, $U, x + b
+command = ~25$D, $U, x + b
 time = 20
 buffer.time = 5
 
 [Command]
 name = "EX28C"    
-command = ~30$D, $U, y + a 
+command = ~25$D, $U, y + a 
 time = 15
 buffer.time = 5
 [Command]
 name = "EX28C"    
-command = ~30$D, $U, y + x
+command = ~25$D, $U, y + x
 time = 15
 buffer.time = 5
 [Command]
 name = "EX28C"    
-command = ~30$D, $U, y + b
+command = ~25$D, $U, y + b
 time = 15
 buffer.time = 5
 

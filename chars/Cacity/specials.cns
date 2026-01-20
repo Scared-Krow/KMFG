@@ -107,7 +107,7 @@ redirectID = root,ID
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit=1
-value = root,Map(HitstunScaling)+1
+value = root,Map(HitstunScaling)+2
 map = "HitstunScaling"
 persistent = 0
 redirectID = root,ID
@@ -129,7 +129,7 @@ type = HitOverride
 trigger1 = 1
 attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 slot = 9
-stateno = 1102
+stateno = 1002
 time = 999
 
 [State 0, VelMul]
@@ -154,8 +154,8 @@ sparkxy = 0, -2              ;X-offset for the "hit spark" rel. to p2,
 hitsound = 5, 1                 ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
-ground.slidetime = 13            ;Time that the opponent slides back
-ground.hittime  = 13
+ground.slidetime = 14            ;Time that the opponent slides back
+ground.hittime  = 14
 ground.velocity = -3
 guard.velocity = -3
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
@@ -187,17 +187,10 @@ velset = 3.25
 ctrl = 0
 sprPriority = -6
 
-[State -2, Starter Damage Scaling]
-type = mapset
-trigger1 = movehit=1 && combocount=1
-value = root,Map(DamageScaling)*.9
-map = "DamageScaling"
-persistent = 0
-redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.05
+value = root,Map(DamageScaling)-.075
 map = "DamageScaling"
 persistent = 0
 redirectID = root,ID
@@ -205,7 +198,7 @@ redirectID = root,ID
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit=1
-value = root,Map(HitstunScaling)+1
+value = root,Map(HitstunScaling)+.75
 map = "HitstunScaling"
 persistent = 0
 redirectID = root,ID
@@ -241,7 +234,7 @@ triggerall = Map(Hits)>=2
 trigger1 = 1
 attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 slot = 9
-stateno = 1102
+stateno = 1002
 time = 999
 
 
@@ -261,8 +254,8 @@ sparkxy = 0, -2              ;X-offset for the "hit spark" rel. to p2,
 hitsound = 5, 1                 ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
-ground.slidetime = 13            ;Time that the opponent slides back
-ground.hittime  = 13
+ground.slidetime = 14            ;Time that the opponent slides back
+ground.hittime  = 14
 ground.velocity = -3
 guard.velocity = -3
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
@@ -410,7 +403,7 @@ color = 256
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.25
+value = Map(DamageScaling)-.1
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -526,14 +519,14 @@ movetype= A
 physics = N
 ctrl = 0
 anim = 1210
-velset = vel x * .4, vel y * .4
+velset = vel x * .5, vel y * .4
 sprpriority = -1
 facep2 = 1
 
 [State 0, VelSet]
-type = VelSet
+type = Veladd
 trigger1 = animelem = 1 
-x = 3
+x = .5 + p2dist x / 70
 y = -2.75
 
 [State 0, VelAdd]
@@ -558,7 +551,7 @@ ctrl = 0
 anim = 1201
 velset = 1, 0
 sprpriority = -1
-facep2 = 1
+facep2 = 0
 
 [State 0, PosSet]
 type = PosSet
@@ -701,9 +694,9 @@ sprpriority = -1
 facep2 = 1
 
 [State 0, VelSet]
-type = VelSet
+type = Veladd
 trigger1 = animelem = 1 
-x = 3
+x = 1 + p2dist x / 70
 y = -2.75
 
 [State 0, VelAdd]
@@ -711,6 +704,7 @@ type = VelAdd
 trigger1 = time > 5
 x = -.04
 y = .6
+
 
 [State 0, PalFX]
 type = PalFX
@@ -746,7 +740,7 @@ ctrl = 0
 anim = 1201
 velset = 1, 0
 sprpriority = -1
-facep2 = 1
+facep2 = 0
 
 [State 0, PosSet]
 type = PosSet
@@ -757,7 +751,7 @@ y = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.075
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -787,16 +781,16 @@ damage = ceil(cond(70*Map(DamageScaling) < 10, 10, 70*Map(DamageScaling))),10
 guardflag = HA
 hitflag = MAFD
 priority = 3, Hit 
-pausetime = 8,6
+pausetime = 8,8
 sparkno = 1
 sparkxy = -10,-65
 hitsound   = 5,2
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
-ground.hittime  = 70
+ground.hittime  = 60
 ground.velocity = -2,-3+cond(Map(Hits)>0,13,0)
-air.hittime = 70
+air.hittime = 60
 air.velocity = -2,-3+cond(Map(Hits)>0,13,0)
 guard.ctrltime = 25
 guard.hittime = 25
@@ -814,6 +808,15 @@ envshake.freq = 100
 envshake.phase = 150
 envshake.ampl = -7
 id = 5420
+
+[State 0, TargetState]
+type = TargetState
+triggerall = Map(GroundBounce)=1
+triggerall = enemy,statetype = A && NumTarget(5420)
+trigger1 = movehit=1
+value = 5420
+ID = 5420
+ignorehitpause = 1
 
 [State -2, Hits]
 type = mapadd

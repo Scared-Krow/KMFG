@@ -248,7 +248,7 @@ ctrl = 1
 [Statedef 705]
 type = S
 physics = S
-movetype = I
+movetype = A
 anim = 705
 velset = 0, 0
 ctrl = 0
@@ -362,9 +362,9 @@ ctrl = 1
 
 ;Crouch Parry
 [Statedef 710]
-type = S
-physics = S
-movetype = I
+type = C
+physics = C
+movetype = A
 anim = 710
 velset = 0, 0
 ctrl = 0
@@ -410,8 +410,8 @@ ctrl = 1
 
 ;Crouch Parry Success
 [Statedef 711]
-type = S
-physics = S
+type = C
+physics = C
 movetype = I
 anim = 710
 velset = 0, 0
