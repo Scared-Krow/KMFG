@@ -600,9 +600,9 @@ guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
 ground.hittime  = 70
-ground.velocity = -2,10
+ground.velocity = -1.9,10
 air.hittime = 70
-air.velocity = -2,10
+air.velocity = -1.9,10
 guard.ctrltime = 14
 guard.hittime = 14
 fall = 1
@@ -777,7 +777,7 @@ type = HitDef
 trigger1 = time%2=0
 attr = S, SA
 animtype  = up
-damage = ceil(cond(70*Map(DamageScaling) < 10, 10, 70*Map(DamageScaling))),10
+damage = ceil(cond(70*Map(DamageScaling) < 15, 15, 70*Map(DamageScaling))),10
 guardflag = HA
 hitflag = MAFD
 priority = 3, Hit 
@@ -789,9 +789,9 @@ guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
 ground.hittime  = 60
-ground.velocity = -2,-3+cond(Map(Hits)>0,13,0)
+ground.velocity = -1.9,-3+cond(Map(Hits)>0,13,0)
 air.hittime = 60
-air.velocity = -2,-3+cond(Map(Hits)>0,13,0)
+air.velocity = -1.9,-3+cond(Map(Hits)>0,13,0)
 guard.ctrltime = 25
 guard.hittime = 25
 fall = 1
@@ -820,7 +820,7 @@ ignorehitpause = 1
 
 [State -2, Hits]
 type = mapadd
-trigger1 = movecontact=1
+trigger1 = movecontact=1 || MoveReversed=1
 value = 1
 map = "Hits"
 ignorehitpause = 0
@@ -831,3 +831,240 @@ type = ChangeState
 trigger1 = AnimTime = 0
 value = 0
 ctrl = 1
+
+;---------------------------------------------------------------------------
+;[4]6D
+[Statedef 1300]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+anim = 1300
+velset = vel x * .8
+sprpriority = -1
+facep2 = 1
+
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount=1
+value = Map(DamageScaling)*.9
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount>1
+value = Map(DamageScaling)-.1
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,statetype = A && enemy,movetype = H
+trigger1 = movehit
+value = Map(HitstunScaling)+1
+map = "HitstunScaling"
+ignorehitpause = 1
+persistent = 0
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 1
+trigger2 = animelem = 2
+trigger3 = animelem = 3
+x = -1
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 4
+x = -3
+
+
+[State 210, 2]
+type = HitDef
+trigger1 = !MoveContact && !MoveReversed
+attr = S, SA
+animtype  = up
+damage = ceil(cond(75*Map(DamageScaling) < 10, 10, 75*Map(DamageScaling))),10
+guardflag = MA
+hitflag = MAF 
+priority = 3, Hit 
+pausetime = 11,11
+sparkno = 1
+sparkxy = -10,-65
+hitsound   = 5,2
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 60
+ground.velocity = -12,0
+air.hittime = 60
+air.velocity = -10,0
+guard.ctrltime = 10
+guard.hittime = 10
+guard.velocity = -8
+fall = 1
+ground.cornerpush.veloff = -3-(Map(PushBack))
+fall.yvelocity = 0
+air.cornerpush.veloff = -3
+p2facing = 1
+guard.dist = 0
+id = 5420
+
+[State 0, TargetState]
+type = TargetState
+triggerall = NumTarget(5420)
+trigger1 = movehit = 1
+value = 5420
+ID = 5420
+ignorehitpause = 1
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem = 5
+statetype = S       
+movetype = I        
+physics = S  
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;EX [4]6D
+[Statedef 1301]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+anim = 1300
+velset = vel x * .8
+sprpriority = -1
+facep2 = 1
+
+[State -2, Hits]
+type = mapset
+trigger1 = animelem = 1 
+value = 0
+map = "AMP"
+ignorehitpause = 0
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = time = 0
+time = 15
+add = 80,90,0
+mul = 240,240,200
+invertall = 0
+color = 256
+
+
+[State -2, Hits]
+type = mapset
+trigger1 = time = 0
+value = 0
+map = "Hits"
+ignorehitpause = 1
+
+
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount>1
+value = Map(DamageScaling)-.05
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,statetype = A && enemy,movetype = H
+trigger1 = movehit
+value = Map(HitstunScaling)+1
+map = "HitstunScaling"
+ignorehitpause = 1
+persistent = 0
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 1
+trigger2 = animelem = 2
+trigger3 = animelem = 3
+x = -1
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 4
+x = -3
+
+
+[State 210, 2]
+type = HitDef
+trigger1 = time%2=0
+attr = S, SA
+animtype  = up
+damage = ceil(cond(60*Map(DamageScaling) < 10, 10, 60*Map(DamageScaling))),10
+guardflag = MA
+hitflag = MAF 
+priority = 3, Hit 
+pausetime = 6,11
+sparkno = 1
+sparkxy = -10,-65
+hitsound   = 5,2
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 60
+ground.velocity = cond(Map(WallBounce)=0,-20,-14),cond(Map(WallBounce)=0,-4,-2)
+air.hittime = 60
+air.velocity = cond(Map(WallBounce)=0,-20,-14),cond(Map(WallBounce)=0,-4,-2)
+guard.ctrltime = 10
+guard.hittime = 10
+guard.velocity = -8
+fall = 1
+ground.cornerpush.veloff = -3-(Map(PushBack))
+fall.yvelocity = 0
+air.cornerpush.veloff = -3
+p2facing = 1
+guard.dist = 0
+id = 5420
+
+[State 0, TargetState]
+type = TargetState
+triggerall = Map(Hits)>0
+triggerall = NumTarget(5420) && Map(WallBounce)=0
+trigger1 = movehit = 1
+value = 5400
+ID = 5420
+ignorehitpause = 1
+
+[State 0, TargetState]
+type = TargetState
+triggerall = NumTarget(5420) && Map(WallBounce)>0
+trigger1 = movehit = 1
+value = 5420
+ID = 5420
+ignorehitpause = 1
+
+
+[State -2, Hits]
+type = mapadd
+trigger1 = movecontact=1 || MoveReversed=1
+value = 1
+map = "Hits"
+ignorehitpause = 0
+
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem = 5
+statetype = S       
+movetype = I        
+physics = S  
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+

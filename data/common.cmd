@@ -674,3 +674,20 @@ buffer.shared = 1
 name = "EX236B"
 command = ~D, F, a + y
 buffer.shared = 1
+
+[Command]
+name = "EX46D"    
+command = ~25$B, $F, b + a 
+time = 10
+buffer.time = 5
+[Command]
+name = "EX46D"    
+command = ~25$B, $F, b + x
+time = 10
+buffer.time = 5
+[Command]
+name = "EX46D"    
+command = ~25$B, $F, b + y
+time = 10
+buffer.time = 5
+
