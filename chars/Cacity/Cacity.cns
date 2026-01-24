@@ -80,8 +80,8 @@ victory6 = "I want to challenge more skilled fighters."
 victory7 = "What do you mean my girlfriend is in another temple?"
 
 [Constants]
-Default.Attack.LifeToPowerMul = 0.625
-Default.GetHit.LifeToPowerMul = 0.45
+Default.Attack.LifeToPowerMul = 0.7
+Default.GetHit.LifeToPowerMul = 0.35
 
 ;---------------------------------------------------------------------------
 ; Variable usage:
