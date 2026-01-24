@@ -1000,7 +1000,7 @@ fight.snd = 1,0             ;Sound to play
 fight.sndtime = 0           ;Time to play sound
 
 callfight.time = 60         ;Ikemen feature: Time to wait before starting fight
-ctrl.time = 30              ;Time players get control after starting fight
+ctrl.time = 30            ;Time players get control after starting fight
 
 ; KO
 KO.time    = 0              ;Time to show KO component
@@ -1023,10 +1023,10 @@ KO.sndtime = 0             ;Time to play sound for KO, DKO and TO.
 
 slow.time = 60             ;Total KO slowdown length (in ticks)
 slow.fadetime = 45         ;Ikemen feature: KO slowdown fade length (default: 75% of slow.time)
-slow.speed = 0.25          ;Ikemen feature: KO slowdown game speed adjustment (default: 0.25)
+slow.speed = 0.5          ;Ikemen feature: KO slowdown game speed adjustment (default: 0.25)
 
-over.waittime = 45         ;Time to wait after KO before player control is stopped
-over.hittime = 10          ;Time after KO that players can still damage each other (for double KO)
+over.waittime = 100         ;Time to wait after KO before player control is stopped
+over.hittime = 80         ;Time after KO that players can still damage each other (for double KO)
 over.wintime = 45          ;Time to wait before players change to win states
 over.time = 270            ;Time to wait before round ends
 

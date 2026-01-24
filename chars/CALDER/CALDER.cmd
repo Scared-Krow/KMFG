@@ -401,14 +401,14 @@ trigger2 = helper(500), movecontact
 trigger3 = var(1)
 ;---------------------------------------------------------------------------
 ;[4]6A
-[State -1, 46A]
-type = ChangeState
-value = 1400
-triggerall = command = "46A"
-triggerall = statetype != A
-trigger1 = ctrl || stateno = 40 || stateno = 60
-trigger2 = helper(500), movecontact 
-trigger3 = var(1)
+;[State -1, 46A]
+;type = ChangeState
+;value = 1400
+;triggerall = command = "46A"
+;triggerall = statetype != A
+;trigger1 = ctrl || stateno = 40 || stateno = 60
+;trigger2 = helper(500), movecontact 
+;trigger3 = var(1)
 ;===========================================================================
 
 ;---------------------------------------------------------------------------

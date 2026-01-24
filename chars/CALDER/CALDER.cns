@@ -80,8 +80,8 @@ victory6 = "I want to challenge more skilled fighters."
 victory7 = "What do you mean my girlfriend is in another temple?"
 
 [Constants]
-Default.Attack.LifeToPowerMul = 0.6
-Default.GetHit.LifeToPowerMul = 0.4
+Default.Attack.LifeToPowerMul = 0.625
+Default.GetHit.LifeToPowerMul = 0.45
 
 ;---------------------------------------------------------------------------
 ; Variable usage:
@@ -653,6 +653,11 @@ type = mapset
 trigger1 = enemy,movetype != H
 value = 0
 map = "qcfD"
+[State -2, 236D Reset]
+type = mapset
+trigger1 = enemy,movetype != H
+value = 0
+map = "qcbD"
 
 
 ;This controller plays a sound everytime KFM lands from a jump, or

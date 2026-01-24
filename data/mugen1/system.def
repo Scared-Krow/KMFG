@@ -15,10 +15,10 @@
 
 ;----------------------------
 [Info]
-name = "MUGEN1"           ;Name of motif
-author = "Elecbyte"       ;Motif author name
+name = KMFG"           ;Name of motif
+author = "ScaredCrow"       ;Motif author name
 versiondate = 01,01,2011  ;Version date of motif (MM-DD-YYYY) (new in MUGEN 1.0)
-mugenversion = 1.0        ;Version of M.U.G.E.N motif is compatible with (new in MUGEN 1.0)
+ikemenversion = .99        ;Version of M.U.G.E.N motif is compatible with (new in MUGEN 1.0)
 localcoord = 1280,720     ;Local coordinate space width and height (new in MUGEN 1.0)
 
 ;----------------------------
@@ -1030,7 +1030,7 @@ velocity = -.25,0
 ;-------------------------------------------------------------------
 ;Demo mode definition
 [Demo Mode]
-enabled = 1               ;Set to 1 to enable demo mode, 0 to disable
+enabled = 0              ;Set to 1 to enable demo mode, 0 to disable
 select.enabled = 0        ;Set to 1 to display select screen, 0 to disable
 vsscreen.enabled = 0      ;Set to 1 to display versus screen, 0 to disable
 fadein.time = 50          ;Ikemen feature
@@ -1573,7 +1573,7 @@ storyboard =              ;Game over storyboard filename
 ;This is the screen that is shown when you win a match in arcade mode.
 ;It will not be displayed on the last match of arcade mode.
 [Victory Screen]
-enabled = 1
+enabled = 0
 sounds.enabled = 0        ;Ikemen feature
 time = 300                ;Time to show screen
 fadein.time = 8

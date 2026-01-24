@@ -77,6 +77,9 @@ victory5 = "That was a good workout."
 victory6 = "I want to challenge more skilled fighters."
 victory7 = "What do you mean my girlfriend is in another temple?"
 
+[Constants]
+Default.Attack.LifeToPowerMul = 0.625
+Default.GetHit.LifeToPowerMul = 0.45
 ;---------------------------------------------------------------------------
 ; Variable usage:
 ; This is a record of the variables that KFM uses. Keeping a record of your

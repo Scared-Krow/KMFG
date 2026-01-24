@@ -268,7 +268,7 @@ type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 animtype  = Medium
-damage = ceil(cond(45*Map(DamageScaling) < 4, 4, 45*Map(DamageScaling)))
+damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
 guardflag = MA
 priority = 3, Hit 
 pausetime = 9,9
@@ -1398,14 +1398,14 @@ ignorehitpause = 1
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.825
+value = Map(DamageScaling)*.85
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.125
+value = Map(DamageScaling)-.11
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1413,7 +1413,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+2
+value = Map(HitstunScaling)+1.5
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0

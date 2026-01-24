@@ -30,7 +30,7 @@ attack.dist = 0
 
 
 [Velocity]
-walk.fwd  = 2.5
+walk.fwd  = 2.2
 walk.back = -2   
 run.fwd  = 7.25, 0    
 run.back = -4.5,-3.8 
@@ -77,6 +77,10 @@ victory4 = "Your moves are too predictable. You want to learn Kung Fu Palm? It's
 victory5 = "That was a good workout."
 victory6 = "I want to challenge more skilled fighters."
 victory7 = "What do you mean my girlfriend is in another temple?"
+
+[Constants]
+Default.Attack.LifeToPowerMul = 0.625
+Default.GetHit.LifeToPowerMul = 0.45
 
 ;---------------------------------------------------------------------------
 ; Variable usage:
@@ -196,7 +200,7 @@ flag = nowalk
 
 [State 0, VelAdd]
 type = VelSet
-trigger1 = animelem = 1
+trigger1 = time > 1 && time < 5
 x = -6
 
 [State 0, ChangeState]

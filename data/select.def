@@ -206,12 +206,11 @@
 JenX2/jen.def
 ISSBROKIE/issbrokie.def
 SSJDaki/daki.def
-SEMTEXXX/semtexxx.def
 Nuuma
+RANDOMSELECT
 CALDER/CALDER.def
 CACITY/Cacity.def
-randomselect
-
+SEMTEXXX/semtexxx.def
 ;-------------------------------------------------------------------------------
 [ExtraStages]
  ;Put extra stages here. They will be available in modes that allow selecting

@@ -313,7 +313,8 @@ ignorehitpause = 1
 
 [State 0, ChangeState]
 type = ChangeAnim
-trigger1 = time = 120 || movetype = H
+triggerall = anim = 1205
+trigger1 = time = 120 || root,movetype = H
 value = 1206
 
 [State 0, DestroySelf]
@@ -369,14 +370,14 @@ ground.type = High
 ground.slidetime = 12
 ground.hittime  = 14
 ground.velocity = -2
-guard.velocity = 5
+guard.velocity = -5
 air.hittime = ceil(cond(45-root,Map(HitstunScaling) < 20, 20, 45-root,Map(HitstunScaling)))
 down.hittime = ceil(cond(25-root,Map(HitstunScaling) < 20, 10, 25-root,Map(HitstunScaling)))
 air.velocity = -1,-2
 guard.ctrltime = 10
 guard.hittime = 10
 air.fall = 1
-yaccel = .25
+yaccel = .33
 ground.cornerpush.veloff = 0
 fall.yvelocity = 0
 air.cornerpush.veloff = 0

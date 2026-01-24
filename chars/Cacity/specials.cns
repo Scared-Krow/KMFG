@@ -107,7 +107,7 @@ redirectID = root,ID
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit=1
-value = root,Map(HitstunScaling)+2
+value = root,Map(HitstunScaling)+1.5
 map = "HitstunScaling"
 persistent = 0
 redirectID = root,ID
@@ -569,7 +569,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.085
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0

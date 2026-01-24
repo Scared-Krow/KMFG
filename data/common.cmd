@@ -615,11 +615,6 @@ time = 20
 buffer.time = 5
 [Command]
 name = "EX28A"    
-command = ~25$D, $U, x + y 
-time = 20
-buffer.time = 5
-[Command]
-name = "EX28A"    
 command = ~25$D, $U, x + b
 time = 20
 buffer.time = 5
@@ -627,11 +622,6 @@ buffer.time = 5
 [Command]
 name = "EX28C"    
 command = ~25$D, $U, y + a 
-time = 15
-buffer.time = 5
-[Command]
-name = "EX28C"    
-command = ~25$D, $U, y + x
 time = 15
 buffer.time = 5
 [Command]
