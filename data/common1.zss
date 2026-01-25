@@ -986,6 +986,9 @@ if time = 0 {
 if vel y > 0 && pos y >= 0 && time > 15 {
 	changeState{value: 52; ctrl: 1}
 }
+if p2dist x < 0 {
+	turn{}
+}
 
 #-------------------------------------------------------------------------------
 # Wall Bounce (shake)
