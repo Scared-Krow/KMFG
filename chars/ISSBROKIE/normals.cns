@@ -351,7 +351,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.0125
+value = Map(DamageScaling)-.0125-cond(enemy,statetype = L,.1,0)
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -398,7 +398,7 @@ air.velocity = -2,15      ;X-velocity at which opponent is pushed,
 air.hittime = 70
 fall = 1
 fall.yvelocity = cond(Map(GroundBounce)=0,-6,0)
-down.velocity = cond(Map(GroundBounce)=0,-.5,-4),cond(Map(GroundBounce)=0,-6,6)
+down.velocity = -4,6
 down.hittime = 70
 guard.ctrltime = 15
 guard.hittime = 15
@@ -410,7 +410,7 @@ id = 5420
 
 [State 0, TargetState]
 type = TargetState
-triggerall = Map(GroundBounce)=1
+triggerall = Map(GroundBounce)=1 || enemy,statetype = L 
 triggerall = NumTarget(5420)
 trigger1 = movehit=1
 value = 5420
@@ -1292,8 +1292,16 @@ guard.hittime = 8
 fall.yvelocity = 0
 p2facing = 1
 
+[State 0, PosSet]
+type = PosSet
+triggerall = time < 18
+trigger1 = pos y > -5
+y = -5
+
+
 [State 0, ChangeState]
 type = ChangeState
+triggerall = time > 17
 trigger1 = pos y >= -5
 value = 641
 ctrl = 0
@@ -1305,7 +1313,7 @@ movetype= A
 physics = S
 ctrl = 0
 anim = 641
-velset = vel x,0
+velset = vel x*.5,0
 sprpriority = -1
 
 [State 0, PosSet]

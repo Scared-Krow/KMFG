@@ -188,23 +188,18 @@ trigger1 = 1
 edge = 10,10
 player = 10,10
 
-[State 0, PosAdd]
-type = PosAdd
-trigger1 = animelem = 6
-x = 10
-
 [State 0, EnvShake]
 type = EnvShake
-trigger1 = time > 24  && time < 36
+trigger1 = animelem = 5
 time = 1
-freq = 30+time*2
-ampl = -2+(time/7)
-phase = 50+time*5
+freq = 120
+ampl = -3
+phase = 50
 
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount=1
-value = root,Map(DamageScaling)*.75
+value = root,Map(DamageScaling)*.9
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -212,7 +207,7 @@ redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.25
+value = root,Map(DamageScaling)-.1
 map = "DamageScaling"
 persistent = 0
 redirectID = root,ID
@@ -221,22 +216,22 @@ redirectID = root,ID
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
-animtype  = Medium
-damage = ceil(cond(150*root,Map(DamageScaling) < 50, 50, 150*root,Map(DamageScaling)))
+animtype  = up
+damage = ceil(cond(100*root,Map(DamageScaling) < 15, 15, 100*root,Map(DamageScaling)))
 guardflag = MA
-pausetime = 15,15
+pausetime = 12,12
 sparkno = 1
-sparkxy = -10,-65
+sparkxy = -10,-5
 hitsound   = 5,10
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 20
 ground.hittime  = 20
-ground.velocity = -22+cond(root,Map(WallBounce)=0,0,6),-6
-air.hittime = 60
-air.velocity = -22+cond(root,Map(WallBounce)=0,0,6),-4.7
-guard.ctrltime = 15
-guard.hittime = 15
+ground.velocity = -2,-5.25
+air.hittime = 45
+air.velocity = -2,-5.25
+guard.ctrltime = 12
+guard.hittime = 12
 guard.velocity = -6
 fall = 1
 fall.yvelocity = 0
@@ -248,25 +243,8 @@ envshake.phase = 150
 envshake.ampl = -7
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
+yaccel = .26
 id = 5400
-
-[State 0, TargetState]
-type = TargetState
-triggerall = root,Map(WallBounce)=0
-triggerall = enemy,statetype = A && NumTarget(5400)
-trigger1 = movehit=1
-value = 5400
-ID = 5400
-ignorehitpause = 1
-
-[State 0, TargetState]
-type = TargetState
-triggerall = root,Map(WallBounce)=1
-triggerall = enemy,statetype = A && NumTarget(5400)
-trigger1 = movehit=1
-value = 5420
-ID = 5400
-ignorehitpause = 1
 
 [State 3000, StayOnTarget]
 type = ScreenBound
