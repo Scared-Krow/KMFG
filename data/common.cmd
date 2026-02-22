@@ -45,7 +45,7 @@ buffer.time = 5
 name = "z"
 command = z
 time = 1
-buffer.time = 5
+buffer.time = 1
 [Command]
 name = "a"
 command = a

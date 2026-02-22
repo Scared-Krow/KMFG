@@ -630,7 +630,7 @@ redirectID = root,ID
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit=1
-value = root,Map(HitstunScaling)+1.75
+value = root,Map(HitstunScaling)+2
 map = "HitstunScaling"
 persistent = 0
 redirectID = root,ID
@@ -648,7 +648,7 @@ priority = 1, Hit                ;Attack priority: 0 (least) to 7 (most), 4 defa
 pausetime = 3,4                ;Time attacker pauses, time opponent shakes
 sparkno = 2                     ;Spark anim no (Def: set above)
 sparkxy = -10, -50               ;X-offset for the "hit spark" rel. to p2,
-hitsound = 5, 1                 ;Sound to play on hit
+hitsound = 5, 0                 ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
 ground.slidetime = 20            ;Time that the opponent slides back
