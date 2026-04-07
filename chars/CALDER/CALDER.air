@@ -895,6 +895,18 @@ Clsn1: 1
 630,4, 0,10, 5
 630,5, -6,10, -1
 
+; Pose
+[Begin Action 4998]
+Clsn2Default: 1
+  Clsn2[0] = -12, -66, 10, -1
+0,0, 0,0, -1
+
+; Pose
+[Begin Action 4999]
+Clsn2Default: 1
+  Clsn2[0] = -12, -66, 10, -1
+0,0, 0,0, 10
+
 ;--------------------
 ; GUARDSTART (stand)
 [Begin Action 120]

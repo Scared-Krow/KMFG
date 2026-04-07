@@ -592,6 +592,57 @@ trigger1 = animtime = 0
 value = 50
 ctrl = 1
 
+;Dead Angle
+[Statedef 750]
+type = S
+physics = S
+movetype = A
+anim = 230
+velset = 0, 0
+ctrl = 0
+sprpriority = 2
+facep2 = 1
+poweradd = -250
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0
+time = 10
+darken = 1
+p2defmul = 1
+
+
+[State 210, 2]
+type = HitDef
+trigger1 = !MoveContact && !MoveReversed
+attr = S, SA
+animtype  = Medium
+damage = 25
+guardflag = MA
+priority = 3
+pausetime = 12,12
+sparkno = 1
+sparkxy = -10,-65
+hitsound   = 5,2
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 20
+ground.velocity = -5.245,-4
+air.hittime = 25
+air.velocity = -2,-1.25
+guard.ctrltime = 10
+guard.hittime = 10
+forcenofall = 1
+fall.yvelocity = 0
+p2facing = 1
+kill = 0
+
+[State 700, End]
+type = changestate
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
 ;---------------------------------------------------------------------------
 ; Air to Ground Restand State
 [Statedef 5440]
@@ -735,8 +786,8 @@ value = 0
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(WallBounce) %.0f, Map(GroundBounce) %.0f, vel x = %.4f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(WallBounce),Map(GroundBounce),vel x
+text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(WallBounce) %.0f, Map(GroundBounce) %.0f, Posing = %.4f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(WallBounce),Map(GroundBounce),Map(Posing)
 
 ;---------REDUCE MECHANIC
 [State -2, Reduce]
@@ -888,15 +939,9 @@ value = 0
 ignorehitpause = 1
 
 ;-------PUSHBLOCK----------
-[State 0, VelAdd]
-type = VelAdd
-triggerall = stateno = [130,159] && power >= 250
-trigger1 = command = "2Buttons"
-x = -10
-redirectID = enemy,ID
-[State 0, PowerAdd]
-type = PowerAdd
-triggerall = stateno = [130,159] && power >= 250
-trigger1 = command = "2Buttons"
-value = -250
 
+[State 0, VelAdd]
+type = ChangeState
+triggerall = stateno = [130,159] && power >= 250
+trigger1 = command = "2Buttons"
+value = 750

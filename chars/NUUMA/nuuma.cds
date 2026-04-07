@@ -286,7 +286,14 @@ triggerall = statetype != A
 triggerall = !numhelper(1000)
 trigger1 = ctrl
 trigger2 = var(1)
-
+;214A- Uppercut
+[State -1, 214A]
+type = ChangeState
+value = 1100
+triggerall = command = "214A"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = var(1)
 ;===========================================================================
 
 ;---------------------------------------------------------------------------
