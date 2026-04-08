@@ -611,6 +611,12 @@ time = 10
 darken = 1
 p2defmul = 1
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time = 0
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 16
+
 
 [State 210, 2]
 type = HitDef
