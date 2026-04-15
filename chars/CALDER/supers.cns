@@ -3,7 +3,7 @@
 [Statedef 3000]
 type    = U
 movetype= A
-physics = u
+physics = N
 anim = 3000
 velset = 0,0
 ctrl = 0
@@ -66,7 +66,7 @@ trigger1 = facing = enemy,facing
 type = PosSet
 trigger1 = animelem = 4
 x = cond(enemy,facing=-1,enemy,pos x - 40,enemy, pos x + 40)
-y = cond(enemy, pos y=0,enemy, pos y-10, enemy, pos y)
+y = cond(enemy, pos y>=-5,enemy, pos y-10, enemy, pos y)
 
 
 [State 0, PosSet]
@@ -91,7 +91,7 @@ ctrl = 1
 [Statedef 3001]
 type    = U
 movetype= A
-physics = U
+physics = N
 anim = 3001
 velset = 1,0
 ctrl = 0
