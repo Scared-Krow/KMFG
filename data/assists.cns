@@ -648,11 +648,29 @@ trigger1 = pos y > 0
 ;---------------------------------------------------------------------------
 ;Partner Pose
 [Statedef 4998]
-type    = S
+type    = U
 movetype= I
-physics = S
-anim = 4998
+physics = N
 ctrl = 0
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = pos y < 0
+y = .4
+[State 0, PosSet]
+type = PosSet
+trigger1 = pos y > 0
+y = 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = pos y < 0
+value = 41
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = pos y >= 0
+value = 0
+
 
 [State 1000, 7]
 type = ChangeState
@@ -668,6 +686,7 @@ movetype= I
 physics = S
 anim = 4999
 ctrl = 0
+velset = 0,0
 
 [State 1000, 7]
 type = ChangeState

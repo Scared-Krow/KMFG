@@ -323,11 +323,10 @@ type = ChangeState
 value = 3000
 triggerall = power>=500
 triggerall = command = "236236C"
-triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 trigger3 = ((stateno=1000 || stateno=1005)&& time >= 22) || stateno=1204 && time >= 26
-trigger4 = helper(1002),movecontact || helper(1006),movecontact || helper(1209),MoveContact
+trigger4 = helper(1002),movecontact || helper(1006),movecontact || helper(1209),MoveContact || helper(500),movecontact
 trigger5 = stateno=[1000,2000] && movecontact
 
 ;---------------------------------------------------------------------------
@@ -336,7 +335,7 @@ trigger5 = stateno=[1000,2000] && movecontact
 type = ChangeState
 value = 3100
 triggerall = power>=500
-triggerall = command = "236236C"
+triggerall = command = "236236A"
 triggerall = statetype = A
 trigger1 = ctrl
 trigger2 = var(1)
