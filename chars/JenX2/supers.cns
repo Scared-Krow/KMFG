@@ -105,6 +105,16 @@ guard.hittime = 13
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
 p2facing = 1
+id = 5111
+
+[State 0, TargetState]
+type = TargetState
+triggerall = enemy,statetype = A && NumTarget(5111)
+trigger1 = movehit=1
+value = 5111
+ID = 5111
+ignorehitpause = 1
+
 
 [State 0, ChangeAnim]
 type = ChangeAnim

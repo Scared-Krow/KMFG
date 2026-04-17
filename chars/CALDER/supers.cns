@@ -28,7 +28,7 @@ p2defmul = 1
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, HA                 ;Attribute: Standing, Normal Attack
-damage = ceil(cond(100*Map(DamageScaling) < 35, 35, 100*Map(DamageScaling))),25
+damage = ceil(cond(80*Map(DamageScaling) < 30, 30, 80*Map(DamageScaling))),25
 animtype = Light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAFD                    ;Flags of conditions that move can hit
@@ -107,7 +107,7 @@ y = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, HA                 ;Attribute: Standing, Normal Attack
-damage = ceil(cond(150*Map(DamageScaling) < 60, 60, 150*Map(DamageScaling))),25
+damage = ceil(cond(150*Map(DamageScaling) < 40, 40, 150*Map(DamageScaling))),25
 animtype = Light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAFD                    ;Flags of conditions that move can hit
@@ -133,6 +133,16 @@ guard.hittime = 13
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
 p2facing = 1
+id = 5111
+
+[State 0, TargetState]
+type = TargetState
+triggerall = enemy,statetype = A && NumTarget(5111)
+trigger1 = movehit=1
+value = 5111
+ID = 5111
+ignorehitpause = 1
+
 
 [State 0, PosSet]
 type = PosSet

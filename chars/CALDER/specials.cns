@@ -622,7 +622,7 @@ redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.1
+value = root,Map(DamageScaling)-.11
 map = "DamageScaling"
 persistent = 0
 redirectID = root,ID
@@ -690,7 +690,7 @@ airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
 air.velocity = -2,-4       ;X-velocity at which opponent is pushed,
 air.hittime = (cond(35-root,Map(HitstunScaling) < 20, 20, 35-root,Map(HitstunScaling)))
-fall = 1
+forcenofall = 1
 fall.yvelocity = 0
 yaccel = .33
 guard.ctrltime = 5
@@ -826,29 +826,23 @@ type    = S
 movetype= A
 physics = S
 ctrl = 0
-anim = 1400
+anim = 1500
 velset = vel x * .9
 sprpriority = -1
 facep2 = 1
 
-[State 800, 1]
-type = HitDef
-Trigger1 = !movecontact && !movereversed
-attr = S, NT          ;Attributes: Standing, Normal Throw
-hitflag = M-          ;Affect only ground people who are not being hit
-priority = 1, Miss    ;Throw has low priority, must be miss or dodge type.
-sparkno = -1          ;No spark
-p1sprpriority = 1     ;Draw p1's sprite in front of p2
-p1facing = 1
-p2facing = 1          ;Force p2 to face KFM
-p1stateno = 1401
-p2stateno = 1402
-p2getp1state = 1   
-guard.dist = 0        ;This prevents p2 from going into a guard state if close
-fall = 1
-numhits = 0
-mindist = 66
-maxdist = 66
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 3
+helpertype = Normal ;Player
+name = "Star"
+ID = 1401
+stateno = 1401
+pos = 23,-46
+postype = P1 
+facing = 1
+keyctrl = 0
+ownpal = 0
 
 [State 210, 5]
 type = ChangeState
@@ -857,131 +851,129 @@ value = 0
 ctrl = 1
 
 ;---------------------------------------------------------------------------
-;[4]6A>Hit
+;[4]6A Proj
 [Statedef 1401]
-type    = S
-movetype= A
+type    = U
+movetype= I
 physics = N
-anim = 1401
+anim = 1501
 poweradd = 0
+velset = 1.5,0
 
-[State 810, Grab Sound]
-type = PlaySnd
-trigger1 = AnimElem = 2
-value = 1, 1
-
-[State 810, Throw Sound]
-type = PlaySnd
-trigger1 = AnimElem = 7
-value = 800, 0
-
-[State 810, Bind 1]
-type = TargetBind
-trigger1 = AnimElem = 1
-time = 9999
-pos = 66, 0
-
-[State 810, Bind 1]
-type = TargetBind
-trigger1 = AnimElem = 2
-time = 9999
-pos = -20, 0
-
-[State 810, Bind 1]
-type = TargetBind
-trigger1 = AnimElem = 3
-time = 9999
-pos = -25, 0
-
-[State 810, Bind 1]
-type = TargetBind
-trigger1 = AnimElem = 4
-time = 9999
-pos = -45, 0
-
-[State 810, Bind 1]
-type = TargetBind
-trigger1 = AnimElem = 5
-time = 9999
-pos = 15, -55
-
-[State 810, Bind 1]
-type = TargetBind
-trigger1 = AnimElem = 27
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,AA,AT
 time = 1
-pos = 40, 0
-
-[State -2, Starter Damage Scaling]
-type = mapset
-trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.7
-map = "DamageScaling"
-ignorehitpause = 1
-persistent = 0
-
-[State 810, 3]
-type = HitDef
-trigger1 = time = 0
-attr = S, ST
-damage = 125, 0
-animtype = light
-guardflag =
-hitflag = MAFD
-priority  = 5
-pausetime = 11,11
-hitsound   = 5,3
-sparkxy = -10,-86
-sparkno = 2
-hitsound   = 4
-guardsound = 6,2
-ground.type = Low
-ground.velocity = -10,10
-ground.hittime = 15
-air.hittime = 60
-p2facing = 1
-fall = 1
-fall.yvelocity = 0
-p2stateno = 5420
-
-[State 810, State End]
-type = ChangeState
-trigger1 = AnimTime = 0
-value = 0
-ctrl = 1
-
-;-----------------------------
-;Grabbed p2 state
-[Statedef 1402]
-type    = S
-movetype= H
-physics = N
-juggle  = 0
-poweradd= 0
-ctrl = 0
-velset = 0,0
-sprpriority = 2
 
 [State 0, HitBy]
 type = HitBy
 trigger1 = 1
-value = SCA,AT
+value = SCA,AP
 time = 1
 
-
-[State 0, Width]
-type = Width
+[State 0, HitOverride]
+type = HitOverride
 trigger1 = 1
-edge = 0,0
-player = 0,0 
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 9
+stateno = 1403
+time = 999
 
-[State 0, ChangeAnim2]
-type = ChangeAnim
-trigger1 = 1
-value = 5017
-elem = 1
+[State 0, Pop]
+type = ChangeState
+value = 1402
+triggerall = enemy, stateno != [5110,5120]
+triggerall = enemy, pos y >= -70
+trigger1 = p2dist x <= 15
 
-[State 0, ChangeState]
-type = SelfState
-trigger1 = time = 90
-value = 0 
-ctrl = 1
+[State 0, DestroySelf]
+type = ChangeState
+value = 1403
+trigger1 = frontedgedist < -40
+trigger2 = root,movetype = H
+
+;---------------------------------------------------------------------------
+;[4]6A Proj Pop
+[Statedef 1402]
+type    = U
+movetype= A
+physics = N
+anim = 1502
+poweradd = 0
+velset = 0 ,0
+
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movehit=1 && combocount=1
+value = root,Map(DamageScaling)*.85
+map = "DamageScaling"
+persistent = 0
+redirectID = root,ID
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = movehit=1 && combocount>1
+value = root,Map(DamageScaling)-.065
+map = "DamageScaling"
+persistent = 0
+redirectID = root,ID
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,statetype = A && enemy,movetype = H
+trigger1 = movehit=1
+value = root,Map(HitstunScaling)+.5
+map = "HitstunScaling"
+persistent = 0
+redirectID = root,ID
+
+[State 200, 1]
+type = HitDef
+trigger1 = !MoveContact && !MoveReversed
+attr = S,NP                     ;Attribute: Standing, Normal Attack
+damage = ceil(cond(50*root,Map(DamageScaling) < 5, 5, 50*root,Map(DamageScaling))),5
+animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
+guardflag = MA                   ;Flags on how move is to be guarded against
+hitflag = MAF                    ;Flags of conditions that move can hit
+priority = 3, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+pausetime = 0,8                ;Time attacker pauses, time opponent shakes
+sparkno = 2                     ;Spark anim no (Def: set above)
+sparkxy = 0, -2              ;X-offset for the "hit spark" rel. to p2,
+hitsound = 5, 1                 ;Sound to play on hit
+guardsound = 6, 0                ;Sound to play on guard
+ground.type = High               ;Type: High, Low, Trip (def: Normal)
+ground.slidetime = 14            ;Time that the opponent slides back
+ground.hittime  = 14
+ground.velocity = -1,-5
+guard.velocity = -3
+airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
+air.velocity = -1,-5
+air.hittime = (cond(35-root,Map(HitstunScaling) < 15, 15, 35-root,Map(HitstunScaling)))
+fall = 1
+fall.yvelocity = 0
+guard.ctrltime = 8
+guard.hittime = 8
+p2facing = 1
+guard.dist = 0
+yaccel = .28
+
+[State 0, DestroySelf]
+type = ChangeState
+value = 1403
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;[4]6A Proj Die
+[Statedef 1403]
+type    = U
+movetype= A
+physics = N
+anim = 999
+poweradd = 0
+velset =0,0
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = animtime = 0
+;ignorehitpause = 
+;persistent = 

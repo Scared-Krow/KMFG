@@ -1036,16 +1036,16 @@ persistent = 0
 [State 0, VelMul]
 type = VelMul
 trigger1 = Map(Flight)>0
-y = 0 
-
+x = .98
+y = .98
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = Map(ADPhysics)>0
+trigger1 = Map(ADPhysics)>0 || Map(Flight)>0
 physics = N
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = Map(ADPhysics)=0 
+trigger1 = Map(ADPhysics)=0 && Map(Flight)<=0
 physics = A
 
 [State 600, 1]
@@ -1120,15 +1120,16 @@ x = .975
 [State 0, VelMul]
 type = VelMul
 trigger1 = Map(Flight)>0
-y = 0 
+x = .98
+y = .98
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = Map(ADPhysics)>0 
+trigger1 = Map(ADPhysics)>0 || Map(Flight)>0
 physics = N
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = Map(ADPhysics)=0 
+trigger1 = Map(ADPhysics)=0 && Map(Flight)<=0
 physics = A
 
 [State 610, 2]
@@ -1226,15 +1227,16 @@ x = .975
 [State 0, VelMul]
 type = VelMul
 trigger1 = Map(Flight)>0
-y = 0 
+x = .98
+y = .98
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = Map(ADPhysics)>0 
+trigger1 = Map(ADPhysics)>0 || Map(Flight)>0
 physics = N
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = Map(ADPhysics)=0 
+trigger1 = Map(ADPhysics)=0 && Map(Flight)<=0
 physics = A
 
 [State 630, 1]
@@ -1307,6 +1309,13 @@ physics = A
 
 [State 1000, 7]
 type = ChangeState
+triggerall = Map(Flight)<=0
+trigger1 = time = 25
+value = 50
+ctrl = 1
+
+[State 1000, 7]
+type = ChangeState
 triggerall = Map(Flight)>0
 trigger1 = time = 25
 value = 1301
@@ -1331,15 +1340,16 @@ x = .975
 [State 0, VelMul]
 type = VelMul
 trigger1 = Map(Flight)>0
-y = 0 
+x = .98
+y = .98
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = Map(ADPhysics)>0 
+trigger1 = Map(ADPhysics)>0 || Map(Flight)>0
 physics = N
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = Map(ADPhysics)=0 
+trigger1 = Map(ADPhysics)=0 && Map(Flight)<=0
 physics = A
 
 [State 640, 2]
@@ -1437,15 +1447,16 @@ x = .975
 [State 0, VelMul]
 type = VelMul
 trigger1 = Map(Flight)>0
-y = 0 
+x = .98
+y = .98
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = Map(ADPhysics)>0 
+trigger1 = Map(ADPhysics)>0 || Map(Flight)>0
 physics = N
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = Map(ADPhysics)=0 
+trigger1 = Map(ADPhysics)=0 && Map(Flight)<=0
 physics = A
 
 [State 630, 1]

@@ -856,6 +856,79 @@ if time = 0 {
 }
 
 #-------------------------------------------------------------------------------
+# Extended Knockdown Shake
+[StateDef 5111; type: A; movetype: H; physics: N;]
+
+changeAnim2{value:5035}
+
+velSet {x:0;y:0;}
+
+if hitShakeOver {
+	changeState{value: 5112}
+}
+	forceFeedback{time: 6; waveform: square}
+
+
+
+#-------------------------------------------------------------------------------
+# Extended Knockdown Launch
+[StateDef 5112; type: A; movetype: H; physics: N; sprPriority: 0;]
+
+if anim != [5000, 5199] && selfAnimExist(5035) {
+	changeAnim{value: 5035}
+}
+if time = 0 {
+	hitVelSet{x: 1; y: 1}
+} 
+
+velAdd{y: getHitVar(yAccel)}
+if vel y > 0 {velMul{y: 1.025}}
+
+if vel y > 0 && pos y >= const(movement.air.gethit.groundlevel) 
+{
+	selfState{value: 5113}
+}
+
+
+#-------------------------------------------------------------------------------
+# Extended Knockdown
+[StateDef 5113; type: L; movetype: H; physics: N; sprPriority: 0;]
+
+if time = 0 {notHitBy{value: SCA; time: 40}}
+persistent(0) if selfAnimExist(5110 + anim % 10) && anim = [5081, 5089] {
+	changeAnim{value: 5110 + anim % 10}
+}
+if time = 0 {
+	fallEnvShake{}
+	if anim != [5110, 5119] {
+		let a = call SelfAnimExistAddMod10(anim = [5161, 5169], 5170);
+		changeAnim{value: $a}
+	}
+	hitFallDamage{}
+	posSet{y: 0}
+	if getHitVar(fall.yVel) {
+		sysVar(1) := floor(vel y);
+	}
+	if !sysVar(0) {
+		call HitGroundEffect(sysVar(1));
+	}
+	velSet{y: 0}
+}
+
+if !alive {
+	changeState{value: 5150}
+}
+
+velMul{x: .85}
+if abs(vel x) < const(movement.down.friction.threshold) {
+	velSet{x: 0}
+}
+if time = 42
+{
+	selfState{value:5120; ctrl: 0}
+}
+
+#-------------------------------------------------------------------------------
 # Downed get-hit (getting up)
 [StateDef 5120; type: S; movetype: I; physics: N; sprPriority: 0;]
 

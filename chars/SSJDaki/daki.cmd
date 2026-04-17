@@ -391,7 +391,7 @@ trigger2 = var(1)
 type = ChangeState
 value = 1302
 triggerall = Map(Flight)>0
-triggerall = (command = "a" && command = "b") || (command = "x" && command = "y") || (command = "x" && command = "b") || (command = "a" && command = "y")
+triggerall = (command = "a" && command = "b") || (command = "x" && command = "y") || (command = "x" && command = "b") || (command = "a" && command = "y") || (command = "x" && command = "a")
 trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------
@@ -436,10 +436,10 @@ trigger1 = ctrl
 [State -1, Kung Fu Throw]
 type = ChangeState
 value = 900
+triggerall = stateno != [1300,1301]
 triggerall = command = "x" && command = "a"
 triggerall = statetype = A
 trigger1 = ctrl
-
 
 
 

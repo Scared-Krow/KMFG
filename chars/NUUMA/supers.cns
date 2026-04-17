@@ -128,6 +128,7 @@ guard.ctrltime = 5
 guard.hittime = 5
 p2facing = 1
 guard.dist = 0
+getpower = 0
 
 [State 0, Changestate]
 type = Changestate
@@ -277,6 +278,7 @@ guard.ctrltime = 5
 guard.hittime = 5
 p2facing = 1
 guard.dist = 0
+getpower = 0
 
 [State 0, Changestate]
 type = Changestate

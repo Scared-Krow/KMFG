@@ -272,7 +272,7 @@ triggerall = command = "holdfwd" && command != "holddown" &&(command = "c" || (c
 triggerall = statetype != A
 triggerall = stateno != 700
 trigger1 = movecontact && power >= 250
-trigger2 = (((stateno=[240,250] || stateno=[440,450] || stateno = [1200,1299]) && time >= 7) || stateno = 1400 && time > 27) && power >= 250
+trigger2 = (((stateno=[240,250] || stateno=[440,450] || stateno = [1200,1299]) && time >= 7) || (stateno = 1400 && time > 17) ) && power >= 250
 ;---------------------------------------------------------------------------
 ;5K
 [State -1, 5K]
@@ -388,14 +388,15 @@ trigger2 = helper(500), movecontact
 trigger3 = var(1)
 ;---------------------------------------------------------------------------
 ;[4]6A
-;[State -1, 46A]
-;type = ChangeState
-;value = 1400
-;triggerall = command = "46A"
-;triggerall = statetype != A
-;trigger1 = ctrl || stateno = 40 || stateno = 60
-;trigger2 = helper(500), movecontact 
-;trigger3 = var(1)
+[State -1, 46A]
+type = ChangeState
+value = 1400
+triggerall = numhelper(1401)=0
+triggerall = command = "46A"
+triggerall = statetype != A
+trigger1 = ctrl || stateno = 40 || stateno = 60
+trigger2 = helper(500), movecontact 
+trigger3 = var(1)
 ;===========================================================================
 
 ;---------------------------------------------------------------------------

@@ -956,18 +956,27 @@ guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
 ground.slidetime = 12           ;Time that the opponent slides back
 ground.hittime  = 12
-ground.velocity = -5,-1
+ground.velocity = -5,-2
 guard.velocity = -7
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
 air.velocity = -3,-1     ;X-velocity at which opponent is pushed,
-air.hittime = (cond(35-root,Map(HitstunScaling) < 20, 20, 35-root,Map(HitstunScaling)))
+air.hittime = 999
 fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 6
 guard.hittime = 6
 p2facing = 1
 guard.dist = 50
+id = 5111
+
+[State 0, TargetState]
+type = TargetState
+triggerall = enemy,statetype = A && NumTarget(5111)
+trigger1 = movehit=1
+value = 5111
+ID = 5111
+ignorehitpause = 1
 
 
 [State 0, ChangeState]
