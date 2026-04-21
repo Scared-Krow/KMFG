@@ -768,7 +768,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S,SA                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(60*Map(DamageScaling) < 10, 10, 60*Map(DamageScaling)))
+damage = ceil(cond(75*Map(DamageScaling) < 10, 10, 75*Map(DamageScaling)))
 animtype = up                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -858,7 +858,7 @@ movetype= I
 physics = N
 anim = 1501
 poweradd = 0
-velset = 1.5,0
+velset = 1.62,0
 
 [State 0, NotHitBy]
 type = NotHitBy

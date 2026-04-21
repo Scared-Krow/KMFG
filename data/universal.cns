@@ -948,6 +948,7 @@ ignorehitpause = 1
 
 [State 0, VelAdd]
 type = ChangeState
+triggerall = statetype != A
 triggerall = stateno = [130,159] && power >= 250
 trigger1 = command = "2Buttons"
 value = 750

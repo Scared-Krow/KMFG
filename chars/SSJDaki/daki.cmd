@@ -373,6 +373,7 @@ trigger2 = var(1)
 [State -1, 22A]
 type = ChangeState
 value = 1200
+triggerall = numhelper(1250)<1
 triggerall = command = "22B"
 trigger1 = ctrl
 trigger2 = var(1)

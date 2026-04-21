@@ -179,16 +179,21 @@ type = Height
 trigger1 = 1
 value = 0, 14
 
-[State -1, Run Fwd]
+[State -1, Cancel]
 type = ChangeState
 value = 1111
 trigger1 = command = "a" 
 
-[State -1, Run Fwd]
+[State -1, Cancel]
 type = ChangeState
 value = 1112
 triggerall = pos y <= -20
 trigger1 = command = "holdy" 
+
+[State -1, Cancel]
+type = ChangeState
+value = 1120
+trigger1 = command = "holdx" 
 
 [State -1, Run Fwd]
 type = ChangeState
@@ -449,6 +454,194 @@ physics = S
 type = ChangeState
 trigger1 = AnimTime = 0
 value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;623B>A
+[Statedef 1120]
+type    = A
+movetype= A
+physics = A
+ctrl = 0
+anim = 1120
+sprpriority = -2
+velset = vel x*.9, vel y*.7
+facep2 = 1
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = .4
+
+[State 800, 1]
+type = HitDef
+Trigger1 = P2BodyDist X = [-8,const(size.ground.front)]
+attr = S, ST          ;Attributes: Standing, Normal Throw
+hitflag = M-          ;Affect only ground people who are not being hit
+priority = 1, Miss    ;Throw has low priority, must be miss or dodge type.
+sparkno = -1          ;No spark
+p1sprpriority = 1     ;Draw p1's sprite in front of p2
+p1facing = 1
+p2facing = 1          ;Force p2 to face KFM
+p1stateno = 1122
+p2stateno = 1123
+guard.dist = 0        ;This prevents p2 from going into a guard state if close
+fall = 1
+numhits = 0
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem = 3
+statetype = A     
+movetype = A        
+physics = N
+
+[State 210, 5]
+type = ChangeState
+triggerall = time > 6 || vel y > 0
+trigger1 = pos y >= -2
+value = 1121
+
+;---------------------------------------------------------------------------
+;623B>A Land
+[Statedef 1121]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1121
+sprpriority = 2
+velset = vel x*.1,0
+facep2 = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;623B>A Hit
+[Statedef 1122]
+type    = A
+movetype= A
+physics = A
+ctrl = 0
+anim = 1122
+sprpriority = -2
+velset = 0, 0
+facep2 = 1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time < 20
+x = 0
+y = 0
+
+
+[State 200, 1]
+type = HitDef
+trigger1 = !MoveContact && !MoveReversed
+attr = S,ST                    ;Attribute: Standing, Normal Attack
+damage = 100
+animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
+guardflag =                    ;Flags on how move is to be guarded against
+hitflag = MAF                    ;Flags of conditions that move can hit
+priority = 1, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+pausetime = 7,7                ;Time attacker pauses, time opponent shakes
+sparkno = 2                     ;Spark anim no (Def: set above)
+sparkxy = -10, -5              ;X-offset for the "hit spark" rel. to p2,
+hitsound = 5, 4                  ;Sound to play on hit
+guardsound = 6, 0                ;Sound to play on guard
+ground.type = High               ;Type: High, Low, Trip (def: Normal)
+ground.slidetime = 12           ;Time that the opponent slides back
+ground.hittime  = 12
+ground.velocity = -5,20
+guard.velocity = -7
+airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
+air.velocity = -3,20     ;X-velocity at which opponent is pushed,
+air.hittime = 999
+fall = 1
+fall.yvelocity = 0
+guard.ctrltime = 6
+guard.hittime = 6
+p2facing = 1
+guard.dist = 50
+id = 5111
+
+[State 0, TargetState]
+type = TargetState
+triggerall = enemy,statetype = A && NumTarget(5111)
+trigger1 = movehit=1
+value = 5111
+ID = 5111
+ignorehitpause = 1
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem = 4
+statetype = A     
+movetype = I        
+physics = A
+
+[State 810, Bind 1]
+type = TargetBind
+trigger1 = AnimElem = 1
+time = 9999
+pos = 12, 0
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = time = 20
+x = -3
+y = -5
+
+;---------------------------------------------------------------------------
+;Hit By 623B>A
+[Statedef 1123]
+type    = S
+movetype= H
+physics = N
+juggle  = 0
+poweradd= 0
+ctrl = 0
+velset = 0,0
+sprpriority = 2
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+y = 0
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AT
+time = 1
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+edge = 0,0
+player = 0,0 
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = 1
+value = 5017
+elem = 1
+
+[State 0, ChangeState]
+type = SelfState
+trigger1 = time = 90
+value = 0 
 ctrl = 1
 ;---------------------------------------------------------------------------
 ;236A

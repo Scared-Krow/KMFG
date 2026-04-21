@@ -1072,7 +1072,7 @@ ground.hittime  = 15
 ground.velocity = -4-(Map(PushBack))
 guard.velocity = -5.6
 air.velocity = -1,-1
-air.hittime = ceil(cond(22-Map(HitstunScaling) < 5, 5, 22-Map(HitstunScaling)))
+air.hittime = ceil(cond(22-Map(HitstunScaling) < 5, 5, 22-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
 air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 10
@@ -1185,7 +1185,7 @@ ground.hittime  = 16
 ground.velocity = -2,-6
 air.velocity = -1.7,-5
 guard.velocity = -4
-air.hittime = ceil(cond(30-Map(HitstunScaling) < 10, 10, 30-Map(HitstunScaling)))
+air.hittime = ceil(cond(30-Map(HitstunScaling) < 10, 10, 30-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
 fall = 1
 forcenofall = 1
 fall.yvelocity = 0
@@ -1291,7 +1291,7 @@ ground.slidetime = 6
 ground.hittime  = 17
 ground.velocity = -4-(Map(PushBack))
 air.velocity = -3,-.75
-air.hittime = ceil(cond(30-Map(HitstunScaling) < 15, 15, 30-Map(HitstunScaling)))
+air.hittime = ceil(cond(30-Map(HitstunScaling) < 15, 15, 30-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
 guard.ctrltime = 12
 guard.hittime = 12
 air.fall = 1
@@ -1406,7 +1406,7 @@ ground.hittime  = 18
 ground.velocity = -5-(Map(PushBack))
 guard.velocity = -5
 air.velocity = -5.5,-2
-air.hittime = ceil(cond(30-Map(HitstunScaling) < 15, 15, 30-Map(HitstunScaling)))
+air.hittime = ceil(cond(30-Map(HitstunScaling) < 15, 15, 30-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
 air.fall = 1
 guard.ctrltime = 14
 guard.hittime = 14
@@ -1511,7 +1511,7 @@ ground.slidetime = 6
 ground.hittime  = 17
 ground.velocity = -4-(Map(PushBack))
 air.velocity = -2.5,2
-air.hittime = ceil(cond(30-Map(HitstunScaling) < 16, 16, 30-Map(HitstunScaling)))
+air.hittime = ceil(cond(30-Map(HitstunScaling) < 16, 16, 30-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
 guard.ctrltime = 12
 guard.hittime = 12
 air.fall = 1

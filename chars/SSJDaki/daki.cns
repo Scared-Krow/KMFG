@@ -470,6 +470,12 @@ triggerall = stateno != [700,750]
 trigger1 = Map(Flight)>0
 physics = N
 
+[State 0, PosSet]
+type = PosSet
+triggerall = pos y > 0
+trigger1 = Map(Flight)>0
+y = 0
+
 ;---------------------------------------------------------------------------
 ; UNIVERSAL
 ;---------------------------------------------------------------------------

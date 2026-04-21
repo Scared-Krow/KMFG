@@ -188,7 +188,7 @@ ground.cornerpush.veloff = -2-(Map(PushBack))
 fall.yvelocity = 0
 guard.ctrltime = 12
 guard.hittime = 12
-air.cornerpush.veloff = -2
+air.cornerpush.veloff = -2.4
 p2facing = 1
 
 [State 210, 5]
@@ -1179,17 +1179,17 @@ guardsound = 6,0
 ground.type = Low
 ground.slidetime = 4
 ground.hittime  = 20
-ground.velocity = -3.86-(Map(PushBack)),-4
+ground.velocity = -2-(Map(PushBack)),-3.9
 air.velocity = -1.6,-2
 air.hittime = ceil(cond(33-Map(HitstunScaling) < 14, 14, 33-Map(HitstunScaling)))
 fall = 1
 fall.yvelocity = 0
-guard.ctrltime = 10
-guard.hittime = 10
+guard.ctrltime = 11
+guard.hittime = 11
 ground.cornerpush.veloff = -4-(Map(PushBack))
 air.cornerpush.veloff = -4
 p2facing = 1
-guard.dist = 0
+guard.dist = 40
 
 
 
@@ -1199,19 +1199,6 @@ trigger1 = animelem = 4
 statetype = C      
 movetype = I        
 physics = C  
-
-[State 210, 5]
-type = ChangeState
-triggerall = command = "28"
-trigger1 = MoveContact
-value = 60
-ctrl = 0
-[State 210, 5]
-type = ChangeState
-triggerall = command = "holdup"
-trigger1 = MoveContact
-value = 40
-ctrl = 0
 
 [State 430, 3]
 type = ChangeState
@@ -1287,26 +1274,14 @@ air.velocity = -1.75,-2
 air.hittime = ceil(cond(33-Map(HitstunScaling) < 14, 14, 33-Map(HitstunScaling)))
 air.fall = 1
 fall.yvelocity = 0
-guard.ctrltime = 15
-guard.hittime = 15
+guard.ctrltime = 16
+guard.hittime = 16
 ground.cornerpush.veloff = -4-(Map(PushBack))
 air.cornerpush.veloff = -4
 p2facing = 1
 guard.dist = 0
 
 
-[State 210, 5]
-type = ChangeState
-triggerall = command = "28"
-trigger1 = movecontact
-value = 60
-ctrl = 0
-[State 210, 5]
-type = ChangeState
-triggerall = command = "holdup"
-trigger1 = movecontact
-value = 40
-ctrl = 0
 [State 0, StateTypeSet]
 type = StateTypeSet
 trigger1 = animelem = 4
@@ -1461,7 +1436,7 @@ ground.slidetime = 5
 ground.hittime  = 15
 ground.velocity = -4-(Map(PushBack))
 air.velocity = -1.25,-2
-air.hittime = ceil(cond(18-Map(HitstunScaling) < 5, 5, 18-Map(HitstunScaling)))
+air.hittime = ceil(cond(18-Map(HitstunScaling) < 5, 5, 18-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
 air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 10
@@ -1562,7 +1537,7 @@ ground.slidetime = 12
 ground.hittime  = 16
 ground.velocity = -4-(Map(PushBack))
 air.velocity = -2.5,-2.15
-air.hittime = ceil(cond(25-Map(HitstunScaling) < 15, 15, 25-Map(HitstunScaling)))
+air.hittime = ceil(cond(25-Map(HitstunScaling) < 15, 15, 25-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
 air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 14
