@@ -411,7 +411,7 @@ redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.1
+value = root,Map(DamageScaling)-.05
 map = "DamageScaling"
 persistent = 0
 redirectID = root,ID
@@ -421,8 +421,9 @@ type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 animtype  = up
-damage = ceil(cond(100*root,Map(DamageScaling) < 15, 15, 100*root,Map(DamageScaling)))
+damage = ceil(cond(100*root,Map(DamageScaling) < 25, 25, 100*root,Map(DamageScaling)))
 guardflag = MA
+hitflag = MAFD
 pausetime = 12,12
 sparkno = 1
 sparkxy = -10,-5
@@ -449,12 +450,6 @@ ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
 yaccel = .26
 id = 5400
-
-[State 3000, StayOnTarget]
-type = ScreenBound
-trigger1 = movehit
-value = 1
-movecamera = 1,1
 
 [State 1000, 7]
 type = DestroySelf
@@ -557,14 +552,14 @@ movetype= A
 physics = N
 ctrl = 0
 anim = F4012
-velset = (p2dist x/55)+(enemy,vel x*enemy,facing)/2,-6.6
+velset = 1+(root,p2dist x/75)+(enemy,vel x*enemy,facing)/2,-6.6
 sprpriority = -1
 facep2 = 1
 
 [State 0, VelAdd]
-type = VelSet
-trigger1 = time = 5
-x = (p2dist x/55)+(enemy,vel x*enemy,facing)/2
+type = VelAdd
+trigger1 = time = 4
+x = (enemy,vel x*enemy,facing)/10
 
 [State 0, VelAdd]
 type = VelAdd

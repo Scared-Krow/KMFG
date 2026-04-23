@@ -371,11 +371,11 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------
-;214B
-[State -1, 63214B]
+;41236CB
+[State -1, 41236C]
 type = ChangeState
 value = 1200
-triggerall = command = "214B"
+triggerall = command = "426C"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
