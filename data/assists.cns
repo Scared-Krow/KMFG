@@ -552,19 +552,20 @@ movetype= A
 physics = N
 ctrl = 0
 anim = F4012
-velset = 1+(root,p2dist x/75)+(enemy,vel x*enemy,facing)/2,-6.6
+velset = 1,-6
 sprpriority = -1
 facep2 = 1
 
-[State 0, VelAdd]
-type = VelAdd
-trigger1 = time = 4
-x = (enemy,vel x*enemy,facing)/10
 
 [State 0, VelAdd]
 type = VelAdd
 trigger1 = 1
 y = .25
+
+[State 0, VelAdd]
+type = VelMul
+trigger1 = 1
+x = .999
 
 [State 0, Width]
 type = Width
@@ -636,9 +637,16 @@ envshake.ampl = -7
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
 
+
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = pos y >= 0
+y = -4
+
 [State 1000, 7]
 type = DestroySelf
-trigger1 = pos y > 0
+trigger1 = time = 90
 
 ;---------------------------------------------------------------------------
 ;Partner Pose
@@ -757,7 +765,7 @@ helpertype = Normal
 name = "ISSBROKIE"
 ID = 4000
 stateno = 4011
-pos = -40,0
+pos = -20,0
 postype = P1
 facing = 1
 keyctrl = 0

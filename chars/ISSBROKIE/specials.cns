@@ -979,7 +979,7 @@ size.yscale = .4
 type = DestroySelf
 trigger1 = time = 0
 ;---------------------------------------------------------------------------
-;41236C
+;236D
 [Statedef 1200]
 type    = S
 movetype= I
@@ -995,7 +995,7 @@ value = 1201
 ctrl = 0
 
 ;---------------------------------------------------------------------------
-;41236C~Charge
+;236D
 [Statedef 1201]
 type    = A
 movetype= A
@@ -1037,10 +1037,10 @@ ignorehitpause = 0
 
 [State 0, ChangeAnim]
 type = ChangeState
-trigger1 = (animtime = 0) || (command != "holdy" && time >= 10)
+trigger1 = (animtime = 0) || (command != "holdb" && time >= 10)
 value = 1205
 ;---------------------------------------------------------------------------
-;41236C~Release
+;236D~Release
 [Statedef 1205]
 type    = A
 movetype= A
