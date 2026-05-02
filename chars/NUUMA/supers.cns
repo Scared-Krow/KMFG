@@ -327,6 +327,11 @@ movetype= H
 physics = N
 velset = 0,0
 
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time = 0
+y = -2
+
 [State 5020, 2] ;Anim for HIT_BACK
 type = ChangeAnim
 trigger1 = Time = 0
@@ -376,13 +381,12 @@ x = .99
 [State 0, VelAdd]
 type = VelAdd
 trigger1 = 1
-y = .4
+y = .05
 
 
 [State 5030, 5]
 type = ChangeState
-trigger1 = HitOver
-trigger2 = Pos Y >= 0
+trigger1 = Pos Y >= 0
 value = 3053
 
 ;---------------------------------------------------------------------------
