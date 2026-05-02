@@ -686,9 +686,11 @@ id = 5400
 
 [State -2, Counterhit]
 type = mapset
-trigger1 = enemy,movetype = A
+triggerall = movehit=1
+trigger1 = enemy,prevmovetype = A
 value = 1
 map = "extendedCH"
+ignorehitpause = 1
 
 [State 200, 1]
 type = HitDef

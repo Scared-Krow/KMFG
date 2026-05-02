@@ -315,12 +315,12 @@ Welcome to SUEHIRO's I.K.E.M.E.N GO engine!
 [Select Info]
 fadein.time = 10
 fadeout.time = 10
-rows = 4
+rows = 5
 columns = 3
-wrapping = 0              ;1 to let cursor wrap around
+wrapping = 1              ;1 to let cursor wrap around
 pos = 479,128             ;Position to draw to
-showemptyboxes = 1        ;1 to show empty boxes
-moveoveremptyboxes = 1    ;1 to allow cursor to move over empty boxes
+showemptyboxes = 0        ;1 to show empty boxes
+moveoveremptyboxes = 0    ;1 to allow cursor to move over empty boxes
 cell.size = 100,100       ;x,y size of each cell (in pixels)
 cell.spacing = 10         ;Space between each cell
 cell.bg.spr = 150,0       ;Note: Don't use animation for cells
@@ -329,7 +329,7 @@ cell.random.spr = 151,0   ;Icon for random select (don't use animation)
 cell.random.switchtime = 4;Time to wait before changing to another random portrait
 cell.random.scale = 1,1
 p1.cursor.tween.factor = 0.3, 0.3    ;Ikemen feature
-p1.cursor.startcell = 0,0
+p1.cursor.startcell = 2,0
 p1.cursor.active.anim = 160
 p1.cursor.active.scale = 1,1
 p1.cursor.done.spr = 161,0
@@ -338,7 +338,7 @@ p1.cursor.move.snd = 100,0
 p1.cursor.done.snd = 100,1
 p1.random.move.snd = 100,0
 p2.cursor.tween.factor = 0.3, 0.3    ;Ikemen feature
-p2.cursor.startcell = 0,0
+p2.cursor.startcell = 2,2
 p2.cursor.active.anim = 170
 p2.cursor.active.scale = 1,1
 p2.cursor.done.spr = 171,0
@@ -376,22 +376,22 @@ title.font = 4,0,0        ;Font of title (-1 for none)
 ;Player 1's Main Character
 p1.member1.face.anim = 0
 p1.member1.face.done.anim = 0
-p1.member1.face.offset = 230,500
+p1.member1.face.offset = 150,400
 p1.member1.face.scale = 0.8,0.8
 p1.member1.face.applypal = 1
 ;Player 1's Main Character
 p2.member1.face.anim = 0 
 p2.member1.face.done.anim = 0
-p2.member1.face.offset = 1050,500
+p2.member1.face.offset = 1150,400
 p2.member1.face.scale = 0.8,0.8
 p2.member1.face.applypal = 1
 
 ;Name
-p1.name.offset = 50,620   ;Position to put name
+p1.name.offset = 50,610   ;Position to put name
 p1.name.font = 3,3,1      ;Set to -1 for no display
 p1.name.spacing = 15,25   ;Space between each name for players on the same team
 p1.name.scale = 0.8, 0.8
-p2.name.offset = 1230,620
+p2.name.offset = 1230,610
 p2.name.font = 3,1,-1
 p2.name.spacing = -15,25
 p2.name.scale = 0.8, 0.8

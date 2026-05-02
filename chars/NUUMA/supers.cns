@@ -287,3 +287,160 @@ value = 999
 [State 0, Changestate]
 type = DestroySelf
 trigger1 = BackEdgeBodyDist < 0 || FrontEdgeBodyDist < 0	
+
+;---------------------------------------------------------------------------
+;214214B
+[Statedef 3050]
+type    = S
+movetype= I
+physics = S
+anim = 3050
+velset = 0,0
+ctrl = 0
+poweradd = -500
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0
+time = 42
+darken = 1
+p2defmul = 1
+movetime = 42
+
+[State -2, Install]
+type = mapset
+trigger1 = time = 15
+value = 1
+map = "Revive"
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Shaking Revive
+[Statedef 3051]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+
+[State 5020, 2] ;Anim for HIT_BACK
+type = ChangeAnim
+trigger1 = Time = 0
+value = 5030
+
+[State 5020, 4] ;Freeze anim
+type = ChangeAnim
+trigger1 = Time > 0
+value = anim
+
+[State 5020, 5]
+type = ChangeState
+trigger1 = HitShakeOver
+value = 3052
+
+;---------------------------------------------------------------------------
+;Revive
+[Statedef 3052]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+velset = -5,-5
+
+[State 5030, 1]
+type = ChangeAnim
+trigger1 = Anim != [5000, 5199]
+trigger1 = SelfAnimExist(5030)
+value = 5030
+
+[State 5030, 2]
+type = VelAdd
+trigger1 = 1
+y = GetHitVar(yaccel)
+
+[State 5030, 3]
+type = HitVelSet
+trigger1 = Time = 0
+x = 5
+y = -5
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = time > 1
+x = .99
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = .4
+
+
+[State 5030, 5]
+type = ChangeState
+trigger1 = HitOver
+trigger2 = Pos Y >= 0
+value = 3053
+
+;---------------------------------------------------------------------------
+;Revive Get Up
+[Statedef 3053]
+type    = L
+movetype=I
+physics = N
+velset = 0,0
+anim = 3051
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = animelem = 2
+time = 44
+darken = 1
+p2defmul = 1
+movetime = 39
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+
+[State 1115120, NHB]
+type = nothitby
+trigger1 = 1
+value = SCA
+time = 1
+[State 1115120, hitfall]
+type = hitfallset
+trigger1 = !animtime
+value = 0   ;1
+[State 1115120, NHB]
+type = nothitby
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 0, LifeSet]
+type = LifeSet
+trigger1 = time = 0 
+value = 1
+[State 0, LifeSet]
+type = LifeAdd
+trigger1 = time = [29,38]
+value = 25
+
+[State -2, Install]
+type = mapset
+trigger1 = time = 15
+value = 0
+map = "Revive"
+
+
+[State 5120, 7]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1

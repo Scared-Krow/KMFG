@@ -1,5 +1,4 @@
 local start = {}
-
 --team side specific data storage
 start.p = {{}, {}}
 --cell data storage
@@ -1624,6 +1623,8 @@ end
 --;===========================================================
 function start.f_selectMode()
 	start.f_selectReset(true)
+	p1Assist = 1
+	p2Assist = 1
 	while true do
 		--select screen
 		if not start.f_selectScreen() then
@@ -2386,31 +2387,32 @@ function start.f_selectScreen()
 			if #start.p[side].t_selTemp > 0 then
 				for i = 1, #start.p[side].t_selTemp do
 					if i <= 1 then
+						
 						local Assist_p1 = ''
 						local Assist_p2 = ''
 						if p1Assist == 1 then
-							Assist_p1 = 'JENX2'
+							Assist_p1 = 'FEATURING\n\n\n\n\n	JENX2'
 						elseif p1Assist == 2 then
-							Assist_p1 = 'ISSBROKIE!!'
+							Assist_p1 = 'FEATURING\n\n\n\n\n	ISSBROKIE!!'
 						end
 						if p2Assist == 1 then
-							Assist_p2 = 'JENX2'
+							Assist_p2 = 'FEATURING\n\n\n\n\nJENX2'
 						elseif p2Assist == 2 then
-							Assist_p2 = 'ISSBROKIE!!'
+							Assist_p2 = 'FEATURING\n\n\n\n\nISSBROKIE!!'
 						end
 						t_txt_name[1]:update({
 							font =   motif.select_info['p' .. side .. '_name_font'][1],
 							bank =   motif.select_info['p' .. side .. '_name_font'][2],
 							align =  motif.select_info['p' .. side .. '_name_font'][3],
 							text =   Assist_p1,
-							x =      motif.select_info['p' .. side .. '_name_offset'][1] + (i - 1) * motif.select_info['p' .. side .. '_name_spacing'][1],
-							y =      motif.select_info['p' .. side .. '_name_offset'][2] + (i - 1) * motif.select_info['p' .. side .. '_name_spacing'][2] + 30,
+							x =      motif.select_info['p' .. side .. '_name_offset'][1] + (i - 1) * motif.select_info['p' .. side .. '_name_spacing'][1] + 20,
+							y =      motif.select_info['p' .. side .. '_name_offset'][2] + (i - 1) * motif.select_info['p' .. side .. '_name_spacing'][2] + 40,
 							scaleX = motif.select_info['p' .. side .. '_name_scale'][1] - 0.2,
 							scaleY = motif.select_info['p' .. side .. '_name_scale'][2] - 0.2,
 							r =      motif.select_info['p' .. side .. '_name_font'][4],
 							g =      motif.select_info['p' .. side .. '_name_font'][5],
 							b =      motif.select_info['p' .. side .. '_name_font'][6],
-							height = motif.select_info['p' .. side .. '_name_font'][7],
+							height = motif.select_info['p' .. side .. '_name_font'][7]+5,
 							xshear = 0.5,
 							angle  = motif.select_info['p' .. side .. '_name_angle'],
 						})
@@ -2435,14 +2437,14 @@ function start.f_selectScreen()
 							bank =   motif.select_info['p' .. side .. '_name_font'][2],
 							align =  motif.select_info['p' .. side .. '_name_font'][3],
 							text =   Assist_p2,
-							x =      motif.select_info['p' .. side .. '_name_offset'][1] + (i - 1) * motif.select_info['p' .. side .. '_name_spacing'][1],
-							y =      motif.select_info['p' .. side .. '_name_offset'][2] + (i - 1) * motif.select_info['p' .. side .. '_name_spacing'][2] + 30,
+							x =      motif.select_info['p' .. side .. '_name_offset'][1] + (i - 1) * motif.select_info['p' .. side .. '_name_spacing'][1] - 20,
+							y =      motif.select_info['p' .. side .. '_name_offset'][2] + (i - 1) * motif.select_info['p' .. side .. '_name_spacing'][2] + 40,
 							scaleX = motif.select_info['p' .. side .. '_name_scale'][1] - 0.2,
 							scaleY = motif.select_info['p' .. side .. '_name_scale'][2] - 0.2,
 							r =      motif.select_info['p' .. side .. '_name_font'][4],
 							g =      motif.select_info['p' .. side .. '_name_font'][5],
 							b =      motif.select_info['p' .. side .. '_name_font'][6],
-							height = motif.select_info['p' .. side .. '_name_font'][7],
+							height = motif.select_info['p' .. side .. '_name_font'][7]+5,
 							xshear = 0.5,
 							angle  = motif.select_info['p' .. side .. '_name_angle'],
 						})

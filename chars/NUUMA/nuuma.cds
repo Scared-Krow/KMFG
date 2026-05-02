@@ -206,6 +206,19 @@ trigger3 = ((stateno=1000 || stateno=1005)&& time >= 22) || stateno=1204 && time
 trigger4 = helper(1002),movecontact || helper(1006),movecontact || helper(1209),MoveContact
 trigger5 = stateno=[1000,2000] && movecontact
 
+;214214B
+[State -1, 214214B]
+type = ChangeState
+value = 3050
+triggerall = Map(Revive)<1
+triggerall = power>=500
+triggerall = command = "214214B"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = var(1)
+trigger3 = ((stateno=1000 || stateno=1005)&& time >= 22) || stateno=1204 && time >= 26
+trigger4 = helper(1002),movecontact || helper(1006),movecontact || helper(1209),MoveContact
+trigger5 = stateno=[1000,2000] && movecontact
 ;============================================================================
 ;============================SPECIALS========================================
 ;============================================================================
@@ -225,24 +238,7 @@ triggerall = command = "624B"
 triggerall = statetype = A
 trigger1 = ctrl
 trigger2 = var(1)
-;22C - Heartless Activate
-[State -1, 63214B]
-type = ChangeState
-value = 1050
-triggerall = Map(HEARTLESS)=0
-triggerall = command = "22C"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2 = var(1)
-;22C - Heartless Retract
-[State -1, 63214B]
-type = ChangeState
-value = 1051
-triggerall = Map(HEARTLESS)=1
-triggerall = command = "22C"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2 = var(1)
+
 ;22D - Anti-Air
 [State -1, 236D]
 type = ChangeState

@@ -715,9 +715,11 @@ persistent = 0
 
 [State -2, Counterhit]
 type = mapset
-trigger1 = Map(CounterHit)=1
+triggerall = movehit=1
+trigger1 = enemy,prevmovetype = A
 value = 1
 map = "extendedCH"
+ignorehitpause = 1
 
 [State 440, 3]
 type = HitDef
@@ -735,7 +737,7 @@ guardsound = 6,0
 ground.type = low
 ground.slidetime = 10
 ground.hittime  = 17
-ground.velocity = -0.5, -7
+ground.velocity = -0.5, -8
 air.velocity = -0.5,-4
 air.hittime = ceil(cond(20-Map(HitstunScaling) < 15, 15, 20-Map(HitstunScaling)))
 guard.velocity = -5

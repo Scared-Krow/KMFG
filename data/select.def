@@ -203,14 +203,21 @@
  ;
  ;Insert your characters below.
 
-JenX2/jen.def
-ISSBROKIE/issbrokie.def
-SSJDaki/daki.def
+blank
 Nuuma
-RANDOMSELECT
-CALDER/CALDER.def
+blank
+SSJDaki/daki.def
 CACITY/Cacity.def
+CALDER/CALDER.def
+JenX2/jen.def
+RANDOMSELECT
+ISSBROKIE/issbrokie.def
+Nuuma
+CACITY/Cacity.def
+Kallous/kallous.def
+blank
 SEMTEXXX/semtexxx.def
+blank
 ;-------------------------------------------------------------------------------
 [ExtraStages]
  ;Put extra stages here. They will be available in modes that allow selecting

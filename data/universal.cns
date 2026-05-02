@@ -792,8 +792,8 @@ value = 250
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(WallBounce) %.0f, Map(GroundBounce) %.0f, Posing = %.4f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(WallBounce),Map(GroundBounce),Map(Posing)
+text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(WallBounce) %.0f, Map(GroundBounce) %.0f, Revive = %.4f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(WallBounce),Map(GroundBounce),Map(Revive)
 
 ;---------REDUCE MECHANIC
 [State -2, Reduce]
