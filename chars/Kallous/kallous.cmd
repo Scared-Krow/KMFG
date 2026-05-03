@@ -378,6 +378,34 @@ triggerall = statetype = A
 trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------
+;623B
+[State -1, 623B]
+type = ChangeState
+value = 1001
+triggerall = command = "623B"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = var(1)
+;---------------------------------------------------------------------------
+;j623B
+[State -1, j623A]
+type = ChangeState
+value = 1051
+triggerall = command = "623B"
+triggerall = statetype = A
+trigger1 = ctrl
+trigger2 = var(1)
+;---------------------------------------------------------------------------
+;421C
+[State -1, 421C]
+type = ChangeState
+value = 1003
+triggerall = numhelper(1008)<1
+triggerall = command = "421C"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = var(1)
+;---------------------------------------------------------------------------
 ;214D
 [State -1, 236D]
 type = ChangeState
@@ -397,15 +425,6 @@ triggerall = command = "214D"
 triggerall = statetype = A
 trigger1 = ctrl
 trigger2 = var(1)
-;---------------------------------------------------------------------------
-;623A
-[State -1, 623A]
-type = ChangeState
-value = 1100
-triggerall = command = "623A"
-triggerall = statetype != A
-trigger1 = ctrl
-
 ;===========================================================================
 
 ;---------------------------------------------------------------------------

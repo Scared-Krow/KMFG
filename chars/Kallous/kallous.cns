@@ -30,8 +30,8 @@ attack.dist = 0
 
 
 [Velocity]
-walk.fwd  = 1.6
-walk.back = -1.4   
+walk.fwd  = 1.5
+walk.back = -1.3   
 run.fwd  = 4.5, 0    
 run.back = -4.5,-3.8 
 jump.neu = 0,-8.5
