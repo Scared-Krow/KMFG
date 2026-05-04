@@ -406,6 +406,16 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------
+;j421C
+[State -1, j421C]
+type = ChangeState
+value = 1053
+triggerall = numhelper(1008)<1
+triggerall = command = "421C"
+triggerall = statetype = A
+trigger1 = ctrl
+trigger2 = var(1)
+;---------------------------------------------------------------------------
 ;214D
 [State -1, 236D]
 type = ChangeState

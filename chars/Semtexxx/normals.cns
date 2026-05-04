@@ -556,15 +556,7 @@ anim = 410
 sprpriority = 2
 facep2 = 1
 
-[State 0, PosAdd]
-type = PosAdd
-trigger1 = animelem = 1
-trigger2 = animelem = 2
-x = 3
-[State 0, PosAdd]
-type = PosAdd
-trigger1 = animelem = 3
-x = 5
+
 [State 430, 1]
 type = PlaySnd
 trigger1 = Time = 1
@@ -616,8 +608,8 @@ sparkxy = -10,-30
 hitsound   = 5,1
 guardsound = 6,0
 ground.type = High
-ground.slidetime = 17
-ground.hittime  = 17
+ground.slidetime = 19
+ground.hittime  = 19
 ground.velocity = -2
 air.velocity = -1.5,-3
 down.velocity = -5,0
