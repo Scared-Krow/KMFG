@@ -760,14 +760,13 @@ type = HitBy
 trigger1 = 1
 value = SCA,AP
 time = 1
-
  
 [State 0, HitOverride]
 type = HitOverride
 trigger1 = 1
 attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 slot = 9
-stateno = 1011
+stateno = 1010
 time = 999
 
 [State 	40, 3]
@@ -833,6 +832,7 @@ trigger3 = (root,movehit = 1) && movehit
 trigger4 = ClsnOverlap(clsn2, helper(1005),ID, clsn1) || ClsnOverlap(clsn2, helper(1006),ID, clsn1) || ClsnOverlap(clsn2, helper(1007),ID, clsn1)
 trigger5 = moveguarded
 trigger6 = root,movetype = H
+trigger7 = prevstateno = 5000
 value = 1011
 
 [State 0, TargetBind]
@@ -1022,7 +1022,7 @@ type = HitOverride
 trigger1 = 1
 attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 slot = 9
-stateno = 1011
+stateno = 1060
 time = 999
 
 [State 	40, 3]
@@ -1089,6 +1089,7 @@ trigger3 = (root,movehit = 1) && movehit
 trigger4 = ClsnOverlap(clsn2, helper(1005),ID, clsn1) || ClsnOverlap(clsn2, helper(1006),ID, clsn1) || ClsnOverlap(clsn2, helper(1007),ID, clsn1)
 trigger5 = moveguarded
 trigger6 = root,movetype = H
+trigger7 = prevstateno = 5000
 value = 1011
 
 [State 0, TargetBind]
