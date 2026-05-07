@@ -4,14 +4,14 @@
 type    = S
 movetype= I
 physics = S
-anim = 1000
+anim = 1001
 velset = vel x,0
 poweradd = 0
 ctrl = 0
 
 [State 0, Helper]
 type = Helper
-trigger1 = animelem = 5
+trigger1 = animelem = 4
 helpertype = Normal ;Player
 name = "Blast"
 ID = 1005
@@ -25,7 +25,7 @@ ownpal = 0
 [State 0, ChangeAnim]
 type = ChangeAnim
 trigger1 = helper(1005),movecontact
-value = 1000
+value = 1001
 elem = animelemno(0)
 
 
@@ -40,14 +40,14 @@ ctrl = 1
 type    = A
 movetype= I
 physics = N
-anim = 1050
+anim = 1051
 velset = vel x*.2,vel y*.2
 poweradd = 0
 ctrl = 0
 
 [State 0, Helper]
 type = Helper
-trigger1 = animelem = 5
+trigger1 = animelem = 4
 helpertype = Normal ;Player
 name = "Blast"
 ID = 1005
@@ -60,8 +60,8 @@ ownpal = 0
 
 [State 0, PosSet]
 type = PosSet
-trigger1 = pos y > -2
-y = -2
+trigger1 = pos y > -5
+y = -5
 
 [State 0, ChangeAnim]
 type = ChangeAnim
@@ -105,7 +105,7 @@ ctrl = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount=1
-value = root,Map(DamageScaling)*.8
+value = root,Map(DamageScaling)*.7
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -113,7 +113,7 @@ redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.1
+value = root,Map(DamageScaling)-.15
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -122,7 +122,7 @@ redirectID = root,ID
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit=1
-value = root,Map(HitstunScaling)+1
+value = root,Map(HitstunScaling)+.5
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -177,19 +177,19 @@ trigger1 = animtime = 0
 type    = S
 movetype= I
 physics = S
-anim = 1000
+anim = 1001
 velset = vel x,0
 poweradd = 0
 ctrl = 0
 
 [State 0, Helper]
 type = Helper
-trigger1 = animelem = 5
+trigger1 = animelem = 4
 helpertype = Normal ;Player
 name = "Ice"
 ID = 1006
 stateno = 1006
-pos = 5,0
+pos = 10,0
 postype = P1    ;P2, Front, Back, Left, Right
 facing = 1
 keyctrl = 0
@@ -199,7 +199,7 @@ size.yscale = 1.6
 [State 0, ChangeAnim]
 type = ChangeAnim
 trigger1 = helper(1006),movecontact=1
-value = 1000
+value = 1001
 elem = animelemno(0)
 
 [State 1000, 7]
@@ -238,7 +238,7 @@ redirectID = root,ID
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit=1
-value = root,Map(HitstunScaling)+1
+value = root,Map(HitstunScaling)+1.75
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -262,11 +262,11 @@ ground.type = High
 ground.slidetime = 10
 ground.hittime  = 15
 guard.slidetime = 15
-ground.velocity = -2,-6
+ground.velocity = -2,-5.5
 guard.velocity = -3
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
-air.velocity = -1, -5       ;X-velocity at which opponent is pushed,
+air.velocity = -2, -4.5       ;X-velocity at which opponent is pushed,
 air.hittime = ceil(cond(50-root,Map(HitstunScaling) < 25, 25, 50-root,Map(HitstunScaling)))
 fall.yvelocity = 0
 guard.ctrltime = 6
@@ -294,7 +294,7 @@ trigger1 = animtime = 0
 type    = A
 movetype= I
 physics = N
-anim = 1050
+anim = 1051
 velset = vel x*.2,vel y*.2
 poweradd = 0
 ctrl = 0
@@ -376,7 +376,7 @@ redirectID = root,ID
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit=1
-value = root,Map(HitstunScaling)+1
+value = root,Map(HitstunScaling)+.25
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -447,8 +447,8 @@ ctrl = 0
 type = Helper
 trigger1 = animelem = 6
 helpertype = Normal ;Player
-name = "Bubble"
-ID = 1030
+name = "Electricity"
+ID = 1008
 stateno = 1008
 pos = 0,0
 postype = P1    ;P2, Front, Back, Left, Right
@@ -546,7 +546,7 @@ redirectID = root,ID
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S,NP                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(40*root,Map(DamageScaling) < 5, 5, 40*root,Map(DamageScaling))),5
+damage = ceil(cond(50*root,Map(DamageScaling) < 5, 5, 50*root,Map(DamageScaling))),5
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -560,11 +560,11 @@ ground.type = High
 ground.slidetime = 10
 ground.hittime  = 15
 guard.slidetime = 15
-ground.velocity = -1,-2
+ground.velocity = -1
 guard.velocity = -4
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
-air.velocity = -1, -4       ;X-velocity at which opponent is pushed,
+air.velocity = -1,-1       ;X-velocity at which opponent is pushed,
 air.hittime = 35
 fall.yvelocity = 0
 guard.ctrltime = 10
@@ -598,6 +598,12 @@ anim = 1041
 velset = 0,0
 ctrl = 0
 
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = 20
+ignorehitpause = 1
+
 [State 0, TargetBind]
 type = TargetBind
 trigger1 = time = 0
@@ -608,6 +614,47 @@ pos = 0,0
 [State 0, DestroySelf]
 type = DestroySelf
 trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;j421C
+[Statedef 1053]
+type    = A
+movetype= I
+physics = N
+anim = 1050
+velset = vel x*.2,vel y*.2
+poweradd = 0
+ctrl = 0
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 6
+helpertype = Normal ;Player
+name = "Lightning"
+ID = 1008
+stateno = 1008
+pos = 35,0
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = pos y > -5
+y = -5
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem = 6
+statetype = A       ;S,A,C,L
+movetype = I        ;I,A,H
+physics = A         ;A,C,S,N
+
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = time = 35
+value = 1
 ;---------------------------------------------------------------------------
 ;214D
 [Statedef 1004]
@@ -652,7 +699,7 @@ sprpriority = 7
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount=1
-value = root,Map(DamageScaling)*.7
+value = root,Map(DamageScaling)*.75
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -823,13 +870,26 @@ facing = root, facing
 keyctrl = 0
 ownpal = 0
 
+
+[State 0, Helper]
+type = Helper
+trigger1 = ClsnOverlap(clsn2, helper(1008),ID, clsn1)
+helpertype = Normal ;Player
+name = "Puddle"
+ID = 1090
+stateno = 1090
+pos = 0, -25
+postype = none
+keyctrl = 0
+ownpal = 0
+
 [State 0, ChangeAnim]
 type = ChangeAnim
 triggerall = anim != 1011
 trigger1 = Map(Duration)<=0
-trigger2 = frontedgedist < 5
+trigger2 = frontedgedist < -10
 trigger3 = (root,movehit = 1) && movehit
-trigger4 = ClsnOverlap(clsn2, helper(1005),ID, clsn1) || ClsnOverlap(clsn2, helper(1006),ID, clsn1) || ClsnOverlap(clsn2, helper(1007),ID, clsn1)
+trigger4 = ClsnOverlap(clsn2, helper(1005),ID, clsn1) || ClsnOverlap(clsn2, helper(1006),ID, clsn1) || ClsnOverlap(clsn2, helper(1007),ID, clsn1) || ClsnOverlap(clsn2, helper(1008),ID, clsn1)
 trigger5 = moveguarded
 trigger6 = root,movetype = H
 trigger7 = prevstateno = 5000
@@ -840,6 +900,12 @@ type = TargetBind
 trigger1 = anim = 1011
 time = 0
 pos = 0,0
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = anim = 1011
+x = 0
+y = 0
 
 [State 0, DestroySelf]
 type = DestroySelf
@@ -872,8 +938,8 @@ ownpal = 0
 
 [State 0, PosSet]
 type = PosSet
-trigger1 = pos y > -2
-y = -2
+trigger1 = pos y > -5
+y = -5
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -901,7 +967,7 @@ sprpriority = 7
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount=1
-value = root,Map(DamageScaling)*.7
+value = root,Map(DamageScaling)*.75
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1005,6 +1071,12 @@ type = VelMul
 trigger1 = pos y >= 5
 y = -1
 
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = !movecontact && vel y < 0
+y = .003
+
+
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
@@ -1080,13 +1152,27 @@ facing = 1
 keyctrl = 0
 ownpal = 0
 
+[State 0, Helper]
+type = Helper
+trigger1 = ClsnOverlap(clsn2, helper(1008),ID, clsn1)
+helpertype = Normal ;Player
+name = "Puddle"
+ID = 1090
+stateno = 1090
+pos = 0, -25
+postype = none
+facing = root, facing
+keyctrl = 0
+ownpal = 0
+
+
 [State 0, DestroySelf]
 type = ChangeAnim
 triggerall = anim != 1011
 trigger1 = Map(Duration)<=0
-trigger2 = frontedgedist < 5
+trigger2 = frontedgedist < -10
 trigger3 = (root,movehit = 1) && movehit
-trigger4 = ClsnOverlap(clsn2, helper(1005),ID, clsn1) || ClsnOverlap(clsn2, helper(1006),ID, clsn1) || ClsnOverlap(clsn2, helper(1007),ID, clsn1)
+trigger4 = ClsnOverlap(clsn2, helper(1005),ID, clsn1) || ClsnOverlap(clsn2, helper(1006),ID, clsn1) || ClsnOverlap(clsn2, helper(1007),ID, clsn1) || ClsnOverlap(clsn2, helper(1008),ID, clsn1)
 trigger5 = moveguarded
 trigger6 = root,movetype = H
 trigger7 = prevstateno = 5000
@@ -1097,6 +1183,12 @@ type = TargetBind
 trigger1 = anim = 1011
 time = 0
 pos = 0,0
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = anim = 1011
+x = 0
+y = 0
 
 [State 0, DestroySelf]
 type = DestroySelf
@@ -1114,12 +1206,12 @@ ctrl = 0
 [State 40, 3]
 type = VarSet
 trigger1 = !time
-sysvar(1) = (root, time) - 19
+sysvar(1) = (root, time) - 15
 
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "niggas = %d"
+text = "time = %d"
 params = sysvar(1)
 ignorehitpause = 1
 
@@ -1199,7 +1291,7 @@ guard.velocity = -5
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
 air.velocity = -1, -4       ;X-velocity at which opponent is pushed,
-air.hittime = 35
+air.hittime = 45
 fall.yvelocity = 0
 guard.ctrltime = 6
 guard.hittime = 6
@@ -1241,7 +1333,7 @@ sysvar(1) = (root, time) - 19
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "niggas = %d"
+text = "time = %d"
 params = sysvar(1)
 ignorehitpause = 1
 
@@ -1321,7 +1413,7 @@ guard.velocity = -5
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
 air.velocity = -1, -4       ;X-velocity at which opponent is pushed,
-air.hittime = 35
+air.hittime = 45
 fall.yvelocity = 0
 guard.ctrltime = 6
 guard.hittime = 6
@@ -1363,7 +1455,7 @@ y = helper(1010),pos y-35
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount=1
-value = root,Map(DamageScaling)*.95
+value = root,Map(DamageScaling)*.83
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1380,7 +1472,7 @@ redirectID = root,ID
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit=1
-value = root,Map(HitstunScaling)+1
+value = root,Map(HitstunScaling)+.5
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1390,7 +1482,7 @@ redirectID = root,ID
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S,NP                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(60*root,Map(DamageScaling) < 10, 10, 60*root,Map(DamageScaling))),15
+damage = ceil(cond(80*root,Map(DamageScaling) < 15, 15, 80*root,Map(DamageScaling))),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -1409,7 +1501,7 @@ guard.velocity = -5
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
 air.velocity = 1, -6      ;X-velocity at which opponent is pushed,
-air.hittime = ceil(cond(40-root,Map(HitstunScaling) < 20, 20, 40-root,Map(HitstunScaling)))
+air.hittime = ceil(cond(60-root,Map(HitstunScaling) < 20, 20, 60-root,Map(HitstunScaling)))
 fall.yvelocity = 0
 guard.ctrltime = 10
 guard.hittime = 10
@@ -1426,5 +1518,136 @@ time = 1
 
 
 [State 1000, 7]
+type = destroyself
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Electric Puddle Fall
+[Statedef 1090]
+type    = U
+movetype= I
+physics = N
+anim = 1090
+velset = 0,0
+ctrl = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+x = helper(1010),pos x
+y = helper(1010),pos y-35
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = .35
+
+[State 200, 3]
+type = ChangeState
+trigger1 = pos y >= 0
+value = 1091
+
+;---------------------------------------------------------------------------
+;Electric Puddle Active
+[Statedef 1091]
+type    = U
+movetype= A
+physics = N
+anim = 1091
+velset = 0,0
+ctrl = 0
+
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movehit=1 && combocount=1
+value = root,Map(DamageScaling)*.9
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+redirectID = root,ID
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = movehit=1 && combocount>1
+value = root,Map(DamageScaling)-.1
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+redirectID = root,ID
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,statetype = A && enemy,movetype = H
+trigger1 = movehit=1
+value = root,Map(HitstunScaling)+.25
+map = "HitstunScaling"
+ignorehitpause = 1
+persistent = 0
+redirectID = root,ID
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State -2, Hits]
+type = mapadd
+trigger1 = movecontact=1 || movereversed=1
+value = 1
+map = "Hits"
+ignorehitpause = 0
+
+[State 200, 1]
+type = HitDef
+triggerall = Map(Hits)<5
+trigger1 = time%4=0
+attr = S,NP                     ;Attribute: Standing, Normal Attack
+damage = ceil(cond(25*root,Map(DamageScaling) < 2, 2, 25*root,Map(DamageScaling))),1
+animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
+guardflag = MA                   ;Flags on how move is to be guarded against
+hitflag = MAF                    ;Flags of conditions that move can hit
+priority = 3, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+pausetime = 2,10               
+guard.pausetime = 2,3
+sparkno = 2                     ;Spark anim no (Def: set above)
+sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
+hitsound = 9, 1
+guardsound = 6, 0
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 15
+guard.slidetime = 15
+ground.velocity = -.25
+guard.velocity = -.25
+airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
+air.velocity = -1,-1       ;X-velocity at which opponent is pushed,
+air.hittime = 35
+fall.yvelocity = 0
+guard.ctrltime = 6
+guard.hittime = 6
+p2facing = 0
+guard.dist = 0
+air.fall = 1
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+
+[State 200, 3]
+type = ChangeState
+trigger1 = animtime = 0 || Map(Hits)=5
+value = 1092
+
+
+;---------------------------------------------------------------------------
+;Electric Dissipate
+[Statedef 1092]
+type    = U
+movetype= I
+physics = N
+anim = 1092
+velset = 0,0
+ctrl = 0
+
+
+
+[State 200, 3]
 type = destroyself
 trigger1 = animtime = 0

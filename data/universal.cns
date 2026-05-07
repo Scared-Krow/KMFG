@@ -921,12 +921,7 @@ trigger1 = enemy,movetype = A
 map = "CounterHit"
 value = 1
 ignorehitpause = 1
-[State Fatal Counter]
-type = mapset
-trigger1 = enemy,movetype != A && Map(InfectionLevel)<=2
-map = "CounterHit"
-value = 0
-ignorehitpause = 1
+
 
 [State -2, Counter Hit]
 type = mapset
