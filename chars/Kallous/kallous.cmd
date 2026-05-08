@@ -326,12 +326,12 @@ trigger2 = var(1)
 ;============================================================================
 
 ;---------------------------------------------------------------------------
-;632146C
-[State -1, 632146C]
+;632146A
+[State -1, 632146A]
 type = ChangeState
 value = 3000
 triggerall = power>=500
-triggerall = command = "6246C"
+triggerall = command = "6246A"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
