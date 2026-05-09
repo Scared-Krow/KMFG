@@ -484,7 +484,7 @@ triggerall = command = "x"
 triggerall = command != "holddown"
 trigger1 = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = 200 || stateno = 400) && movecontact
+trigger2 = (stateno = 400) && movecontact
 ;---------------------------------------------------------------------------
 ;3B
 [State -1, 3B]

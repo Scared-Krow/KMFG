@@ -273,7 +273,7 @@ guard.ctrltime = 6
 guard.hittime = 6
 p2facing = 0
 guard.dist = 0
-fall = 1
+forcenofall = 1
 yaccel = .29
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
@@ -585,7 +585,7 @@ time = 1
 type = changestate
 trigger1 = frontedgedist < -10 || pos y > 5
 trigger2 = movecontact
-trigger3 = root,movetype = H
+trigger3 = root,stateno = [5000,5999]
 value = 1009
 
 ;---------------------------------------------------------------------------
@@ -784,6 +784,16 @@ type = TargetBind
 trigger1 = movehit
 time = 120
 pos = 0,0
+
+[State 200, 2]
+type = PlaySnd
+trigger1 = movehit=1
+value = 1010, 0
+
+[State 200, 2]
+type = PlaySnd
+trigger1 = anim = 1011 && animtime = -6
+value = 1010, 1
 
 [State 0, VelSet]
 type = VelSet
@@ -1066,6 +1076,15 @@ type = VelMul
 trigger1 = movehit
 y = .98
 
+[State 200, 2]
+type = PlaySnd
+trigger1 = movehit=1
+value = 1010, 0
+
+[State 200, 2]
+type = PlaySnd
+trigger1 = anim = 1011 && animtime = -6
+value = 1010, 1
 
 [State 0, VelMul]
 type = VelMul

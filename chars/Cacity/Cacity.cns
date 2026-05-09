@@ -453,6 +453,13 @@ ctrl = 1
 ;---------------------------------------------------------------------------
 
 [State -2, AMP]
+type = mapset
+trigger1 = roundstate = [0,1]
+value = 0
+map = "AMP"
+ignorehitpause = 1
+
+[State -2, AMP]
 type = mapadd
 triggerall = roundstate = 2
 trigger1 = Map(AMP)<1000

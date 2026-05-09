@@ -505,7 +505,6 @@ trigger1 = animelem = 5
 trigger2 = animelem = 6
 x = 2
 
-
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
@@ -839,7 +838,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.85
+value = Map(DamageScaling)*.825
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -847,7 +846,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.11
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -905,7 +904,7 @@ ground.hittime  = 20
 ground.velocity = -2-(Map(PushBack))
 air.velocity = -1.5,-3
 down.velocity = -5,0
-air.hittime = ceil(cond(25-Map(HitstunScaling) < 10, 10, 25-Map(HitstunScaling)))
+air.hittime = ceil(cond(20-Map(HitstunScaling) < 12, 12, 20-Map(HitstunScaling)))
 air.fall = 1
 guard.ctrltime = 14
 guard.hittime = 14
@@ -914,12 +913,6 @@ ground.cornerpush.veloff = -2-(Map(PushBack))
 air.cornerpush.veloff = -2
 p2facing = 1
 guard.dist = 0
-
-[State 0, LifeAdd]
-type = LifeAdd
-triggerall = Map(InfectionLevel)>=2
-trigger1 = movehit && hitpausetime = 1
-value = 15
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1001,7 +994,7 @@ ground.slidetime = 10
 ground.hittime  = 17
 ground.velocity = -0.5, -6.25
 air.velocity = -2,-3
-air.hittime = ceil(cond(22-Map(HitstunScaling) < 16, 16, 22-Map(HitstunScaling)))
+air.hittime = ceil(cond(24-Map(HitstunScaling) < 17, 17, 24-Map(HitstunScaling)))
 guard.velocity = -5
 fall = 1
 air.fall = 1

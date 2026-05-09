@@ -210,7 +210,7 @@ trigger5 = stateno=[1000,2000] && movecontact
 [State -1, 214214B]
 type = ChangeState
 value = 3050
-triggerall = Map(Revive)<1
+triggerall = Map(Revive)<1 && Map(NeverRevive)<1
 triggerall = power>=500
 triggerall = command = "214214B"
 triggerall = statetype != A

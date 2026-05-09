@@ -917,6 +917,13 @@ phase = 90
 
 [State Fatal Counter]
 type = mapset
+trigger1 = enemy,movetype != A
+map = "CounterHit"
+value = 0
+ignorehitpause = 1
+
+[State Fatal Counter]
+type = mapset
 trigger1 = enemy,movetype = A
 map = "CounterHit"
 value = 1
