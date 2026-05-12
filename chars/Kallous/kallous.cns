@@ -129,7 +129,7 @@ type    = A
 physics = A
 anim = 100
 sprpriority = 1
-ctrl = 1
+ctrl = 0
 
 [State -2, AirDash Lockout]
 type = mapset
@@ -157,6 +157,11 @@ flag = NoWalk
 type = AssertSpecial
 trigger1 = 1
 flag = NoAutoTurn
+
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = time = 5
+value = 1
 
 [State 100, 4]
 type = ChangeState
