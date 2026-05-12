@@ -145,7 +145,7 @@ y = -15
 [State 100, 1]
 type = VelSet
 trigger1 = command = "holdfwd"
-x = 3.6
+x = 5
 y = -1.5
 
 [State 100, 2] ;Prevent run from canceling into walk
@@ -160,12 +160,12 @@ flag = NoAutoTurn
 
 [State 0, CtrlSet]
 type = CtrlSet
-trigger1 = time = 5
+trigger1 = time = 6
 value = 1
 
 [State 100, 4]
 type = ChangeState
-triggerall = time > 6
+triggerall = time > 5
 trigger1 = command != "holdfwd" || time > 30
 value = 102
 
