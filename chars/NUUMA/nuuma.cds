@@ -184,7 +184,7 @@ trigger2 = var(1)
 ;632146C
 [State -1, 632146C]
 type = ChangeState
-value = 2000
+value = 3000
 triggerall = power>=500
 triggerall = command = "6246D"
 triggerall = statetype != A
@@ -196,7 +196,7 @@ trigger5 = stateno=[1000,2000] && movecontact
 ;632146C
 [State -1, 632146C]
 type = ChangeState
-value = 2002
+value = 3002
 triggerall = power>=500
 triggerall = command = "6246D"
 triggerall = statetype = A

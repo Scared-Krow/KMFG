@@ -41,7 +41,7 @@ type    = A
 movetype= I
 physics = N
 anim = 1051
-velset = vel x*.2,vel y*.2
+velset = 0,0
 poweradd = 0
 ctrl = 0
 
@@ -295,7 +295,7 @@ type    = A
 movetype= I
 physics = N
 anim = 1051
-velset = vel x*.2,vel y*.2
+velset = 0,0
 poweradd = 0
 ctrl = 0
 
@@ -622,7 +622,7 @@ type    = A
 movetype= I
 physics = N
 anim = 1050
-velset = vel x*.2,vel y*.2
+velset = 0,0
 poweradd = 0
 ctrl = 0
 
@@ -930,7 +930,7 @@ type    = A
 movetype= I
 physics = N
 anim = 1050
-velset = vel x*.2,vel y*.2
+velset = 0,0
 poweradd = 0
 ctrl = 0
 

@@ -864,6 +864,17 @@ Clsn2Default: 1
 
 ; [4]6 Proj
 [Begin Action 1501]
+Clsn1Default: 1
+  Clsn1[0] = -6, -5, 6, 6
+
+1501,0, 0,0, 7, H
+1501,1, 0,0, 7, H
+1501,2, 0,0, 7, H
+
+; [4]6 Proj
+[Begin Action 1501]
+Clsn1Default: 1
+  Clsn1[0] = -6, -5, 6, 6
 
 1501,0, 0,0, 7, H
 1501,1, 0,0, 7, H

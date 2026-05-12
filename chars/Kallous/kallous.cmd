@@ -236,6 +236,7 @@ trigger1 = ctrl
 [State -1, Run Fwd]
 type = ChangeState
 value = 160
+triggerall = Map(ADLockout)=0
 triggerall = Map(DJ)>0
 triggerall = vel y > 0 || pos y < -40
 triggerall = command = "FADash"

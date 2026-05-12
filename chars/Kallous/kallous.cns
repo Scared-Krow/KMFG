@@ -123,18 +123,30 @@ trigger1 = Anim != 21 && Anim != 5
 trigger2 = Anim = 5 && AnimTime = 0
 value = 21
 ;---------------------------------------------------------------------------
-; Run forward
+; HoverDash
 [Statedef 100]
-type    = S
-physics = S
+type    = A
+physics = A
 anim = 100
 sprpriority = 1
 ctrl = 1
 
+[State -2, AirDash Lockout]
+type = mapset
+trigger1 = time = 0
+value = 10
+map = "ADLock"
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time = 0
+y = -15
+
 [State 100, 1]
 type = VelSet
-trigger1 = 1
-x = const(velocity.run.fwd.x)
+trigger1 = command = "holdfwd"
+x = 3.6
+y = -1.5
 
 [State 100, 2] ;Prevent run from canceling into walk
 type = AssertSpecial
@@ -148,13 +160,24 @@ flag = NoAutoTurn
 
 [State 100, 4]
 type = ChangeState
-trigger1 = command != "holdfwd"
-value = 101
+triggerall = time > 6
+trigger1 = command != "holdfwd" || time > 30
+value = 102
 
-[State 100, 4]
-type = ChangeState
-trigger1 = command = "up"
-value = 40
+;---------------------------------------------------------------------------
+;Post Hoverdash
+[Statedef 102]
+type    = A
+physics = A
+anim = 41
+sprpriority = 1
+ctrl = 1
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = time = 0
+x = .7
+y = .7
 ;---------------------------------------------------------------------------
 ; Back Dash
 [Statedef 105]
@@ -452,11 +475,12 @@ ctrl = 1
 ; CHARACTER SPECIFIC
 ;---------------------------------------------------------------------------
 
-[State -2, Install Timer]
+
+[State -2, AirDash Lockout]
 type = mapadd
-trigger1 = Map(BUCKX2)>0
+trigger1 = Map(ADLock)>0
 value = -1
-map = "BUCKX2"
+map = "ADLock"
 
 [State 0, Explod]
 type = Explod

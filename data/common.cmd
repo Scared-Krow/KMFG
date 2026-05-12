@@ -289,7 +289,7 @@ buffer.time = 8
 name = "FADash"     
 command = ~$F, >F
 time = 8
-buffer.time = 8
+buffer.time = 6
 
 [Command]
 name = "BB"     

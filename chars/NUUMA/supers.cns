@@ -1,6 +1,6 @@
 ;---------------------------------------------------------------------------
 ;Placeholder Super
-[Statedef 2000]
+[Statedef 3000]
 type    = S
 movetype= A
 physics = S
@@ -140,7 +140,7 @@ trigger1 = BackEdgeBodyDist < 0 || FrontEdgeBodyDist < 0
 
 ;---------------------------------------------------------------------------
 ;Placeholder Super Air
-[Statedef 2002]
+[Statedef 3002]
 type    = A
 movetype= A
 physics = A

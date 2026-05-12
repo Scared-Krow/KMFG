@@ -885,7 +885,7 @@ type = ChangeState
 value = 1402
 triggerall = enemy, stateno != [5110,5120]
 triggerall = enemy, pos y >= -70
-trigger1 = p2dist x <= 15
+trigger1 = ClsnOverlap(clsn1, enemynear,ID, clsn2)
 
 [State 0, DestroySelf]
 type = ChangeState
