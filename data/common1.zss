@@ -558,6 +558,12 @@ call GetHitKnockedBack(5025, 11);
 # Air get-hit (shaking)
 [StateDef 5020; type: A; movetype: H; physics: N; velset: 0, 0; sprPriority: 0;]
 
+if time = 0 && prevStateNo=[5430,5431] {
+	ignoreHitPause{
+		posAdd{y:25}
+	}
+}
+
 changeAnim{value: 5030}
 
 call GetHitShaking(ifElse(getHitVar(airType) = 1, 5000, 5010));
@@ -569,6 +575,7 @@ if hitShakeOver {
 #-------------------------------------------------------------------------------
 # Air get-hit (knocked away)
 [StateDef 5030; type: A; movetype: H; physics: N; ctrl: 0; sprPriority: 0;]
+
 
 if anim != [5000, 5199] && selfAnimExist(5030) {
 	changeAnim{value: 5030}
@@ -1075,6 +1082,10 @@ if p2dist x < 0 {
 # Wall Bounce (shake)
 [StateDef 5400; type: A; movetype: H; physics: N; velset: 0,0;]
 
+if facing = enemy,facing {
+	turn{}
+}
+
 changeAnim2{value:5400}
 
 if hitShakeOver {
@@ -1215,6 +1226,41 @@ changeAnim{value:5101; elem:1;}
 posSet {y:0;}
 
 if time > getHitVar(hittime) { selfState {value: 5100} }
+
+#-------------------------------------------------------------------------------
+# Flipping (shake)
+[StateDef 5430; type: A; movetype: H; physics: N;]
+
+changeAnim2{value:5030}
+
+velSet {x:0;y:0;}
+
+if hitShakeOver {
+	selfState{value: 5431}
+}
+	forceFeedback{time: 6; waveform: square}
+
+#-------------------------------------------------------------------------------
+# Flipping (fly)
+[StateDef 5431; type: A; movetype: H; physics: N;]
+
+changeAnim2{value:5430}
+
+ScreenBound{movecamera:1}
+
+AngleDraw{}
+if time%2=0 {AngleAdd{value:45}}
+
+if alive && gethitvar(hittime) = -1 {
+		changeState{value: 5210}
+}
+
+if time = 0 { hitVelSet {x:1;y:1;} }
+
+velAdd {y: .39}
+
+if vel y > 0 && pos y >= 0 { selfState {value: 5100} }
+
 
 #-------------------------------------------------------------------------------
 # Continue screen animation

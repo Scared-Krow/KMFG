@@ -145,8 +145,6 @@ command.time = 16
 ; maximum 30.
 command.buffer.time = 3
 
-
-
 ;---------------------------------------------------------------------------
 ; 2. State entry
 ; --------------
@@ -236,7 +234,7 @@ trigger1 = ctrl
 [State -1, Run Fwd]
 type = ChangeState
 value = 160
-triggerall = Map(ADLockout)=0
+triggerall = Map(ADLock)=0
 triggerall = Map(DJ)>0
 triggerall = vel y > 0 || pos y < -40
 triggerall = command = "FADash"

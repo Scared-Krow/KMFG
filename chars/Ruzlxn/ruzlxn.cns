@@ -1,5 +1,5 @@
 [Data]
-life = 950
+life = 1050
 attack = 100
 defence = 100
 liedown.time = 20
@@ -11,47 +11,47 @@ FloatPersistIndex = 40
 power = 1000
 fall.defence_up = 0
 
+
 [Size]
 xscale = 1.3   
 yscale = 1.3  
-ground.back = 12
-ground.front = 0
+ground.back = 12 
+ground.front = 16    
 air.back = 12     
 air.front = 18
 height = 45
-attack.dist = 0    
+attack.dist = 0
 proj.attack.dist = 0 
 proj.doscale = 0     
 head.pos = -5, -90   
 mid.pos = -5, -60    
 shadowoffset = 0     
 draw.offset = 0,1
-attack.dist = 0
 
 
 [Velocity]
-walk.fwd  = 1.5
-walk.back = -1.3   
-run.fwd  = 4.5, 0    
+walk.fwd  = 1.45
+walk.back = -1.3    
+run.fwd  = 4.25, 0    
 run.back = -4.5,-3.8 
 jump.neu = 0,-8.5
 jump.back = -2.55    
 jump.fwd = 2.5       
 runjump.back = -2.55,-8.1 
 runjump.fwd = 4,-8.1      
-airjump.neu = 0,-5.25      
-airjump.back = -2.75      
-airjump.fwd = 2.75         
+airjump.neu = 0,-6   
+airjump.back = -3     
+airjump.fwd = 3         
 air.gethit.groundrecover = -.15,-3.5  
-air.gethit.airrecover.mul = .2,.2     
-air.gethit.airrecover.add = 0,-4.5   
+air.gethit.airrecover.mul = .5,.2     
+air.gethit.airrecover.add = 0,-4.5    
 air.gethit.airrecover.back = -1       
 air.gethit.airrecover.fwd = 0         
 air.gethit.airrecover.up = -2         
 air.gethit.airrecover.down = 1.5      
 
 [Movement]
-airjump.num = 0     
+airjump.num = 0    
 airjump.height = 100  
 yaccel = .45        
 stand.friction = .875
@@ -122,67 +122,51 @@ triggerall = vel x < 0
 trigger1 = Anim != 21 && Anim != 5
 trigger2 = Anim = 5 && AnimTime = 0
 value = 21
+
 ;---------------------------------------------------------------------------
-; HoverDash
+; Step Dash
 [Statedef 100]
 type    = A
 physics = A
 anim = 100
-sprpriority = 1
+sprpriority = -7
 ctrl = 0
-
-[State -2, AirDash Lockout]
-type = mapset
-trigger1 = time = 0
-value = 10
-map = "ADLock"
-
-[State 0, PosAdd]
-type = PosAdd
-trigger1 = time = 0
-y = -15
 
 [State 100, 1]
 type = VelSet
-trigger1 = command = "holdfwd"
-x = 5
-y = -1.5
+trigger1 = time = 0
+x = 9.75
+y = -3.5
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+edge = -16,-16
+player = 0,-15
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = time > 5
+x = .9
+y = .9
+
 
 [State 100, 2] ;Prevent run from canceling into walk
 type = AssertSpecial
 trigger1 = 1
 flag = NoWalk
+flag2 = NoCrouch
 
 [State 100, 3] ;Prevent from turning
 type = AssertSpecial
 trigger1 = 1
 flag = NoAutoTurn
 
-[State 0, CtrlSet]
-type = CtrlSet
-trigger1 = time = 6
-value = 1
-
-[State 100, 4]
-type = ChangeState
-triggerall = time > 5
-trigger1 = command != "holdfwd" || time > 30
-value = 102
-
-;---------------------------------------------------------------------------
-;Post Hoverdash
-[Statedef 102]
-type    = A
-physics = A
-anim = 41
-sprpriority = 1
-ctrl = 1
-
-[State 0, VelMul]
-type = VelMul
-trigger1 = time = 0
-x = .7
-y = .7
 ;---------------------------------------------------------------------------
 ; Back Dash
 [Statedef 105]
@@ -217,7 +201,7 @@ flag = nowalk
 
 [State 0, VelAdd]
 type = VelSet
-trigger1 = time > 1 && time < 7
+trigger1 = animelem = 1
 x = -6
 
 [State 0, ChangeState]
@@ -264,7 +248,7 @@ map = "DJ"
 [State 0, VelSet]
 type = VelSet
 trigger1 = 1
-x = 5.1
+x = 3.5
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -275,13 +259,13 @@ physics = A         ;A,C,S,N
 
 [State 0, VelMul]
 type = VelMul
-trigger1 = time > 11
+trigger1 = time > 16
 x = .95
 
 [State -2, AirDash Physics]
 type = mapset
 trigger1 = time = 0
-value = 26
+value = 16
 map = "ADPhysics"
 [State -2, AirDash Physics]
 type = mapset
@@ -317,24 +301,24 @@ map = "DJ"
 [State 0, VelSet]
 type = VelSet
 trigger1 = 1
-x = -5.1
+x = -3.5
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = time = 15
+trigger1 = time = 16
 statetype = A       ;S,A,C,L
 movetype = I        ;I,A,H
 physics = A         ;A,C,S,N
 
 [State 0, VelMul]
 type = VelMul
-trigger1 = time > 15
+trigger1 = time > 16
 x = .98
 
 [State -2, AirDash Physics]
 type = mapset
 trigger1 = time = 0
-value = 26
+value = 16
 map = "ADPhysics"
 [State -2, AirDash Physics]
 type = mapset
@@ -469,6 +453,21 @@ ctrl = 1
 ;---------------------------------------------------------------------------
 ; States that are always executed (use statedef -2)
 ;---------------------------------------------------------------------------
+[Statedef -2]
+
+[State 0, Helper]
+type = Helper
+triggerall = numhelper(1201)<1
+trigger1 = Map(Rage)=1
+helpertype = Normal ;Player
+name = "Rage"
+ID = 1201
+stateno = 1201
+pos = 0,0
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 1
 
 
 ;---------------------------------------------------------------------------
@@ -480,115 +479,8 @@ ctrl = 1
 ; CHARACTER SPECIFIC
 ;---------------------------------------------------------------------------
 
-[State 0, AppendToClipboard]
-type = AppendToClipboard
-trigger1 = 1
-text = "Map(ADLock) = %d"
-params = Map(ADLock)
-
-[State -2, AirDash Lockout]
-type = mapadd
-trigger1 = Map(ADLock)>0
-value = -1
-map = "ADLock"
-
-[State 0, Explod]
-type = Explod
-triggerall = teamside = 1
-trigger1 = Map(BUCKX2)>0 && numexplod(3100)<=0
-anim = 2001
-ID = 3101
-pos = 15,158
-postype = left  ;P2, Front, Back, Left, Right
-facing = 1
-vfacing = 1
-bindtime = 1
-removetime = -1
-supermovetime = 9999999
-pausemovetime = 999999
-scale = 1,1
-sprpriority = -6
-ontop = 0
-ownpal = 1
-removeongethit = 0
-[State 0, Explod]
-type = Explod
-triggerall = teamside = 2
-trigger1 = Map(BUCKX2)>0 && numexplod(3100)<=0
-anim = 2001
-ID = 3101
-pos = -15,158
-postype = right ;P2, Front, Back, Left, Right
-facing = -1
-vfacing = 1
-bindtime = 1
-removetime = -1
-supermovetime = 9999999
-pausemovetime = 999999
-scale = 1,1
-sprpriority = -6
-ontop = 0
-ownpal = 1
-removeongethit = 0
 
 
-
-[State 0, Explod]
-type = Explod
-triggerall = teamside = 1
-trigger1 = Map(BUCKX2)>0 && numexplod(3100)<=0
-anim = 2000
-ID = 3100
-pos = 15,158
-postype = left  ;P2, Front, Back, Left, Right
-facing = 1
-vfacing = 1
-bindtime = 1
-removetime = -1
-supermovetime = 9999999
-pausemovetime = 999999
-scale = 1,1
-sprpriority = -7
-ontop = 0
-ownpal = 1
-removeongethit = 0
-
-[State 0, ModifyExplod]
-type = ModifyExplod
-triggerall = teamside = 1
-trigger1 = numexplod(3100)>=1
-ID = 3100
-window = -20, 5, 20, -Map(AMP)
-
-[State 0, Explod]
-type = Explod
-triggerall = teamside = 2
-trigger1 = Map(BUCKX2)>0 && numexplod(3100)<=0
-anim = 2000
-ID = 3100
-pos = -15,158
-postype = right ;P2, Front, Back, Left, Right
-facing = -1
-vfacing = 1
-bindtime = 1
-removetime = -1
-supermovetime = 9999999
-pausemovetime = 999999
-scale = 1,1
-sprpriority = -7
-ontop = 0
-ownpal = 1
-removeongethit = 0
-
-
-[State 0, RemoveExplod]
-type = RemoveExplod
-trigger1 = Map(BUCKX2)=0
-id = 3100
-[State 0, RemoveExplod]
-type = RemoveExplod
-trigger1 = Map(BUCKX2)=0
-id = 3101
 ;---------------------------------------------------------------------------
 ; UNIVERSAL
 ;---------------------------------------------------------------------------
@@ -617,7 +509,7 @@ map = "DJCount"
 
 [State -2, AirDash Physics]
 type = mapadd
-trigger1 = movetype = H || statetype != A
+trigger1 = movetype = H || statetype != A || stateno = [40,50]
 value = 0
 map = "ADPhysics"
 [State -2, AirDash Physics]
@@ -627,7 +519,7 @@ value = -1
 map = "ADPhysics"
 [State -2, AirDash Physics]
 type = mapset
-trigger1 = statetype != A
+trigger1 = statetype != A || stateno = [45,50]
 value = 0
 map = "AirDashing"
 
