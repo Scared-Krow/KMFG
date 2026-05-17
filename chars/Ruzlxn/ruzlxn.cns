@@ -472,6 +472,8 @@ ownpal = 1
 [State -2, Rage Remove]
 type = mapset
 trigger1 = movetype = H && prevstateno = [1000,2000]
+trigger2 = enemy,movehit && enemy,HitDefAttr = SCA,NT,ST,HT
+trigger3 = roundstate = [0,1]
 value = 0
 map = "Rage"
 ignorehitpause = 1
