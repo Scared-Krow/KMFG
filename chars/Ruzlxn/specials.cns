@@ -676,3 +676,229 @@ pos = -20,-90
 [State 0, DestroySelf]
 type = DestroySelf
 trigger1 = root,Map(Rage)=0
+
+;---------------------------------------------------------------------------
+;623A
+[Statedef 1300]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+velset = vel x * .8
+sprpriority = 3
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 2
+trigger2 = animelem = 3
+trigger3 = animelem = 5
+trigger4 = animelem = 6
+x = 2
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = !time
+fv = 9
+value = StateNo
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = anim!=1300
+value = 1300
+
+;This varset is used to count if armor has been used during this state, you can technically use an 
+;explod to count this but i believe we already have an armor variable counting how many times armor is used
+[State 0, VarSet]
+type = VarSet
+trigger1 = animelem = 1
+v = 46
+value = 0
+;This hitoverride actually declares where to go with the actual state,
+;you don't want to use the time state because it'll reset every time you go back to armor
+[State 0, HitOverride]
+type = HitOverride
+triggerall = Map(Rage)=1
+trigger1 = Animelemno(0) = 2
+trigger1 = var(46) < 99
+attr = SCA,NA,SA,NP,SP,HP,HA
+slot = 2
+stateno = 666999 
+time = 1
+forceair = 0
+
+[State -3, Lv1 Shadows]
+type = afterimage
+trigger1 = Map(Rage)=1 && time = 0
+time = 30
+length = 6
+framegap = 2
+timegap = 2
+paladd = 250, 0, 0
+palmul = 1, 1,1
+palcontrast = 200, 0, 25
+palbright = 200, 0 , 25
+trans = add1
+
+[State 800, 1]
+type = HitDef
+Trigger1 = P2BodyDist X = [-8,24]
+attr = S, ST          ;Attributes: Standing, Normal Throw
+hitflag = M-          ;Affect only ground people who are not being hit
+priority = 1, Miss    ;Throw has low priority, must be miss or dodge type.
+sparkno = -1          ;No spark
+p1sprpriority = 1     ;Draw p1's sprite in front of p2
+p1facing = 1
+p2facing = 1          ;Force p2 to face KFM
+p1stateno = 1301
+p2stateno = 1302
+guard.dist = 0        ;This prevents p2 from going into a guard state if close
+numhits = 0
+fall = 0
+ground.hittime  = 88
+
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = animelem = 4
+value = 0
+map = "Rage"
+ignorehitpause = 1
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+
+;-----------------------------------------------------------
+;623A>Followup
+[Statedef 1301]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+anim = 1301
+velset = 0,0
+sprpriority = 4
+facep2 = 1
+
+[State 0, AfterImageTime]
+type = AfterImageTime
+trigger1 = time = 0
+time = 35
+
+[State 810, Bind 1]
+type = TargetBind
+trigger1 = AnimElem = 1
+time = 9999
+pos = 35, 0
+
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount=1
+value = Map(DamageScaling)*.6
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,statetype = A && enemy,movetype = H
+trigger1 = movehit
+value = Map(HitstunScaling)+2
+map = "HitstunScaling"
+ignorehitpause = 1
+persistent = 0
+
+[State 210, 2]
+type = HitDef
+trigger1 = !MoveContact && !MoveReversed
+attr = S, ST
+animtype  = Medium
+damage = 100+cond(Map(Rage)=1,50,0)
+guardflag = MA
+pausetime = 13,13
+priority = 4, Hit 
+sparkno = 1
+sparkxy = -12,-50
+hitsound   = 9,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -4
+air.hittime = ceil(cond(30-Map(HitstunScaling) < 18, 18, 30-Map(HitstunScaling)))
+air.velocity = -5.2,-2.5
+fall = 0
+guard.ctrltime = 11
+guard.hittime = 11
+fall.yvelocity = 0
+p2facing = 1
+ground.cornerpush.veloff = -4-(Map(PushBack))
+air.cornerpush.veloff = -4
+envshake.time = 6
+envshake.freq = 10
+envshake.phase = 80
+envshake.ampl = 3
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem = 6
+statetype = S       
+movetype = I        
+physics = S  
+
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movecontact
+value = 0
+map = "Rage"
+ignorehitpause = 1
+
+[State 210, 4]
+type = SprPriority
+trigger1 = AnimElem = 5
+value = 2
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;-----------------------------
+;Grabbed p2 state
+[Statedef 1302]
+type    = S
+movetype= H
+physics = N
+juggle  = 0
+poweradd= 0
+ctrl = 0
+velset = 0,0
+sprpriority = 2
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AT
+time = 1
+
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+edge = 0,0
+player = 0,0 
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = 1
+value = 5017
+elem = 1
+
+[State 0, ChangeState]
+type = SelfState
+trigger1 = time = 90
+value = 0 
+ctrl = 1

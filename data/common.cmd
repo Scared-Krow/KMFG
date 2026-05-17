@@ -123,11 +123,7 @@ command = w
 time = 1
 buffer.time = 1
 
-[Command]
-name = "2Buttons"
-command = x + a
-time = 1
-buffer.time = 1
+
 [Command]
 name = "2Buttons"
 command = x + y
