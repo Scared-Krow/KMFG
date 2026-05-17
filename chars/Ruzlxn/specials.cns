@@ -7,7 +7,10 @@ physics = S
 ctrl = 0
 velset = vel x * .8
 sprpriority = 3
-facep2 = 1
+
+[State 0, Turn]
+type = Turn
+trigger1 = animelem = 1 && facing = enemy,facing
 
 [State -2, Fatal Counter]
 type = mapset
@@ -49,7 +52,7 @@ value = 0
 [State 0, HitOverride]
 type = HitOverride
 triggerall = Map(Rage)=1
-trigger1 = Animelemno(0) = [1,5]
+trigger1 = Animelemno(0) = [2,4]
 trigger1 = var(46) < 99
 attr = SCA,NA,SA,NP,SP,HP,HA
 slot = 2
@@ -119,6 +122,7 @@ air.velocity = -2,20
 air.hittime = 60
 fall = 1
 fall.yvelocity = cond(Map(GroundBounce)=0,-6.2,0)
+down.hittime = 90
 guard.ctrltime = 20
 guard.hittime = 20
 envshake.time = 12
@@ -187,7 +191,11 @@ physics = S
 ctrl = 0
 velset = vel x * .8
 sprpriority = 3
-facep2 = 1
+
+[State 0, Turn]
+type = Turn
+trigger1 = animelem = 1 && facing = enemy,facing
+
 
 [State -2, Fatal Counter]
 type = mapset
@@ -228,7 +236,7 @@ value = 0
 [State 0, HitOverride]
 type = HitOverride
 triggerall = Map(Rage)=1
-trigger1 = Animelemno(0) = [1,5]
+trigger1 = Animelemno(0) = [2,4]
 trigger1 = var(46) < 99
 attr = SCA,NA,SA,NP,SP,HP,HA
 slot = 2
@@ -279,7 +287,7 @@ attr = C,SA                     ;Attribute: Standing, Normal Attack
 damage = ceil(cond(75*Map(DamageScaling) < 10, 10, 75*Map(DamageScaling)))+cond(Map(Rage)=1,25,0),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = LA                   ;Flags on how move is to be guarded against
-hitflag = MAFD                    ;Flags of conditions that move can hit
+hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 6, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 12,12               ;Time attacker pauses, time opponent shakes
 sparkno = 2                   ;Spark anim no (Def: set above)
@@ -295,7 +303,9 @@ guard.slidetime = 12
 airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
 air.velocity = .1+(p2dist x)/50,-7
-air.hittime = 60
+air.hittime = ceil(cond(50-Map(HitstunScaling) < 25, 25, 50-Map(HitstunScaling)))
+down.velocity = .1+(p2dist x)/50,-8
+down.hittime = ceil(cond(50-Map(HitstunScaling) < 25, 25, 50-Map(HitstunScaling)))
 fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 25
@@ -310,7 +320,7 @@ id = 5430
 
 [State 0, TargetState]
 type = TargetState
-triggerall = enemy,statetype = A && NumTarget(5430)
+triggerall = (enemy,statetype = A || enemy,statetype = L) && NumTarget(5430)
 trigger1 = movehit=1
 value = 5430
 ID = 5430
@@ -412,14 +422,27 @@ trans = add1
 
 [State -2, SlamDmg]
 type = mapset
-trigger1 = time = 0
+trigger1 = animelem = 1
 value = 0
 map = "Slam"
+ignorehitpause = 1
+[State -2, SlamDmg]
+type = mapset
+trigger1 = animelem = 1
+value = 0
+map = "SlamTime"
+ignorehitpause = 1
 
 [State -2, SlamDmg]
 type = mapadd
 trigger1 = time%5=0
 value = 1
+map = "SlamTime"
+
+[State -2, SlamDmg]
+type = mapset
+trigger1 = 1
+value = Map(SlamTime)
 map = "Slam"
 
 [State 0, VelSet]
@@ -543,7 +566,7 @@ airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
 air.velocity = -3,-6
 air.hittime = ceil(cond(35-Map(HitstunScaling) < 20, 20, 35-Map(HitstunScaling)))
-down.velocity = -3,-5
+down.velocity = -3,-6
 down.hittime = 25
 forcenofall = 1
 fall.yvelocity = 0
@@ -555,6 +578,8 @@ envshake.phase = 100
 envshake.ampl = 2
 ground.cornerpush.veloff = -2
 air.cornerpush.veloff = -2
+
+
 
 [State 0, EnvShake]
 type = EnvShake
@@ -633,6 +658,11 @@ type = AssertSpecial
 trigger1 = 1
 flag = NoShadow
 
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = 0
+scale = sin(time*.08),sin(time*.08)
 
 
 [State 0, BindToRoot]

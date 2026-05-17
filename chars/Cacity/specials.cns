@@ -1190,7 +1190,7 @@ time = 15
 type = PlaySnd
 trigger1 = animelem = 4
 value = 1400, 0
-volumescale = 85
+volumescale = 45
 freqmul = .9+(random%10)*.025
 ignorehitpause = 1
 

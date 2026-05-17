@@ -1249,7 +1249,9 @@ changeAnim2{value:5430}
 ScreenBound{movecamera:1}
 
 AngleDraw{}
-if time%2=0 {AngleAdd{value:45}}
+if time%3=0 {AngleAdd{value:45}}
+
+Height{value: -20, 20}
 
 if alive && gethitvar(hittime) = -1 {
 		changeState{value: 5210}
@@ -1259,7 +1261,7 @@ if time = 0 { hitVelSet {x:1;y:1;} }
 
 velAdd {y: .39}
 
-if vel y > 0 && pos y >= 0 { selfState {value: 5100} }
+if vel y > 0 && pos y >= -5 { selfState {value: 5100} }
 
 
 #-------------------------------------------------------------------------------

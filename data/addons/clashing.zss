@@ -95,7 +95,7 @@ ignorehitpause if !ishelper {
 			# Collision detection
 			# Using ClsnOverlap will not account for the velocity of the second player that is processed
 			# To get around it, one should run the code from a third entity that is processed last, such as a helper
-			if clsnoverlap(clsn1, p2, ID, clsn1)
+			if clsnoverlap(clsn1, p2, ID, clsn1) && (prevstateno != 666999 && enemy, prevstateno != 666999)
 			&& cond(map(_pots_clashing_cfg_clsn2check), clsnoverlap(clsn1, p2, ID, clsn2) = 0 && p2, clsnoverlap(clsn1, ID, clsn2) = 0, 1) {
 
 				# Disable Hitdefs
