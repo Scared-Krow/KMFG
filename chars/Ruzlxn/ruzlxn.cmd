@@ -225,7 +225,7 @@ triggerall = command = "FF"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
-trigger3 = stateno = [1000,1999] && movecontact
+trigger3 = stateno = [1000,1999] && movehit
 ;---------------------------------------------------------------------------
 ;Run Back
 [State -1, Run Back]
