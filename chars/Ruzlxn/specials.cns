@@ -741,7 +741,7 @@ trans = add1
 
 [State 800, 1]
 type = HitDef
-Trigger1 = P2BodyDist X = [-8,24]
+Trigger1 = P2BodyDist X = [-8,32]
 attr = S, ST          ;Attributes: Standing, Normal Throw
 hitflag = M-          ;Affect only ground people who are not being hit
 priority = 1, Miss    ;Throw has low priority, must be miss or dodge type.
@@ -815,7 +815,7 @@ type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, ST
 animtype  = Medium
-damage = 100+cond(Map(Rage)=1,50,0)
+damage = 125+cond(Map(Rage)=1,50,0)
 guardflag = MA
 pausetime = 13,13
 priority = 4, Hit 

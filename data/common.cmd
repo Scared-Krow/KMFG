@@ -390,91 +390,100 @@ buffer.time = 5
 
 [Command]
 name = "214A"
-command = ~D, B,  x
-buffer.shared = 1
+command = D, B,  x
+buffer.shared = 0
 
 [Command]
 name = "214B"
-command = ~D, B,  a
-buffer.shared = 1
+command = D, B,  a
+buffer.shared = 0
 
 [Command]
 name = "214C"
-command = ~D, B,  y
-buffer.shared = 1
+command = D, B,  y
+buffer.shared = 0
 
 [Command]
 name = "214D"
-command = ~D, B,  b
-buffer.shared = 1
+command = D, B,  b
+buffer.shared = 0
 
 [Command]
 name = "236A"
-command = ~D, F,  x
-buffer.shared = 1
+command = D, F,  x
+buffer.shared = 0
 
 [Command]
 name = "236B"
-command = ~D, F, a
-buffer.shared = 1
+command = D, F, a
+buffer.shared = 0
 
 [Command]
 name = "236C"
-command = ~D, F,  y
-buffer.shared = 1
+command = D, F, y
+buffer.shared = 0
+
 
 [Command]
 name = "236D"
-command = ~D, F,  b
-buffer.shared = 1
+command = D, F,  b
+buffer.shared = 0
 
 [Command]
 name = "623A"
 command = F, D, $F,  x
 time = 18
 buffer.time = 3
+buffer.shared = 0
 
 [Command]
 name = "623B"
 command = F, D, $F,  a
 time = 18
 buffer.time = 3
+buffer.shared = 0
 
 [Command]
 name = "623C"
 command = F, D, $F,  y
 time = 18
 buffer.time = 3
+buffer.shared = 0
 
 [Command]
 name = "623D"
 command = F, D, $F,  b
 time = 18
 buffer.time = 3
+buffer.shared = 0
 
 [Command]
 name = "623A"
 command = F, D, $F+x
 time = 15
 buffer.time = 3
+buffer.shared = 0
 
 [Command]
 name = "623B"
 command = F, D, $F+a
 time = 15
 buffer.time = 3
+buffer.shared = 0
 
 [Command]
 name = "623C"
 command = F, D, $F+y
 time = 15
 buffer.time = 3
+buffer.shared = 0
 
 [Command]
 name = "623D"
 command = F, D, $F+b
 time = 15
 buffer.time = 3
+buffer.shared = 0
 
 [Command]
 name = "421A"
@@ -527,117 +536,130 @@ command = ~F, D, B,  b
 [Command]
 name = "22A"    
 command = ~D, D, x
-time = 10
-buffer.time = 1
-
+time = 12
+buffer.shared = 0
 
 [Command]
 name = "22B"    
 command = ~D, D, a
-time = 10
-buffer.time = 1
+time = 12
+buffer.shared = 0
 
 [Command]
 name = "22C"    
 command = ~D, D, y
-time = 10
-buffer.time = 1
-
+time = 12
+buffer.shared = 0
 
 [Command]
 name = "22D"    
 command = ~D, D, b
-time = 10
-buffer.time = 1
-
+time = 12
+buffer.shared = 0
 
 [Command]
 name = "46A"    
 command = ~25$B, $F, x
 time = 10
+buffer.shared = 0
 
 [Command]
 name = "46B"    
 command = ~25$B, $F, a
 time = 10
+buffer.shared = 0
 
 [Command]
 name = "46C"    
 command = ~25$B, $F, y
 time = 10
+buffer.shared = 0
 
 [Command]
 name = "46D"    
 command = ~25$B, $F, b
 time = 10
+buffer.shared = 0
 
 [Command]
 name = "46A"    
 command = ~25$B, $F, ~x
 time = 10
+buffer.shared = 0
 
 [Command]
 name = "46B"    
 command = ~25$B, $F, ~a
 time = 10
+buffer.shared = 0
 
 [Command]
 name = "46C"    
 command = ~25$B, $F, ~y
 time = 10
+buffer.shared = 0
 
 [Command]
 name = "46D"    
 command = ~25$B, $F, ~b
 time = 10
+buffer.shared = 0
 
 [Command]
 name = "28A"    
 command = ~25$D, $U, x
 time = 15
 buffer.time = 5
+buffer.shared = 0
 
 [Command]
 name = "28B"    
 command = ~25$D, $U, a
 time = 15
 buffer.time = 5
+buffer.shared = 0
 
 [Command]
 name = "28C"    
 command = ~25$D, $U, y
 time = 15
 buffer.time = 5
+buffer.shared = 0
 
 [Command]
 name = "28D"    
 command = ~25$D, $U, b
 time = 15
 buffer.time = 5
+buffer.shared = 0
 
 [Command]
 name = "28A"    
 command = ~25$D, $U, ~x
 time = 15
 buffer.time = 5
+buffer.shared = 0
 
 [Command]
 name = "28B"    
 command = ~25$D, $U, ~a
 time = 20
 buffer.time = 5
+buffer.shared = 0
 
 [Command]
 name = "28C"    
 command = ~25$D, $U, ~y
 time = 20
 buffer.time = 5
+buffer.shared = 0
 
 [Command]
 name = "28D"    
 command = ~25$D, $U, ~b
 time = 20
 buffer.time = 5
+buffer.shared = 0
 
 ;-CACITY EX INPUTS-
 
@@ -646,71 +668,83 @@ name = "EX28A"
 command = ~25$D, $U, x + a 
 time = 20
 buffer.time = 5
+buffer.shared = 0
 [Command]
 name = "EX28A"    
 command = ~25$D, $U, x + b
 time = 20
 buffer.time = 5
+buffer.shared = 0
 
 [Command]
 name = "EX28C"    
 command = ~25$D, $U, y + a 
 time = 15
 buffer.time = 5
+buffer.shared = 0
 [Command]
 name = "EX28C"    
 command = ~25$D, $U, y + b
 time = 15
 buffer.time = 5
+buffer.shared = 0
 
 [Command]
 name = "EX82C"    
 command = ~20$U, $D, y + a 
 time = 15
 buffer.time = 5
+buffer.shared = 0
 [Command]
 name = "EX82C"    
 command = ~20$U, $D, y + x
 time = 15
 buffer.time = 5
+buffer.shared = 0
 [Command]
 name = "EX82C"    
 command = ~20$U, $D, y + b
 time = 15
 buffer.time = 5
+buffer.shared = 0
 
 [Command]
 name = "82C"    
 command = ~20$U, $D, y
 time = 15
 buffer.time = 5
+buffer.shared = 0
 
 [Command]
 name = "EX236B"
 command = ~D, F, a + x
-buffer.shared = 1
+buffer.shared = 0
 [Command]
 name = "EX236B"
 command = ~D, F, a + b
-buffer.shared = 1
+buffer.shared = 0
 [Command]
 name = "EX236B"
 command = ~D, F, a + y
-buffer.shared = 1
+buffer.shared = 0
+
 
 [Command]
 name = "EX46D"    
 command = ~25$B, $F, b + a 
 time = 10
 buffer.time = 5
+buffer.shared = 0
 [Command]
 name = "EX46D"    
 command = ~25$B, $F, b + x
 time = 10
 buffer.time = 5
+buffer.shared = 0
 [Command]
 name = "EX46D"    
 command = ~25$B, $F, b + y
 time = 10
 buffer.time = 5
+buffer.shared = 0
 

@@ -146,7 +146,6 @@ command.time = 16
 command.buffer.time = 3
 
 
-
 ;---------------------------------------------------------------------------
 ; 2. State entry
 ; --------------
@@ -412,7 +411,7 @@ trigger2 = var(1)
 [State -1, 6K]
 type = ChangeState
 value = 700
-triggerall = command = "holdfwd" && command != "holddown" &&(command = "c" || (command = "y" && command = "b"))
+triggerall = command = "holdfwd" && (command = "c" || (command = "y" && command = "b"))
 triggerall = statetype != A
 triggerall = stateno != 700
 trigger1 = ctrl
@@ -422,7 +421,7 @@ trigger1 = ctrl
 type = ChangeState
 value = 701
 triggerall = HitDefAttr != SCA,HA,HP,HT
-triggerall = command = "holdfwd" && command != "holddown" &&(command = "c" || (command = "y" && command = "b"))
+triggerall = command = "holdfwd" &&(command = "c" || (command = "y" && command = "b"))
 triggerall = statetype != A
 triggerall = stateno != 700
 trigger1 = movecontact && power >= 250

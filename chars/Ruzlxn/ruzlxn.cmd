@@ -145,9 +145,6 @@ command.time = 16
 ; maximum 30.
 command.buffer.time = 3
 
-[Command]
-name = "FFB"
-command = ~F, F, a
 ;---------------------------------------------------------------------------
 ; 2. State entry
 ; --------------
@@ -224,8 +221,17 @@ triggerall = stateno!= 100
 triggerall = command = "FF"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = var(1)
-trigger3 = stateno = [1000,1999] && movehit
+trigger2 = stateno = [200,1999] && movehit
+;---------------------------------------------------------------------------
+;Run Fwd
+[State -1, Run Fwd]
+type = ChangeState
+value = 101
+triggerall = stateno!= 100
+triggerall = command = "FF"
+triggerall = statetype != A
+triggerall = Map(Rage)=1
+trigger1 = stateno = [200,1999] && moveguarded
 ;---------------------------------------------------------------------------
 ;Run Back
 [State -1, Run Back]
@@ -263,7 +269,7 @@ trigger2 = var(1)
 [State -1, 6K]
 type = ChangeState
 value = 700
-triggerall = command = "holdfwd" && command != "holddown" &&(command = "c" || (command = "y" && command = "b"))
+triggerall = command = "holdfwd" && (command = "c" || (command = "y" && command = "b"))
 triggerall = statetype != A
 triggerall = stateno != 700
 trigger1 = ctrl
@@ -273,7 +279,7 @@ trigger1 = ctrl
 type = ChangeState
 value = 701
 triggerall = HitDefAttr != SCA,HA,HP,HT
-triggerall = command = "holdfwd" && command != "holddown" &&(command = "c" || (command = "y" && command = "b"))
+triggerall = command = "holdfwd" && (command = "c" || (command = "y" && command = "b"))
 triggerall = statetype != A
 triggerall = stateno != 700
 trigger1 = (movecontact || movereversed) && power >= 250

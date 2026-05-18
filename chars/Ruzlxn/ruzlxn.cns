@@ -168,6 +168,70 @@ trigger1 = 1
 flag = NoAutoTurn
 
 ;---------------------------------------------------------------------------
+; Rage Dash
+[Statedef 101]
+type    = A
+physics = A
+anim = 100
+sprpriority = -7
+ctrl = 0
+
+[State -3, Lv1 Shadows]
+type = afterimage
+trigger1 = time = 0
+time = 18
+length = 6
+framegap = 2
+timegap = 2
+paladd = 250, 0, 0
+palmul = 1, 1,1
+palcontrast = 200, 0, 25
+palbright = 200, 0 , 25
+trans = add1
+
+[State -2, Rage Reset]
+type = mapset
+trigger1 = time = 0
+value = 0
+map = "Rage"
+ignorehitpause = 1
+
+[State 100, 1]
+type = VelSet
+trigger1 = time = 0
+x = 9.7
+y = -3.5
+
+[State 0, Width]
+type = Width
+trigger1 = time < 15
+edge = -16,-16
+player = 0,-15
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = time < 15
+value = 0
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = time > 5
+x = .9
+y = .9
+
+
+[State 100, 2] ;Prevent run from canceling into walk
+type = AssertSpecial
+trigger1 = 1
+flag = NoWalk
+flag2 = NoCrouch
+
+[State 100, 3] ;Prevent from turning
+type = AssertSpecial
+trigger1 = 1
+flag = NoAutoTurn
+
+;---------------------------------------------------------------------------
 ; Back Dash
 [Statedef 105]
 type = S
