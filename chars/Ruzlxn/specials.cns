@@ -479,7 +479,7 @@ ignorehitpause = 1
 
 [State -2, SlamDmg]
 type = mapadd
-trigger1 = time%5=0
+trigger1 = time%6=0
 value = 1
 map = "SlamTime"
 
@@ -590,7 +590,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S,SA                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(50*Map(DamageScaling)+Map(Slam)*5+cond(Map(Rage)=1,20,0) < 10, 10, 50*Map(DamageScaling)+Map(Slam)*5+cond(Map(Rage)=1,20,0))),10
+damage = ceil(cond(40*Map(DamageScaling)+Map(Slam)*5+cond(Map(Rage)=1,20,0) < 10, 10, 40*Map(DamageScaling)+Map(Slam)*5+cond(Map(Rage)=1,20,0))),10
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAFD                    ;Flags of conditions that move can hit
