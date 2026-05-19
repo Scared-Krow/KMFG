@@ -662,3 +662,8 @@ triggerall = Time = 1
 trigger1 = stateno = 52 ;Jump land
 trigger2 = stateno = 106 ;Run-back land
 value = 40, 0
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = stateno != 630
+id = 631

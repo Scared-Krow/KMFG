@@ -158,6 +158,27 @@ type = PlaySnd
 trigger1 = animelem = 5
 value = F4, 2
 
+[State -2, IsRage]
+type = mapset
+trigger1 = time = 0 && Map(Rage)=1
+value = 1
+map = "Enraged"
+ignorehitpause = 1
+[State -2, IsRage]
+type = mapset
+trigger1 = time = 0 && Map(Rage)=0
+value = 0
+map = "Enraged"
+ignorehitpause = 1
+
+;Rage Cancel
+[State -1, Run Fwd]
+type = ChangeState
+value = 101
+triggerall = command = "FF"
+triggerall = Map(Enraged)=1
+trigger1 = movecontact
+
 [State 0, StateTypeSet]
 type = StateTypeSet
 trigger1 = animelem = 7
@@ -348,6 +369,27 @@ trigger1 = animelem = 6
 statetype = S       
 movetype = I        
 physics = S  
+
+[State -2, IsRage]
+type = mapset
+trigger1 = time = 0 && Map(Rage)=1
+value = 1
+map = "Enraged"
+ignorehitpause = 1
+[State -2, IsRage]
+type = mapset
+trigger1 = time = 0 && Map(Rage)=0
+value = 0
+map = "Enraged"
+ignorehitpause = 1
+
+;Rage Cancel
+[State -1, Run Fwd]
+type = ChangeState
+value = 101
+triggerall = command = "FF"
+triggerall = Map(Enraged)=1
+trigger1 = movecontact
 
 [State 210, 4]
 type = SprPriority
@@ -581,8 +623,6 @@ envshake.ampl = 2
 ground.cornerpush.veloff = -2
 air.cornerpush.veloff = -2
 
-
-
 [State 0, EnvShake]
 type = EnvShake
 trigger1 = animelem = 1 && !MoveContact && !MoveReversed
@@ -604,6 +644,27 @@ physics = S
 type = SprPriority
 trigger1 = AnimElem = 5
 value = 2
+
+[State -2, IsRage]
+type = mapset
+trigger1 = time = 0 && Map(Rage)=1
+value = 1
+map = "Enraged"
+ignorehitpause = 1
+[State -2, IsRage]
+type = mapset
+trigger1 = time = 0 && Map(Rage)=0
+value = 0
+map = "Enraged"
+ignorehitpause = 1
+
+;Rage Cancel
+[State -1, Run Fwd]
+type = ChangeState
+value = 101
+triggerall = command = "FF"
+triggerall = Map(Enraged)=1
+trigger1 = movecontact
 
 [State -2, Starter Damage Scaling]
 type = mapset

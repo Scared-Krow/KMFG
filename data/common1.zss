@@ -1082,10 +1082,6 @@ if p2dist x < 0 {
 # Wall Bounce (shake)
 [StateDef 5400; type: A; movetype: H; physics: N; velset: 0,0;]
 
-if facing = enemy,facing {
-	turn{}
-}
-
 changeAnim2{value:5400}
 
 if hitShakeOver {
@@ -1298,6 +1294,6 @@ if ishelper && stateno!=[4000,4999] {
 
 [Statedef -3]
 
-if prevstateno = 5120 && time = 1 {
+if (prevstateno = 5120 || prevstateno=[130,159]) && time = 1 {
 	notHitBy{value: ,NT,ST,HT; time: 5}
 }

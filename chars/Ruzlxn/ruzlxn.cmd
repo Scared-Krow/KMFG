@@ -203,6 +203,7 @@ var(1) = 0
 
 [State -1, Combo condition Check]
 type = VarSet
+triggerall = stateno != 640
 trigger1 = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,699]) || stateno = 1301
@@ -250,7 +251,7 @@ triggerall = Map(DJ)>0
 triggerall = vel y > 0 || pos y < -40
 triggerall = command = "FADash"
 trigger1 = statetype = A
-trigger1 = ctrl && Map(Flight)<=0
+trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------
 ;Air Dash Back
@@ -262,7 +263,7 @@ triggerall = Map(DJ)>0
 triggerall = vel y > 0 || pos y < -40
 triggerall = command = "BADash"
 trigger1 = statetype = A
-trigger1 = ctrl && Map(Flight)<=0
+trigger1 = ctrl 
 trigger2 = var(1)
 ;---------------------------------------------------------------------------
 ;6K
@@ -338,31 +339,7 @@ trigger2 = var(1)
 ;=============================SUPERS=========================================
 ;============================================================================
 
-;---------------------------------------------------------------------------
-;236236A
-[State -1, 236236A]
-type = ChangeState
-value = 3000
-triggerall = power>=500
-triggerall = command = "236236A"
-trigger1 = ctrl
-trigger2 = var(1)
-trigger3 = stateno=[1000,2000] && movecontact
 
-;---------------------------------------------------------------------------
-;214214A
-[State -1, 214214B]
-type = ChangeState
-value = 3100
-triggerall = Map(BUCKX2) <= 0
-triggerall = power>=500
-triggerall = command = "214214A"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2 = var(1)
-trigger3 = ((stateno=1000 || stateno=1005)&& time >= 21)
-trigger4 = helper(1002),movecontact || helper(1006),movecontact
-trigger5 = stateno=[1000,2000] && movecontact
 
 ;============================================================================
 ;============================SPECIALS========================================

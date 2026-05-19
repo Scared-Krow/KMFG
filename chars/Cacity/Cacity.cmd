@@ -382,7 +382,7 @@ trigger2 = var(1)
 type = ChangeState
 value = 1215
 triggerall = Map(AMP)>=1000
-triggerall = command = "EX82C"
+triggerall = command = "EX82C" || command = "EX28C"
 triggerall = statetype = A
 trigger1 = ctrl || stateno = 40 || stateno = 60
 trigger2 = var(1)
@@ -391,7 +391,7 @@ trigger2 = var(1)
 [State -1, 28C]
 type = ChangeState
 value = 1210
-triggerall = command = "82C" || (command = "EX82C" && Map(AMP)<1000)
+triggerall = (command = "82C" || (command = "EX82C" && Map(AMP)<1000)) || (command = "28C" || (command = "EX28C" && Map(AMP)<1000))
 triggerall = statetype = A
 trigger1 = ctrl || stateno = 40 || stateno = 60
 trigger2 = var(1)
