@@ -378,6 +378,7 @@ trigger2 = var(1)
 [State -1, 214A]
 type = ChangeState
 value = 1200
+triggerall = Map(Rage)=0
 triggerall = command = "214A"
 triggerall = statetype != A
 trigger1 = ctrl
@@ -424,7 +425,6 @@ triggerall = command = "x"
 triggerall = command != "holddown"
 trigger1 = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = 200 || stateno = 400) && movecontact
 ;---------------------------------------------------------------------------
 ;5B
 [State -1, 5B]
@@ -477,7 +477,6 @@ triggerall = command = "x"
 triggerall = command = "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = 200 || stateno = 400) && movecontact 
 ;---------------------------------------------------------------------------
 ;2B
 [State -1, 2B]
@@ -533,8 +532,6 @@ value = 600
 triggerall = command = "x"
 trigger1 = statetype = A
 trigger1 = ctrl
-trigger2 = stateno = 600
-trigger2 = movecontact
 
 ;---------------------------------------------------------------------------
 ;j.B

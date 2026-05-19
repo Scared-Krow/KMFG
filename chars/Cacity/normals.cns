@@ -1525,7 +1525,7 @@ persistent = 0
 [State 630, 2]
 type = HitDef
 triggerall = !movecontact
-trigger1 = time%3=0
+trigger1 = time%5=0
 attr = A, NA
 damage = ceil(cond(15*Map(DamageScaling) < 1, 1, 15*Map(DamageScaling)))
 guardflag = HA
