@@ -163,6 +163,13 @@ value = .025
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
+[State -2, Damage Scaling]
+type = mapadd
+trigger1 = time = 0
+value = -1
+map = "HitstunScaling"
+ignorehitpause = 1
+persistent = 0
 
 [State 0, PowerAdd]
 type = PowerAdd
@@ -768,63 +775,10 @@ value = 250
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(WallBounce) %.0f, Map(GroundBounce) %.0f, Slam = %.4f, SlamTime = %.4f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(WallBounce),Map(GroundBounce),Map(Slam),Map(SlamTime)
+text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(WallBounce) %.0f, Map(GroundBounce) %.0f, Map(ArmorActive) %.0f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(WallBounce),Map(GroundBounce),Map(ArmorActive)
 
-;---------REDUCE MECHANIC
-[State -2, Reduce]
-type = mapset
-trigger1 = enemy,movehit=1 && enemy,HitPauseTime=0
-value = 0
-map = "Reduce"
-[State -2, Reduce]
-type = mapset
-trigger1 = enemy,movehit=1 && enemy,HitPauseTime=0
-value = 0
-map = "ReduceLockout"
 
-[State -2, Reduce Set]
-type = mapset
-triggerall = Map(ReduceLockout)=0 && stateno != [120,150]
-trigger1 = movetype = H && command = "c"
-value = 5
-map = "Reduce"
-[State -2, Reduce Set]
-type = mapset
-trigger1 = movetype = H && command = "c"
-value = 12
-map = "ReduceLockout"
-
-[State -2, Reduce]
-type = mapadd
-trigger1 = Map(Reduce)>0
-value = -1
-map = "Reduce"
-[State -2, Reduce]
-type = mapadd
-trigger1 = Map(ReduceLockout)>0
-value = -1
-map = "ReduceLockout"
-
-[State 0, PalFX]
-type = PalFX
-trigger1 = Map(Reduce)>0
-time = 1
-add = 60,20,200
-mul = 200,200,200
-invertall = 0
-color = 256
-
-[State 0, DefenceMulSet]
-type = DefenceMulSet
-trigger1 = Map(Reduce)>0
-value = .8
-ignorehitpause = 1
-[State 0, DefenceMulSet]
-type = DefenceMulSet
-trigger1 = Map(Reduce)=0
-value = 1
-ignorehitpause = 1
 
 [State -2, Damage Scaling Reset]
 type = mapset
@@ -863,33 +817,19 @@ persistent = 1
 
 [State 0, Zoom]
 type = zoom
-triggerall = HitDefAttr != SCA,AT
-triggerall = !enemynear,ishelper
 triggerall = enemy,stateno != 666999 && enemy,prevstateno != 666999
 triggerall = movetype != H
 triggerall = stateno != 200 && stateno != 400
 trigger1= Movecountered 
-scale = 1.15
-lag = .1
+scale = 1.2
+lag = .4
 stagebound = 1
 camerabound = 1
 pos = pos x,-20
 ignorehitpause=1
-[State 0, SuperPause]
-type = SuperPause
-triggerall = HitDefAttr != SCA,AT
-triggerall = !enemynear,ishelper
-trigger1= Movecountered && time = 0
-time = 1
-anim = -1
-sound = -1
-darken = 0
-ignorehitpause = 1
-p2defmul = 1
+
 [State 0, EnvShake]
 type = EnvShake
-triggerall = HitDefAttr != SCA,AT
-triggerall = !enemynear,ishelper
 triggerall = stateno != 200 && stateno != 400
 trigger1= Movecountered && time = 0
 time = 10
@@ -914,8 +854,7 @@ ignorehitpause = 1
 
 [State -2, Counter Hit]
 type = mapset
-triggerall = HitPauseTime=1 && movecountered=1
-trigger1 = Map(FatalCounter)=0
+trigger1 = HitPauseTime=1 && movecountered=1
 value = Map(DamageScaling)+.1
 map = "DamageScaling"
 ignorehitpause = 1

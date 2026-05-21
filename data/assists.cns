@@ -2,6 +2,7 @@
 ;JenX2
 ;---------------------------------------------------------------------------
 
+; Pistol Whip
 [Statedef 4000]
 type    = S
 movetype= A
@@ -88,7 +89,15 @@ map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 redirectID = root,ID
-
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,movetype = H
+trigger1 = movehit
+value = Map(HitstunScaling)-1.5
+map = "HitstunScaling"
+ignorehitpause = 1
+persistent = 0
+redirectID = root,ID
 
 [State 210, 2]
 type = HitDef
@@ -332,6 +341,7 @@ trigger1 = animtime = 0
 ;ISSBROKIE
 ;---------------------------------------------------------------------------
 
+;Ground Slam
 [Statedef 4010]
 type    = S
 movetype= A
@@ -415,6 +425,15 @@ value = root,Map(DamageScaling)-.05
 map = "DamageScaling"
 persistent = 0
 redirectID = root,ID
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,movetype = H
+trigger1 = movehit
+value = Map(HitstunScaling)-1.5
+map = "HitstunScaling"
+ignorehitpause = 1
+persistent = 0
+redirectID = root,ID
 
 [State 210, 2]
 type = HitDef
@@ -457,7 +476,7 @@ trigger1 = animtime = 0
 trigger2 = root,movetype = H
 trigger3 = movetype = H
 
-
+;Can Toss
 [Statedef 4011]
 type    = S
 movetype= A
@@ -545,7 +564,7 @@ trigger1 = animtime = 0
 trigger2 = root,movetype = H
 trigger3 = movetype = H
 
-
+;Can Active
 [Statedef 4012]
 type    = S
 movetype= A
@@ -605,6 +624,15 @@ type = mapset
 trigger1 = movehit=1 && combocount>1
 value = root,Map(DamageScaling)-.1
 map = "DamageScaling"
+persistent = 0
+redirectID = root,ID
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,movetype = H
+trigger1 = movehit
+value = Map(HitstunScaling)-.5
+map = "HitstunScaling"
+ignorehitpause = 1
 persistent = 0
 redirectID = root,ID
 

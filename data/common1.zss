@@ -815,6 +815,8 @@ if vel y > 0 && pos y >= const(movement.down.bounce.groundlevel) {
 # Downed get-hit (lying down)
 [StateDef 5110; type: L; movetype: H; physics: N; sprPriority: 0;]
 
+AngleDraw{value:0}
+
 if time = 0 {notHitBy{value: SCA; time: 25}}
 persistent(0) if selfAnimExist(5110 + anim % 10) && anim = [5081, 5089] {
 	changeAnim{value: 5110 + anim % 10}
@@ -1242,7 +1244,6 @@ if hitShakeOver {
 
 changeAnim2{value:5430}
 
-ScreenBound{movecamera:1}
 
 AngleDraw{}
 if time%3=0 {AngleAdd{value:45}}
@@ -1257,7 +1258,7 @@ if time = 0 { hitVelSet {x:1;y:1;} }
 
 velAdd {y: .39}
 
-if vel y > 0 && pos y >= -5 { selfState {value: 5100} }
+if vel y > 0 && pos y >= -15 { selfState {value: 5100} }
 
 
 #-------------------------------------------------------------------------------

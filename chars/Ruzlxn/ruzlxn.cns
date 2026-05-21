@@ -551,7 +551,11 @@ ignorehitpause = 1
 ; CHARACTER SPECIFIC
 ;---------------------------------------------------------------------------
 
-
+[State -2, Armoring]
+type = mapset
+trigger1 = movetype = H && stateno != 666999
+value = 0
+map = "ArmorActive"
 
 ;---------------------------------------------------------------------------
 ; UNIVERSAL

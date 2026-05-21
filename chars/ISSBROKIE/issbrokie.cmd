@@ -380,6 +380,15 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 ;---------------------------------------------------------------------------
+;236D
+[State -1, 236D]
+type = ChangeState
+value = 1203
+triggerall = command = "236D"
+triggerall = statetype = A
+trigger1 = ctrl
+trigger2 = var(1)
+;---------------------------------------------------------------------------
 ;623C
 [State -1, 623C]
 type = ChangeState

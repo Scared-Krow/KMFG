@@ -60,17 +60,28 @@ stateno = 666999
 time = 1
 forceair = 0
 
+[State -2, Armoring]
+type = mapset
+trigger1 = Animelemno(0) = [2,4]
+value = 1
+map = "ArmorActive"
+[State -2, Armoring]
+type = mapset
+trigger1 = Animelemno(0) != [2,4]
+value = 0
+map = "ArmorActive"
+
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.9
+value = Map(DamageScaling)*.875
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.08
+value = Map(DamageScaling)-.1
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -100,7 +111,7 @@ trans = add1
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S,SA                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(100*Map(DamageScaling)+cond(Map(Rage)=1,25,0) < 20, 20, 100*Map(DamageScaling)+cond(Map(Rage)=1,25,0))),20
+damage = ceil(cond(90*Map(DamageScaling)+cond(Map(Rage)=1,20,0) < 20, 20, 90*Map(DamageScaling)+cond(Map(Rage)=1,20,0))),20
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = HA                   ;Flags on how move is to be guarded against
 hitflag = MAFD                    ;Flags of conditions that move can hit
@@ -266,6 +277,17 @@ slot = 2
 stateno = 666999 
 time = 1
 forceair = 0
+
+[State -2, Armoring]
+type = mapset
+trigger1 = Animelemno(0) = [2,4]
+value = 1
+map = "ArmorActive"
+[State -2, Armoring]
+type = mapset
+trigger1 = Animelemno(0) != [2,4]
+value = 0
+map = "ArmorActive"
 
 [State -2, Starter Damage Scaling]
 type = mapset
@@ -536,6 +558,17 @@ type = ChangeAnim
 trigger1 = anim!=1101
 value = 1101
 
+[State -2, Armoring]
+type = mapset
+trigger1 = Animelemno(0) = 1
+value = 1
+map = "ArmorActive"
+[State -2, Armoring]
+type = mapset
+trigger1 = Animelemno(0) = 1
+value = 0
+map = "ArmorActive"
+
 ;This varset is used to count if armor has been used during this state, you can technically use an 
 ;explod to count this but i believe we already have an armor variable counting how many times armor is used
 [State 0, VarSet]
@@ -788,6 +821,17 @@ slot = 2
 stateno = 666999 
 time = 1
 forceair = 0
+
+[State -2, Armoring]
+type = mapset
+trigger1 = Animelemno(0) = 2
+value = 1
+map = "ArmorActive"
+[State -2, Armoring]
+type = mapset
+trigger1 = Animelemno(0) != 2
+value = 0
+map = "ArmorActive"
 
 [State -3, Lv1 Shadows]
 type = afterimage

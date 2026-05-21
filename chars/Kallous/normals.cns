@@ -12,7 +12,7 @@ facep2 = 1
 [State -2, PushBack]
 type = mapset
 triggerall = enemy,statetype != A
-trigger1 = movehit && combocount>3
+trigger1 = movehit && combocount>5
 value = Map(PushBack)+1
 map = "PushBack"
 ignorehitpause = 1
@@ -129,7 +129,7 @@ facep2 = 1
 [State -2, PushBack]
 type = mapset
 triggerall = enemy,statetype != A
-trigger1 = movehit && combocount>3
+trigger1 = movehit && combocount>5
 value = Map(PushBack)+1
 map = "PushBack"
 ignorehitpause = 1
@@ -237,7 +237,7 @@ x = 12
 [State -2, PushBack]
 type = mapset
 triggerall = enemy,statetype != A
-trigger1 = movehit && combocount>3
+trigger1 = movehit && combocount>5
 value = Map(PushBack)+1
 map = "PushBack"
 ignorehitpause = 1
@@ -361,7 +361,7 @@ x = 4
 [State -2, PushBack]
 type = mapset
 triggerall = enemy,statetype != A
-trigger1 = movehit && combocount>3
+trigger1 = movehit && combocount>5
 value = Map(PushBack)+1
 map = "PushBack"
 ignorehitpause = 1
@@ -470,7 +470,7 @@ facep2 = 1
 [State -2, PushBack]
 type = mapset
 triggerall = enemy,statetype != A
-trigger1 = movehit && combocount>3
+trigger1 = movehit && combocount>5
 value = Map(PushBack)+1
 map = "PushBack"
 ignorehitpause = 1
@@ -571,7 +571,7 @@ value = 0, 0
 [State -2, PushBack]
 type = mapset
 triggerall = enemy,statetype != A
-trigger1 = movehit && combocount>3
+trigger1 = movehit && combocount>5
 value = Map(PushBack)+1
 map = "PushBack"
 ignorehitpause = 1
@@ -801,7 +801,7 @@ x = 18
 [State -2, PushBack]
 type = mapset
 triggerall = enemy,statetype != A
-trigger1 = movehit && combocount>3
+trigger1 = movehit && combocount>5
 value = Map(PushBack)+1
 map = "PushBack"
 ignorehitpause = 1
@@ -1046,7 +1046,7 @@ x = .975
 [State -2, PushBack]
 type = mapset
 triggerall = enemy,statetype != A
-trigger1 = movehit && combocount>3
+trigger1 = movehit && combocount>5
 value = Map(PushBack)+1
 map = "PushBack"
 ignorehitpause = 1
@@ -1163,7 +1163,7 @@ value = 0, 1
 [State -2, PushBack]
 type = mapset
 triggerall = enemy,statetype != A
-trigger1 = movehit && combocount>3
+trigger1 = movehit && combocount>5
 value = Map(PushBack)+1
 map = "PushBack"
 ignorehitpause = 1
@@ -1260,7 +1260,7 @@ value = 0, 0
 [State -2, PushBack]
 type = mapset
 triggerall = enemy,statetype != A
-trigger1 = movehit && combocount>3
+trigger1 = movehit && combocount>5
 value = Map(PushBack)+1
 map = "PushBack"
 ignorehitpause = 1
@@ -1360,7 +1360,7 @@ value = 0, 1
 [State -2, PushBack]
 type = mapset
 triggerall = enemy,statetype != A
-trigger1 = movehit && combocount>3
+trigger1 = movehit && combocount>5
 value = Map(PushBack)+1
 map = "PushBack"
 ignorehitpause = 1

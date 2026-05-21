@@ -1,22 +1,16 @@
 <#f0f000>:Unique Attacks:</>
-5D>5D
-2D>2D
 
 <#f0f000>:Throws:</>
 A+B
 
 <#f0f000>:Special Moves:</>
-623A
-214B (AIR OK)
-_!A
-_!C
-_!D
-236D (AIR OK)
-214D
+236A (AIR OK)
+623B (AIR OK)
+421C (AIR OK)
+214D (AIR OK)
 
 <#f0f000>:Super Moves:</>
-214214A
-632146C
+632146A (HOLD OK)
 
 <#f0f000>:Universal:</>
 Parry		Karma

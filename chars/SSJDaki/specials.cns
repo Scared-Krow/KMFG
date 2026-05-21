@@ -911,11 +911,11 @@ persistent = 0
 
 [State 210, 2]
 type = HitDef
-triggerall = enemy,movetype = A
+triggerall = enemy,movetype = A && enemy,Map(ArmorActive)=0
 trigger1 = !MoveContact && !MoveReversed
 attr = S, SA
 animtype  = Medium
-damage = ceil(cond(75*Map(DamageScaling) < 15, 15, 75*Map(DamageScaling)))
+damage = ceil(cond(70*Map(DamageScaling) < 10, 10, 70*Map(DamageScaling)))
 guardflag = MA
 pausetime = 12,12
 priority = 4, Hit 
@@ -936,15 +936,15 @@ fall.yvelocity = 0
 p2facing = 1
 ground.cornerpush.veloff = -5-(Map(PushBack))
 air.cornerpush.veloff = -5
-id = 5400
+p2stateno = 5400
 
 [State 210, 2]
 type = HitDef
-triggerall = enemy,movetype != A
+triggerall = enemy,movetype != A && enemy,Map(ArmorActive)=0
 trigger1 = !MoveContact && !MoveReversed
 attr = S, SA
 animtype  = Medium
-damage = ceil(cond(75*Map(DamageScaling) < 15, 15, 75*Map(DamageScaling)))
+damage = ceil(cond(70*Map(DamageScaling) < 10, 10, 70*Map(DamageScaling)))
 guardflag = MA
 pausetime = 12,12
 priority = 4, Hit 
@@ -966,24 +966,38 @@ guard.velocity = -12
 p2facing = 1
 ground.cornerpush.veloff = -5-(Map(PushBack))
 air.cornerpush.veloff = -5
-id = 5420
+p2stateno = 5420
 
 
-[State 0, TargetState]
-type = TargetState
-triggerall =  NumTarget(5400)
-trigger1 = movehit=1
-value = 5400
-ID = 5400
-ignorehitpause = 1
+[State 210, 2]
+type = HitDef
+triggerall = enemy,Map(ArmorActive)=1
+trigger1 = !MoveContact && !MoveReversed
+attr = S, SA
+animtype  = Medium
+damage = ceil(cond(70*Map(DamageScaling) < 10, 10, 70*Map(DamageScaling)))
+guardflag = MA
+pausetime = 12,12
+priority = 4, Hit 
+sparkno = 1
+sparkxy = -12,-50
+hitsound   = 5,1
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 20
+ground.velocity = -9,-4
+air.hittime = 60
+air.velocity = -7,-3
+fall = 1
+guard.ctrltime = 12
+guard.hittime = 12
+fall.yvelocity = 0
+guard.velocity = -12
+p2facing = 1
+ground.cornerpush.veloff = -5-(Map(PushBack))
+air.cornerpush.veloff = -5
 
-[State 0, TargetState]
-type = TargetState
-triggerall = NumTarget(5420)
-trigger1 = movehit=1
-value = 5420
-ID = 5420
-ignorehitpause = 1
 
 
 [State 0, StateTypeSet]
@@ -1055,7 +1069,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
-damage = ceil(cond(75*Map(DamageScaling) < 10, 10, 75*Map(DamageScaling)))
+damage = ceil(cond(70*Map(DamageScaling) < 10, 10, 70*Map(DamageScaling)))
 guardflag = HA
 priority = 4
 pausetime = 15,15

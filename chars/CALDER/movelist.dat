@@ -11,6 +11,7 @@ A+B
 236D (HOLD OK)
 214D (HOLD OK)
 [2]8B
+[4]6A
 
 <#f0f000>:Super Moves:</>
 236236C (AIR OK)
