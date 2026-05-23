@@ -312,7 +312,7 @@ triggerall = Map(Charge) = [14,16]
 trigger1 = !MoveContact && !MoveReversed
 attr = S, HA
 animtype  = Medium
-damage = ceil(cond(120*Map(DamageScaling) < 75, 75, 120*Map(DamageScaling))),3
+damage = ceil(cond(120*Map(DamageScaling) < 70, 70, 120*Map(DamageScaling))),3
 guardflag = MA
 priority = 2
 pausetime = 10,10
@@ -346,7 +346,7 @@ triggerall = Map(Charge) != [14,16]
 trigger1 = !MoveContact && !MoveReversed
 attr = S, SA
 animtype  = Medium
-damage = ceil(cond(70*Map(DamageScaling) < 50, 50, 70*Map(DamageScaling))),3
+damage = ceil(cond(70*Map(DamageScaling) < 40, 40, 70*Map(DamageScaling))),3
 guardflag = MA
 priority = 2
 pausetime = 10,10

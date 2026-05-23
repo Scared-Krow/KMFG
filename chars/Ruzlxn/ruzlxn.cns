@@ -532,6 +532,8 @@ postype = P1    ;P2, Front, Back, Left, Right
 facing = 1
 keyctrl = 0
 ownpal = 1
+size.xscale = .9
+size.yscale = .9
 
 [State -2, Rage Remove]
 type = mapset

@@ -738,7 +738,7 @@ value = 0
 ctrl = 1
 
 ;---------------------------------------------------------------------------
-;214A Anger
+;214A Anger Visual
 [Statedef 1201]
 type    = U
 movetype= I
@@ -758,7 +758,7 @@ flag = NoShadow
 type = AngleDraw
 trigger1 = 1
 value = 0
-scale = sin(time*.08),sin(time*.08)
+scale = .25+sin(time*.08),.25+sin(time*.08)
 
 
 [State 0, BindToRoot]

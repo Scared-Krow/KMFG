@@ -1046,7 +1046,7 @@ type    = A
 movetype= A
 physics = N
 anim = 1201
-velset = 5,-4
+velset = 5,-3
 poweradd = 0
 ctrl = 0
 
