@@ -316,7 +316,7 @@ Welcome to SUEHIRO's I.K.E.M.E.N GO engine!
 fadein.time = 10
 fadeout.time = 10
 rows = 5
-columns = 3
+columns = 4
 wrapping = 1              ;1 to let cursor wrap around
 pos = 479,128             ;Position to draw to
 showemptyboxes = 0        ;1 to show empty boxes

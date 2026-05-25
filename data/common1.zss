@@ -645,7 +645,7 @@ if time > 0 {
 if alive && gethitvar(hittime) = -1 {
 		changeState{value: 5210}
 }
-if vel y > 0 && pos y >= -5 {
+if vel y > 0 && pos y >= -1 {
 	changeState{value: 5210}
 }
 

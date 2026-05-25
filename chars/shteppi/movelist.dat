@@ -1,0 +1,22 @@
+<#f0f000>:Throws:</>
+A+B
+
+<#f0f000>:Special Moves:</>
+236A (Hold OK)
+_! B
+_! C
+_! D
+236B
+_! Any Attack
+623C (Hold OK) (Air OK)
+236D (Hold OK) (Air OK)
+
+<#f0f000>:Super Moves:</>
+632146C
+236236D (Hold OK)
+
+<#f0f000>:Universal:</>
+Parry		Karma
+Low Parry	Down+Karma
+Roll		Fwd+Karma
+Assist		Mob
