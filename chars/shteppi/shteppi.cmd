@@ -200,6 +200,7 @@ command.buffer.time = 3
 ;redundant logic.
 [State -1, Combo condition Reset]
 type = VarSet
+triggerall = stateno != 641
 trigger1 = 1
 var(1) = 0
 
@@ -207,7 +208,7 @@ var(1) = 0
 type = VarSet
 trigger1 = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,630])
+trigger2 = (stateno = [200,641])
 trigger2 = movecontact
 var(1) = 1
 
