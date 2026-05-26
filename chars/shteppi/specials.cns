@@ -360,6 +360,19 @@ forcenofall = 1
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
 
+[State 0, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AA,AP
+time = 1
+
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 9
+stateno = 1120
+time = 999
 
 [State 0, PlayerPush]
 type = PlayerPush
@@ -402,6 +415,21 @@ type = ChangeState
 triggerall = facing = -1
 trigger1 = pos x < enemy, pos x + 60
 value = 1112
+
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AA,AP
+time = 1
+
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 9
+stateno = 1120
+time = 999
 
 
 [State 1000, 7]
@@ -482,6 +510,21 @@ air.cornerpush.veloff = 0
 type = VelAdd
 trigger1 = 1
 y = .4
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AA,AP
+time = 1
+
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 9
+stateno = 1120
+time = 999
+
 
 [State 1000, 7]
 type = ChangeState
