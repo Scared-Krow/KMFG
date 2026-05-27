@@ -2,14 +2,10 @@
 A+B
 
 <#f0f000>:Special Moves:</>
-236A (Hold OK)
-_! B
-_! C
-_! D
-236B
-_! Any Attack
-623C (Hold OK) (Air OK)
-236D (Hold OK) (Air OK)
+236A
+236B (Air OK)
+214A/B
+22D
 
 <#f0f000>:Super Moves:</>
 632146C

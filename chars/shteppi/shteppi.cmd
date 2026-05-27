@@ -397,22 +397,26 @@ trigger1 = ctrl
 trigger2 = var(1)
 trigger3 = stateno = 250 && time > 17
 ;---------------------------------------------------------------------------
-;236D
-[State -1, 236D]
+;236A
+[State -1, 236A]
 type = ChangeState
-value = 1203
-triggerall = command = "236D"
-triggerall = statetype = A
+value = 1200
+triggerall = numhelper(1200)=0
+triggerall = command = "236A"
+triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
+trigger3 = stateno = 250 && time > 17
 ;---------------------------------------------------------------------------
-;623C
-[State -1, 623C]
+;22D
+[State -1, 22D]
 type = ChangeState
 value = 1300
-triggerall = command = "623C"
+triggerall = command = "22D"
+triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
+trigger3 = stateno = 250 && time > 17
 ;===========================================================================
 
 ;---------------------------------------------------------------------------

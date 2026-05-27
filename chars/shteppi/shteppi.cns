@@ -37,10 +37,10 @@ walk.back = -1.4
 run.fwd  = 7.25, 0    
 run.back = -4.5,-3.8 
 jump.neu = 0,-8.25
-jump.back = -2   
-jump.fwd = 2      
-runjump.back = -2.55,-8.1 
-runjump.fwd = 2.2,-8      
+jump.back = -2.2   
+jump.fwd = 2.2     
+runjump.back = -2.5,-8.1 
+runjump.fwd = 2.5,-8      
 airjump.neu = 0,-5.25      
 airjump.back = -2      
 airjump.fwd = 2       
@@ -137,13 +137,13 @@ ctrl = 1
 [State 0, VelSet]
 type = VelAdd
 trigger1 = 1
-x = .35
+x = .5
 persistent = 1
 
 [State 0, VelSet]
 type = VelSet
-trigger1 = vel x > 4
-x = 4
+trigger1 = vel x > 4.25
+x = 4.25
 
 [State 100, 2] ;Prevent run from canceling into walk
 type = AssertSpecial
@@ -177,13 +177,13 @@ ctrl = 1
 [State 0, VelSet]
 type = VelAdd
 trigger1 = 1
-x = -.35
+x = -.5
 persistent = 1
 
 [State 0, VelSet]
 type = VelSet
-trigger1 = vel x < -4
-x = -4
+trigger1 = vel x < -4.25
+x = -4.25
 
 [State 0, NotHitBy]
 type = NotHitBy
