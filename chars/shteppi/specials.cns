@@ -59,12 +59,43 @@ map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
 
+[State 440, 3]
+type = HitDef
+triggerall = enemy,movetype = A && enemy,map(ArmorActive)=0
+trigger1 = !MoveContact && !MoveReversed
+attr = C, SA
+damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
+hitflag = MAFD
+guardflag = LA
+animtype = Up
+priority = 3
+pausetime = 11,11
+sparkno = 1
+sparkxy = -10,-10
+hitsound   = 5,1
+guardsound = 6,0
+ground.slidetime = 17
+ground.hittime  = 17
+ground.velocity = -1,-10
+air.velocity = -1,-9
+air.hittime = 999
+guard.velocity = -3
+fall = 1
+fall.yvelocity = 0
+guard.ctrltime = 14
+guard.hittime = 14
+ground.cornerpush.veloff = -3
+p2facing = 1
+p2stateno = 5430
+
 [State 210, 2]
 type = HitDef
+triggerall = enemy,movetype != A || enemy,map(ArmorActive)=1
 trigger1 = !MoveContact && !MoveReversed
 attr = C, SA
 damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
 guardflag = LA
+hitflag = MAFD
 animtype = back
 priority = 3
 pausetime = 11,11
@@ -83,6 +114,8 @@ fall = 1
 ground.cornerpush.veloff = -3-(Map(PushBack))
 fall.yvelocity = 0
 p2facing = 1
+
+
 
 [State 0, VelMul]
 type = VelMul
@@ -810,6 +843,15 @@ anim = 1301
 velset = vel x,0
 sprpriority = -1
 
+[State 0, PalFX]
+type = PalFX
+trigger1 = 1
+time = 1
+add = -100,-100,-100
+mul = 256,256,256
+invertall = 0
+color = 256
+
 [State 0, AngleDraw]
 type = AngleDraw
 trigger1 = 1
@@ -898,6 +940,14 @@ trigger1 = time = 0
 x = 1
 y = -4
 
+[State 0, StateTypeSet]
+type = StateTypeSet
+triggerall = root,stateno = 1300
+trigger1 = time = 0
+statetype = A       
+movetype = I        
+physics = N         
+
 [State 0, VelAdd]
 type = VelAdd
 trigger1 = pos y < -18
@@ -929,6 +979,14 @@ type = VelMul
 triggerall = vel y > 0
 trigger1 = pos y >= -18
 y = -1
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+triggerall = time > 40
+trigger1 = vel y < 0
+statetype = A       
+movetype = A        
+physics = N 
 
 [State -2, Starter Damage Scaling]
 type = mapset
@@ -968,7 +1026,7 @@ priority = 1, Hit                ;Attack priority: 0 (least) to 7 (most), 4 defa
 pausetime = 1,7               ;Time attacker pauses, time opponent shakes
 sparkno = 2                     ;Spark anim no (Def: set above)
 sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
-hitsound = 9, 1
+hitsound = 5, 0
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = 13
@@ -1101,7 +1159,7 @@ priority = 1, Hit                ;Attack priority: 0 (least) to 7 (most), 4 defa
 pausetime = 1,5               ;Time attacker pauses, time opponent shakes
 sparkno = 2                     ;Spark anim no (Def: set above)
 sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
-hitsound = 9, 1
+hitsound = 5, 0
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = 12
@@ -1276,7 +1334,7 @@ priority = 1, Hit                ;Attack priority: 0 (least) to 7 (most), 4 defa
 pausetime = 1,10               ;Time attacker pauses, time opponent shakes
 sparkno = 2                     ;Spark anim no (Def: set above)
 sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
-hitsound = 9, 1
+hitsound = 5, 1
 guardsound = 6, 0
 ground.type = High
 ground.slidetime = 15

@@ -188,7 +188,7 @@ x = -4.25
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = time=[0,5]
-value = SCA,NT,ST,HT
+value = ,NT,ST,HT
 time = 1
 
 [State 100, 2] ;Prevent run from canceling into walk

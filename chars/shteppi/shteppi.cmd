@@ -210,7 +210,8 @@ trigger1 = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,641])
 trigger2 = movecontact
-trigger3 = helper(430),movecontact
+trigger3 = (helper(430),movecontact)
+trigger3 = stateno = 430
 var(1) = 1
 
 ;============================================================================
@@ -528,10 +529,25 @@ trigger1 = ctrl
 trigger2 = (stateno = 200 || stateno = 400) && movecontact
 
 ;---------------------------------------------------------------------------
+;2C Louieless
+[State -1, 2C]
+type = ChangeState
+value = 432
+triggerall = numhelper(1110)=1 || numhelper(430)=1 
+triggerall = command = "y"
+triggerall = command = "holddown"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = (stateno = [200,210]) ||(stateno = [400,410])
+trigger2 = movecontact
+
+
+;---------------------------------------------------------------------------
 ;2C
 [State -1, 2C]
 type = ChangeState
 value = 430
+triggerall = numhelper(1110)=0 && numhelper(430)=0 
 triggerall = command = "y"
 triggerall = command = "holddown"
 triggerall = statetype != A
