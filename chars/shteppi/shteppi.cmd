@@ -210,6 +210,7 @@ trigger1 = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,641])
 trigger2 = movecontact
+trigger3 = helper(430),movecontact
 var(1) = 1
 
 ;============================================================================
@@ -417,6 +418,17 @@ triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 trigger3 = stateno = 250 && time > 17
+;---------------------------------------------------------------------------
+;236C
+[State -1, 236C]
+type = ChangeState
+value = 1400
+triggerall = numhelper(1400)=0
+triggerall = command = "236C"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = var(1)
+trigger3 = stateno = 250 && time > 17
 ;===========================================================================
 
 ;---------------------------------------------------------------------------
@@ -482,6 +494,7 @@ trigger1 = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,440])
 trigger2 = movecontact
+trigger3 = helper(430),movecontact
 ;---------------------------------------------------------------------------
 ;5D
 [State -1, 5D]
