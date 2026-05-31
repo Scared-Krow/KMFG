@@ -359,6 +359,8 @@ if time = 0 {
 	}
 }
 
+notHitBy{value: ,NT,ST,HT; time: 2}
+
 #-------------------------------------------------------------------------------
 [Function IkSys_GuardShaking(anim)]
 changeAnim{value: $anim}

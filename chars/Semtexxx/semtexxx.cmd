@@ -206,7 +206,7 @@ var(1) = 0
 type = VarSet
 trigger1 = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,690])
+trigger2 = (stateno = [200,630])
 trigger2 = movecontact
 var(1) = 1
 
@@ -404,6 +404,24 @@ type = ChangeState
 value = 1206
 triggerall = command = "214A"
 triggerall = statetype = A
+trigger1 = ctrl
+trigger2 = var(1)
+;---------------------------------------------------------------------------
+;236C
+[State -1, 236C]
+type = ChangeState
+value = 1300
+triggerall = command = "236C"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = var(1)
+;---------------------------------------------------------------------------
+;214C
+[State -1, 214C]
+type = ChangeState
+value = 1310
+triggerall = command = "214C"
+triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 ;===========================================================================

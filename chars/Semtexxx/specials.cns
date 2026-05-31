@@ -25,14 +25,14 @@ ignorehitpause = 1
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.95
+value = Map(DamageScaling)*.9
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.025
+value = Map(DamageScaling)-.075
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -58,7 +58,7 @@ ignorehitpause = 1
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S,NA                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(80*Map(DamageScaling) < 10, 10, 80*Map(DamageScaling))),20
+damage = ceil(cond(60*Map(DamageScaling) < 10, 10, 60*Map(DamageScaling))),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = HA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -155,6 +155,8 @@ anim = 1101
 velset = 5.125,-8.75
 sprpriority = -1
 facep2 = 1
+
+
 
 [State -3, Lv1 Shadows]
 type = afterimage
@@ -267,7 +269,7 @@ x = .975
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A, SA
-damage = ceil(cond(65*Map(DamageScaling) < 6, 6, 65*Map(DamageScaling)))
+damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
 guardflag = HA
 priority = 4
 pausetime = 15,15
@@ -414,7 +416,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A, SA
-damage = ceil(cond(65*Map(DamageScaling) < 6, 6, 65*Map(DamageScaling)))
+damage = ceil(cond(60*Map(DamageScaling) < 6, 6, 60*Map(DamageScaling)))
 guardflag = MA
 priority = 4
 pausetime = 11,11
@@ -480,7 +482,9 @@ y = .4
 
 [State 800, 1]
 type = HitDef
-Trigger1 = P2BodyDist X = [-8,const(size.ground.front)]
+triggerall = stateno != [140,145]
+Trigger1 = P2BodyDist X = [-8,24]
+trigger2 = p2Bodydist y = [-999,999]
 attr = S, ST          ;Attributes: Standing, Normal Throw
 hitflag = M-          ;Affect only ground people who are not being hit
 priority = 1, Miss    ;Throw has low priority, must be miss or dodge type.
@@ -681,14 +685,14 @@ value = 0, 1
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.85
+value = Map(DamageScaling)*.825
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.075
+value = Map(DamageScaling)-.125
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -713,7 +717,7 @@ x = .975
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A, SA
-damage = ceil(cond(75*Map(DamageScaling) < 7, 7, 75*Map(DamageScaling)))
+damage = ceil(cond(60*Map(DamageScaling) < 6, 6, 60*Map(DamageScaling)))
 guardflag = HA
 priority = 4
 pausetime = 14,14
@@ -735,7 +739,7 @@ guard.hittime = 10
 p2facing = 1
 air.cornerpush.veloff = 0
 guard.dist = 0
-fall.yvelocity = cond(Map(GroundBounce)=0,-5.6,0)
+fall.yvelocity = cond(Map(GroundBounce)=0,-5.3,0)
 id = 5420
 
 
@@ -753,7 +757,7 @@ type    = S
 movetype= I
 physics = S
 ctrl = 0
-anim = 1200
+anim = cond(enemy,stateno=[5000,5100],1210,1200)
 velset = 0,0
 sprpriority = -1
 facep2 = 1
@@ -782,7 +786,7 @@ type    = S
 movetype= I
 physics = S
 ctrl = 0
-anim = 1201
+anim = cond(enemy,stateno=[5000,5100],1211,1201)
 velset = 0,0
 sprpriority = -1
 facep2 = 1
@@ -800,7 +804,7 @@ type    = A
 movetype= I
 physics = N
 ctrl = 0
-anim = 1200
+anim = cond(enemy,stateno=[5000,5100],1210,1200)
 velset = 0,0
 sprpriority = -1
 facep2 = 1
@@ -829,7 +833,7 @@ type    = A
 movetype= I
 physics = N
 ctrl = 0
-anim = 1201
+anim = cond(enemy,stateno=[5000,5100],1211,1201)
 velset = 0,0
 sprpriority = -1
 facep2 = 1
@@ -839,3 +843,110 @@ type = ChangeState
 trigger1 = AnimTime = 0
 value = 50
 ctrl = 1
+
+;---------------------------------------------------------------------------
+;236C
+[Statedef 1300]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1100
+velset = 0,0
+sprpriority = -1
+facep2 = 1
+
+
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 1301
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;236C Flipping
+[Statedef 1301]
+type    = A
+movetype= I
+physics = N
+ctrl = 0
+anim = 1300
+velset = 16,-10
+sprpriority = -4
+
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,0
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = FrontEdgeBodyDist <= 0
+value = 165
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1 
+value = 0
+
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = .6
+
+
+;---------------------------------------------------------------------------
+;214C
+[Statedef 1310]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 1100
+velset = 0,0
+sprpriority = -1
+facep2 = 1
+
+[State 0, Turn]
+type = Turn
+trigger1 = time = 0
+
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 1311
+ctrl = 0
+
+;---------------------------------------------------------------------------
+;236C Flipping
+[Statedef 1311]
+type    = A
+movetype= I
+physics = N
+ctrl = 0
+anim = 1300
+velset = 16,-8
+sprpriority = -4
+
+
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = FrontEdgeBodyDist <= 0
+value = 165
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1 
+value = 0
+
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = .4

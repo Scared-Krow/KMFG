@@ -25,7 +25,7 @@ proj.doscale = 0
 head.pos = -5, -90   
 mid.pos = -5, -60    
 shadowoffset = 0     
-
+draw.offset = 0,1
 
 [Velocity]
 walk.fwd  = 2.2
@@ -228,6 +228,8 @@ trigger1 = time = 0
 value = 1
 map = "AirDashing"
 
+
+
 [State 0, CtrlSet]
 type = CtrlSet
 trigger1 = time = 7
@@ -282,10 +284,78 @@ value = 1
 map = "AirDashing"
 
 
+
 [State 0, CtrlSet]
 type = CtrlSet
 trigger1 = time = 7
 value = 1
+
+;---------------------------------------------------------------------------
+; Wall Cling
+[Statedef 165]
+type = A
+movetype = I
+physics = N
+ctrl = 0
+anim = 165
+velset = 0,0
+
+
+
+[State 0, Turn]
+type = Turn
+triggerall = BackEdgeBodyDist <= 0
+trigger1 = time = 0
+[State 0, PlayerPush]
+
+type = PlayerPush
+trigger1 = 1
+value = 0
+;ignorehitpause = 
+;persistent = 
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = prevstateno = 1301
+value = 1
+movecamera = 0,0
+
+[State -2, AirDash Physics]
+type = mapset
+trigger1 = time = 0
+value = 0
+map = "AirDashing"
+
+[State 0, PosAdd]
+type = VelAdd
+trigger1 = time > 15
+y = .05+time/75
+
+[State -1, Cancel]
+type = ChangeState
+value = 1111
+trigger1 = command = "a" 
+
+[State -1, Cancel]
+type = ChangeState
+value = 1112
+triggerall = pos y <= -20
+trigger1 = command = "holdy" 
+
+[State -1, Cancel]
+type = ChangeState
+value = 1120
+trigger1 = command = "holdx" 
+
+[State -1, Cancel]
+type = ChangeState
+value = 1130
+trigger1 = command = "holdb" 
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = pos y >= 0
+value = 52
 ;---------------------------------------------------------------------------
 ; Lose by Time Over
 [Statedef 170]
