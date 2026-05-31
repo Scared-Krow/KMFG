@@ -1,3 +1,7 @@
+[Defaults]
+command.time = 15
+command.buffer.time = 7
+
 [Command]
 name = "recovery"
 command = /x
@@ -402,44 +406,44 @@ buffer.shared = 0
 
 [Command]
 name = "214A"
-command = D, B,  x
-buffer.shared = 0
+command = ~D, B,  x
+steptime = 7
 
 [Command]
 name = "214B"
-command = D, B,  a
-buffer.shared = 0
+command = ~D, B,  a
+steptime = 7
 
 [Command]
 name = "214C"
-command = D, B,  y
-buffer.shared = 0
+command = ~D, B,  y
+steptime = 7
 
 [Command]
 name = "214D"
-command = D, B,  b
-buffer.shared = 0
+command = ~D, B,  b
+steptime = 7
 
 [Command]
 name = "236A"
-command = D, F,  x
-buffer.shared = 0
+command = ~D, F,  x
+steptime = 7
 
 [Command]
 name = "236B"
-command = D, F, a
-buffer.shared = 0
+command = ~D, F, a
+steptime = 7
 
 [Command]
 name = "236C"
-command = D, F, y
-buffer.shared = 0
+command = ~D, F, y
+steptime = 7
 
 
 [Command]
 name = "236D"
-command = D, F,  b
-buffer.shared = 0
+command = ~D, F,  b
+steptime = 7
 
 [Command]
 name = "623A"
