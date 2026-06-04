@@ -1039,8 +1039,8 @@ value = 0, 1
 [State 0, VelSet]
 type = VelSet
 trigger1 = time = 16
-x = 10
-y = 14
+x = 9
+y = 12
 
 [State -2, Starter Damage Scaling]
 type = mapset
@@ -1088,8 +1088,8 @@ air.hittime = 60
 fall = 1
 fall.xvelocity = -3
 fall.yvelocity = cond(Map(GroundBounce)=0,-6,0)
-guard.ctrltime = 14
-guard.hittime = 14
+guard.ctrltime = 10
+guard.hittime = 10
 p2facing = 1
 air.cornerpush.veloff = 0
 envshake.ampl = 3

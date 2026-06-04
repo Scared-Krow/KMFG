@@ -632,8 +632,8 @@ time = 16
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, SA
-animtype  = Medium
-damage = 25
+animtype  = back
+damage = 0,0
 guardflag = MA
 priority = 3
 pausetime = 12,12
@@ -641,14 +641,15 @@ sparkno = 1
 sparkxy = -10,-65
 hitsound   = 5,2
 guardsound = 6,0
-ground.type = High
 ground.slidetime = 12
 ground.hittime  = 20
-ground.velocity = -5.245,-4
-air.hittime = 25
-air.velocity = -2,-1.25
-guard.ctrltime = 10
-guard.hittime = 10
+ground.velocity = -5,-2
+air.hittime = 15
+air.velocity = -4,-2
+guard.velocity = -2
+airguard.velocity = -2,-1
+guard.ctrltime = 6
+guard.hittime = 6
 forcenofall = 1
 fall.yvelocity = 0
 p2facing = 1
@@ -876,3 +877,17 @@ triggerall = statetype != A
 triggerall = stateno = [130,159] && power >= 250
 trigger1 = command = "2Buttons"
 value = 750
+
+
+;-------CHARACTER SPECIFIC----------
+
+;--shteppi--
+
+[State 0, LifeAdd]
+type = LifeAdd
+triggerall = enemy,Map(flirt)>0
+trigger1 = time%4=0 
+value = -1
+kill = 0
+
+
