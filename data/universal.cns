@@ -787,6 +787,12 @@ trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
 value = 1
 map = "DamageScaling"
 ignorehitpause = 1
+[State -2, Damage Scaling Floor]
+type = mapset
+trigger1 = Map(DamageScaling)<0
+value = 0
+map = "DamageScaling"
+ignorehitpause = 1
 [State -2, Hitstun Scaling Reset]
 type = mapset
 trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
@@ -856,7 +862,7 @@ ignorehitpause = 1
 
 [State -2, Counter Hit]
 type = mapset
-trigger1 = HitPauseTime=1 && movecountered=1
+trigger1 = HitPauseTime=1 && (enemy,movetype = H && enemy,prevmovetype=A)
 value = Map(DamageScaling)+.1
 map = "DamageScaling"
 ignorehitpause = 1

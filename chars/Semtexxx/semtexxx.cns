@@ -78,9 +78,8 @@ victory7 = "What do you mean my girlfriend is in another temple?"
 
 [Constants]
 Default.Attack.LifeToPowerMul = 0.725
-Default.GetHit.LifeToPowerMul = 0.375
-
-
+Default.GetHit.LifeToPowerMul = 0.5
+MissOnOverride = 0
 ;---------------------------------------------------------------------------
 ; Variable usage:
 ; This is a record of the variables that KFM uses. Keeping a record of your

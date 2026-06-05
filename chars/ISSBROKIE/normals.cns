@@ -825,7 +825,7 @@ time = 1
 
 [State 440, 3]
 type = HitDef
-triggerall = enemy,movetype = A && enemy,map(ArmorActive)=0
+triggerall = enemy,movetype = A 
 trigger1 = animelem = 4
 attr = S, NA
 damage = ceil(cond(75*Map(DamageScaling) < 10, 10, 75*Map(DamageScaling)))
@@ -856,10 +856,11 @@ ground.cornerpush.veloff = -3
 air.cornerpush.veloff = -3
 p2facing = 1
 p2stateno = 5430
+missonoverride = 0
 
 [State 440, 3]
 type = HitDef
-triggerall = enemy,movetype != A || enemy,map(ArmorActive)=1
+triggerall = enemy,movetype != A
 trigger1 = animelem = 4
 attr = S, NA
 damage = ceil(cond(75*Map(DamageScaling) < 10, 10, 75*Map(DamageScaling)))

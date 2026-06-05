@@ -911,7 +911,7 @@ persistent = 0
 
 [State 210, 2]
 type = HitDef
-triggerall = enemy,movetype = A && enemy,Map(ArmorActive)=0
+triggerall = enemy,movetype = A
 trigger1 = !MoveContact && !MoveReversed
 attr = S, SA
 animtype  = Medium
@@ -937,10 +937,12 @@ p2facing = 1
 ground.cornerpush.veloff = -5-(Map(PushBack))
 air.cornerpush.veloff = -5
 p2stateno = 5400
+missonoverride = 0
+getpower = (50*Map(DamageScaling)/2)+25
 
 [State 210, 2]
 type = HitDef
-triggerall = enemy,movetype != A && enemy,Map(ArmorActive)=0
+triggerall = enemy,movetype != A 
 trigger1 = !MoveContact && !MoveReversed
 attr = S, SA
 animtype  = Medium
@@ -967,38 +969,8 @@ p2facing = 1
 ground.cornerpush.veloff = -5-(Map(PushBack))
 air.cornerpush.veloff = -5
 p2stateno = 5420
-
-
-[State 210, 2]
-type = HitDef
-triggerall = enemy,Map(ArmorActive)=1
-trigger1 = !MoveContact && !MoveReversed
-attr = S, SA
-animtype  = Medium
-damage = ceil(cond(70*Map(DamageScaling) < 10, 10, 70*Map(DamageScaling)))
-guardflag = MA
-pausetime = 12,12
-priority = 4, Hit 
-sparkno = 1
-sparkxy = -12,-50
-hitsound   = 5,1
-guardsound = 6,0
-ground.type = High
-ground.slidetime = 12
-ground.hittime  = 20
-ground.velocity = -9,-4
-air.hittime = 60
-air.velocity = -7,-3
-fall = 1
-guard.ctrltime = 12
-guard.hittime = 12
-fall.yvelocity = 0
-guard.velocity = -12
-p2facing = 1
-ground.cornerpush.veloff = -5-(Map(PushBack))
-air.cornerpush.veloff = -5
-
-
+missonoverride = 0
+getpower = (50*Map(DamageScaling)/2)+25
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1067,6 +1039,7 @@ persistent = 0
 
 [State 640, 3]
 type = HitDef
+triggerall = Map(GroundBounce)=0
 trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
 damage = ceil(cond(70*Map(DamageScaling) < 10, 10, 70*Map(DamageScaling)))
@@ -1095,16 +1068,42 @@ air.cornerpush.veloff = 0
 envshake.ampl = 3
 envshake.time = 10
 envshake.freq = 90
-id = 5420
+getpower = (50*Map(DamageScaling)/2)+15
 
-[State 0, TargetState]
-type = TargetState
+[State 640, 3]
+type = HitDef
 triggerall = Map(GroundBounce)=1
-triggerall = enemy,statetype = A && NumTarget(5420)
-trigger1 = movehit=1
-value = 5420
-ID = 5420
-ignorehitpause = 1
+trigger1 = !MoveContact && !MoveReversed
+attr = A, NA
+damage = ceil(cond(70*Map(DamageScaling) < 10, 10, 70*Map(DamageScaling)))
+guardflag = HA
+priority = 4
+pausetime = 15,15
+sparkno = 1
+sparkxy = -10,-40
+hitsound   = 5,3
+guardsound = 6,0
+animtype = Med
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 18
+ground.velocity = -5,12
+guard.velocity = -5
+air.velocity = -4,12
+air.hittime = 60
+fall = 1
+fall.xvelocity = -3
+fall.yvelocity = cond(Map(GroundBounce)=0,-6,0)
+guard.ctrltime = 10
+guard.hittime = 10
+p2facing = 1
+air.cornerpush.veloff = 0
+envshake.ampl = 3
+envshake.time = 10
+envshake.freq = 90
+p2stateno = 5420
+missonoverride = 0
+getpower = (50*Map(DamageScaling)/2)+15
 
 [State 1000, 7]
 type = ChangeState
