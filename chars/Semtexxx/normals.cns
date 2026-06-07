@@ -933,7 +933,7 @@ ground.hittime  = 15
 ground.velocity = -4-(Map(PushBack))
 air.velocity = -1,-2
 airguard.velocity = -1.25,-1.25
-air.hittime = ceil(cond(18-Map(HitstunScaling) < 10, 10, 18-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
+air.hittime = ceil(cond(18-Map(HitstunScaling) < 8, 8, 18-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
 air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 10
