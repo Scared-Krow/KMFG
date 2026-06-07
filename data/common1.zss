@@ -124,6 +124,8 @@ if animTime = 0 {
 
 if time = 0 {mapAdd{map: "DJ"; value: -1;}}
 
+if time = 0 {notHitBy{value: ,NT,ST,HT; time: 4}}
+
 changeAnim{value: ifElse(selfAnimExist(44), 44, 41)}
 if time = 0 {
 	sysVar(1) := 0;
@@ -435,9 +437,11 @@ if time = 0 {
 	hitVelSet{x: 1; y: 1}
 }
 if time = getHitVar(ctrlTime) {
-	ctrlSet{value: 1}
+	changeState{value: 50; ctrl: 1}
 }
 call IkSys_AirGuardLand();
+
+notHitBy{value: ,NT,ST,HT; time: 2}
 #-------------------------------------------------------------------------------
 # Lose (time over)
 [StateDef 170; type: S; ctrl: 0; anim: 170; velset: 0, 0;]
@@ -706,6 +710,8 @@ let ret = cond($cond && selfAnimExist($base + anim % 10),
 #-------------------------------------------------------------------------------
 # Downed get-hit (shaking)
 [StateDef 5080; type: L; movetype: H; physics: N; velset: 0, 0; sprPriority: 0;]
+
+if time = 0 && getHitVar(yVel) {posAdd{y:-20}}
 
 if time = 0 {
 	sysVar(2) := ifElse(getHitVar(yVel) = 0, 5080, 5090);

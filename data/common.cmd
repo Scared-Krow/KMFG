@@ -323,84 +323,81 @@ name = "6246A"
 command = ~F, $D, $B, $F, x
 time = 25
 buffer.time = 5
-buffer.shared = 0
 
 [Command]
 name = "6246B"
 command = ~F, $D, $B, $F, a
 time = 25
 buffer.time = 5
-buffer.shared = 0
 
 [Command]
 name = "6246C"
 command = ~F, $D, $B, $F, y
 time = 25
 buffer.time = 5
-buffer.shared = 0
+
 
 [Command]
 name = "6246D"
 command = ~F, $D, $B, $F, b
 time = 25
 buffer.time = 5
-buffer.shared = 0
+
 
 [Command]
 name = "236236A"
 command = D, $F, D, $F, x
 time = 20
 buffer.time = 5
-buffer.shared = 0
+
 
 [Command]
 name = "236236B"
 command = D, $F, D, $F, a
 time = 20
 buffer.time = 5
-buffer.shared = 0
+
 
 [Command]
 name = "236236C"
 command = D, $F, D, $F, y
 time = 20
 buffer.time = 5
-buffer.shared = 0
+
 
 [Command]
 name = "236236D"
 command = D, $F, D, $F, b
 time = 20
 buffer.time = 5
-buffer.shared = 0
+
 
 [Command]
 name = "214214A"
 command = D, $B, D, $B, x
 time = 20
 buffer.time = 5
-buffer.shared = 0
 
 [Command]
 name = "214214B"
 command = D, $B, D, $B, a
 time = 20
 buffer.time = 5
-buffer.shared = 0
+
 
 [Command]
 name = "214214C"
 command = D, $B, D, $B, y
 time = 20
 buffer.time = 5
-buffer.shared = 0
+
 
 [Command]
 name = "214214D"
 command = D, $B, D, $B, b
 time = 20
 buffer.time = 5
-buffer.shared = 0
+
 
 ;-NORMAL INPUTS-
 

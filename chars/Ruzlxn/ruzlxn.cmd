@@ -145,6 +145,10 @@ command.time = 16
 ; maximum 30.
 command.buffer.time = 3
 
+
+[Command]
+name = "214C"
+command = ~D, B,  y
 ;---------------------------------------------------------------------------
 ; 2. State entry
 ; --------------

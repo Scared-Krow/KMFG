@@ -1225,6 +1225,39 @@ y = 0
 type = DestroySelf
 triggerall = anim = 1011
 trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;22X
+[Statedef 1020]
+type    = S
+movetype= I
+physics = S
+anim = 1001
+velset = vel x,0
+poweradd = 0
+ctrl = 0
+
+[State 0, Helper]
+type = Helper
+trigger1 = animelem = 4
+helpertype = Normal ;Player
+name = "Portal"
+ID = 1020
+stateno = 1025
+pos = 25,-50
+postype = P1    ;P2, Front, Back, Left, Right
+facing = 1
+keyctrl = 0
+ownpal = 0
+
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+
 ;---------------------------------------------------------------------------
 ;Icicle Up Projectile
 [Statedef 1070]

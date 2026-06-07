@@ -146,7 +146,14 @@ command.time = 16
 command.buffer.time = 3
 
 
+[Command]
+name = "214B"
+command = ~D, B,  a
 
+
+[Command]
+name = "236D"
+command = ~D, B,  b
 ;---------------------------------------------------------------------------
 ; 2. State entry
 ; --------------

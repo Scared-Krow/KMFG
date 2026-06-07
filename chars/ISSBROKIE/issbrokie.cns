@@ -468,7 +468,7 @@ type = AttackMulSet
 trigger1 = Map(RAWRXD)=1
 value = 1.2
 
-[State Fatal Counter]
+[State RAWRXD]
 type = mapset
 trigger1 = roundstate = [0,1]
 map = "RAWRXD"

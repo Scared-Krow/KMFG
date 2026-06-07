@@ -17,7 +17,6 @@ s = s
 command.time = 13
 command.buffer.time = 3
 
-
 [Command]
 name = "j236D"
 command = ~$D, F,  b
@@ -25,7 +24,6 @@ time = 10
 [Command]
 name = "j236C"
 command = ~D, F,  y
-time = 10
 
 [Command]
 name = "236D"
@@ -34,7 +32,6 @@ time = 10
 [Command]
 name = "236C"
 command = ~D, F,  y
-time = 10
 
 [Command]
 name = "sh_buffer"

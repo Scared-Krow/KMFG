@@ -185,6 +185,7 @@ guard.hittime = 5
 p2facing = 1
 guard.dist = 0
 forcenofall = 1
+getpower = (40*root,Map(DamageScaling)/2)+10
 
 [State 0, NotHitBy]
 type = NotHitBy
@@ -312,6 +313,7 @@ guard.hittime = 5
 forcenofall = 1
 p2facing = 1
 guard.dist = 0
+getpower = (40*root,Map(DamageScaling)/2)+10
 
 [State 0, NotHitBy]
 type = NotHitBy
@@ -434,6 +436,7 @@ guard.hittime = 5
 p2facing = 1
 guard.dist = 0
 forcenofall = 1
+getpower = (40*root,Map(DamageScaling)/2)+10
 
 [State 0, NotHitBy]
 type = NotHitBy
@@ -557,6 +560,7 @@ guard.hittime = 5
 p2facing = 1
 guard.dist = 0
 forcenofall = 1
+getpower = (40*root,Map(DamageScaling)/2)+10
 
 [State -2, Hitstun Scaling]
 type = mapset
@@ -750,6 +754,8 @@ ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
 p2facing = 1
 guard.dist = 0
+getpower = (40*Map(DamageScaling)/2)+20
+
 [State 440, 3]
 type = HitDef
 trigger1 = animelem = 7
@@ -778,6 +784,7 @@ ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
 p2facing = 1
 guard.dist = 0
+getpower = (40*Map(DamageScaling)/2)+20
 
 [State -2, Counterhit]
 type = mapset
@@ -945,6 +952,7 @@ p2facing = 1
 ground.cornerpush.veloff = -5
 air.cornerpush.veloff = -5
 guard.dist = 0
+getpower = (50*Map(DamageScaling)/2)+20
 
 [State 0, LifeAdd]
 type = LifeAdd
@@ -1117,6 +1125,7 @@ persistent = 0
 
 [State 200, 1]
 type = HitDef
+triggerall = Map(GroundBounce)=0
 trigger1 = !MoveContact && !MoveReversed
 attr = S,SA                     ;Attribute: Standing, Normal Attack
 damage = ceil(cond(75*Map(DamageScaling) < 10, 10, 75*Map(DamageScaling)))
@@ -1146,16 +1155,42 @@ envshake.time = 10
 envshake.freq = 90
 envshake.phase = 130
 envshake.ampl = -5
-id = 5420 
+getpower = (50*Map(DamageScaling)/2)+20
 
-[State 0, TargetState]
-type = TargetState
+[State 200, 1]
+type = HitDef
 triggerall = Map(GroundBounce)=1
-triggerall = enemy,statetype = A && NumTarget(5420)
-trigger1 = movehit=1
-value = 5420
-ID = 5420
-ignorehitpause = 1
+trigger1 = !MoveContact && !MoveReversed
+attr = S,SA                     ;Attribute: Standing, Normal Attack
+damage = ceil(cond(75*Map(DamageScaling) < 10, 10, 75*Map(DamageScaling)))
+animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
+guardflag = MA                   ;Flags on how move is to be guarded against
+hitflag = AF                    ;Flags of conditions that move can hit
+priority = 4, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+pausetime = 14,14                ;Time attacker pauses, time opponent shakes
+sparkno = 1                     ;Spark anim no (Def: set above)
+sparkxy = -10, -40               ;X-offset for the "hit spark" rel. to p2,
+hitsound = 5, 10                  ;Sound to play on hit
+guardsound = 6, 0                ;Sound to play on guard
+ground.type = High               ;Type: High, Low, Trip (def: Normal)
+ground.slidetime = 50            ;Time that the opponent slides back
+ground.hittime  = 60
+ground.velocity = -3,15
+guard.velocity = -6
+airguard.velocity = -1.9,-.8     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
+air.velocity = -2.75,15      ;X-velocity at which opponent is pushed,
+air.hittime = 60
+fall = 1
+fall.yvelocity = cond(Map(GroundBounce)=0,-6.35,0)
+guard.ctrltime = 10
+guard.hittime = 10
+envshake.time = 10
+envshake.freq = 90
+envshake.phase = 130
+envshake.ampl = -5
+p2stateno = 5420 
+getpower = (50*Map(DamageScaling)/2)+20
 
 
 
@@ -1205,7 +1240,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.11
+value = Map(DamageScaling)-.125
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1220,6 +1255,46 @@ persistent = 0
 
 [State 200, 1]
 type = HitDef
+triggerall = Map(WallBounce)=0
+trigger1 = !MoveContact && !MoveReversed
+attr = S,SA                     ;Attribute: Standing, Normal Attack
+damage = ceil(cond(70*Map(DamageScaling) < 7, 7, 70*Map(DamageScaling))),10
+animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
+guardflag = MA                   ;Flags on how move is to be guarded against
+hitflag = MAF                    ;Flags of conditions that move can hit
+priority = 2, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+pausetime = 12,12               ;Time attacker pauses, time opponent shakes
+sparkno = 2                   ;Spark anim no (Def: set above)
+sparkxy = -10, -50               ;X-offset for the "hit spark" rel. to p2,
+hitsound = 5,2                ;Sound to play on hit
+guardsound = 6, 0                ;Sound to play on guard
+ground.type = High               ;Type: High, Low, Trip (def: Normal)
+ground.slidetime = 50            ;Time that the opponent slides back
+ground.hittime  = 60
+ground.velocity = cond(Map(WallBounce)=0,-20,-10),cond(Map(WallBounce)=0,-7,-3) 
+guard.velocity = -7.7
+guard.slidetime = 12
+airguard.velocity = -3,-3     ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
+air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
+air.velocity = cond(Map(WallBounce)=0,-20,-8),cond(Map(WallBounce)=0,-6,-2.5)     ;X-velocity at which opponent is pushed,
+air.hittime = 60
+fall = 1
+fall.yvelocity = 0
+guard.ctrltime = 12
+guard.hittime = 12
+envshake.time = 8
+envshake.freq = 90
+envshake.phase = 150
+envshake.ampl = -4
+ground.cornerpush.veloff = -5
+air.cornerpush.veloff = -5
+getpower = (50*Map(DamageScaling)/2)+20
+p2stateno = 5400
+missonoverride = 0
+
+[State 200, 1]
+type = HitDef
+triggerall = Map(WallBounce)=1
 trigger1 = !MoveContact && !MoveReversed
 attr = S,SA                     ;Attribute: Standing, Normal Attack
 damage = ceil(cond(70*Map(DamageScaling) < 7, 7, 70*Map(DamageScaling))),10
@@ -1252,25 +1327,10 @@ envshake.phase = 150
 envshake.ampl = -4
 ground.cornerpush.veloff = -5
 air.cornerpush.veloff = -5
-id = 5400
+getpower = (50*Map(DamageScaling)/2)+20
+p2stateno = 5420
+missonoverride = 0
 
-[State 0, TargetState]
-type = TargetState
-triggerall = Map(WallBounce)=0
-triggerall = enemy,statetype = A && NumTarget(5400)
-trigger1 = movehit=1
-value = 5400
-ID = 5400
-ignorehitpause = 1
-
-[State 0, TargetState]
-type = TargetState
-triggerall = Map(WallBounce)=1
-triggerall = enemy,statetype = A && NumTarget(5400)
-trigger1 = movehit=1
-value = 5420
-ID = 5400
-ignorehitpause = 1
 
 
 [State 200, 2]

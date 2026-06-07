@@ -134,7 +134,7 @@ trigger2 = root,movetype = H
 trigger3 = movetype = H
 
 
-
+;JenX2 Super
 [Statedef 4005]
 type    = S
 movetype= A
@@ -142,7 +142,7 @@ physics = S
 ctrl = 0
 anim = F4005
 velset = 8,0
-sprpriority = -1
+sprpriority = 6
 facep2 = 1
 
 [State 0, SuperPause]
@@ -261,14 +261,14 @@ ctrl = 0
 type = DestroySelf
 trigger1 = animtime = 0
 
-
+;JenX2 Super Followup
 [Statedef 4006]
 type    = S
 movetype= A
 physics = S
 ctrl = 0
 anim = F4006
-sprpriority = -1
+sprpriority = 6
 facep2 = 1
 
 [State 210, 2]
@@ -676,6 +676,155 @@ y = -4
 type = DestroySelf
 trigger1 = time = 90
 
+;IssBrokie Super
+[Statedef 4015]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+anim = F4015
+velset = 0,0
+sprpriority = 6
+facep2 = 1
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0
+time = 36
+darken = 1
+p2defmul = 1
+movetime = 36
+
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = time = 0
+value = 4998
+ctrl = 0
+redirectID = root,ID
+
+[State 0, Explod]
+type = Explod
+trigger1 = time = 0
+anim = F3999
+ID = 3999
+pos = 0,-40
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = -2
+scale = 1,1
+sprpriority = 4
+ownpal = 1
+removeongethit = 1
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+edge = 0,0
+player = -4,-4
+
+
+[State 3000, StayOnTarget]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,0
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 999
+
+[State 0. PosSet]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 0, PowerAdd]
+type = PowerAdd
+trigger1 = time = 0
+value = -500
+redirectID = root,ID
+
+[State 210, 2]
+type = HitDef
+trigger1 = animelem = 5
+attr = S, HA
+animtype  = Up
+damage = ceil(cond(50*root,Map(DamageScaling) < 25, 25, 50*root,Map(DamageScaling)))
+guardflag = MA
+pausetime = 25,25
+sparkno = 1
+sparkxy = -10,-50
+hitsound   = 5,2
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = 0,-10
+air.hittime = 99
+air.velocity = 0,-10
+guard.ctrltime = 11
+guard.hittime = 11
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+fall = 1
+p2facing = 1
+getpower = 0,0
+mindist = 50,-10
+maxdist = 50,-10
+
+[State 210, 2]
+type = HitDef
+trigger1 = animelem = 6
+attr = S, HA
+animtype  = Up
+damage = ceil(cond(50*root,Map(DamageScaling) < 25, 25, 50*root,Map(DamageScaling)))
+guardflag = MA
+pausetime = 15,16
+sparkno = 1
+sparkxy = -10,-60
+hitsound   = 5,2
+guardsound = 6,0
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10,-10
+air.hittime = 99
+air.velocity = -10,-10
+guard.ctrltime = 11
+guard.hittime = 11
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+fall = 1
+p2facing = 1
+getpower = 0,0
+fall.yvelocity = 0
+p2stateno = 5430
+missonoverride = 0
+
+[State -2, Install]
+type = mapset
+trigger1 = animelem = 6 && movehit
+value = 1
+map = "RAWRXD"
+ignorehitpause = 1
+persistent = 0
+redirectID = root,ID
+
+
+[State 1000, 7]
+type = DestroySelf
+trigger1 = animtime = 0
+
 ;---------------------------------------------------------------------------
 ;Partner Pose
 [Statedef 4998]
@@ -726,6 +875,9 @@ value = 0
 ctrl = 1
 
 [Statedef -2]
+;---------------------------------------------------------------------------
+;JenX2
+;---------------------------------------------------------------------------
 
 [State 0, Helper]
 type = Helper
@@ -764,6 +916,9 @@ ownpal = 0
 size.xscale = 1.3
 size.yscale = 1.3
 
+;---------------------------------------------------------------------------
+;ISSBROKIE
+;---------------------------------------------------------------------------
 
 [State 0, Helper]
 type = Helper
@@ -801,3 +956,78 @@ ownpal = 0
 size.xscale = 1.3
 size.yscale = 1.3
 
+;Assist Super
+[State 0, Helper]
+type = Helper
+triggerall = stateno = [3000,3999]
+triggerall = numhelper(4000)<=0 && movetype != H
+triggerall = power >= 500 && Map(Assist) = 2 && roundstate = 2
+trigger1 = command = "z"
+helpertype = Normal
+name = "ISSBROKIE"
+ID = 4000
+stateno = 4015
+pos = 35,0
+postype = P2
+facing = 1
+keyctrl = 0
+ownpal = 0
+size.xscale = 1.3
+size.yscale = 1.3
+
+[Statedef -3]
+
+[State 0, AttackMulSet]
+type = AttackMulSet
+trigger1 = Map(RAWRXD)=1
+value = 1.2
+
+[State RAWRXD]
+type = mapset
+trigger1 = roundstate = [0,1]
+map = "RAWRXD"
+value = 0
+
+[State 0, AttackMulSet]
+type = AttackMulSet
+trigger1 = Map(RAWRXD)=0
+value = 1
+
+[State 0, Explod]
+type = Explod
+triggerall = teamside = 1
+trigger1 = Map(RAWRXD)=1 && numexplod(4016)<1
+anim = 4016
+ID = 4016
+pos = 125,35
+postype = left  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+removetime = -2
+supermovetime = 9999999
+pausemovetime = 999999
+scale = .6,.6
+sprpriority = -6
+ontop = 0
+ownpal = 1
+removeongethit = 0
+[State 0, Explod]
+type = Explod
+triggerall = teamside = 2
+trigger1 = Map(RAWRXD)=1 && numexplod(4016)<1
+anim = 4016
+ID = 4016
+pos = -125,35
+postype = right ;P2, Front, Back, Left, Right
+facing = -1
+vfacing = 1
+bindtime = 1
+removetime = -2
+supermovetime = 9999999
+pausemovetime = 999999
+scale = .6,.6
+sprpriority = -6
+ontop = 0
+ownpal = 1
+removeongethit = 0
