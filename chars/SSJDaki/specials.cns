@@ -463,6 +463,7 @@ ctrl = 0
 
 [State 0, PosSet]
 type = VelSet
+triggerall = pos y > -140
 trigger1 = time < 5
 y = -4
 [State 0, PosSet]

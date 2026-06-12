@@ -292,7 +292,7 @@ poweradd = 100
 [State 0, SuperPause]
 type = SuperPause
 trigger1 = time = 0 
-time = cond(enemy, hitdefattr != SCA,NP, SP, HP,15,5)
+time = cond(enemynear, hitdefattr != SCA,NP, SP, HP,15,3)
 anim = -1
 sound = -1
 darken = 0

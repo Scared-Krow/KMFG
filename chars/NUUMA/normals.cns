@@ -71,7 +71,8 @@ ground.cornerpush.veloff = -2-(Map(PushBack))
 air.cornerpush.veloff = -1
 p2facing = 1
 guard.dist = 0
-getpower = (20*Map(DamageScaling)/2)+10
+getpower = (20*Map(DamageScaling)/2)+10,5
+givepower = (20*Map(DamageScaling)/2),4
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -587,14 +588,15 @@ ground.velocity = -3, 3
 air.hittime = 40
 air.velocity = -2.5,4
 fall = 1
-guard.ctrltime = 11
-guard.hittime = 11
+guard.ctrltime = 9
+guard.hittime = 9
 fall.yvelocity = 0
 p2facing = 1
 ground.cornerpush.veloff = -2-(Map(PushBack))
 air.cornerpush.veloff = -2
 guard.dist = 0
-id = 5420
+p2stateno = 5420
+missonoverride = 0
 getpower = (50*Map(DamageScaling)/2)+10
 
 [State 0, TargetState]

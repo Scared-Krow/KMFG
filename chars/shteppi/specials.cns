@@ -61,7 +61,7 @@ persistent = 0
 
 [State 440, 3]
 type = HitDef
-triggerall = enemy,movetype = A && enemy,map(ArmorActive)=0
+triggerall = enemy,movetype = A
 trigger1 = !MoveContact && !MoveReversed
 attr = C, SA
 damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling))),10
@@ -87,10 +87,12 @@ guard.hittime = 14
 ground.cornerpush.veloff = -3
 p2facing = 1
 p2stateno = 5430
+missonoverride = 0
+getpower = (50*Map(DamageScaling)/2)+15
 
 [State 210, 2]
 type = HitDef
-triggerall = enemy,movetype != A || enemy,map(ArmorActive)=1
+triggerall = enemy,movetype != A
 trigger1 = !MoveContact && !MoveReversed
 attr = C, SA
 damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling))),10
@@ -234,6 +236,7 @@ fall = 1
 ground.cornerpush.veloff = -3-(Map(PushBack))
 fall.yvelocity = 0
 p2facing = 1
+getpower = (50*Map(DamageScaling)/2)+15
 
 [State 0, VelMul]
 type = VelMul
@@ -392,6 +395,7 @@ guard.dist = 0
 forcenofall = 1
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
+getpower = (40*root,Map(DamageScaling)/2)+10
 
 [State 0, HitBy]
 type = HitBy
@@ -538,6 +542,7 @@ guard.dist = 0
 forcenofall = 1
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
+getpower = (40*root,Map(DamageScaling)/2)+10
 
 [State 0, VelAdd]
 type = VelAdd
@@ -683,6 +688,7 @@ guard.dist = 0
 forcenofall = 1
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
+getpower = 15
 
 [State 0, HitBy]
 type = HitBy
@@ -1063,6 +1069,7 @@ guard.dist = 0
 forcenofall = 1
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
+getpower = (40*root,Map(DamageScaling)/2)+5
 
 [State 0, ChangeState]
 type = ChangeState
@@ -1196,6 +1203,7 @@ guard.dist = 0
 forcenofall = 1
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
+getpower = (20*root,Map(DamageScaling)/2)+5
 
 [State 0, DestroySelf]
 type = DestroySelf
@@ -1371,6 +1379,7 @@ guard.dist = 0
 fall = 1
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
+getpower = (50*root,Map(DamageScaling)/2)+20
 
 [State 0, ChangeState]
 type = DestroySelf
@@ -1483,8 +1492,8 @@ movetype= A
 physics = N
 ctrl = 0
 anim = 1402
-velset = 6.5,-6.5
-sprpriority = -1
+velset = 7.5,-6.9
+sprpriority = 3
 
 [State 0, VelMul]
 type = VelMul
@@ -1560,6 +1569,7 @@ guard.dist = 0
 forcenofall = 1
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
+getpower = (40*root,Map(DamageScaling)/2)+10
 
 [State 0, HitBy]
 type = HitBy
@@ -1594,8 +1604,8 @@ movetype= A
 physics = N
 ctrl = 0
 anim = 1402
-velset = 6.5,-6.5
-sprpriority = -1
+velset = 7.5,-6.9
+sprpriority = 3
 
 [State 0, VelMul]
 type = VelMul
@@ -1671,6 +1681,7 @@ guard.dist = 0
 fall = 1
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
+getpower = (50*root,Map(DamageScaling)/2)+20
 
 [State 0, HitBy]
 type = HitBy

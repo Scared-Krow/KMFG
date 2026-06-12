@@ -434,6 +434,59 @@ triggerall = command = "214D"
 triggerall = statetype = A
 trigger1 = ctrl
 trigger2 = var(1)
+;---------------------------------------------------------------------------
+;22A
+[State -1, 22A]
+type = ChangeState
+value = 1020
+triggerall = numhelper(1020)=0
+triggerall = command = "22A"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = var(1)
+
+;---------------------------------------------------------------------------
+;22B
+[State -1, 22B]
+type = ChangeState
+value = 1021
+triggerall = numhelper(1020)=0
+triggerall = command = "22B"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = var(1)
+;---------------------------------------------------------------------------
+;22C
+[State -1, 22C]
+type = ChangeState
+value = 1022
+triggerall = numhelper(1020)=0
+triggerall = command = "22C"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = var(1)
+
+;---------------------------------------------------------------------------
+;22D
+[State -1, 22D]
+type = ChangeState
+value = 1023
+triggerall = numhelper(1020)=0
+triggerall = command = "22D"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = var(1)
+
+;---------------------------------------------------------------------------
+;22X Active
+[State -1, 22D]
+type = ChangeState
+value = 1027
+triggerall = numhelper(1020)>0
+triggerall = command = "22A" || command = "22B" || command = "22C" || command = "22D"
+trigger1 = ctrl
+trigger2 = var(1)
+
 ;===========================================================================
 
 ;---------------------------------------------------------------------------

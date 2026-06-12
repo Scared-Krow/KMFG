@@ -36,7 +36,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1
+value = Map(HitstunScaling)+.5
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -70,7 +70,8 @@ guard.ctrltime = 10
 guard.hittime = 10
 ground.cornerpush.veloff = -3-(Map(PushBack))
 p2facing = 1
-getpower = (20*Map(DamageScaling)/2)+5
+getpower = (20*Map(DamageScaling)/2)+5,5
+givepower = (20*Map(DamageScaling)/2),4
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -392,7 +393,7 @@ ground.slidetime = 10
 ground.hittime  = 18
 ground.velocity = -2.5,-5
 air.velocity = -2,-4
-air.hittime = ceil(cond(30-Map(HitstunScaling) < 20, 20, 30-Map(HitstunScaling)))
+air.hittime = ceil(cond(30-Map(HitstunScaling) < 23, 23, 30-Map(HitstunScaling)))
 fall = 1
 ground.cornerpush.veloff = -4-(Map(PushBack))
 fall.yvelocity = 0
@@ -490,10 +491,10 @@ map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
 
-[State 400, 1]
+[State 200, 2]
 type = PlaySnd
 trigger1 = Time = 1
-value = 0, 0
+value = F8, 0
 
 [State 400, 2]
 type = HitDef
@@ -508,7 +509,7 @@ priority = 1
 pausetime = 9,9
 sparkno = 0
 sparkxy = -10,-10
-hitsound   = 5,0
+hitsound   = 9,0
 guardsound = 6,0
 ground.type = Low
 ground.slidetime = 4
@@ -523,7 +524,8 @@ guard.hittime = 10
 fall.yvelocity = 0
 ground.cornerpush.veloff = -4-(Map(PushBack))
 p2facing = 1
-getpower = (20*Map(DamageScaling)/2)+5
+getpower = (20*Map(DamageScaling)/2)+5,5
+givepower = (20*Map(DamageScaling)/2),4
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -792,8 +794,8 @@ persistent = 0
 
 [State 400, 1]
 type = PlaySnd
-trigger1 = Time = 1
-value = 0, 0
+trigger1 = Time = 9
+value = F8, 2
 
 [State 400, 2]
 type = HitDef
@@ -816,7 +818,7 @@ ground.hittime  = 30
 ground.velocity = -3.2,-4
 guard.velocity = -3.5
 air.velocity = -3,-3
-air.hittime = ceil(cond(25-Map(HitstunScaling) < 15, 15, 25-Map(HitstunScaling)))
+air.hittime = ceil(cond(28-Map(HitstunScaling) < 18, 18, 28-Map(HitstunScaling)))
 fall = 1
 guard.ctrltime = 12
 guard.hittime = 12
@@ -941,7 +943,8 @@ guard.hittime = 10
 ground.cornerpush.veloff = -5-(Map(PushBack))
 air.cornerpush.veloff = -2
 p2facing = 1
-getpower = (20*Map(DamageScaling)/2)+5
+getpower = (20*Map(DamageScaling)/2)+5,5
+givepower = (20*Map(DamageScaling)/2),4
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1178,14 +1181,7 @@ value = Map(DamageScaling)-.2
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
-[State -2, Hitstun Scaling]
-type = mapset
-triggerall = enemy,statetype = A && enemy,movetype = H
-trigger1 = movehit
-value = Map(HitstunScaling)+1
-map = "HitstunScaling"
-ignorehitpause = 1
-persistent = 0
+
 
 [State 640, 3]
 type = HitDef

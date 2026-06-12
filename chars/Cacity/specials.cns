@@ -168,6 +168,7 @@ guard.ctrltime = 8
 guard.hittime = 8
 p2facing = 1
 guard.dist = 0
+getpower = (30*root,Map(DamageScaling)/2)+10
 
 [State 0, DestroySelf]
 type = ChangeState
@@ -224,17 +225,17 @@ x = 1.07
 [State -2, Hits]
 type = mapadd
 trigger1 = movecontact=1 || movereversed=1
+trigger2 = prevstateno = 5000
 value = 1
 map = "Hits"
 ignorehitpause = 0
 
 [State 0, HitOverride]
 type = HitOverride
-triggerall = Map(Hits)>=2
 trigger1 = 1
 attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 slot = 9
-stateno = 1002
+stateno = 1003
 time = 999
 
 
@@ -247,7 +248,7 @@ damage = ceil(cond(40*root,Map(DamageScaling) < 4, 4, 40*root,Map(DamageScaling)
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
-priority = 3, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
+priority = 7, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = cond(Map(Hits)>1,0,8),8                ;Time attacker pauses, time opponent shakes
 sparkno = 2                     ;Spark anim no (Def: set above)
 sparkxy = 0, -2              ;X-offset for the "hit spark" rel. to p2,
@@ -268,6 +269,7 @@ guard.ctrltime = 8
 guard.hittime = 8
 p2facing = 1
 guard.dist = 0
+getpower = (30*root,Map(DamageScaling)/2)+10
 
 [State 0, DestroySelf]
 type = ChangeState
@@ -352,6 +354,7 @@ ground.hittime  = 35
 ground.velocity = -2.5,-8
 air.hittime = 35
 air.velocity = -2.5,-6
+airguard.velocity = -1,-1  
 guard.ctrltime = 8
 guard.hittime = 8
 fall = 1
@@ -360,6 +363,7 @@ fall.yvelocity = 0
 air.cornerpush.veloff = -3
 p2facing = 1
 guard.dist = 0
+getpower = (40*Map(DamageScaling)/2)+15
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -450,6 +454,7 @@ fall.yvelocity = 0
 air.cornerpush.veloff = -3
 p2facing = 1
 guard.dist = 0
+getpower = (40*Map(DamageScaling)/2)+10
 
 [State -2, Hits]
 type = mapset
@@ -618,8 +623,8 @@ envshake.time = 12
 envshake.freq = 100
 envshake.phase = 150
 envshake.ampl = -7
-id = 5420
-
+getpower = (50*Map(DamageScaling)/2)+15
+airguard.velocity = -2.5,-2.5  
 
 
 [State 210, 5]
@@ -807,6 +812,7 @@ envshake.time = 12
 envshake.freq = 100
 envshake.phase = 150
 envshake.ampl = -7
+getpower = (50*Map(DamageScaling)/2)+15
 id = 5420
 
 [State 0, TargetState]
@@ -904,20 +910,15 @@ guard.ctrltime = 10
 guard.hittime = 10
 guard.velocity = -8
 fall = 1
+airguard.velocity = -3,-2 
 ground.cornerpush.veloff = -3-(Map(PushBack))
 fall.yvelocity = 0
 air.cornerpush.veloff = -3
 p2facing = 1
 guard.dist = 0
-id = 5420
-
-[State 0, TargetState]
-type = TargetState
-triggerall = NumTarget(5420)
-trigger1 = movehit = 1
-value = 5420
-ID = 5420
-ignorehitpause = 1
+p2stateno = 5420
+missonoverride = 0
+getpower = (50*Map(DamageScaling)/2)+15
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1021,6 +1022,7 @@ air.velocity = cond(Map(WallBounce)=0,-20,-14),cond(Map(WallBounce)=0,-4,-2)
 guard.ctrltime = 10
 guard.hittime = 10
 guard.velocity = -8
+airguard.velocity = -3,-2 
 fall = 1
 ground.cornerpush.veloff = -3-(Map(PushBack))
 fall.yvelocity = 0
@@ -1028,6 +1030,7 @@ air.cornerpush.veloff = -3
 p2facing = 1
 guard.dist = 0
 id = 5420
+getpower = (50*Map(DamageScaling)/2)+15
 
 [State 0, TargetState]
 type = TargetState
@@ -1159,12 +1162,14 @@ air.velocity = -4,-4
 guard.ctrltime = 15
 guard.hittime = 15
 guard.velocity = -5
+airguard.velocity = -3,-3 
 forcenofall = 1
 ground.cornerpush.veloff = -3-(Map(PushBack))
 fall.yvelocity = 0
 air.cornerpush.veloff = -3
 p2facing = 1
 guard.dist = 0
+getpower = (30*Map(DamageScaling)/2)+10
 
 [State -2, AMP]
 type = mapadd

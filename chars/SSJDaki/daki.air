@@ -5,7 +5,7 @@
 ; Standing Animation
 [Begin Action 0]
 Clsn2Default: 1
-  Clsn2[0] = -10, -64, 12, -1
+  Clsn2[0] = -10, -64, 13, -1
 0,0, 0,0, 10
 
 ; Turning

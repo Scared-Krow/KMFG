@@ -1,0 +1,31 @@
+Version: nightly
+Build Time: 2026.06.08
+Platform: windows (amd64)
+OpenGL 3.3
+RAM in Use: 74 MB / OS Reserved: 117 MB
+Active Goroutines: 2
+Timestamp: 2026-06-08 11:25:37
+
+Engine error
+
+Error: .\external\script\menu.lua:11: attempt to index a non-table object(nil) with key 'menu_valuename_dummycontrol_cooperative'
+stack traceback:
+	.\external\script\menu.lua:11: in function <.\external\script\menu.lua:0>
+	[G]: in function 'require'
+	external/script/main.lua:1802: in main chunk
+	[G]: ?
+
+Go stack traceback:
+goroutine 1 [running, locked to thread]:
+runtime/debug.Stack()
+	runtime/debug/stack.go:24 +0x65
+main.handlePanic({0x7ff77a4b7b20?, 0xc004cd7980})
+	github.com/ikemen-engine/Ikemen-GO/src/main.go:362 +0x3e5
+main.realMain.func1()
+	github.com/ikemen-engine/Ikemen-GO/src/main.go:66 +0x2a
+panic({0x7ff77a4b7b20, 0xc004cd7980})
+	runtime/panic.go:884 +0x213
+main.realMain()
+	github.com/ikemen-engine/Ikemen-GO/src/main.go:206 +0x58d
+main.main()
+	github.com/ikemen-engine/Ikemen-GO/src/main.go:59 +0x17

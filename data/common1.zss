@@ -971,7 +971,7 @@ if animTime = 0 {
 
 #-------------------------------------------------------------------------------
 # Downed get-hit (lying defeated)
-[StateDef 5150; type: L; movetype: H; physics: N; sprpriority: -3; ctrl: 0; sprPriority: 0;]
+[StateDef 5150; type: L; movetype: H; physics: N; sprpriority: -3; ctrl: 0;]
 
 if time = 0 {
 	let a = call SelfAnimExistAddMod10(anim = [5111, 5119] ||

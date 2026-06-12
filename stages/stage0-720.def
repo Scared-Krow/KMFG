@@ -5,7 +5,7 @@
 ;--------------------------------------------------------
 [Info]
  ;Name of the stage.
-name = "Training Room HD"
+name = "Training Room 720"
 displayname = "Training Room HD" ;Name to display
 versiondate = 09,30,2009    ;Version date of stage (MM,DD,YYYY or X.XX)
 mugenversion = 1.0          ;Version of M.U.G.E.N stage works on (X.XX)
@@ -17,10 +17,22 @@ author = "Elecbyte"         ;Stage author name
 startx = 0
 starty = 0
 
-boundleft = -925
-boundright = 925
+ ;Left and right bound of camera
+ ;You may want to fiddle a bit with these values to make sure the
+ ;background doesn't move too far or too little
+ ;***
+
+boundleft = -4000
+boundright = 4000
 boundhigh = -500
 boundlow = 0
+
+ ;High and low bound of camera
+ ;High is a negative number. Make is more negative if you want to
+ ;camera to be able to move higher.
+ ;Low should usually be 0.
+ ;If omitted, defaults to -25 and 0 respectively
+ ;***
 
  ;This is how much the camera will move vertically towards the
  ;highest player. Valid values are from 0 to 1. A value of 0 will mean
@@ -28,17 +40,17 @@ boundlow = 0
  ;follow the highest player.
  ;Typically .2 for normal-sized backgrounds. You may need to pull this
  ;value up for taller backgrounds.
-verticalfollow = .7
+verticalfollow = .5
 
  ;Minimum vertical distance the highest player has to be from the floor,
  ;before the camera starts to move up to follow him. For extremely
  ;tall stages, a floor tension of about 20-30 coupled with a
  ;vertical-follow of .8 allows the camera to follow the action.
-floortension = 40
+floortension = 60
 
  ;Horizontal distance player is from edge before camera starts to move
  ;left or right. Typically 50 or 60.
-tension = 250
+tension = 800
 
 overdrawhigh = 120
 overdrawlow = 120
@@ -49,12 +61,12 @@ cutlow = 0
 [PlayerInfo]
 ;--- Player 1 ---
  ;Player 1 starting coordinates.
-p1startx = -90         ;Starting x coordinates
+p1startx = -310         ;Starting x coordinates
 p1starty = 0            ;Starting y coordinates
 p1facing = 1            ;Direction player faces: 1=right, -1=left
 
 ;--- Player 2 ---
-p2startx = 90
+p2startx = 310
 p2starty = 0
 p2facing = -1
 
@@ -69,15 +81,15 @@ p4starty = 0
 p4facing = -1
 
 ;--- Common ---
-leftbound  = -2000
-rightbound =  2000
+leftbound  = -5000 ;Left bound (x-movement)
+rightbound =  5000 ;Right bound
 
 ;--------------------------------------------------------
 [Bound]
  ;Distance from left/right edge of screen that player can move to
  ;Typically 15
-screenleft = 20    ;Dist from left of screen that player can move to
-screenright = 20   ;Right edge
+screenleft = 50    ;Dist from left of screen that player can move to
+screenright = 50   ;Right edge
 
 ;--------------------------------------------------------
 [StageInfo]
@@ -85,7 +97,7 @@ screenright = 20   ;Right edge
  ;top of the screen.
  ;Adjust this value to move the ground level up/down in the screen.
  ;***
-zoffset = 175
+zoffset = 600
 
  ;Leave this at 1. It makes the players face each other
 autoturn = 1
@@ -95,7 +107,7 @@ autoturn = 1
 resetBG = 1
 
  ;Width and height of the local coordinate space of the stage.
-localcoord = 400, 225
+localcoord = 1280, 720
 
  ;Horizontal and vertical scaling factor for drawing.
 xscale = 1
@@ -103,7 +115,7 @@ yscale = 1.1
 
   ;Specifies the display scale of the portrait for screenpack rendering
   ;This value overwrites localcoord-compliant display scale
-portraitscale = 1
+portraitscale = 4
 
 ;--------------------------------------------------------
 [Shadow]
@@ -150,7 +162,7 @@ intensity = 0
  ;0 will play a random audio track. For example, to play
  ;track 3 from a music CD, use:
  ;  bgmusic = 3.da
-bgmusic = PAINT THE CITY (FREESTYLE).mp3
+bgmusic =
 
 ;bgmloopstart = <sample number>
 ;bgmloopend = <sample number>
@@ -192,7 +204,7 @@ spr = stage0-720.sff
  ;in your background.
  ;Remember to turn this off when you are done debugging the background,
  ;because it slows down performance.
-debugbg = 1
+debugbg = 0
 
 ;-------------------------------------
 ; IKEMEN GO ONLY, preview animation used in the Select screen
@@ -257,12 +269,12 @@ trans = none
  ;If you turn masking off, the background will take less CPU power to draw,
  ;so remember to turn it off on sprites that don't use it.
  ;If this line is omitted, it's assumed that there will be no masking.
-mask  = 1
+mask  = 0
 
  ;The format for tiling is x,y. For each of them, the value is:
  ;0 to use no tiling, 1 to tile, n where (n>1) to tile n times.
  ;If this line is omitted, it's assumed that there will be no tiling.
-tile  = 0, 0
+ tile  = 1, 0
 
  ;This is the x and y space between each tile, for tiled backgrounds
  ;If omitted, default value is 0,0
@@ -284,16 +296,15 @@ tilespacing = 0,0
  ;Uncomment the line below to use it:
 ;windowdelta = 0,0
 
+
 ;----------
 [BG 1]
 type  = parallax
 spriteno = 1, 0
-start = 0, 125
+start = 0, 500
 delta = .78, .75
-xscale = 10, 10
+xscale = 1, 3
 yscalestart = 100
-yscaledelta = .5
+yscaledelta = .3
 mask = 1
-tile = 0, 0
-
-
+tile = 1,0

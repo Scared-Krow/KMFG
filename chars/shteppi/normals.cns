@@ -10,8 +10,6 @@ velset = vel x * .8
 sprpriority = 2                  ;Set p1's sprite layering priority to 2 (in front)
 facep2 = 1
 
-;---------------------------------------
-
 [State -2, PushBack]
 type = mapset
 triggerall = enemy,statetype != A
@@ -72,6 +70,10 @@ guard.ctrltime = 10
 guard.hittime = 10
 ground.cornerpush.veloff = -3-(Map(PushBack))
 p2facing = 1
+getpower = (20*Map(DamageScaling)/2)+5,5
+givepower = (20*Map(DamageScaling)/2),4
+
+
 [State 0, StateTypeSet]
 type = StateTypeSet
 trigger1 = animelem = 4
@@ -174,6 +176,7 @@ fall.yvelocity = 0
 guard.ctrltime = 11
 guard.hittime = 11
 p2facing = 1
+getpower = (30*Map(DamageScaling)/2)+10
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -269,6 +272,7 @@ air.fall = 1
 ground.cornerpush.veloff = -3-(Map(PushBack))
 fall.yvelocity = 0
 p2facing = 1
+getpower = (40*Map(DamageScaling)/2)+10
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -366,7 +370,7 @@ fall.yvelocity = 0
 down.velocity = -4,6
 guard.ctrltime = 12
 guard.hittime = 12
-
+getpower = (50*Map(DamageScaling)/2)+10
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -551,6 +555,7 @@ guard.dist = 0
 forcenofall = 1
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
+getpower = (40*root,Map(DamageScaling)/2)+5
 
 [State 0, HitBy]
 type = HitBy
@@ -695,6 +700,7 @@ guard.dist = 0
 forcenofall = 1
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
+getpower = (40*root,Map(DamageScaling)/2)+5
 
 [State 0, HitBy]
 type = HitBy
@@ -819,6 +825,7 @@ guard.dist = 0
 forcenofall = 1
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
+getpower = (40*root,Map(DamageScaling)/2)+5
 
 [State 0, HitBy]
 type = HitBy
@@ -937,6 +944,9 @@ guard.hittime = 13
 fall.yvelocity = 0
 ground.cornerpush.veloff = -3-(Map(PushBack))
 p2facing = 1
+getpower = (20*Map(DamageScaling)/2)+5,5
+givepower = (20*Map(DamageScaling)/2),4
+
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1030,6 +1040,7 @@ guard.hittime = 12
 fall.yvelocity = 0
 guard.dist = 50
 p2facing = 1
+getpower = (30*Map(DamageScaling)/2)+10
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1126,6 +1137,7 @@ guard.hittime = 12
 ground.cornerpush.veloff = -3-(Map(PushBack))
 air.cornerpush.veloff = -2
 p2facing = 1
+getpower = (40*Map(DamageScaling)/2)+10
 
 [State 0, Helper]
 type = Helper
@@ -1345,6 +1357,7 @@ guard.dist = 0
 forcenofall = 1
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
+getpower = (20*root,Map(DamageScaling)/2)+5
 
 [State 0, ScreenBound]
 type = ScreenBound
@@ -1439,6 +1452,7 @@ ground.slidetime = 17
 ground.hittime  = 17
 ground.velocity = -1.25,-6.25
 air.velocity = -1.2,-5
+airguard.velocity = -2,-3
 air.hittime = ceil(cond(42-Map(HitstunScaling) < 10, 10, 42-Map(HitstunScaling)))
 guard.velocity = -3
 fall = 1
@@ -1550,6 +1564,9 @@ guard.hittime = 10
 ground.cornerpush.veloff = -2-(Map(PushBack))
 air.cornerpush.veloff = -2
 p2facing = 1
+getpower = (20*Map(DamageScaling)/2)+5,5
+givepower = (20*Map(DamageScaling)/2),4
+
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1648,12 +1665,14 @@ ground.slidetime = 12
 ground.hittime  = 16
 ground.velocity = -3.5
 air.velocity = -2,-2
+airguard.velocity = -1,-1.5
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 13, 13, 25-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
 forcenofall = 1
 fall.yvelocity = 0
 air.cornerpush.veloff = -1
 ground.cornerpush.veloff = -1-(Map(PushBack))
 p2facing = 1
+getpower = (20*Map(DamageScaling)/2)+5
 
 ;---------------------------------------------------------------------------
 ;j.C
@@ -1791,6 +1810,7 @@ guard.dist = 0
 forcenofall = 1
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
+getpower = (30*Map(DamageScaling)/2)+5
 
 [State 0, VelMul]
 type = VelMul
@@ -1889,6 +1909,7 @@ guard.ctrltime = 12
 guard.hittime = 12
 fall.yvelocity = cond(Map(GroundBounce)=0,-6.6,0)
 id = 5420
+getpower = (50*Map(DamageScaling)/2)+15
 
 [State 0, TargetState]
 type = TargetState

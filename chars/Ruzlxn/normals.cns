@@ -80,7 +80,8 @@ guard.hittime = 12
 ground.cornerpush.veloff = -3-(Map(PushBack))
 air.cornerpush.veloff = -2
 p2facing = 1
-getpower = (20*Map(DamageScaling)/2)+10
+getpower = (20*Map(DamageScaling)/2)+10,5
+givepower = (20*Map(DamageScaling)/2),4
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -697,7 +698,8 @@ fall.yvelocity = 0
 ground.cornerpush.veloff = -3-(Map(PushBack))
 air.cornerpush.veloff = -3
 p2facing = 1
-getpower = (20*Map(DamageScaling)/2)+10
+getpower = (20*Map(DamageScaling)/2)+10,5
+givepower = (20*Map(DamageScaling)/2),4
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1239,7 +1241,8 @@ guard.ctrltime = 10
 guard.hittime = 10
 p2facing = 1
 air.cornerpush.veloff = -2
-getpower = (20*Map(DamageScaling)/2)+10
+getpower = (20*Map(DamageScaling)/2)+10,5
+givepower = (20*Map(DamageScaling)/2),4
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1556,7 +1559,7 @@ guard.hittime = 14
 fall.yvelocity = 0
 p2facing = 1
 air.cornerpush.veloff = 0
-maxdist = 150
+maxdist = 150,25
 getpower = (20*Map(DamageScaling)/2)+10
 
 [State 0, StateTypeSet]

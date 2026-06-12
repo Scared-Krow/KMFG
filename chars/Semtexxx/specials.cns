@@ -486,6 +486,12 @@ type = VelAdd
 trigger1 = 1
 y = .4
 
+[State 0, Width]
+type = Width
+trigger1 = 1
+edge = 0,0
+player = -5,-5
+
 [State 800, 1]
 type = HitDef
 triggerall = enemy,movetype = H
@@ -757,8 +763,8 @@ value = 0, 14
 
 [State 640, 2]
 type = PlaySnd
-trigger1 = Time = 2
-value = 0, 1
+trigger1 = Time = 7
+value = F8, 1
 
 [State -2, Starter Damage Scaling]
 type = mapset
@@ -770,7 +776,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.125
+value = Map(DamageScaling)-.05
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -778,7 +784,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1
+value = Map(HitstunScaling)+.75
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -809,14 +815,14 @@ priority = 4
 pausetime = 9,9
 sparkno = 1
 sparkxy = -10,-40
-hitsound   = 5,2
+hitsound   = 9,1
 guardsound = 6,0
 animtype = up
 ground.slidetime = 12
 ground.hittime  = 18
-ground.velocity = -2,-6
+ground.velocity = -2,-5.8
 guard.velocity = -5
-air.velocity = -2,-5
+air.velocity = -2,-4.8
 air.hittime = ceil(cond(30-Map(HitstunScaling) < 20, 20, 30-Map(HitstunScaling)))
 forcenofall = 1
 guard.ctrltime = 10

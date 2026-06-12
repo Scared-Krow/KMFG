@@ -71,7 +71,8 @@ ground.cornerpush.veloff = -2.25-(Map(PushBack))
 air.cornerpush.veloff = -1.25
 p2facing = 1
 guard.dist = 0
-getpower = (20*Map(DamageScaling)/2)+5
+getpower = (20*Map(DamageScaling)/2)+5,5
+givepower = (20*Map(DamageScaling)/2),4
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -184,7 +185,7 @@ air.cornerpush.veloff = -2
 airguard.velocity = -1.65,-1.65 
 p2facing = 1
 guard.dist = 55
-getpower = (30*Map(DamageScaling)/2)+15
+getpower = (30*Map(DamageScaling)/2)+10
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -209,7 +210,7 @@ physics = S
 ctrl = 0
 anim = 230
 velset = vel x * 1.25
-sprpriority = -1
+sprpriority = 2
 facep2 = 1
 
 [State 0, PosAdd]
@@ -645,7 +646,8 @@ ground.cornerpush.veloff = -2-(Map(PushBack))
 air.cornerpush.veloff = -1.5
 p2facing = 1
 guard.dist = 0
-getpower = (20*Map(DamageScaling)/2)+5
+getpower = (20*Map(DamageScaling)/2)+5,5
+givepower = (20*Map(DamageScaling)/2),4
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1229,7 +1231,8 @@ p2facing = 1
 air.cornerpush.veloff = -2
 guard.dist = 0
 airguard.velocity = -1.25,-1.25
-getpower = (20*Map(DamageScaling)/2)+5
+getpower = (20*Map(DamageScaling)/2)+5,5
+givepower = (20*Map(DamageScaling)/2),4
 
 [State 0, StateTypeSet]
 type = StateTypeSet
