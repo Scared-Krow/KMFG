@@ -116,7 +116,7 @@ fall = 1
 ground.cornerpush.veloff = -3-(Map(PushBack))
 fall.yvelocity = 0
 p2facing = 1
-
+getpower = (50*Map(DamageScaling)/2)+15
 
 
 [State 0, VelMul]

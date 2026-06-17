@@ -271,7 +271,7 @@ triggerall = command = "holdfwd" && (command = "c" || (command = "y" && command 
 triggerall = statetype != A
 triggerall = stateno != 700
 trigger1 = movecontact && power >= 250
-trigger2 = (((stateno=[240,250] || stateno=[440,450] || stateno = [1200,1299]) && time >= 7) || (stateno = 1400 && time > 17) ) && power >= 250
+trigger2 = (stateno = 1002 && time > 5) && power >= 250
 ;---------------------------------------------------------------------------
 ;5K
 [State -1, 5K]
@@ -335,67 +335,41 @@ trigger5 = stateno=[1000,2000] && movecontact
 ;============================================================================
 
 ;---------------------------------------------------------------------------
-;22C
-[State -1, 22D]
+;22A
+[State -1, 22A]
 type = ChangeState
 value = 1000
-triggerall = command = "22D"
-triggerall = stateno!=1000
-triggerall = numhelper(500)>0
+triggerall = command = "22A"
+triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = helper(500), movecontact
-trigger3 = var(1)
+trigger2 = var(1)
 ;---------------------------------------------------------------------------
-;214C
-[State -1, 214C]
+;[4]6C
+[State -1, 46C]
 type = ChangeState
 value = 1100
-triggerall = command = "214C"
+triggerall = command = "46C"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = helper(500), movecontact
-trigger3 = var(1)
+trigger2 = var(1)
 ;---------------------------------------------------------------------------
-;236D
-[State -1, 214D]
+;623B
+[State -1, 623B]
 type = ChangeState
 value = 1200
-triggerall = command = "236D" && (helper(500),stateno != [1200,1299] && (helper(500),stateno != 599))
+triggerall = command = "623B"
 triggerall = statetype != A
-trigger1 = ctrl
-trigger2 = helper(500), movecontact
-trigger3 = var(1)
+trigger1 = ctrl 
+trigger2 = var(1)
 ;---------------------------------------------------------------------------
-;214D
-[State -1, 214D]
-type = ChangeState
-value = 1250
-triggerall = command = "214D" && (helper(500),stateno != [1200,1299] && (helper(500),stateno != 599))
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2 = helper(500), movecontact 
-trigger3 = var(1)
-;---------------------------------------------------------------------------
-;[2]8B
-[State -1, 28B]
+;63214D
+[State -1, 63214D]
 type = ChangeState
 value = 1300
-triggerall = command = "28B"
+triggerall = command = "624D"
 triggerall = statetype != A
-trigger1 = ctrl || stateno = 40 || stateno = 60
-trigger2 = helper(500), movecontact 
-trigger3 = var(1)
-;---------------------------------------------------------------------------
-;[4]6A
-[State -1, 46A]
-type = ChangeState
-value = 1400
-triggerall = numhelper(1401)=0
-triggerall = command = "46A"
-triggerall = statetype != A
-trigger1 = ctrl || stateno = 40 || stateno = 60
-trigger2 = helper(500), movecontact 
-trigger3 = var(1)
+trigger1 = ctrl 
+trigger2 = var(1)
 ;===========================================================================
 
 ;---------------------------------------------------------------------------
@@ -438,7 +412,7 @@ trigger1 = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = 400) && movecontact
 ;---------------------------------------------------------------------------
-;5M
+;5B
 [State -1, 5B]
 type = ChangeState
 value = 210
@@ -456,27 +430,15 @@ triggerall = command = "y"
 triggerall = command != "holddown"
 trigger1 = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,210]) ||(stateno = [400,410])
+trigger2 = (stateno = [200,211]) ||(stateno = [400,410])
 trigger2 = movecontact
-;---------------------------------------------------------------------------
-;6D
-[State -1, 6D]
-type = ChangeState
-value = 250
-triggerall = numhelper(500)<1
-triggerall = command = "b" && command = "holdfwd"
-triggerall = command != "holddown"
-trigger1 = statetype != A
-trigger1 = ctrl
-trigger2 = (stateno = [200,430]) && stateno != 300 && stateno != 250 && stateno != 240 && stateno != 241
-trigger2 = movecontact
+
 ;---------------------------------------------------------------------------
 ;5D
 [State -1, 5D]
 type = ChangeState
 value = 240
-triggerall = numhelper(500)<1
-triggerall = command = "b" && command != "holdfwd"
+triggerall = command = "b"
 triggerall = command != "holddown"
 trigger1 = statetype != A
 trigger1 = ctrl
@@ -512,28 +474,15 @@ triggerall = command = "y"
 triggerall = command = "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,210]) ||(stateno = [400,410])
-trigger2 = movecontact
-;---------------------------------------------------------------------------
-;3D
-[State -1, 3D]
-type = ChangeState
-value = 450
-triggerall = numhelper(500)<1
-triggerall = command = "b"
-triggerall = command = "holddown" && command = "holdfwd"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2 = (stateno = [200,430]) && stateno != 300 && stateno != 250 && stateno != [240,241]
+trigger2 = (stateno = [200,211]) ||(stateno = [400,410])
 trigger2 = movecontact
 ;---------------------------------------------------------------------------
 ;2D
 [State -1, 2D]
 type = ChangeState
 value = 440
-triggerall = numhelper(500)<1
 triggerall = command = "b"
-triggerall = command = "holddown" && command != "holdfwd"
+triggerall = command = "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,430]) && stateno != 300 && stateno != 250 && stateno != [240,241]
