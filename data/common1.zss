@@ -915,7 +915,7 @@ if vel y > 0 && pos y >= const(movement.air.gethit.groundlevel)
 # Extended Knockdown
 [StateDef 5113; type: L; movetype: H; physics: N; sprPriority: 0;]
 
-if time = 0 {notHitBy{value: SCA; time: 40}}
+if time = 0 {notHitBy{value: SCA; time: 45}}
 persistent(0) if selfAnimExist(5110 + anim % 10) && anim = [5081, 5089] {
 	changeAnim{value: 5110 + anim % 10}
 }

@@ -9,7 +9,7 @@ ctrl = 0
 
 [State 0, PalFX]
 type = PalFX
-trigger1 = time >= 30
+trigger1 = time >= 25
 time = 15
 add = 50,50,50
 mul = 255,255,255
@@ -24,7 +24,7 @@ value = 1001
 
 [State 200, 3]
 type = ChangeState
-trigger1 = time >= 30
+trigger1 = time >= 25
 value = 1002
 ;---------------------------------------------------------------------------
 ;Uncharged 22A 
@@ -95,8 +95,8 @@ guard.velocity = -3
 air.hittime = ceil(cond(40-Map(HitstunScaling) < 5, 5, 40-Map(HitstunScaling)))
 air.velocity = -.75,-5
 down.velocity = -.75,-5
-guard.ctrltime = 17
-guard.hittime = 17
+guard.ctrltime = 14
+guard.hittime = 14
 down.hittime = 20
 fall = 1
 ground.cornerpush.veloff = -1
@@ -234,7 +234,7 @@ type    = U
 movetype= A
 physics = N
 anim = 1002
-velset = 8,0
+velset = 7.5,0
 ctrl = 0
 
 [State -2, Starter Damage Scaling]
@@ -482,7 +482,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.05
+value = Map(DamageScaling)-.075
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -544,6 +544,515 @@ value = 0
 ctrl = 1
 
 ;---------------------------------------------------------------------------
+;623B Charging
+[Statedef 1200]
+type    = S
+movetype= A
+physics = S
+anim = 1200
+ctrl = 0
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time = 0
+value = A,
+time = 10
+
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = time >= 25
+time = 15
+add = 50,50,50
+mul = 255,255,255
+sinadd = 50,50,50,20
+invertall = 0
+color = 256
+
+[State 200, 3]
+type = ChangeState
+trigger1 = time >= 6 && command != "holda"
+value = 1201
+
+[State 200, 3]
+type = ChangeState
+trigger1 = time >= 25
+value = 1202
+
+;---------------------------------------------------------------------------
+;Uncharged 623B
+[Statedef 1201]
+type    = A
+movetype= A
+physics = N
+anim = 1201
+ctrl = 0
+velset = 3.5,-8.5
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time = 0
+value = A,
+time = 20
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = .425
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = 1
+x = .999
+
+[State 800, 1]
+type = HitDef
+triggerall = enemy,stateno != [140,155]
+Trigger1 = !movecontact
+attr = A, ST         
+hitflag = AF   
+air.animtype = back       
+priority = 1, Miss    
+sparkno = -1          
+p1sprpriority = -3    
+p1facing = 1
+p2facing = 1          
+p1stateno = 1210
+p2stateno = 1215
+guard.dist = 0        
+fall = 1
+air.hittime = 999
+numhits = 0
+
+
+[State 200, 3]
+type = ChangeState
+triggerall = time > 5
+trigger1 = pos y >= -1
+value = 1205
+
+;---------------------------------------------------------------------------
+;Charged 623B
+[Statedef 1202]
+type    = A
+movetype= A
+physics = N
+anim = 1202
+ctrl = 0
+velset = cond(command="holdfwd",10,5),cond(command="holdfwd",-8,-11)
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time = 0
+value = A,
+time = 30
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = .425
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = 1
+x = .999
+
+[State 800, 1]
+type = HitDef
+triggerall = enemy,stateno != [140,155]
+Trigger1 = !movecontact
+attr = A, ST         
+hitflag = AF   
+air.animtype = back       
+priority = 1, Miss    
+sparkno = -1          
+p1sprpriority = -3    
+p1facing = 1
+p2facing = 1          
+p1stateno = 1212
+p2stateno = 1215
+guard.dist = 0        
+fall = 1
+air.hittime = 999
+numhits = 0
+
+
+[State 200, 3]
+type = ChangeState
+triggerall = time > 5
+trigger1 = pos y >= -1
+value = 1205
+
+;---------------------------------------------------------------------------
+;Uncharged 623B Hit
+[Statedef 1210]
+type    = A
+movetype= I
+physics = N
+anim = 1210
+ctrl = 0
+velset = vel x,vel  y
+sprpriority = -3
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = .46
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = 1
+x = .999
+
+[State 0, TargetBind]
+type = TargetBind
+trigger1 = 1
+time = 1
+id = -1
+pos = 5,35
+
+[State 200, 3]
+type = ChangeState
+triggerall = time > 5
+trigger1 = pos y >= -1
+value = 1211
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+edge = 15,15
+player = 15,15
+
+
+;---------------------------------------------------------------------------
+;Charged 623B Hit
+[Statedef 1212]
+type    = A
+movetype= I
+physics = N
+anim = 1210
+ctrl = 0
+velset = vel x*.6,vel  y
+sprpriority = -3
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = .46
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = 1
+x = .999
+
+[State 0, TargetBind]
+type = TargetBind
+trigger1 = 1
+time = 1
+id = -1
+pos = 5,35
+
+[State 200, 3]
+type = ChangeState
+triggerall = time > 5
+trigger1 = pos y >= -1
+value = 1213
+
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+edge = 15,15
+player = 15,15
+;---------------------------------------------------------------------------
+;Uncharged 623B Hitbox
+[Statedef 1211]
+type    = S
+movetype= A
+physics = S
+anim = 1211
+ctrl = 0
+velset = 0, 0
+
+[State 0, TargetBind]
+type = TargetBind
+trigger1 = time = 0
+time = 1
+id = -1
+pos = 5,20
+
+[State 200, 2]
+type = PlaySnd
+trigger1 = Time = 0
+value = 1200, 0
+volumescale = 100
+freqmul = .8+(random%10)*.025
+
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount=1
+value = Map(DamageScaling)*.8
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount>1
+value = Map(DamageScaling)-.1
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,statetype = A && enemy,movetype = H
+trigger1 = movehit
+value = Map(HitstunScaling)+1
+map = "HitstunScaling"
+ignorehitpause = 1
+persistent = 0
+
+[State 810, 3]
+type = HitDef
+trigger1 = time = 0
+attr = A, ST
+damage = ceil(cond(80*Map(DamageScaling) < 5, 5, 80*Map(DamageScaling)))
+animtype = light
+guardflag =
+hitflag = MAFD
+priority  = 5
+pausetime = 11,11
+hitsound   = 5,10
+sparkxy = -10,-10
+sparkno = 2
+hitsound   = 4
+guardsound = 6,2
+ground.type = Low
+ground.velocity = -2,cond(Map(GroundBounce)=0,15,5)
+air.velocity = -2, cond(Map(GroundBounce)=0,15,5)
+ground.hittime = 15
+air.hittime = 60
+envshake.time = 10
+envshake.freq = 80
+envshake.phase = 120
+envshake.ampl = 5
+p2facing = 1
+fall = 1
+fall.yvelocity = cond(Map(GroundBounce)=0,-6.45,0)
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+edge = 5,5
+player = 5,5
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;Charged 623B Hitbox
+[Statedef 1213]
+type    = S
+movetype= A
+physics = S
+anim = 1211
+ctrl = 0
+velset = 0, 0
+
+[State 0, TargetBind]
+type = TargetBind
+trigger1 = time = 0
+time = 1
+id = -1
+pos = 5,20
+
+[State 200, 2]
+type = PlaySnd
+trigger1 = Time = 0
+value = 1200, 0
+volumescale = 100
+freqmul = .8+(random%10)*.025
+
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount=1
+value = Map(DamageScaling)*.8
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount>1
+value = Map(DamageScaling)-.1
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+[State -2, Hitstun Scaling]
+type = mapset
+triggerall = enemy,statetype = A && enemy,movetype = H
+trigger1 = movehit
+value = Map(HitstunScaling)+1
+map = "HitstunScaling"
+ignorehitpause = 1
+persistent = 0
+
+[State 810, 3]
+type = HitDef
+triggerall = Map(GroundBounce)=0
+trigger1 = time = 0
+attr = A, ST
+damage = ceil(cond(100*Map(DamageScaling) < 10, 10, 100*Map(DamageScaling)))
+animtype = light
+guardflag =
+hitflag = MAFD
+priority  = 5
+pausetime = 11,11
+hitsound   = 5,10
+sparkxy = -10,-10
+sparkno = 2
+hitsound   = 4
+guardsound = 6,2
+ground.type = Low
+ground.velocity = -2,cond(Map(GroundBounce)=0,15,5)
+air.velocity = -2, cond(Map(GroundBounce)=0,15,5)
+ground.hittime = 15
+air.hittime = 60
+envshake.time = 12
+envshake.freq = 100
+envshake.phase = 150
+envshake.ampl = 7
+p2facing = 1
+fall = 1
+fall.yvelocity = cond(Map(GroundBounce)=0,-6.45,0)
+
+[State 810, 3]
+type = HitDef
+triggerall = Map(GroundBounce)=1
+trigger1 = time = 0
+attr = A, ST
+damage = ceil(cond(100*Map(DamageScaling) < 10, 10, 100*Map(DamageScaling)))
+animtype = light
+guardflag =
+hitflag = MAFD
+priority  = 5
+pausetime = 11,11
+hitsound   = 5,10
+sparkxy = -10,-10
+sparkno = 2
+hitsound   = 4
+guardsound = 6,2
+ground.type = Low
+ground.velocity = -2,cond(Map(GroundBounce)=0,15,5)
+air.velocity = -5, cond(Map(GroundBounce)=0,15,5)
+ground.hittime = 15
+air.hittime = 60
+envshake.time = 12
+envshake.freq = 100
+envshake.phase = 150
+envshake.ampl = 7
+p2facing = 1
+fall = 1
+fall.yvelocity = 0
+p2stateno = 5111
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+edge = 5,5
+player = 5,5
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+
+;---------------------------------------------------------------------------
+;623B Land
+[Statedef 1205]
+type    = S
+movetype= I
+physics = S
+anim = 1205
+ctrl = 0
+velset = vel x*.5, 0
+
+[State -3, Landing Shake]
+type = EnvShake
+trigger1= animelem = 1
+time = 7
+freq = 40
+ampl = 1.5
+phase = 50
+ignorehitpause = 1
+
+[State 0, Turn]
+type = Turn
+triggerall = facing = enemy,facing
+trigger1 = time = 0
+
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;-----------------------------
+;623B p2 grabbed
+[Statedef 1215]
+type    = A
+movetype= H
+physics = N
+juggle  = 0
+poweradd= 0
+ctrl = 0
+velset = 0,0
+sprpriority = 2
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AT
+time = 1
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+edge = 0,0
+player = 0,0 
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = 1
+value = 5061
+elem = 2
+
+[State 0, ChangeState]
+type = SelfState
+trigger1 = time = 90
+value = 50 
+ctrl = 1
+
+;---------------------------------------------------------------------------
 ;63214D Charging
 [Statedef 1300]
 type    = S
@@ -593,6 +1102,7 @@ x = 2
 
 [State 800, 1]
 type = HitDef
+triggerall = enemy,movetype != H
 Trigger1 = P2BodyDist X = [-8,36]
 attr = S, ST          ;Attributes: Standing, Normal Throw
 hitflag = M-          ;Affect only ground people who are not being hit
@@ -601,11 +1111,13 @@ sparkno = -1          ;No spark
 p1sprpriority = 1     ;Draw p1's sprite in front of p2
 p1facing = 1
 p2facing = 1          ;Force p2 to face KFM
-p1stateno = 801
-p2stateno = 812
+p1stateno = 1305
+p2stateno = 1315
 guard.dist = 0        ;This prevents p2 from going into a guard state if close
 fall = 1
 numhits = 0
+ground.hittime = 999
+air.hittime = 999
 
 [State 800, 2]
 type = ChangeState
@@ -633,6 +1145,7 @@ x = 2
 
 [State 800, 1]
 type = HitDef
+triggerall = enemy,movetype != H
 Trigger1 = P2BodyDist X = [-8,36]
 attr = S, ST          ;Attributes: Standing, Normal Throw
 hitflag = M-          ;Affect only ground people who are not being hit
@@ -641,14 +1154,363 @@ sparkno = -1          ;No spark
 p1sprpriority = 1     ;Draw p1's sprite in front of p2
 p1facing = 1
 p2facing = 1          ;Force p2 to face KFM
-p1stateno = 801
-p2stateno = 812
+p1stateno = 1306
+p2stateno = 1315
 guard.dist = 0        ;This prevents p2 from going into a guard state if close
 fall = 1
 numhits = 0
+ground.hittime = 999
+air.hittime = 999
 
 [State 800, 2]
 type = ChangeState
 Trigger1 = AnimTime = 0
 value = 0
 ctrl = 1
+
+;---------------------------------------------------------------------------
+;Uncharged 63214D Hit
+[Statedef 1305]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+velset = 0,0
+ctrl = 0
+anim = 1302
+sprpriority = -2
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = anim = 1302
+Trigger1 = AnimTime = 0
+value = 1303
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+triggerall = anim = 1303
+trigger1 = animelem = 1
+statetype = A       
+movetype = A        
+physics = N         
+
+[State 0, VelSet]
+type = VelSet
+triggerall = anim = 1303
+trigger1 = animelem = 1
+x = 0
+y = -10
+
+[State 0, VelSet]
+type = VelAdd
+trigger1 = statetype = A
+y = .43
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = time > 30
+triggerall = anim = 1303
+Trigger1 = pos y >= -2
+value = 1304
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+triggerall = anim = 1304
+trigger1 = animelem = 1
+statetype = S      
+movetype = A        
+physics = S         
+
+[State 0, PosSet]
+type = PosSet
+triggerall = anim = 1304
+trigger1 = animelem = 1
+y = 0
+
+[State 0, VelSet]
+type = VelSet
+triggerall = anim = 1304
+trigger1 = animelem = 1
+x = 0
+y = 0
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1302
+trigger1 = animelem = 1
+time = 6
+id = -1
+pos = 35,0
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1302
+trigger1 = animelem = 2
+time = 6
+id = -1
+pos = 35,-0
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1302
+trigger1 = animelem = 3
+time = 6
+id = -1
+pos = 9,-10
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1302
+trigger1 = animelem = 4
+time = 99
+id = -1
+pos = 0,-15
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1303
+trigger1 = animelem = 1
+time = 99
+id = -1
+pos = 0,-50
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1304
+trigger1 = animelem = 1
+time = 99
+id = -1
+pos = 10,9
+ignorehitpause = 1
+
+[State 810, 3]
+type = HitDef
+triggerall = anim = 1304
+trigger1 = !movecontact
+attr = A, ST
+damage = 225
+animtype = light
+air.animtype = Back
+guardflag =
+hitflag = MAFD
+priority  = 5
+pausetime = 20,20
+hitsound   = 5,10
+sparkxy = -30,-10
+sparkno = 2
+hitsound   = 4
+guardsound = 6,2
+ground.velocity = -2,5
+air.velocity = -5,5
+ground.hittime = 15
+air.hittime = 60
+envshake.time = 15
+envshake.freq = 100
+envshake.phase = 150
+envshake.ampl = 8
+p2facing = 1
+fall = 1
+fall.yvelocity = 0
+p2stateno = 5111
+
+[State 800, 2]
+type = ChangeState
+triggerall = anim = 1304
+Trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+
+;---------------------------------------------------------------------------
+;Charged 63214D Hit
+[Statedef 1306]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+velset = 0,0
+ctrl = 0
+anim = 1302
+sprpriority = -2
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = anim = 1302
+Trigger1 = AnimTime = 0
+value = 1303
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+triggerall = anim = 1303
+trigger1 = animelem = 1
+statetype = A       
+movetype = A        
+physics = N         
+
+[State 0, VelSet]
+type = VelSet
+triggerall = anim = 1303
+trigger1 = animelem = 1
+x = 0
+y = -14
+
+[State 0, VelSet]
+type = VelAdd
+trigger1 = statetype = A
+y = .44
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = time > 30
+triggerall = anim = 1303
+Trigger1 = pos y >= -2
+value = 1304
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+triggerall = anim = 1304
+trigger1 = animelem = 1
+statetype = S      
+movetype = A        
+physics = S         
+
+[State 0, PosSet]
+type = PosSet
+triggerall = anim = 1304
+trigger1 = animelem = 1
+y = 0
+
+[State 0, VelSet]
+type = VelSet
+triggerall = anim = 1304
+trigger1 = animelem = 1
+x = 0
+y = 0
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1302
+trigger1 = animelem = 1
+time = 6
+id = -1
+pos = 35,0
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1302
+trigger1 = animelem = 2
+time = 6
+id = -1
+pos = 35,-0
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1302
+trigger1 = animelem = 3
+time = 6
+id = -1
+pos = 9,-10
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1302
+trigger1 = animelem = 4
+time = 99
+id = -1
+pos = 0,-15
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1303
+trigger1 = animelem = 1
+time = 99
+id = -1
+pos = 0,-50
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1304
+trigger1 = animelem = 1
+time = 99
+id = -1
+pos = 10,9
+ignorehitpause = 1
+
+[State 810, 3]
+type = HitDef
+triggerall = anim = 1304
+trigger1 = !movecontact
+attr = A, ST
+damage = 400
+animtype = light
+air.animtype = Back
+guardflag =
+hitflag = MAFD
+priority  = 5
+pausetime = 20,20
+hitsound   = 5,10
+sparkxy = -30,-10
+sparkno = 2
+hitsound   = 4
+guardsound = 6,2
+ground.velocity = -2,5
+air.velocity = -5,5
+ground.hittime = 15
+air.hittime = 60
+envshake.time = 20
+envshake.freq = 2000
+envshake.phase = 250
+envshake.ampl = 10
+p2facing = 1
+fall = 1
+fall.yvelocity = 0
+p2stateno = 5111
+
+[State 800, 2]
+type = ChangeState
+triggerall = anim = 1304
+Trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;-----------------------------
+;63214D p2 grabbed
+[Statedef 1315]
+type    = A
+movetype= H
+physics = N
+juggle  = 0
+poweradd= 0
+ctrl = 0
+velset = 0,0
+sprpriority = 2
+
+[State 0, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AT
+time = 1
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+edge = 0,0
+player = 0,0 
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = time < 3
+value = 5016
+elem = 1
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = time < 9 && time >= 3
+value = 5061
+elem = 1
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = time >= 9
+value = 5061
+elem = 2
+

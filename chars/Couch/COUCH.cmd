@@ -523,7 +523,6 @@ trigger2 = movecontact
 [State -1, jD]
 type = ChangeState
 value = 640
-triggerall = numhelper(500)<1
 triggerall = command = "b"
 trigger1 = statetype = A
 trigger1 = ctrl
