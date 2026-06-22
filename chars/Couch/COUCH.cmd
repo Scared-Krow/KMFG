@@ -235,6 +235,7 @@ trigger1 = ctrl
 [State -1, Run Fwd]
 type = ChangeState
 value = 160
+triggerall = stateno != 640
 triggerall = Map(DJ)>0
 triggerall = vel y > 0 || pos y < -40
 triggerall = command = "FADash"
@@ -246,6 +247,7 @@ trigger2 = var(1)
 [State -1, Run Back]
 type = ChangeState
 value = 161
+triggerall = stateno != 640
 triggerall = Map(DJ)>0
 triggerall = vel y > 0 || pos y < -40
 triggerall = command = "BADash"

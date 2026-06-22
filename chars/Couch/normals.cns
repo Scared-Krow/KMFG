@@ -1344,6 +1344,23 @@ anim = 640
 sprpriority = 2
 velset = 0, 0
 
+[State 0, VelMul]
+type = VelMul
+trigger1 = 1
+x = .9
+
+[State 0, VelSet]
+type = VelSet
+triggerall = time < 15
+trigger1 = command = "holdfwd"
+x = 2
+
+[State 0, VelSet]
+type = VelSet
+triggerall = time < 15
+trigger1 = command = "holdback"
+x = -2
+
 [State 630, 2]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed

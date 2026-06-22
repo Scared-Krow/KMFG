@@ -22,8 +22,8 @@ starty = 0
  ;background doesn't move too far or too little
  ;***
 
-boundleft = -4000
-boundright = 4000
+boundleft = -3000
+boundright = 3000
 boundhigh = -500
 boundlow = 0
 
@@ -81,8 +81,8 @@ p4starty = 0
 p4facing = -1
 
 ;--- Common ---
-leftbound  = -5000 ;Left bound (x-movement)
-rightbound =  5000 ;Right bound
+leftbound  = -3800 ;Left bound (x-movement)
+rightbound =  3800 ;Right bound
 
 ;--------------------------------------------------------
 [Bound]
