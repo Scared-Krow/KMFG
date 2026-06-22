@@ -533,22 +533,18 @@ command = ~B, D, F,  b
 [Command]
 name = "624A"
 command = ~F, D, B,  x
-time = 18
 
 [Command]
 name = "624B"
 command = ~F, D, B, a
-time = 18
 
 [Command]
 name = "624C"
 command = ~F, D, B,  y
-time = 18
 
 [Command]
 name = "624D"
 command = ~F, D, B,  b
-time = 18
 
 [Command]
 name = "22A"    

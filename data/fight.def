@@ -41,7 +41,7 @@ sff = fight.sff
 snd = fight.snd
 font1 = ikemen1/fonts/Menu2.def
 font2 = ikemen1/fonts/Timer.def
-font3 = Graffiti.def
+font3 = ikemen1/fonts/Menu2Small.def
 font4 = ikemen1/fonts/PowerbarNum.def
 font5 = ikemen1/fonts/Action.def
 font6 = ikemen1/fonts/ComboCounter.def
@@ -59,47 +59,75 @@ scale = 4
 
 ;-----------------------------------------------------------
 [Lifebar]
-
 ;Player 1
-p1.pos    = 637,90
-p1.bg0.anim = -1
-p1.bg0.offset = -6,6
-p1.bg1.spr = 11,0
-p1.mid.spr = 12
+p1.pos    = 595,40
+p1.bg0.spr = 10,0
+p1.bg0.offset = 0,0
+p1.bg0.xshear = 3
+p1.top.spr = 11,0
+p1.top.xshear = 3
+p1.mid.spr = 12, 0
 p1.mid.offset = 0,0
-p1.front.spr = 13,0
+p1.mid.xshear = 3
+p1.mid.palfx.mul = 200, 200, 200
+p1.mid.palfx.sinmul = 32, 32, 32, 5
+p1.front100.spr = 13,0
+p1.front100.offset = 0,0
+p1.front100.xshear = 3
+p1.front50.spr = 13,1
+p1.front50.offset = 0,0
+p1.front50.xshear = 3
+p1.front25.spr = 13,2
+p1.front25.offset = 0,0
+p1.front25.xshear = 3
+p1.front.spr = 13, 3
 p1.front.offset = 0,0
-p1.shift.spr = 13,0          ;Ikemen feature
-p1.shift.offset = 0,0      ;Ikemen feature
-p1.shift.palfx.add = 0,-50,0 ;Ikemen feature
-p1.range.x  = -75,-375
-p1.bg1.scale = 3, 3
-p1.front.scale = 3, 3
-p1.mid.scale = 3, 3
-p1.shift.scale = 3,3
+p1.front.palfx.sinmul = 128, 128, 128, 15
+p1.front.xshear = 3
+;p1.shift.spr = 13,2          
+;p1.shift.offset = 0,0       
+;p1.shift.xshear = 3
+p1.range.x  = 15,-460
+p1.scalefill = 1
+
 ;Player 2
-p2.pos    = 637,90
-p2.bg0.anim = -1
-p2.bg0.offset = 6,6
+p2.pos    = 684,40
+p2.bg0.spr = 10,0
+p2.bg0.offset = 0,0
+p2.bg0.xshear = -3
 p2.bg0.facing = -1
-p2.bg1.spr = 11,1
-p2.bg1.facing = 1
-p2.mid.spr = 12,1
+p2.top.spr = 11,0
+p2.top.facing = -1
+p2.top.xshear = -3
+p2.mid.spr = 12, 0
 p2.mid.offset = 0,0
-p2.mid.facing = 1
-p2.front.spr = 13,1
+p2.mid.facing = -1
+p2.mid.xshear = -3
+p2.mid.palfx.mul = 200, 200, 200
+p2.mid.palfx.sinmul = 32, 32, 32, 5
+p2.front100.spr = 13,0
+p2.front100.offset = 0,0
+p2.front100.xshear = -3
+p2.front100.facing = -1
+p2.front50.spr = 13,1
+p2.front50.offset = 0,0
+p2.front50.xshear = -3
+p2.front50.facing = -1
+p2.front25.spr = 13,2
+p2.front25.offset = 0,0
+p2.front25.xshear = -3
+p2.front25.facing = -1
+p2.front.spr = 13, 3
 p2.front.offset = 0,0
-p2.front.facing = 1
-p2.shift.spr = 13,0          ;Ikemen feature
-p2.shift.offset = 2,0       ;Ikemen feature
-p2.shift.facing = 1         ;Ikemen feature
-p2.shift.palfx.add = 0,-50,0 ;Ikemen feature
-p2.range.x = 80,375
-p2.range.offset = 0,0
-p2.bg1.scale = 3, 3
-p2.front.scale = 3, 3
-p2.mid.scale = 3, 3
-p2.shift.scale = 3, 3
+p2.front.palfx.sinmul = 128, 128, 128, 15
+p2.front.xshear = -3
+p2.front.facing = -1
+;p2.shift.spr = 13,2          
+;p2.shift.offset = 0,0        
+;p2.shift.xshear = -3
+;p2.shift.facing = -1         
+p2.range.x  = -15,460
+p2.scalefill = 1
 
 [Simul Lifebar]
 ;Player 1
@@ -1515,44 +1543,286 @@ p2.scalefill = 1
 
 ;-----------------------------------------------------------
 [Powerbar]
-
 ;Player 1
-p1.pos    = 450,615
+p1.pos    = 568,83
+p1.bg0.spr = 40,0
+p1.bg0.offset = 0,3
 p1.bg1.spr = 41,0
-p1.bg1.layerno = 2
+;p1.mid.spr = 42,0
 p1.front.spr = 43,0
-p1.front.layerno = 2
-p1.range.x = -10,-387
-p1.counter.offset = 10, 0
-p1.counter.layerno = 2
-p1.counter.font = 6,0, 0
-p1.counter.text = 
-p1.counter.scale = 0.75, 0.75
-p1.bg1.scale = 4, 4
-p1.front.scale = 4, 4
-p1.mid.scale = 4, 4
-p1.shift.scale = 4, 4
+p1.front.offset = 0,4
+p1.front.palfx.mul = 178, 178, 178
+p1.range.x = -4,-206
+
+; Multiple Front Elements can be added depending on the amount of power, including maximum power
+
+p1.front500.spr = 43, 0
+p1.front500.offset = 0,4
+p1.front500.palfx.mul = 178, 178, 178 
+p1.front500.palfx.sinmul = 20, 20, 20, 90
+
+p1.front1000.spr = 43, 0
+p1.front1000.offset = 0,4
+p1.front1000.palfx.mul = 0, 122, 255 
+p1.front1000.palfx.sinmul = 20, 20, 20, 60
+
+p1.front2000.spr = 43, 0
+p1.front2000.offset = 0,4
+p1.front2000.palfx.mul = 254, 254, 55
+p1.front2000.palfx.sinmul = 32, 32, 32, 50
+
+p1.front3000.spr = 43, 0
+p1.front3000.offset = 0,4
+p1.front3000.palfx.mul = 255, 55, 55
+p1.front3000.palfx.sinmul = 32, 32, 32, 45
+
+p1.front4000.spr = 43, 0
+p1.front4000.offset = 0,4
+p1.front4000.palfx.mul = 0, 250, 0
+p1.front4000.palfx.sinmul = 32, 32, 32, 40
+
+p1.front5000.spr = 43, 0
+p1.front5000.offset = 0,4
+p1.front5000.palfx.mul = 256, 155, 64
+p1.front5000.palfx.sinmul = 32, 32, 32, 35
+
+p1.front6000.spr = 43, 0
+p1.front6000.offset = 0,4
+p1.front6000.palfx.mul = 75, 250, 150
+p1.front6000.palfx.sinmul = 32, 32, 32, 30
+
+p1.front7000.spr = 43, 0
+p1.front7000.offset = 0,4
+p1.front7000.palfx.mul = 0, 200, 225
+p1.front7000.palfx.sinmul = 32, 32, 32, 25
+
+p1.front8000.spr = 43, 0
+p1.front8000.offset = 0,4
+p1.front8000.palfx.mul = 200, 78, 240
+p1.front8000.palfx.sinmul = 32, 32, 32, 20
+
+p1.front9000.spr = 43, 0
+p1.front9000.offset = 0,4
+p1.front9000.palfx.mul = 255, 32, 135
+p1.front9000.palfx.sinmul = 32, 32, 32, 15
+
+p1.front10000.spr = 43, 0
+p1.front10000.offset = 0,4
+p1.front10000.palfx.mul = 236, 236, 236
+p1.front10000.palfx.sinmul = 20, 20, 20, 10
+
+p1.frontMax.spr = 44, 0
+p1.frontMax.offset = -4,4
+p1.frontMax.palfx.sinmul = 30, 30, 30, 10
+
+; Multiple Counter elements can be added depending on the level of the bar, including maximum power
+
+p1.counterMax.text = M
+p1.counterMax.offset = -241,31
+p1.counterMax.font = 4, 0, 0
+p1.counterMax.palfx.mul = 226, 226, 226
+p1.counterMax.palfx.sinmul = 30, 30, 30, 10
+
+p1.counter10000.offset = -241,31
+p1.counter10000.font = 4, 0, 0
+p1.counter10000.palfx.mul = 226, 226, 226
+p1.counter10000.palfx.sinmul = 30, 30, 30, 10
+
+p1.counter9000.offset = -241,31
+p1.counter9000.font = 4, 0, 0
+p1.counter9000.palfx.mul = 255, 32, 135
+
+p1.counter8000.offset = -241,31
+p1.counter8000.font = 4, 0, 0
+p1.counter8000.palfx.mul = 200, 78, 240
+
+p1.counter7000.offset = -241,31
+p1.counter7000.font = 4, 0, 0
+p1.counter7000.palfx.mul = 102, 250, 250
+
+p1.counter6000.offset = -241,31
+p1.counter6000.font = 4, 0, 0
+p1.counter6000.palfx.mul = 0, 204, 153
+
+p1.counter5000.offset = -241,31
+p1.counter5000.font = 4, 0, 0
+p1.counter5000.palfx.mul = 255, 153, 0
+
+p1.counter4000.offset = -241,31
+p1.counter4000.font = 4, 0, 0
+p1.counter4000.palfx.mul = 102, 255, 51
+
+p1.counter3000.offset = -241,31
+p1.counter3000.font = 4, 0, 0
+p1.counter3000.palfx.mul = 255, 70, 70
+
+p1.counter2000.offset = -241,31
+p1.counter2000.font = 4, 0, 0
+p1.counter2000.palfx.mul = 255, 255, 51
+
+p1.counter1000.offset = -241,31
+p1.counter1000.font = 4, 0, 0
+p1.counter1000.palfx.mul = 0, 153, 255
+
+p1.counter.palfx.mul = 125, 125, 125
+p1.counter.offset = -241,31
+p1.counter.font = 4, 0, 0
+p1.levelbars = 1             
 
 ;Player 2
-p2.pos    = 820,615
+p2.pos    = 712,83
+p2.bg0.spr = 40,0
+p2.bg0.offset = 0,3
 p2.bg0.facing = -1
 p2.bg1.spr = 41,0
 p2.bg1.facing = -1
-p2.bg1.layerno = 2
+;p2.mid.spr = 42,0
+;p2.mid.facing = -1
 p2.front.spr = 43,0
+p2.front.palfx.mul = 178, 178, 178
+p2.front.offset = 0,4
 p2.front.facing = -1
-p2.front.layerno = 2
-p2.range.x  = 10, 387
-p2.counter.offset = -10,0
-p2.counter.layerno = 2
-p2.counter.font = 6,0, 0
-p2.counter.text = 
-p2.counter.scale = 0.75, 0.75
-p2.bg1.scale = 4, 4
-p2.front.scale = 4, 4
-p2.mid.scale = 4, 4
-p2.shift.scale = 4, 4
+p2.range.x  = 4,206
 
+; Multiple Front Elements can be added depending on the amount of power, including maximum power
+
+p2.front500.spr = 43, 0
+p2.front500.offset = 0,4
+p2.front500.palfx.mul = 178, 178, 178 
+p2.front500.palfx.sinmul = 20, 20, 20, 90
+p2.front500.facing = -1
+
+p2.front1000.spr = 43, 0
+p2.front1000.offset = 0,4
+p2.front1000.palfx.mul = 0, 122, 255 
+p2.front1000.palfx.sinmul = 20, 20, 20, 60
+p2.front1000.facing = -1
+
+p2.front2000.spr = 43, 0
+p2.front2000.offset = 0,4
+p2.front2000.palfx.mul = 254, 254, 55
+p2.front2000.palfx.sinmul = 32, 32, 32, 50
+p2.front2000.facing = -1
+
+p2.front3000.spr = 43, 0
+p2.front3000.offset = 0,4
+p2.front3000.palfx.mul = 255, 55, 55
+p2.front3000.palfx.sinmul = 32, 32, 32, 45
+p2.front3000.facing = -1
+
+p2.front4000.spr = 43, 0
+p2.front4000.offset = 0,4
+p2.front4000.palfx.mul = 0, 250, 0
+p2.front4000.palfx.sinmul = 32, 32, 32, 40
+p2.front4000.facing = -1
+
+p2.front5000.spr = 43, 0
+p2.front5000.offset = 0,4
+p2.front5000.palfx.mul = 256, 155, 64
+p2.front5000.palfx.sinmul = 32, 32, 32, 35
+p2.front5000.facing = -1
+
+p2.front6000.spr = 43, 0
+p2.front6000.offset = 0,4
+p2.front6000.palfx.mul = 75, 250, 150
+p2.front6000.palfx.sinmul = 32, 32, 32, 30
+p2.front6000.facing = -1
+
+p2.front7000.spr = 43, 0
+p2.front7000.offset = 0,4
+p2.front7000.palfx.mul = 0, 200, 225
+p2.front7000.palfx.sinmul = 32, 32, 32, 25
+p2.front7000.facing = -1
+
+p2.front8000.spr = 43, 0
+p2.front8000.offset = 0,4
+p2.front8000.palfx.mul = 200, 78, 240
+p2.front8000.palfx.sinmul = 32, 32, 32, 20
+p2.front8000.facing = -1
+
+p2.front9000.spr = 43, 0
+p2.front9000.offset = 0,4
+p2.front9000.palfx.mul = 255, 32, 135
+p2.front9000.palfx.sinmul = 32, 32, 32, 15
+p2.front9000.facing = -1
+
+p2.front10000.spr = 43, 0
+p2.front10000.offset = 0,4
+p2.front10000.palfx.mul = 236, 236, 236
+p2.front10000.palfx.sinmul = 20, 20, 20, 10
+p2.front10000.facing = -1
+
+p2.frontMax.spr = 44, 0
+p2.frontMax.offset = 208,4
+p2.frontMax.palfx.sinmul = 30, 30, 30, 10
+p2.frontMax.facing = 1
+
+; Multiple Counter elements can be added depending on the level of the bar, including maximum power
+
+p2.counterMax.text = M
+p2.counterMax.offset = 241,31
+p2.counterMax.font = 4, 0, 0
+p2.counterMax.palfx.mul = 226, 226, 226
+p2.counterMax.palfx.sinmul = 30, 30, 30, 10
+
+p2.counter10000.offset = 243,31
+p2.counter10000.font = 4, 0, 0
+p2.counter10000.palfx.mul = 226, 226, 226
+p2.counter10000.palfx.sinmul = 30, 30, 30, 10
+
+p2.counter9000.offset = 243,31
+p2.counter9000.font = 4, 0, 0
+p2.counter9000.palfx.mul = 255, 32, 135
+
+p2.counter8000.offset = 243,31
+p2.counter8000.font = 4, 0, 0
+p2.counter8000.palfx.mul = 200, 78, 240
+
+p2.counter7000.offset = 243,31
+p2.counter7000.font = 4, 0, 0
+p2.counter7000.palfx.mul = 102, 250, 250
+
+p2.counter6000.offset = 243,31
+p2.counter6000.font = 4, 0, 0
+p2.counter6000.palfx.mul = 0, 204, 153
+
+p2.counter5000.offset = 243,31
+p2.counter5000.font = 4, 0, 0
+p2.counter5000.palfx.mul = 255, 153, 0
+
+p2.counter4000.offset = 243,31
+p2.counter4000.font = 4, 0, 0
+p2.counter4000.palfx.mul = 102, 255, 51
+
+p2.counter3000.offset = 243,31
+p2.counter3000.font = 4, 0, 0
+p2.counter3000.palfx.mul = 255, 70, 70
+
+p2.counter2000.offset = 243,31
+p2.counter2000.font = 4, 0, 0
+p2.counter2000.palfx.mul = 255, 255, 51
+
+p2.counter1000.offset = 243,31
+p2.counter1000.font = 4, 0, 0
+p2.counter1000.palfx.mul = 0, 153, 255
+
+p2.counter.offset = 243,31
+p2.counter.font = 4, 0, 0
+p2.counter.palfx.mul = 125, 125, 125
+p2.levelbars = 1             
+
+; --level sounds---
+level1.snd = 21,0
+level2.snd = 21,0
+level3.snd = 21,0
+level4.snd = 21,0
+level5.snd = 21,0
+level6.snd = 21,0
+level7.snd = 21,0
+level8.snd = 21,0
+level9.snd = 21,0
+level10.snd = 21,0
+levelMax.snd = 21, 1
 ;==================================================================================================
 
 [Guardbar]
@@ -1923,16 +2193,16 @@ p2.range.x = 106, 0
 [Face]
 ;Player 1
 p1.pos    = 20,20
-p1.bg0.spr = -1,0
-p1.bg1.spr = -1,0
+p1.bg0.spr = 50,0
+p1.bg1.spr = 51,0
 p1.face.spr = 9000,0
 p1.face.facing = 1
 p1.face.offset = 0,0
 ;Player 2
 p2.pos    = 1260,20
-p2.bg0.spr = -1,0
+p2.bg0.spr = 50,0
 p2.bg0.facing = -1
-p2.bg1.spr = -1,0
+p2.bg1.spr = 51,0
 p2.bg1.facing = -1
 p2.face.spr = 9000,0
 p2.face.facing = -1
@@ -2117,13 +2387,13 @@ p2.teammate.face.facing = -1
 ;-----------------------------------------------------------
 [Name]
 ;Player 1
-p1.pos = 230,8
-p1.name.scale = .5,.5
+p1.pos = 13,145
+p1.name.scale = 1,1
 ;p1.bg. =
 p1.name.font = 3,0, 1
 ;Player 2
-p2.name.scale = .5,.5
-p2.pos = 1040,8
+p2.name.scale = 1,1
+p2.pos = 1267,145
 ;p2.bg. =
 p2.name.font = 3,0, -1
 
@@ -2380,50 +2650,179 @@ p2.name.font = 3,1, -1
 
 ;-----------------------------------------------------------
 [Time]
-pos = 611,89
+pos = 640,105
 ; Uncomment the following line to use a bg component
 ;bg.spr = 
 ; Time count display
-counter.offset = 24,-58
-counter.font = 3,0,0
+counter.offset = 0,30
+counter.font = 2,0, 0
+counter.scale = 2, 2
+counter.palfx.mul = 256, 0, 0
 ; Ticks for each count
 framespercount = 60
 
+counter1.scale = 2, 2
+counter1.offset = 0, 30
+counter1.font = 2, 0, 0
+counter1.palfx.mul = 256, 128, 128
+counter1.palfx.sinmul = 0, 128, 128, 20
+counter1.layerno = 0
+
+counter10.font = 2, 0, 0
+counter10.offset = 0, 0
+counter10.scale = 1, 1
+counter10.palfx.mul = 256, 128, 128
+counter10.palfx.sinmul = 0, 128, 128, 20
+counter10.layerno = 0
+
+counter11.offset = 0, 0
+counter11.font = 2, 0, 0, 255, 255, 255
+counter11.scale = 1, 1
+;counter11.palfx.mul = 256, 128, 128
+counter11.layerno = 0
+;counter11.palfx.sinmul = 0, 128, 128, 20
 
 ;-----------------------------------------------------------
 [Combo]
-
-team1.pos = 30,260        ;Coords to show
+team1.pos = 130,260        ;Coords to show
 team1.start.x = -240      ;Starting x-coords
-team1.counter.layerno = -1
-team1.counter.font = 3,0,0
+team1.counter.layerno = 2
+team1.counter.font = 6,0,0
+team1.counter10.font = 6,0,0
+team1.counter10.palfx.mul = 255, 217, 179
+team1.counter20.font = 6,0,0
+team1.counter20.palfx.mul = 255, 153, 51
+team1.counter30.font = 6,0,0
+team1.counter30.palfx.mul = 255, 255, 77
+team1.counter40.font = 6,0,0
+team1.counter40.palfx.mul = 102, 255, 51
+team1.counter50.font = 6,0,0
+team1.counter50.palfx.mul = 51, 255, 214
+team1.counter60.font = 6,0,0
+team1.counter60.palfx.mul = 0, 153, 255
+team1.counter70.font = 6,0,0
+team1.counter70.palfx.mul = 204, 51, 255
+team1.counter80.font = 6,0,0
+team1.counter80.palfx.mul = 255, 26, 117
+team1.counter90.font = 6,0,0
+team1.counter90.palfx.mul = 255, 26, 26
+team1.counter100.font = 6,0,0
+team1.counter100.palfx.mul = 255, 26, 26
+team1.counter100.palfx.sinmul = 90, 90, 90, 15
 team1.counter.shake = 1   ;Set to 1 to shake count on hit
-team1.counter.time = 7    ;Ikemen feature: length of the counter shake
-team1.counter.mult = 0.1 ;Ikemen feature: counter shake intensity multiplier
-team1.text.layerno = -1
-; Ikemen feature (text format %i = combo count, %d = combo damage, %p = combo damage percentage)
-team1.text.text = "HITS \n %p%" ;You can use %i to show count in the text, eg "%i Hit!"
-team1.text.font = 3,0,0
-team1.text.offset = 90,0  ;Offset of text
+team1.counter.time = 7    ; length of the counter shake
+team1.counter.mult = 0.05 ; counter shake intensity multiplier
+team1.text.layerno = 2
+; (text format %i = combo count, %d = combo damage, %p = combo damage percentage)
+team1.text.text = "H!\n%p%" ;You can use %i to show count in the text, eg "%i Hit!" ; ( %d d for damage, %p% for hit)
+team1.text.font = 7,0,0
+team1.text.offset = 6,42  ;Offset of text
+team1.text10.text = "H!!\n%p%" ;By inputting a number next to text, You can change certain elements of the combo text when a combo reaches a certain point.
+team1.text10.font = 7,0,0
+team1.text10.offset = 6,42
+team1.text20.text = "H!!!\n%p%"
+team1.text20.font = 7,0,0
+team1.text20.offset = 6,42
+team1.text30.text = "H!!!!\n%p%"
+team1.text30.font = 7,0,0
+team1.text30.offset = 6,42
+team1.text40.text = "H!!!!!\n%p%"
+team1.text40.font = 7,0,0
+team1.text40.offset = 6,42
+team1.text50.text = "H!!!!!!\n%p%"
+team1.text50.font = 7,0,0
+team1.text50.offset = 6,42
+team1.text60.text = "H!!!!!!!\n%p%"
+team1.text60.font = 7,0,0
+team1.text60.offset = 6,42
+team1.text70.text = "H!!!!!!!!\n%p%"
+team1.text70.font = 7,0,0
+team1.text70.offset = 6,42
+team1.text80.text = "H!!!!!!!!!\n%p%"
+team1.text80.font = 7,0,0
+team1.text80.offset = 6,42
+team1.text90.text = "H!!!!!!!!!!\n%p%"
+team1.text90.font = 7,0,0
+team1.text90.offset = 6,42
+team1.text100.text = "H!!!!!!!!!!!\n%p%"
+team1.text100.font = 7,0,0
+team1.text100.offset = 6,42
+team1.text100.palfx.mul = 256, 256, 256
+team1.text100.palfx.sinmul = 90, 90, 90, 15
 team1.displaytime = 90    ;Time to show text
-team1.showspeed = 8       ;Ikemen feature: text showing up speed (1 = instant)
-team1.hidespeed = 4       ;Ikemen feature: text hiding speed (the larger value, the faster speed)
+team1.showspeed = 8       ; text showing up speed (1 = instant)
+team1.hidespeed = 4       ; text hiding speed (the larger value, the faster speed)
+team1.autoalign = 0
 
-team2.pos = 1200,260      ;Coords to show
+team2.pos = 1150,260      ;Coords to show
 team2.start.x = 1520      ;Starting x-coords
-team2.counter.layerno = -1
-team2.counter.font = 3,0,0
+team2.counter.layerno = 2
+team2.counter.font = 6,0,0
+team2.counter10.font = 6,0,0
+team2.counter10.palfx.mul = 255, 217, 179
+team2.counter20.font = 6,0,0
+team2.counter20.palfx.mul = 255, 153, 51
+team2.counter30.font = 6,0,0
+team2.counter30.palfx.mul = 255, 255, 77
+team2.counter40.font = 6,0,0
+team2.counter40.palfx.mul = 102, 255, 51
+team2.counter50.font = 6,0,0
+team2.counter50.palfx.mul = 51, 255, 214
+team2.counter60.font = 6,0,0
+team2.counter60.palfx.mul = 0, 153, 255
+team2.counter70.font = 6,0,0
+team2.counter70.palfx.mul = 204, 51, 255
+team2.counter80.font = 6,0,0
+team2.counter80.palfx.mul = 255, 26, 117
+team2.counter90.font = 6,0,0
+team2.counter90.palfx.mul = 255, 26, 26
+team2.counter100.font = 6,0,0
+team2.counter100.palfx.mul = 255, 26, 26
+team2.counter100.palfx.sinmul = 90, 90, 90, 15
 team2.counter.shake = 1   ;Set to 1 to shake count on hit
-team2.counter.time = 7    ;Ikemen feature: length of the counter shake
-team2.counter.mult = 0.1 ;Ikemen feature: counter shake intensity multiplier
-team2.text.layerno = -1
-; Ikemen feature (text format %i = combo count, %d = combo damage, %p = combo damage percentage)
-team2.text.text = "HITS \n %p%" ;You can use %i to show count in the text, eg "%i Hit!"
-team2.text.font = 3,0,0
-team2.text.offset = -25,0  ;Offset of text
+team2.counter.time = 7    ; length of the counter shake
+team2.counter.mult = 0.05 ; counter shake intensity multiplier
+team2.text.layerno = 2
+;(text format %i = combo count, %d = combo damage, %p = combo damage percentage)
+team2.text.text = "H!\n%p%" ;You can use %i to show count in the text, eg "%i Hit!"
+team2.text.font = 7,0,0
+team2.text.offset = 6,42  ;Offset of text
+team2.text10.text = "H!!\n%p%" ;By inputting a number next to text, You can change certain elements of the combo text when a combo reaches a certain point.
+team2.text10.font = 7,0,0
+team2.text10.offset = 6,42
+team2.text20.text = "H!!!\n%p%"
+team2.text20.font = 7,0,0
+team2.text20.offset = 6,42
+team2.text30.text = "H!!!!\n%p%"
+team2.text30.font = 7,0,0
+team2.text30.offset = 6,42
+team2.text40.text = "H!!!!!\n%p%"
+team2.text40.font = 7,0,0
+team2.text40.offset = 6,42
+team2.text50.text = "H!!!!!!\n%p%"
+team2.text50.font = 7,0,0
+team2.text50.offset = 6,42
+team2.text60.text = "H!!!!!!!\n%p%"
+team2.text60.font = 7,0,0
+team2.text60.offset = 6,42
+team2.text70.text = "H!!!!!!!!\n%p%"
+team2.text70.font = 7,0,0
+team2.text70.offset = 6,42
+team2.text80.text = "H!!!!!!!!!\n%p%"
+team2.text80.font = 7,0,0
+team2.text80.offset = 6,42
+team2.text90.text = "H!!!!!!!!!!\n%p%"
+team2.text90.font = 7,0,0
+team2.text90.offset = 6,42
+team2.text100.text = "H!!!!!!!!!!!\n%p%"
+team2.text100.font = 7,0,0
+team2.text100.offset = 6,42
+team2.text100.palfx.mul = 256, 256, 256
+team2.text100.palfx.sinmul = 90, 90, 90, 15
 team2.displaytime = 90    ;Time to show text
-team2.showspeed = 8       ;Ikemen feature: text showing up speed (1 = instant)
-team2.hidespeed = 4       ;Ikemen feature: text hiding speed (the larger value, the faster speed)
+team2.showspeed = 8       ;text showing up speed (1 = instant)
+team2.hidespeed = 4       ;text hiding speed (the larger value, the faster speed)
+team2.autoalign = 0
 
 ; (format combo damage percentage presentation)
 format.decimal.places = 0
@@ -3291,9 +3690,9 @@ p2.enabled.versuscoop = 1
 
 ;-----------------------------------------------------------
 [Timer]
-pos = 586,35
+pos = 586,24
 ;bg.spr = 
-text.font = 3,0,0
+text.font = 8,0, -1
 ; Time format: %m = minutes, %s = seconds, %x = milliseconds
 text.text = TIME: %m:%s.%x
 
@@ -3304,12 +3703,12 @@ enabled.timechallenge = 1
 [Score]
 p1.pos = 586,24
 ;p1.bg.spr = 
-p1.text.font = -1
+p1.text.font = 8,0, -1
 p1.text.text = %s
 
 p2.pos = 696,24
 ;p2.bg.spr = 
-p2.text.font = -1
+p2.text.font = 8,0, 1
 p2.text.text = %s
 
 score.min = 0

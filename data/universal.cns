@@ -254,13 +254,24 @@ map = "Parry"
 [State 1300, 2]
 type = ReversalDef
 trigger1 = Time = [0,8]
-;trigger1 = (P2, HitDefVar(guardflag) = M || P2, HitDefVar(guardflag) = H)
-reversal.attr = SA,AA,AP
+reversal.attr = SA,AA
 pausetime = 0,0
 sparkno = 40
 sparkxy = 40,0
 hitsound = 6,0
 p1stateno = 706
+p1sprpriority = 2 ;Set P1's sprite in front of P2's
+p2sprpriority = 1
+
+[State 1300, 2]
+type = ReversalDef
+trigger1 = Time = [0,8]
+reversal.attr = SA,NP,SP,HP
+pausetime = 0,0
+sparkno = 40
+sparkxy = 40,0
+hitsound = 6,0
+p1stateno = 707
 p1sprpriority = 2 ;Set P1's sprite in front of P2's
 p2sprpriority = 1
 
@@ -292,7 +303,76 @@ poweradd = 100
 [State 0, SuperPause]
 type = SuperPause
 trigger1 = time = 0 
-time = cond(enemynear, hitdefattr != SCA,NP, SP, HP,15,3)
+time = 15
+anim = -1
+sound = -1
+darken = 0
+unhittable = 1
+movetime = 15
+
+[State 0, PosFreeze]
+type = PosFreeze
+trigger1 = time < 10
+value = 1
+redirectID = enemy,ID
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time = [0,5]
+value = SCA
+time = 1
+
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = time = 5
+ignorehitpause = 1
+value = 1
+
+[State 700, Snd]
+type = playsnd
+trigger1 = !time
+value = S6700, 0
+
+[State 700, Stop]
+type = posfreeze
+trigger1 = 1
+value = 1
+
+[State 700, Flash]
+type = palfx
+trigger1 = time = 0
+ignorehitpause = 1
+add = 100, 100, 100
+sinadd = 0, 0, 0, 60
+time = 15
+
+[State 700, No walking]
+type = assertspecial
+trigger1 = 1
+flag = nowalk
+
+[State 700, End]
+type = changestate
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;Stand Parry Proj Success
+[Statedef 707]
+type = S
+physics = S
+movetype = I
+anim = 705
+velset = 0, 0
+ctrl = 0
+sprpriority = 2
+facep2 = 1
+poweradd = 100
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0 
+time = 5
 anim = -1
 sound = -1
 darken = 0
@@ -370,7 +450,6 @@ map = "Parry"
 
 [State 1300, 2]
 type = ReversalDef
-;triggerall = P2, HitDefVar(guardflag) = L
 trigger1 = Time = [0,8]
 reversal.attr = C,AA,AP
 pausetime = 0,0

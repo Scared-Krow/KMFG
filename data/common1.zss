@@ -651,7 +651,7 @@ if time > 0 {
 if alive && gethitvar(hittime) = -1 {
 		changeState{value: 5210}
 }
-if vel y > 0 && pos y >= 15 {
+if vel y > 0 && pos y >= -1 {
 	changeState{value: 5210}
 }
 
@@ -673,7 +673,7 @@ if time > 0 {
 if (alive && gethitvar(hittime) = -1) && !(name = "NUUMA" && Map(Revive)=1 && life<=1) {
 		changeState{value: 5210}
 }
-if vel y > 0 && pos y >= 18 {
+if vel y > 0 && pos y >= 50 {
 	changeState{value: 5100}
 }
 
@@ -915,7 +915,7 @@ if vel y > 0 && pos y >= const(movement.air.gethit.groundlevel)
 # Extended Knockdown
 [StateDef 5113; type: L; movetype: H; physics: N; sprPriority: 0;]
 
-if time = 0 {notHitBy{value: SCA; time: 45}}
+if time = 0 {notHitBy{value: SCA; time: 40}}
 persistent(0) if selfAnimExist(5110 + anim % 10) && anim = [5081, 5089] {
 	changeAnim{value: 5110 + anim % 10}
 }
@@ -956,8 +956,6 @@ if name = "NUUMA" && life <= 1 && Map(Revive)=1
 #-------------------------------------------------------------------------------
 # Downed get-hit (getting up)
 [StateDef 5120; type: S; movetype: I; physics: N; sprPriority: 0;]
-
-
 
 if time = 0 {
 	let a = call SelfAnimExistAddMod10(anim = [5111, 5119], 5120);
@@ -1040,17 +1038,12 @@ notHitBy{value: SCA; time: 1}
 
 map(Punish) := 0;
 
-
-if pos y > 5 {
-	posSet{y:5}
-}
-
 if time < 10 {
 	playerPush{value: 0}
 }
 
 if time = 0 {
-	palFx{time: 15; add: 50, 50, 50; mul: 255, 255, 255; sinadd: 50, 50, 50, 20;}
+	palFx{time: 3; add: 128, 128, 128}
 	posFreeze{}
 	if p2Dist x < const240p(-20) {
 		turn{}
@@ -1078,7 +1071,7 @@ if time = 0 {
 			velAdd{y: -2}
 		}
 		else if command = "holdfwd" {
-			velSet{x: 2}
+			velAdd{x: 2}
 		}
 		else if command = "holdback" {
 			velAdd{x: -2}
