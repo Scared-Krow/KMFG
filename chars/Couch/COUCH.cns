@@ -32,8 +32,8 @@ air.sizebox = -12, -45, 12, 0
 crouch.sizebox = -12, -45, 18, 0
 
 [Velocity]
-walk.fwd  = 1.95
-walk.back = -1.7    
+walk.fwd  = 1.4
+walk.back = -1.4    
 run.fwd  = 3, 0    
 run.back = -4.5,-3.8 
 jump.neu = 0,-8.5
@@ -160,11 +160,12 @@ value = 40
 ;---------------------------------------------------------------------------
 ; Back Dash
 [Statedef 105]
-type = S
+type = A
 movetype = I
-physics = S
+physics = A
 ctrl = 0
 anim = 105
+velset = -2.7,-2.9
 
 [State 0, NotHitBy]
 type = NotHitBy
@@ -189,16 +190,16 @@ type = AssertSpecial
 trigger1 = 1
 flag = nowalk
 
-[State 0, VelAdd]
-type = VelSet
-trigger1 = time > 1 && time < 7
-x = -6.5
+;[State 0, VelAdd]
+;type = VelSet
+;trigger1 = time > 1 && time < 7
+;x = -2.5
 
 [State 0, ChangeState]
 type = ChangeState
-trigger1 = animtime = 0
-value = 0
-ctrl = 1
+triggerall = time > 3
+trigger1 = pos y  >= 0
+value = 52
 
 ;---------------------------------------------------------------------------
 ; Forward Dash Walk

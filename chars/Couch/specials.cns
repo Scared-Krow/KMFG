@@ -7,16 +7,6 @@ physics = S
 anim = 1000
 ctrl = 0
 
-[State 0, PalFX]
-type = PalFX
-trigger1 = time >= 25
-time = 15
-add = 50,50,50
-mul = 255,255,255
-sinadd = 50,50,50,20
-invertall = 0
-color = 256
-
 [State 200, 3]
 type = ChangeState
 trigger1 = time >= 9 && command != "holdx"
@@ -128,6 +118,16 @@ movetype= A
 physics = S
 anim = 1001
 ctrl = 0
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = time = 0
+time = 15
+add = 50,50,50
+mul = 255,255,255
+sinadd = 50,50,50,20
+invertall = 0
+color = 256
 
 [State 0, PosAdd]
 type = PosAdd
@@ -334,15 +334,6 @@ physics = S
 anim = 1100
 ctrl = 0
 
-[State 0, PalFX]
-type = PalFX
-trigger1 = time >= 30
-time = 15
-add = 50,50,50
-mul = 255,255,255
-sinadd = 50,50,50,20
-invertall = 0
-color = 256
 
 [State 200, 3]
 type = ChangeState
@@ -459,10 +450,20 @@ velset = vel x,0
 poweradd = 0
 ctrl = 0
 
+[State 0, PalFX]
+type = PalFX
+trigger1 = time = 0
+time = 15
+add = 50,50,50
+mul = 255,255,255
+sinadd = 50,50,50,20
+invertall = 0
+color = 256
+
 [State 0, VelSet]
 type = VelSet
 trigger1 = animelem = 2
-x = 12
+x = 12.3
 
 [State -2, PushBack]
 type = mapset
@@ -499,7 +500,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, SA
-damage = ceil(cond(100*Map(DamageScaling) < 20, 20, 100*Map(DamageScaling))),20
+damage = ceil(cond(90*Map(DamageScaling) < 20, 20, 90*Map(DamageScaling))),20
 hitflag = MAF
 guardflag = MA
 animtype = Back
@@ -513,7 +514,7 @@ ground.slidetime = 20
 ground.hittime  = 20
 ground.velocity = -3,-5
 air.hittime = ceil(cond(50-Map(HitstunScaling) < 5, 5, 50-Map(HitstunScaling)))
-air.velocity = -2.1,-3.75
+air.velocity = -2.1,-3.8
 guard.ctrltime = 20
 guard.hittime = 20
 guard.velocity = -3
@@ -558,16 +559,6 @@ trigger1 = time = 0
 value = A,
 time = 10
 
-
-[State 0, PalFX]
-type = PalFX
-trigger1 = time >= 25
-time = 15
-add = 50,50,50
-mul = 255,255,255
-sinadd = 50,50,50,20
-invertall = 0
-color = 256
 
 [State 200, 3]
 type = ChangeState
@@ -640,6 +631,16 @@ physics = N
 anim = 1202
 ctrl = 0
 velset = cond(command="holdfwd",10,5),cond(command="holdfwd",-8,-11)
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = time = 0
+time = 15
+add = 50,50,50
+mul = 255,255,255
+sinadd = 50,50,50,20
+invertall = 0
+color = 256
 
 [State 0, NotHitBy]
 type = NotHitBy
@@ -1062,16 +1063,6 @@ anim = 1300
 velset = 0,0
 ctrl = 0
 
-[State 0, PalFX]
-type = PalFX
-trigger1 = time >= 30
-time = 15
-add = 50,50,50
-mul = 255,255,255
-sinadd = 50,50,50,20
-invertall = 0
-color = 256
-
 [State 200, 3]
 type = ChangeState
 trigger1 = time >= 6 && command != "holdb"
@@ -1081,7 +1072,6 @@ value = 1301
 type = ChangeState
 trigger1 = time >= 30
 value = 1302
-
 ;---------------------------------------------------------------------------
 ;Uncharged 63214D
 [Statedef 1301]
@@ -1137,6 +1127,16 @@ ctrl = 0
 anim = 1301
 sprpriority = 2
 
+[State 0, PalFX]
+type = PalFX
+trigger1 = time = 0
+time = 15
+add = 50,50,50
+mul = 255,255,255
+sinadd = 50,50,50,20
+invertall = 0
+color = 256
+
 [State 0, PosAdd]
 type = PosAdd
 trigger1 = animelem = 2
@@ -1179,6 +1179,11 @@ velset = 0,0
 ctrl = 0
 anim = 1302
 sprpriority = -2
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
 
 [State 0, ChangeAnim]
 type = ChangeAnim
@@ -1280,7 +1285,7 @@ triggerall = anim = 1304
 trigger1 = animelem = 1
 time = 99
 id = -1
-pos = 10,9
+pos = 5,20
 ignorehitpause = 1
 
 [State 810, 3]
@@ -1311,7 +1316,7 @@ envshake.ampl = 8
 p2facing = 1
 fall = 1
 fall.yvelocity = 0
-p2stateno = 5111
+p2stateno = 1316
 
 [State 800, 2]
 type = ChangeState
@@ -1332,6 +1337,11 @@ velset = 0,0
 ctrl = 0
 anim = 1302
 sprpriority = -2
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
 
 [State 0, ChangeAnim]
 type = ChangeAnim
@@ -1433,7 +1443,7 @@ triggerall = anim = 1304
 trigger1 = animelem = 1
 time = 99
 id = -1
-pos = 10,9
+pos = 5,20
 ignorehitpause = 1
 
 [State 810, 3]
@@ -1464,7 +1474,7 @@ envshake.ampl = 10
 p2facing = 1
 fall = 1
 fall.yvelocity = 0
-p2stateno = 5111
+p2stateno = 1316
 
 [State 800, 2]
 type = ChangeState
@@ -1514,3 +1524,25 @@ trigger1 = time >= 9
 value = 5061
 elem = 2
 
+;-----------------------------
+;BackBroken
+[Statedef 1316]
+type    = A
+movetype= H
+physics = N
+juggle  = 0
+poweradd= 0
+ctrl = 0
+velset = 0,0
+sprpriority = 2
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = 1
+value = 5061
+elem = 2
+
+[State 0, SelfState]
+type = SelfState
+trigger1 = HitShakeOver
+value = 5111

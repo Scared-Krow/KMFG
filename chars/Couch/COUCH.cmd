@@ -316,18 +316,15 @@ trigger2 = var(1)
 ;============================================================================
 
 ;---------------------------------------------------------------------------
-;236236C G
-[State -1, 236236CC]
+;236236A
+[State -1, 236236A]
 type = ChangeState
 value = 3000
-triggerall = stateno != [3000, 3999]
 triggerall = power>=500
-triggerall = command = "236236C"
+triggerall = command = "236236A"
 trigger1 = ctrl
 trigger2 = var(1)
-trigger3 = ((stateno=1000 || stateno=1005)&& time >= 22) || stateno=1204 && time >= 26
-trigger4 = helper(1002),movecontact || helper(1006),movecontact || helper(1209),MoveContact || helper(500),movecontact
-trigger5 = stateno=[1000,2000] && movecontact
+trigger3 = stateno=[1000,2000] && movecontact
 
 
 ;============================================================================
@@ -496,6 +493,7 @@ value = 600
 triggerall = command = "x"
 trigger1 = statetype = A
 trigger1 = ctrl
+
 ;---------------------------------------------------------------------------
 ;j.B
 [State -1, jB]
