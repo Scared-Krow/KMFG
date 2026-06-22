@@ -1,0 +1,40 @@
+Version: nightly
+Build Time: 2026.06.08
+Platform: windows (amd64)
+OpenGL 3.3
+RAM in Use: 144 MB / OS Reserved: 222 MB
+Active Goroutines: 3
+Timestamp: 2026-06-22 14:06:57
+
+Engine error
+
+Error: .\external\script\start.lua:4070: Cannot connect to the other player
+stack traceback:
+	[G]: in function 'netLoadingReady'
+	.\external\script\start.lua:4070: in function 'f_selectVersus'
+	.\external\script\start.lua:2277: in function 'launchFight'
+	external/script/default.lua:2: in function <external/script/default.lua:0>
+	.\external\script\start.lua:1750: in function 'f'
+	external/script/main.lua:2667: in function 'loop'
+	external/script/main.lua:1825: in function 'enterSyncedNetplayMenu'
+	external/script/main.lua:2212: in function <external/script/main.lua:2205>
+	external/script/main.lua:2780: in function 'loop'
+	external/script/main.lua:2764: in function 'loop'
+	external/script/main.lua:2764: in function 'loop'
+	external/script/main.lua:3988: in main chunk
+	[G]: ?
+
+Go stack traceback:
+goroutine 1 [running, locked to thread]:
+runtime/debug.Stack()
+	runtime/debug/stack.go:24 +0x65
+main.handlePanic({0x7ff75b207b20?, 0xc008a6bf00})
+	github.com/ikemen-engine/Ikemen-GO/src/main.go:362 +0x3e5
+main.realMain.func1()
+	github.com/ikemen-engine/Ikemen-GO/src/main.go:66 +0x2a
+panic({0x7ff75b207b20, 0xc008a6bf00})
+	runtime/panic.go:884 +0x213
+main.realMain()
+	github.com/ikemen-engine/Ikemen-GO/src/main.go:206 +0x58d
+main.main()
+	github.com/ikemen-engine/Ikemen-GO/src/main.go:59 +0x17
