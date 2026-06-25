@@ -32,8 +32,8 @@ air.sizebox = -12, -45, 12, 0
 crouch.sizebox = -12, -45, 18, 0
 
 [Velocity]
-walk.fwd  = 1.4
-walk.back = -1.4    
+walk.fwd  = 1.45
+walk.back = -1.35   
 run.fwd  = 3, 0    
 run.back = -4.5,-3.8 
 jump.neu = 0,-8.5
@@ -133,10 +133,25 @@ anim = 100
 sprpriority = 1
 ctrl = 1
 
+[State -2, Speed Scaling]
+type = mapset
+trigger1 = time = 0
+map = "Speed"
+value = 4
+ignorehitpause = 1
+
+[State -2, Speed Scaling]
+type = mapadd
+trigger1 = Map(Speed)>3
+map = "Speed"
+value = -.075
+ignorehitpause = 1
+
+
 [State 100, 1]
 type = VelSet
 trigger1 = 1
-x = const(velocity.run.fwd.x)
+x = Map(Speed)
 
 [State 100, 2] ;Prevent run from canceling into walk
 type = AssertSpecial
@@ -223,7 +238,7 @@ movetype = I
 physics = A
 ctrl = 0
 anim = 160
-velset = 0,0
+velset = .6,0
 
 [State 0, AssertSpecial]
 type = AssertSpecial
@@ -238,8 +253,8 @@ map = "DJ"
 
 [State 0, VelSet]
 type = VelSet
-trigger1 = 1
-x = 3.5
+trigger1 = time = 6
+x = 6
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -250,13 +265,13 @@ physics = A         ;A,C,S,N
 
 [State 0, VelMul]
 type = VelMul
-trigger1 = time > 16
-x = .95
+trigger1 = time > 5
+x = .98
 
 [State -2, AirDash Physics]
 type = mapset
 trigger1 = time = 0
-value = 13
+value = 18
 map = "ADPhysics"
 [State -2, AirDash Physics]
 type = mapset

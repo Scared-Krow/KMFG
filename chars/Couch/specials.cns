@@ -95,7 +95,7 @@ fall.yvelocity = 0
 yaccel = .325
 guard.dist = 30
 p2facing = 1
-getpower = (30*Map(DamageScaling)/2)+5
+getpower = (30*Map(DamageScaling)/2)+15
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -212,7 +212,7 @@ fall.yvelocity = 0
 yaccel = .325
 guard.dist = 30
 p2facing = 1
-getpower = (30*Map(DamageScaling)/2)+5
+getpower = (50*Map(DamageScaling)/2)+15
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -344,7 +344,7 @@ value = 1101
 
 [State 200, 3]
 type = ChangeState
-trigger1 = time >= 30
+trigger1 = time >= 25
 value = 1102
 
 ;---------------------------------------------------
@@ -525,7 +525,7 @@ fall = 1
 ground.cornerpush.veloff = -3-(Map(PushBack))
 fall.yvelocity = 0
 p2facing = 1
-getpower = (50*Map(DamageScaling)/2)+15
+getpower = (50*Map(DamageScaling)/2)+25
 
 [State 0, VelMul]
 type = VelMul
@@ -600,7 +600,7 @@ x = .999
 
 [State 800, 1]
 type = HitDef
-triggerall = enemy,stateno != [140,155]
+triggerall = enemy,stateno != [140,155] && enemy,stateno != 5210
 Trigger1 = !movecontact
 attr = A, ST         
 hitflag = AF   
@@ -662,7 +662,7 @@ x = .999
 
 [State 800, 1]
 type = HitDef
-triggerall = enemy,stateno != [140,155]
+triggerall = enemy,stateno != [140,155] && enemy,stateno != 5210
 Trigger1 = !movecontact
 attr = A, ST         
 hitflag = AF   
@@ -841,6 +841,7 @@ envshake.ampl = 5
 p2facing = 1
 fall = 1
 fall.yvelocity = cond(Map(GroundBounce)=0,-6.45,0)
+getpower = (50*Map(DamageScaling)/2)+10
 
 [State 0, PosSet]
 type = PosSet
@@ -934,6 +935,7 @@ envshake.ampl = 7
 p2facing = 1
 fall = 1
 fall.yvelocity = cond(Map(GroundBounce)=0,-6.45,0)
+getpower = (50*Map(DamageScaling)/2)+20
 
 [State 810, 3]
 type = HitDef
@@ -964,6 +966,7 @@ p2facing = 1
 fall = 1
 fall.yvelocity = 0
 p2stateno = 5111
+getpower = (50*Map(DamageScaling)/2)+20
 
 [State 0, Width]
 type = Width
@@ -1206,6 +1209,468 @@ type = VelSet
 triggerall = anim = 1303
 trigger1 = animelem = 1
 x = 0
+y = -9
+
+[State 0, VelSet]
+type = VelAdd
+trigger1 = statetype = A
+y = .43
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = time > 30
+triggerall = anim = 1303
+Trigger1 = pos y >= -2
+value = 1304
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+triggerall = anim = 1304
+trigger1 = animelem = 1
+statetype = S      
+movetype = A        
+physics = S         
+
+[State 0, PosSet]
+type = PosSet
+triggerall = anim = 1304
+trigger1 = animelem = 1
+y = 0
+
+[State 0, VelSet]
+type = VelSet
+triggerall = anim = 1304
+trigger1 = animelem = 1
+x = 0
+y = 0
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1302
+trigger1 = animelem = 1
+time = 6
+id = -1
+pos = 35,0
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1302
+trigger1 = animelem = 2
+time = 6
+id = -1
+pos = 35,-0
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1302
+trigger1 = animelem = 3
+time = 6
+id = -1
+pos = 9,-10
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1302
+trigger1 = animelem = 4
+time = 99
+id = -1
+pos = 0,-15
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1303
+trigger1 = animelem = 1
+time = 99
+id = -1
+pos = 0,-50
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1304
+trigger1 = animelem = 1
+time = 99
+id = -1
+pos = 5,20
+ignorehitpause = 1
+
+[State 810, 3]
+type = HitDef
+triggerall = anim = 1304
+trigger1 = !movecontact
+attr = A, ST
+damage = ceil(cond(225*Map(DamageScaling) < 25, 25, 225*Map(DamageScaling)))
+animtype = light
+air.animtype = Back
+guardflag =
+hitflag = MAFD
+priority  = 5
+pausetime = 20,20
+hitsound   = 5,10
+sparkxy = -30,-10
+sparkno = 2
+hitsound   = 4
+guardsound = 6,2
+ground.velocity = -2,5
+air.velocity = -8,5
+ground.hittime = 15
+air.hittime = 60
+envshake.time = 15
+envshake.freq = 100
+envshake.phase = 150
+envshake.ampl = 8
+p2facing = 1
+fall = 1
+fall.yvelocity = 0
+p2stateno = 1316
+getpower = 175
+givepower = 100
+
+[State 800, 2]
+type = ChangeState
+triggerall = anim = 1304
+Trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+
+;---------------------------------------------------------------------------
+;Charged 63214D Hit
+[Statedef 1306]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+velset = 0,0
+ctrl = 0
+anim = 1302
+sprpriority = -2
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = anim = 1302
+Trigger1 = AnimTime = 0
+value = 1303
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+triggerall = anim = 1303
+trigger1 = animelem = 1
+statetype = A       
+movetype = A        
+physics = N         
+
+[State 0, VelSet]
+type = VelSet
+triggerall = anim = 1303
+trigger1 = animelem = 1
+x = 0
+y = -12
+
+[State 0, VelSet]
+type = VelAdd
+trigger1 = statetype = A
+y = .44
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = time > 30
+triggerall = anim = 1303
+Trigger1 = pos y >= -2
+value = 1304
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+triggerall = anim = 1304
+trigger1 = animelem = 1
+statetype = S      
+movetype = A        
+physics = S         
+
+[State 0, PosSet]
+type = PosSet
+triggerall = anim = 1304
+trigger1 = animelem = 1
+y = 0
+
+[State 0, VelSet]
+type = VelSet
+triggerall = anim = 1304
+trigger1 = animelem = 1
+x = 0
+y = 0
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1302
+trigger1 = animelem = 1
+time = 6
+id = -1
+pos = 35,0
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1302
+trigger1 = animelem = 2
+time = 6
+id = -1
+pos = 35,-0
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1302
+trigger1 = animelem = 3
+time = 6
+id = -1
+pos = 9,-10
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1302
+trigger1 = animelem = 4
+time = 99
+id = -1
+pos = 0,-15
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1303
+trigger1 = animelem = 1
+time = 99
+id = -1
+pos = 0,-50
+
+[State 0, TargetBind]
+type = TargetBind
+triggerall = anim = 1304
+trigger1 = animelem = 1
+time = 99
+id = -1
+pos = 5,20
+ignorehitpause = 1
+
+[State 810, 3]
+type = HitDef
+triggerall = anim = 1304
+trigger1 = !movecontact
+attr = A, ST
+damage = ceil(cond(400*Map(DamageScaling) < 25, 25, 400*Map(DamageScaling)))
+animtype = light
+air.animtype = Back
+guardflag =
+hitflag = MAFD
+priority  = 5
+pausetime = 20,20
+hitsound   = 5,10
+sparkxy = -30,-10
+sparkno = 2
+hitsound   = 4
+guardsound = 6,2
+ground.velocity = -2,5
+air.velocity = -8,5
+ground.hittime = 15
+air.hittime = 60
+envshake.time = 20
+envshake.freq = 2000
+envshake.phase = 250
+envshake.ampl = 10
+p2facing = 1
+fall = 1
+fall.yvelocity = 0
+p2stateno = 1316
+getpower = 250
+givepower = 150
+
+[State 800, 2]
+type = ChangeState
+triggerall = anim = 1304
+Trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;Air 63214D Charging
+[Statedef 1310]
+type    = A
+movetype= A
+physics = N
+anim = 1300
+velset = 0,0
+ctrl = 0
+
+[State 200, 3]
+type = ChangeState
+trigger1 = time >= 6 && command != "holdb"
+value = 1311
+
+[State 200, 3]
+type = ChangeState
+trigger1 = time >= 30
+value = 1312
+
+;---------------------------------------------------------------------------
+;Air Uncharged 63214D
+[Statedef 1311]
+type    = A
+movetype= A
+physics = N
+juggle  = 0
+velset = 0,0
+ctrl = 0
+anim = 1301
+sprpriority = 2
+
+
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 2
+trigger2 = animelem = 3
+x = 2
+
+[State 800, 1]
+type = HitDef
+triggerall = enemy,stateno != [140,155] && enemy,stateno != 5210
+Trigger1 = !movecontact
+attr = A, ST         
+hitflag = AF           ;Affect only ground people who are not being hit
+priority = 1, Miss    ;Throw has low priority, must be miss or dodge type.
+sparkno = -1          ;No spark
+pausetime = 1,1
+p1sprpriority = 1     ;Draw p1's sprite in front of p2
+p1facing = 1
+p2facing = 1          ;Force p2 to face KFM
+p1stateno = 1313
+p2stateno = 1315
+guard.dist = 0        ;This prevents p2 from going into a guard state if close
+fall = 1
+numhits = 0
+ground.hittime = 999
+air.hittime = 999
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem = 3
+statetype = A       ;S,A,C,L
+movetype = I        ;I,A,H
+physics = A         ;A,C,S,N
+
+[State 800, 2]
+type = ChangeState
+Trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;Air Charged 63214D
+[Statedef 1312]
+type    = A
+movetype= A
+physics = N
+juggle  = 0
+velset = 0,0
+ctrl = 0
+anim = 1301
+sprpriority = 2
+
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = time = 0
+time = 15
+add = 50,50,50
+mul = 255,255,255
+sinadd = 50,50,50,20
+invertall = 0
+color = 256
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = animelem = 2
+trigger2 = animelem = 3
+x = 2
+
+[State 800, 1]
+type = HitDef
+triggerall = enemy,stateno != [140,155] && enemy,stateno != 5210
+Trigger1 = !movecontact
+attr = A, ST         
+hitflag = AF        ;Affect only ground people who are not being hit
+priority = 1, Miss    ;Throw has low priority, must be miss or dodge type.
+sparkno = -1
+pausetime = 1,1
+p1sprpriority = 1     ;Draw p1's sprite in front of p2
+p1facing = 1
+p2facing = 1          ;Force p2 to face KFM
+p1stateno = 1314
+p2stateno = 1315
+guard.dist = 0        ;This prevents p2 from going into a guard state if close
+fall = 1
+numhits = 0
+ground.hittime = 999
+air.hittime = 999
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem = 3
+statetype = A       ;S,A,C,L
+movetype = I        ;I,A,H
+physics = A    
+
+[State 800, 2]
+type = ChangeState
+Trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;Air Uncharged 63214D Hit
+[Statedef 1313]
+type    = S
+movetype= A
+physics = N
+juggle  = 0
+velset = 0,0
+ctrl = 0
+anim = 1302
+sprpriority = -2
+
+[State -2, Damage Scaling]
+type = mapset
+trigger1 = time = 0 && combocount>=1
+value = Map(DamageScaling)-.25
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = anim = 1302
+Trigger1 = AnimTime = 0
+value = 1303
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+triggerall = anim = 1303
+trigger1 = animelem = 1
+statetype = A       
+movetype = A        
+physics = N         
+
+[State 0, VelSet]
+type = VelSet
+triggerall = anim = 1303
+trigger1 = animelem = 1
+x = 0
 y = -10
 
 [State 0, VelSet]
@@ -1295,7 +1760,7 @@ type = HitDef
 triggerall = anim = 1304
 trigger1 = !movecontact
 attr = A, ST
-damage = 225
+damage = ceil(cond(225*Map(DamageScaling) < 25, 25, 225*Map(DamageScaling)))
 animtype = light
 air.animtype = Back
 guardflag =
@@ -1308,7 +1773,7 @@ sparkno = 2
 hitsound   = 4
 guardsound = 6,2
 ground.velocity = -2,5
-air.velocity = -5,5
+air.velocity = -8,5
 ground.hittime = 15
 air.hittime = 60
 envshake.time = 15
@@ -1319,6 +1784,7 @@ p2facing = 1
 fall = 1
 fall.yvelocity = 0
 p2stateno = 1316
+getpower = (100*Map(DamageScaling)/2)+20
 
 [State 800, 2]
 type = ChangeState
@@ -1329,11 +1795,11 @@ ctrl = 1
 
 
 ;---------------------------------------------------------------------------
-;Charged 63214D Hit
-[Statedef 1306]
+;Air Charged 63214D Hit
+[Statedef 1314]
 type    = S
 movetype= A
-physics = S
+physics = N
 juggle  = 0
 velset = 0,0
 ctrl = 0
@@ -1453,7 +1919,7 @@ type = HitDef
 triggerall = anim = 1304
 trigger1 = !movecontact
 attr = A, ST
-damage = 400
+damage = ceil(cond(400*Map(DamageScaling) < 50, 50, 400*Map(DamageScaling)))
 animtype = light
 air.animtype = Back
 guardflag =
@@ -1466,7 +1932,7 @@ sparkno = 2
 hitsound   = 4
 guardsound = 6,2
 ground.velocity = -2,5
-air.velocity = -5,5
+air.velocity = -8,5
 ground.hittime = 15
 air.hittime = 60
 envshake.time = 20
@@ -1477,6 +1943,7 @@ p2facing = 1
 fall = 1
 fall.yvelocity = 0
 p2stateno = 1316
+getpower = (150*Map(DamageScaling)/2)+50
 
 [State 800, 2]
 type = ChangeState
@@ -1484,6 +1951,7 @@ triggerall = anim = 1304
 Trigger1 = AnimTime = 0
 value = 0
 ctrl = 1
+
 ;-----------------------------
 ;63214D p2 grabbed
 [Statedef 1315]

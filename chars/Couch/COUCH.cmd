@@ -306,6 +306,7 @@ trigger2 = ctrl
 [State -1, DJ]
 type = ChangeState
 value = 45
+triggerall = stateno != 640
 triggerall = Map(DJ)>0 && Map(DJAccess)=1
 triggerall = vel y > 0 || pos y < -50
 triggerall = statetype = A
@@ -367,6 +368,15 @@ type = ChangeState
 value = 1300
 triggerall = command = "624D"
 triggerall = statetype != A
+trigger1 = ctrl 
+trigger2 = var(1)
+;---------------------------------------------------------------------------
+;j63214D
+[State -1, j63214D]
+type = ChangeState
+value = 1310
+triggerall = command = "624D"
+triggerall = statetype = A
 trigger1 = ctrl 
 trigger2 = var(1)
 ;===========================================================================
@@ -452,7 +462,7 @@ triggerall = command = "x"
 triggerall = command = "holddown"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = 200) && movecontact
+trigger2 = (stateno = 200 || stateno = 400 ) && movecontact
 ;---------------------------------------------------------------------------
 ;2B
 [State -1, 2B]

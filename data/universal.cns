@@ -776,8 +776,8 @@ value = 250
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(WallBounce) %.0f, Map(GroundBounce) %.0f, Map(RNG) = %.0f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(WallBounce),Map(GroundBounce),Map(RNG)
+text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(WallBounce) %.0f, Map(GroundBounce) %.0f, Map(Speed) = %.2f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(WallBounce),Map(GroundBounce),Map(Speed)
 
 
 
