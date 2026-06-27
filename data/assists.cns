@@ -1057,6 +1057,14 @@ velset = 0,0
 sprpriority = -1
 facep2 = 1
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+
+
 [State 0, ChangeState]
 type = ChangeState
 triggerall = enemy,stateno != [5110,5120]
@@ -1076,6 +1084,15 @@ anim = F4022
 velset = 0,0
 sprpriority = -1
 facep2 = 1
+
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+
 
 [State -2, Starter Damage Scaling]
 type = mapset
