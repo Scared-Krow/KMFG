@@ -880,6 +880,7 @@ damage = ceil(cond(75*Map(DamageScaling) < 10, 10, 75*Map(DamageScaling)))
 hitflag = MAF
 guardflag = MA
 animtype = Up
+air.animtype = Up
 priority = 4
 pausetime = 13,13
 sparkno = 1

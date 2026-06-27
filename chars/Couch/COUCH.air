@@ -1161,6 +1161,11 @@ Clsn2: 1
   Clsn2[0] = -19, -52, 20, -1
 5402,0, 0,20, 5
 
+[Begin Action 5420]
+Clsn2Default: 1
+ Clsn2[0] =  22,  0,-26,-21
+5040,1, 0,0, 4
+
 [Begin Action 5430]
 Clsn2Default: 1
   Clsn2[0] = -17, -19, 15, 14
