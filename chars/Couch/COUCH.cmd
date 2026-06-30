@@ -361,6 +361,7 @@ triggerall = command = "623B"
 triggerall = statetype != A
 trigger1 = ctrl 
 trigger2 = var(1)
+
 ;---------------------------------------------------------------------------
 ;63214D
 [State -1, 63214D]

@@ -1,5 +1,5 @@
 [Data]
-life = 1100
+life = 1050
 attack = 100
 defence = 100
 liedown.time = 20
@@ -254,7 +254,7 @@ map = "DJ"
 [State 0, VelSet]
 type = VelSet
 trigger1 = time = 6
-x = 6
+x = 5
 
 [State 0, StateTypeSet]
 type = StateTypeSet
