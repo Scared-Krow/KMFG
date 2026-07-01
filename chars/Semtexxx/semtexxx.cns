@@ -487,21 +487,12 @@ ctrl = 1
 ; CHARACTER SPECIFIC
 ;---------------------------------------------------------------------------
 
-[State 0, AttackMulSet]
-type = AttackMulSet
-trigger1 = Map(RAWRXD)=1
-value = 1.2
-
-[State Fatal Counter]
+[State Teleports]
 type = mapset
-trigger1 = roundstate = [0,1]
-map = "RAWRXD"
-value = 0
-
-[State 0, AttackMulSet]
-type = AttackMulSet
-trigger1 = Map(RAWRXD)=0
+trigger1 = statetype != A || movecontact=1 || movetype = H
+map = "Teleport"
 value = 1
+
 
 ;---------------------------------------------------------------------------
 ; UNIVERSAL

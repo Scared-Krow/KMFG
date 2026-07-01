@@ -1440,13 +1440,13 @@ value = 641
 ;---------------------------------------------------------------------------
 ;j.D Land
 [Statedef 641]
-type    = S
-movetype= A
-physics = S
 ctrl = 0
 anim = 641
 sprpriority = 2
 velset = 0, 0
+type    = S
+movetype= A
+physics = S
 
 [State 0, ChangeAnim]
 type = ChangeAnim

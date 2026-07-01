@@ -991,7 +991,7 @@ Welcome to I.K.E.M.E.N GO engine! (%s - %s)
 	p1.name.num = 4
 	p1.name.spacing = 0, 14
 
-	p1.name.random.text = Random
+	p1.name.random.text = RANDOM
 
 	; Sound triggered when swapping slots (see slot feature in select.def)
 	p1.swap.snd = -1, 0

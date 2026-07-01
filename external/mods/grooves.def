@@ -22,16 +22,7 @@ map_name = Assist
 map_value = 3
 enabled = 1
 
-; GROOVE STYLE FORMAT (old)
-
-;[Groove Style]
-;name = Groove Name
-;map_name = groove_style
-;map_value = 3
-;enabled = 1
-
-;[Groove Style]
-;name = TENDERN-ISM
-;map_name = groove_style
-;map_value = 3
-;enabled = 1
+[SEMTEXXX]
+map_name = Assist
+map_value = 4
+enabled = 1

@@ -555,12 +555,7 @@ map = "Tumble"
 type = mapset
 trigger1 = enemy,movetype != H
 value = 0
-map = "qcfD"
-[State -2, 236D Reset]
-type = mapset
-trigger1 = enemy,movetype != H
-value = 0
-map = "qcbD"
+map = "Wave"
 
 
 ;This controller plays a sound everytime KFM lands from a jump, or

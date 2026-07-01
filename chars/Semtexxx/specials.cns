@@ -853,6 +853,12 @@ velset = 0,0
 sprpriority = -1
 facep2 = 1
 
+[State Teleports]
+type = mapset
+trigger1 = animelem = 4
+map = "Teleport"
+value = 0
+
 [State 0, PosAdd]
 type = PosSet
 trigger1 = animelem = 4
@@ -882,6 +888,12 @@ velset = 0,0
 sprpriority = -1
 facep2 = 1
 
+[State Teleports]
+type = mapset
+trigger1 = animelem = 4
+map = "Teleport"
+value = 0
+
 [State 210, 5]
 type = ChangeState
 trigger1 = AnimTime = 0
@@ -899,6 +911,12 @@ anim = cond(enemy,stateno=[5000,5100],1210,1200)
 velset = 0,0
 sprpriority = -1
 facep2 = 1
+
+[State Teleports]
+type = mapset
+trigger1 = animelem = 4
+map = "Teleport"
+value = 0
 
 [State 0, PosAdd]
 type = PosSet
@@ -928,6 +946,12 @@ anim = cond(enemy,stateno=[5000,5100],1211,1201)
 velset = 0,0
 sprpriority = -1
 facep2 = 1
+
+[State Teleports]
+type = mapset
+trigger1 = animelem = 4
+map = "Teleport"
+value = 0
 
 [State 210, 5]
 type = ChangeState

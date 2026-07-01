@@ -257,9 +257,9 @@ persistent = 0
 redirectID = root,ID
 [State -2, Hitstun Scaling]
 type = mapset
-triggerall = enemy,statetype = A && enemy,movetype = H
+triggerall = enemy,statetype = A || enemy,statetype = L && enemy,movetype = H
 trigger1 = movehit=1
-value = root,Map(HitstunScaling)+.5
+value = root,Map(HitstunScaling)+.5+cond(root,Map(Wave)>4,1,0)
 map = "HitstunScaling"
 persistent = 0
 redirectID = root,ID
@@ -289,7 +289,7 @@ air.type = High                  ;Type: High, Low, Trip (def: same as ground.typ
 air.velocity = .75,-4.9
 down.velocity = -.5,-5.6
 air.hittime = ceil(cond(50-root,Map(HitstunScaling) < 24, 24, 50-root,Map(HitstunScaling)))
-down.hittime = ceil(cond(50-root,Map(HitstunScaling) < 24, 24, 50-root,Map(HitstunScaling)))
+down.hittime = ceil(cond(40-root,Map(HitstunScaling) < 20, 20, 40-root,Map(HitstunScaling)))
 forcenofall = 1
 fall.yvelocity = 0
 guard.ctrltime = 16
@@ -297,16 +297,18 @@ guard.hittime = 16
 yaccel = .29
 getpower = (30*root,Map(DamageScaling)/2)+10
 
+[State -2, wave]
+type = mapadd
+trigger1 = movehit=1
+value = 1
+map = "Wave"
+ignorehitpause = 1
+directID = root,ID
+
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
-value = SCA,AA,AT
-time = 1
-
-[State 0, HitBy]
-type = HitBy
-trigger1 = 1
-value = SCA,AP
+value = SCA,AA,AT,AP
 time = 1
 
 [State 0, HitOverride]

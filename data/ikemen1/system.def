@@ -641,7 +641,7 @@ record.layerno = 2
 record.window = 
 
 ;P1 Team menu
-teammenu.move.wrapping = 1
+teammenu.move.wrapping = 0
 p1.teammenu.pos = 80, 160
 ;p1.teammenu.bg.spr = 
 p1.teammenu.selftitle.font = 3,0,0, 210,210,255
@@ -727,7 +727,7 @@ teammenu.itemname.simul = Simul
 teammenu.itemname.tag = Tag
 teammenu.itemname.turns = Turns
 
-paletteselect = 3
+paletteselect = 1
 ; Enables or disables palette selection menu in select screen. Accepted values:
 ; 0 - Palette menu disabled. Palette corresponds to key pressed when selecting character
 ; 1 - Palette menu enabled. Initial selected palette is 1
@@ -1306,7 +1306,7 @@ Interpolate Scale
 ;-------------------------------------------------------------------
 ;Demo mode definition
 [Demo Mode]
-enabled = 1               ;Set to 1 to enable demo mode, 0 to disable
+enabled = 0               ;Set to 1 to enable demo mode, 0 to disable
 select.enabled = 0        ;Set to 1 to display select screen, 0 to disable
 vsscreen.enabled = 0      ;Set to 1 to display versus screen, 0 to disable
 fadein.time = 50          ;Duration of the fade-in effect

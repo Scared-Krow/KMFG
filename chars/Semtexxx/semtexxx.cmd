@@ -384,6 +384,7 @@ trigger2 = var(1)
 [State -1, 236A]
 type = ChangeState
 value = 1200
+triggerall = Map(Teleport) = 1
 triggerall = command = "236A"
 triggerall = statetype != A
 trigger1 = ctrl
@@ -393,6 +394,7 @@ trigger2 = var(1)
 [State -1, 214A]
 type = ChangeState
 value = 1201
+triggerall = Map(Teleport) = 1
 triggerall = command = "214A"
 triggerall = statetype != A
 trigger1 = ctrl
@@ -402,6 +404,7 @@ trigger2 = var(1)
 [State -1, 236A]
 type = ChangeState
 value = 1205
+triggerall = Map(Teleport) = 1
 triggerall = command = "236A"
 triggerall = statetype = A
 trigger1 = ctrl
@@ -411,6 +414,7 @@ trigger2 = var(1)
 [State -1, 214A]
 type = ChangeState
 value = 1206
+triggerall = Map(Teleport) = 1
 triggerall = command = "214A"
 triggerall = statetype = A
 trigger1 = ctrl
