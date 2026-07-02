@@ -1311,7 +1311,7 @@ ground.type = High
 ground.slidetime = 6
 ground.hittime  = 17
 ground.velocity = -4-(Map(PushBack))
-air.velocity = -3,-3
+air.velocity = -2,-3
 airguard.velocity = -2,-2.55
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 18, 18, 25-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
 guard.ctrltime = 12
