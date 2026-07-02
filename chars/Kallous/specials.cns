@@ -1118,24 +1118,9 @@ slot = 9
 stateno = 1060
 time = 999
 
-[State 	40, 3]
-type 	= VarSet
-trigger1 		= !time
-sysvar(1) 	= 0
-[State 	40, 3]
-type 	= VarSet
-trigger1 		= ClsnOverlap(clsn2, helper(1006),ID, clsn1)
-sysvar(1) 	= 1
-[State 	40, 3]
-type 	= VarSet
-trigger1 		= ClsnOverlap(clsn2, helper(1007),ID, clsn1)
-sysvar(1) 	= 2
-
 [State 0, Helper]
 type = Helper
-triggerall 	= sysvar(1) = 1
-triggerall 	= animtime < -4
-trigger1 		= anim = 1011
+trigger1 		= ClsnOverlap(clsn2, helper(1006),ID, clsn1)
 helpertype 	= Normal ;Player
 name 		= "Icicle"
 ID 			= 1070
@@ -1144,17 +1129,14 @@ pos 			= 0, -30
 postype 		= p1
 keyctrl 		= 0
 ownpal 		= 0
-
 [State 0, Helper]
 type = Helper
-triggerall 	= sysvar(1) = 2
-triggerall 	= animtime < -4
-trigger1 		= anim = 1011
+trigger1		= ClsnOverlap(clsn2, helper(1007),ID, clsn1)
 helpertype 	= Normal ;Player
 name 		= "Icicle"
 ID 			= 1071
 stateno 		= 1071
-pos 			= 0, -55
+pos 			= 0, -30
 postype 		= p1
 keyctrl 		= 0
 ownpal 		= 0
@@ -1620,7 +1602,7 @@ type = HitDef
 triggerall = root,Map(GroundBounce)=0
 trigger1 = !MoveContact && !MoveReversed
 attr = S,NP                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(50*root,Map(DamageScaling) < 15, 15, 50*root,Map(DamageScaling))),15
+damage = ceil(cond(70*root,Map(DamageScaling) < 35, 35, 70*root,Map(DamageScaling))),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = HA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -1761,7 +1743,7 @@ type = HitDef
 triggerall = root,Map(GroundBounce)=0
 trigger1 = !MoveContact && !MoveReversed
 attr = S,NP                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(40*root,Map(DamageScaling) < 15, 15, 40*root,Map(DamageScaling))),15
+damage = ceil(cond(80*root,Map(DamageScaling) < 40, 40, 80*root,Map(DamageScaling))),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = HA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -2143,7 +2125,7 @@ guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 3, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 2,10               
-guard.pausetime = 2,3
+guard.pausetime = 4,6
 sparkno = 2                     ;Spark anim no (Def: set above)
 sparkxy = -10, -5               ;X-offset for the "hit spark" rel. to p2,
 hitsound = 9, 1
