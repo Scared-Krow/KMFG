@@ -130,6 +130,14 @@ p2facing = 1
 guard.dist = 0
 getpower = 0
 
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 999
+time = 1
+forceair = 0
 [State 0, Changestate]
 type = Changestate
 trigger1 = MoveContact || Movereversed

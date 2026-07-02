@@ -405,42 +405,65 @@ buffer.time = 5
 name = "214A"
 command = ~D, B,  x
 steptime = 7
+[Command]
+name = "214A"
+command = ~D, B, UB,  x
 
 [Command]
 name = "214B"
 command = ~D, B,  a
 steptime = 7
+[Command]
+name = "214B"
+command = ~D, B, UB,  a
 
 [Command]
 name = "214C"
 command = ~D, B,  y
 steptime = 7
+[Command]
+name = "214C"
+command = ~D, B, UB,  y
 
 [Command]
 name = "214D"
 command = ~D, B,  b
 steptime = 7
+[Command]
+name = "214D"
+command = ~D, B, UB,  b
 
 [Command]
 name = "236A"
 command = ~D, F,  x
 steptime = 7
+[Command]
+name = "236A"
+command = ~D, F, UF,  x
 
 [Command]
 name = "236B"
 command = ~D, F, a
 steptime = 7
+[Command]
+name = "236B"
+command = ~D, F, UF,  a
 
 [Command]
 name = "236C"
 command = ~D, F, y
 steptime = 7
-
+[Command]
+name = "236C"
+command = ~D, F, UF,  y
 
 [Command]
 name = "236D"
 command = ~D, F,  b
 steptime = 7
+[Command]
+name = "236D"
+command = ~D, F, UF,  b
 
 [Command]
 name = "623A"

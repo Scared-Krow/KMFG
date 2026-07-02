@@ -185,6 +185,11 @@ map = "qcfD"
 redirectID = root,ID
 ignorehitpause = 1
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,AP
+time = 1
 
 [State 0, DestroySelf]
 type = DestroySelf

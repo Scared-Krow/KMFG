@@ -120,7 +120,20 @@ if animTime = 0 {
 
 #-------------------------------------------------------------------------------
 # AirJump Start
-[StateDef 45; type: A; physics: N; ctrl: 0; velset: 0, 0;]
+[StateDef 45; type: A; physics: N; ctrl: 0;]
+
+if time = 0 && name != "KALLOUS" {
+	velset{
+		x:0; 
+		y:0;
+	}
+}
+if time = 0 && name = "KALLOUS" {
+	velset{
+		x:vel x; 
+		y:0;
+	}
+}
 
 if time = 0 {mapAdd{map: "DJ"; value: -1;}}
 
@@ -138,9 +151,14 @@ if command = "holdback" {
 } else if command = "holdfwd" {
 	sysVar(1) := 1;
 }
-if time = 2 {
+if time = 0 {
 	if sysVar(1) = 0 {
-		let x = const(velocity.airjump.neu.x);
+		if name != "KALLOUS" {
+			let x = const(velocity.airjump.neu.x);
+		}
+		if name = "KALLOUS" {
+			let x = vel x * 0.35;
+		}
 	} else if sysVar(1) = 1 {
 		let x = const(velocity.airjump.fwd.x);
 	} else {
