@@ -378,6 +378,7 @@ movecamera = 0,0
 type = PlayerPush
 trigger1 = 1
 value = 1
+priority = -1
 
 [State 0, NotHitBy]
 type = NotHitBy
@@ -855,10 +856,7 @@ scale = 1,1
 sprpriority = 4
 ownpal = 1
 removeongethit = 1
-[State 0, PlayerPush]
-type = PlayerPush
-trigger1 = 1
-value = 1
+
 [State 0, Width]
 type = Width
 trigger1 = 1
@@ -929,10 +927,7 @@ scale = 1,1
 sprpriority = 4
 ownpal = 1
 removeongethit = 1
-[State 0, PlayerPush]
-type = PlayerPush
-trigger1 = 1
-value = 1
+
 [State 0, Width]
 type = Width
 trigger1 = 1
@@ -1003,10 +998,7 @@ scale = 1,1
 sprpriority = 4
 ownpal = 1
 removeongethit = 1
-[State 0, PlayerPush]
-type = PlayerPush
-trigger1 = 1
-value = 1
+
 [State 0, Width]
 type = Width
 trigger1 = 1
@@ -1220,7 +1212,7 @@ movecamera = 0,0
 [State 0, PlayerPush]
 type = PlayerPush
 trigger1 = 1
-value = 1
+value = 0
 
 [State 0, NotHitBy]
 type = NotHitBy
@@ -1364,8 +1356,12 @@ air.cornerpush.veloff = 0
 [State 200, 3]
 type = ChangeState
 trigger1 = Map(Hits)=3
-trigger2 = time >= 220
+trigger2 = time >= 100
 value = 4032
+
+[State 1000, 7]
+type = DestroySelf
+trigger1 = root,movetype = H
 
 ;---------------------------------------------------------------------------
 ;Carpet Die
