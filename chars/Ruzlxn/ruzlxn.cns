@@ -132,6 +132,12 @@ anim = 100
 sprpriority = -7
 ctrl = 0
 
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = ,AT
+time = 1
+
 [State 100, 1]
 type = VelSet
 trigger1 = time = 0
@@ -175,6 +181,12 @@ physics = A
 anim = 100
 sprpriority = -7
 ctrl = 0
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = ,AT
+time = 1
 
 [State -3, Lv1 Shadows]
 type = afterimage

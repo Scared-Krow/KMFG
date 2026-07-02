@@ -198,7 +198,7 @@ ground.type = Low
 ground.slidetime = 19
 ground.hittime  = 18
 ground.velocity = -2-(Map(PushBack))
-guard.velocity = -4
+guard.velocity = -3.5
 air.velocity = -3.75,-2.5
 air.hittime = ceil(cond(30-Map(HitstunScaling) < 20, 20, 30-Map(HitstunScaling)))
 forcenofall = 1
@@ -546,7 +546,7 @@ guard.velocity = -7.7
 guard.slidetime = 12
 airguard.velocity = -3,-2
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
-air.velocity = cond(Map(WallBounce)=0,-20,-8),cond(Map(WallBounce)=0,-6,-3.3)     ;X-velocity at which opponent is pushed,
+air.velocity = cond(Map(WallBounce)=0,-20,-6),cond(Map(WallBounce)=0,-6,-2.9)     ;X-velocity at which opponent is pushed,
 air.hittime = 60
 fall = 1
 fall.yvelocity = 0
@@ -785,8 +785,8 @@ ground.velocity = -2-(Map(PushBack))
 air.velocity = -1.35,-2.5
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 10, 10, 25-Map(HitstunScaling)))
 air.fall = 1
-guard.ctrltime = 12
-guard.hittime = 12
+guard.ctrltime = 14
+guard.hittime = 14
 fall.yvelocity = 0
 ground.cornerpush.veloff = -2-(Map(PushBack))
 air.cornerpush.veloff = -2
@@ -1352,7 +1352,7 @@ air.fall = 1
 fall.yvelocity = 0
 p2facing = 1
 airguard.velocity = -3,-2
-ground.cornerpush.veloff = -5-(Map(PushBack))
+ground.cornerpush.veloff = -3-(Map(PushBack))
 air.cornerpush.veloff = -3
 getpower = (30*Map(DamageScaling)/2)+10
 
