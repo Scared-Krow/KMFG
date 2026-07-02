@@ -546,11 +546,12 @@ trigger2 = (stateno = 200 || stateno = 400) && movecontact
 [State -1, 3C]
 type = ChangeState
 value = 435
+triggerall = stateno != 435
 triggerall = command = "y"
 triggerall = command = "holddown" && command = "holdfwd"
 triggerall = statetype != A
 trigger1 = ctrl
-trigger2 = (stateno = [200,230]) ||(stateno = [400,430])
+trigger2 = (stateno = [200,240]) ||(stateno = [400,440])
 trigger2 = movecontact
 
 ;2C

@@ -1612,7 +1612,7 @@ ignorehitpause = 1
 [State 0, AngleDraw]
 type = AngleDraw
 trigger1 = 1
-value = -37
+value = -37+time
 ignorehitpause = 1
 
 [State 200, 1]
@@ -1620,7 +1620,7 @@ type = HitDef
 triggerall = root,Map(GroundBounce)=0
 trigger1 = !MoveContact && !MoveReversed
 attr = S,NP                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(25*root,Map(DamageScaling) < 15, 15, 25*root,Map(DamageScaling))),15
+damage = ceil(cond(50*root,Map(DamageScaling) < 15, 15, 50*root,Map(DamageScaling))),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = HA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit

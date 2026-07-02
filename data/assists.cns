@@ -1072,6 +1072,7 @@ ctrl = 0
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = time = 270
+trigger2 = root,movetype = H
 value = 4026
 ctrl = 0
 

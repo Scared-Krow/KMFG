@@ -49,7 +49,7 @@ x = 1
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(10*Map(DamageScaling) < 2, 2, 10*Map(DamageScaling)))
+damage = ceil(cond(15*Map(DamageScaling) < 2, 2, 15*Map(DamageScaling)))
 animtype = Light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -292,7 +292,7 @@ animtype  = Medium
 damage = ceil(cond(35*Map(DamageScaling) < 4, 4, 35*Map(DamageScaling)))
 guardflag = MA
 priority = 3, Hit 
-pausetime = 12,12
+pausetime = 8,8
 sparkno = 1
 sparkxy = -10,-50
 hitsound   = 5,2
@@ -518,12 +518,12 @@ value = 0, 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
-damage = ceil(cond(10*Map(DamageScaling) < 2, 2, 10*Map(DamageScaling)))
+damage = ceil(cond(15*Map(DamageScaling) < 2, 2, 15*Map(DamageScaling)))
 priority  = 1
 animtype  = Light
 hitflag = MAF
 guardflag = MA
-pausetime = 9,9
+pausetime = 6,6
 priority = 1, Hit 
 sparkno = 0
 sparkxy = -10,-20
@@ -967,7 +967,7 @@ attr = S, NA
 damage = ceil(cond(40*Map(DamageScaling) < 5, 5, 40*Map(DamageScaling)))
 hitflag = MAF
 guardflag =  MA
-pausetime = 11,11
+pausetime = 9,9
 priority = 4, Hit 
 animtype = up
 sparkno = 1
@@ -1096,7 +1096,7 @@ value = 0, 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
-damage = ceil(cond(10*Map(DamageScaling) < 2, 2, 10*Map(DamageScaling)))
+damage = ceil(cond(15*Map(DamageScaling) < 2, 2, 15*Map(DamageScaling)))
 guardflag = HA
 priority = 1
 pausetime = 8,8
@@ -1495,10 +1495,11 @@ getpower = (20*Map(DamageScaling)/2)+5
 
 [State 200, 2]
 type = PlaySnd
-trigger1 = Time = 10
-trigger2 = Time = 16
-trigger3 = Time = 22
+trigger1 = animelem = 3
+trigger2 = animelem = 5
+trigger3 = animelem = 7
 value = F8, 0
+ignorehitpause = 1
 
 [State 0, StateTypeSet]
 type = StateTypeSet
