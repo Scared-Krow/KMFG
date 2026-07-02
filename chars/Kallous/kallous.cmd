@@ -359,133 +359,101 @@ trigger5 = stateno=[1000,2000] && movecontact
 
 
 ;---------------------------------------------------------------------------
-;236A
-[State -1, 236A]
+;214A
+[State -1, FLAME BLAST]
 type = ChangeState
-value = 1000
-triggerall = command = "236A"
-triggerall = statetype != A
+value = 1000 + 50 * statetype = A
+triggerall = command = "214A"
 trigger1 = ctrl
 trigger2 = var(1)
-;---------------------------------------------------------------------------
-;j236A
-[State -1, j236A]
+
+;214B
+[State -1, ICE SPIKE]
 type = ChangeState
-value = 1050
-triggerall = command = "236A"
-triggerall = statetype = A
+value = 1001 + 50 * statetype = A
+triggerall = command = "214B"
 trigger1 = ctrl
 trigger2 = var(1)
-;---------------------------------------------------------------------------
-;623B
-[State -1, 623B]
+
+;214C
+[State -1, LIGHTNING]
 type = ChangeState
-value = 1001
-triggerall = command = "623B"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2 = var(1)
-;---------------------------------------------------------------------------
-;j623B
-[State -1, j623A]
-type = ChangeState
-value = 1051
-triggerall = command = "623B"
-triggerall = statetype = A
-trigger1 = ctrl
-trigger2 = var(1)
-;---------------------------------------------------------------------------
-;421C
-[State -1, 421C]
-type = ChangeState
-value = 1003
+value = 1003 + 50 * statetype = A
 triggerall = numhelper(1008)<1
-triggerall = command = "421C"
-triggerall = statetype != A
+triggerall = command = "214C"
 trigger1 = ctrl
 trigger2 = var(1)
-;---------------------------------------------------------------------------
-;j421C
-[State -1, j421C]
-type = ChangeState
-value = 1053
-triggerall = numhelper(1008)<1
-triggerall = command = "421C"
-triggerall = statetype = A
-trigger1 = ctrl
-trigger2 = var(1)
-;---------------------------------------------------------------------------
+
 ;214D
 [State -1, 236D]
 type = ChangeState
-value = 1004
+value = 1004 + 50 * statetype = A
 triggerall = numhelper(1010)<1
 triggerall = command = "214D"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2 = var(1)
-;---------------------------------------------------------------------------
-;j214D
-[State -1, 236D]
-type = ChangeState
-value = 1054
-triggerall = numhelper(1010)<1
-triggerall = command = "214D"
-triggerall = statetype = A
-trigger1 = ctrl
-trigger2 = var(1)
-;---------------------------------------------------------------------------
-;22A
-[State -1, 22A]
-type = ChangeState
-value = 1020
-triggerall = numhelper(1020)=0
-triggerall = command = "22A"
-triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 
-;---------------------------------------------------------------------------
-;22B
-[State -1, 22B]
-type = ChangeState
-value = 1021
-triggerall = numhelper(1020)=0
-triggerall = command = "22B"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2 = var(1)
-;---------------------------------------------------------------------------
-;22C
-[State -1, 22C]
-type = ChangeState
-value = 1022
-triggerall = numhelper(1020)=0
-triggerall = command = "22C"
-triggerall = statetype != A
-trigger1 = ctrl
-trigger2 = var(1)
-
-;---------------------------------------------------------------------------
 ;22D
 [State -1, 22D]
 type = ChangeState
-value = 1023
-triggerall = numhelper(1020)=0
+value = 1100
 triggerall = command = "22D"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 
 ;---------------------------------------------------------------------------
-;22X Active
-[State -1, 22D]
-type = ChangeState
-value = 1027
-triggerall = numhelper(1020)>0
-triggerall = command = "22A" || command = "22B" || command = "22C" || command = "22D"
-trigger1 = ctrl
-trigger2 = var(1)
+;22A
+;[State -1, 22A]
+;type = ChangeState
+;value = 1020
+;triggerall = numhelper(1020)=0
+;triggerall = command = "22A"
+;triggerall = statetype != A
+;trigger1 = ctrl
+;trigger2 = var(1)
+;
+;;---------------------------------------------------------------------------
+;;22B
+;[State -1, 22B]
+;type = ChangeState
+;value = 1021
+;triggerall = numhelper(1020)=0
+;triggerall = command = "22B"
+;triggerall = statetype != A
+;trigger1 = ctrl
+;trigger2 = var(1)
+;;---------------------------------------------------------------------------
+;;22C
+;[State -1, 22C]
+;type = ChangeState
+;value = 1022
+;triggerall = numhelper(1020)=0
+;triggerall = command = "22C"
+;triggerall = statetype != A
+;trigger1 = ctrl
+;trigger2 = var(1)
+;
+;;---------------------------------------------------------------------------
+;;22D
+;[State -1, 22D]
+;type = ChangeState
+;value = 1023
+;triggerall = numhelper(1020)=0
+;triggerall = command = "22D"
+;triggerall = statetype != A
+;trigger1 = ctrl
+;trigger2 = var(1)
+;
+;;---------------------------------------------------------------------------
+;;22X Active
+;[State -1, 22D]
+;type = ChangeState
+;value = 1027
+;triggerall = numhelper(1020)>0
+;triggerall = command = "22A" || command = "22B" || command = "22C" || command = "22D"
+;trigger1 = ctrl
+;trigger2 = var(1)
 
 ;===========================================================================
 
@@ -574,6 +542,17 @@ trigger1 = ctrl
 trigger2 = (stateno = 200 || stateno = 400) && movecontact
 
 ;---------------------------------------------------------------------------
+;3C
+[State -1, 3C]
+type = ChangeState
+value = 435
+triggerall = command = "y"
+triggerall = command = "holddown" && command = "holdfwd"
+triggerall = statetype != A
+trigger1 = ctrl
+trigger2 = (stateno = [200,230]) ||(stateno = [400,430])
+trigger2 = movecontact
+
 ;2C
 [State -1, 2C]
 type = ChangeState

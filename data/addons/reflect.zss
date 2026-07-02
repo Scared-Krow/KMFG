@@ -1,0 +1,88 @@
+#Designed to work on nightly as of july IKEMEN GO. 
+#By Kamekaze
+#version 1.0
+#Do NOT ask me to make it work for anything older it's impossible.
+[statedef +1]
+#something is reflecting
+for i=55;600;1{
+
+if playeridexist($i) && playerid($i),teamside!=teamside && playerid($i),map(k_reflecting) {
+map(k_op_rf):=$i;
+break;
+}
+
+if map(k_op_rf){
+map(k_op_rf):=0;
+}
+
+}
+
+#I can be reflected!
+if map(k_op_rf){
+#helpers
+if ishelper && movetype=A && hitdefattr=SCA,AP && !sysvar(1)  && playerid(map(k_op_rf)),map(k_reflecting) 
+{
+
+if ClsnOverlap(clsn2, playerid(map(k_op_rf)),id, clsn1)  && teamside !=playerid(map(k_op_rf)),teamside
+{
+
+if !playerid(map(k_op_rf)),map(rmodx){
+playerid(map(k_op_rf)),map(rmodx):=1;
+}
+
+if !playerid(map(k_op_rf)),map(rmody){
+playerid(map(k_op_rf)),map(rmody):=1;
+}
+
+let vx = vel x;
+let vy = -vel y;
+Turn{}
+
+if vel y{
+map(rotv):=1;
+}
+
+velset{x:$vx*playerid(map(k_op_rf)),map(rmodx);y:$vy*playerid(map(k_op_rf)),map(rmodx)} 
+
+modifyplayer{teamside:cond(teamside=2,1,2)}
+}
+
+}
+
+
+ignorehitpause if map(rotv) && animelemvar(numclsn1){
+
+angledraw{value:90}
+transformclsn{angle:90}
+}
+
+#projectiles
+if !ishelper && numproj {
+for i=0;numproj;1 {
+
+if projvar(-1,$i,teamside)!=teamside{
+continue;
+}
+else{
+printtoconsole{text:"rfpj %d";params:$i}
+
+if ProjClsnOverlap($i, playerid(map(k_op_rf)),id, clsn1){
+let pv = projvar(-1,$i,projid);
+let vx = projvar(-1,$i,vel x);
+let vy = projvar(-1,$i,vel y);
+
+if ($pv&const(bit16))<const(bit16) {
+ModifyProjectile{id:$pv;index:0; velocity: -$vx,-$vy;ProjAngle:180;ProjClsnAngle:180;teamside:cond(teamside=2,1,2)}
+}
+
+break;
+}
+
+}
+
+
+}
+}
+
+#end reflect check  
+}
