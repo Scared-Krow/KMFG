@@ -2226,7 +2226,7 @@ value = 1100
 elem = 4
 
 
-[State 0, MapSet]		;Spend pursuit when canceling
+[State 0, MapSet]		
 type = MapSet
 trigger1 = 1
 map = "k_reflecting"

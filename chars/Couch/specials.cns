@@ -47,7 +47,7 @@ ignorehitpause = 1
 persistent = 0
 [State -2, Hitstun Scaling]
 type = mapset
-triggerall = enemy,statetype = A && enemy,movetype = H
+triggerall = (enemy,statetype = A || enemy,statetype = L) && enemy,movetype = H
 trigger1 = movehit
 value = Map(HitstunScaling)+1
 map = "HitstunScaling"
@@ -85,10 +85,10 @@ ground.velocity = -.75,-5.5
 guard.velocity = -3
 air.hittime = ceil(cond(40-Map(HitstunScaling) < 5, 5, 40-Map(HitstunScaling)))
 air.velocity = -.75,-5
-down.velocity = -.75,-5
+down.velocity = -.75,-5.2
 guard.ctrltime = 14
 guard.hittime = 14
-down.hittime = 20
+down.hittime = ceil(cond(35-Map(HitstunScaling) < 15, 15, 35-Map(HitstunScaling)))
 fall = 1
 ground.cornerpush.veloff = -1
 air.cornerpush.veloff = -1

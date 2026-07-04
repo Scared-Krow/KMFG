@@ -891,9 +891,15 @@ value = 750
 
 [State 0, LifeAdd]
 type = LifeAdd
-triggerall = enemy,Map(flirt)>0
+triggerall = Map(flirt)>0
 trigger1 = time%4=0 
 value = -1
 kill = 0
 
+[State Flirt Time]
+type = mapadd
+trigger1 = Map(flirt)>0
+map = "flirt"
+value = -1
+ignorehitpause = 1
 

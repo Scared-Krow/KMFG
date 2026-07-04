@@ -525,6 +525,7 @@ ignorehitpause = 1
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = root,movetype = H
+trigger2 =  movereversed
 value = 599
 
 [State -2, Starter Damage Scaling]
@@ -744,6 +745,7 @@ getpower = (5*root,Map(DamageScaling)/2)+5
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = root,movetype = H
+trigger2 =  movereversed
 value = 599
 
 [State 0, DestroySelf]

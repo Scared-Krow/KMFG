@@ -580,6 +580,7 @@ y = .2
 type = ChangeState
 trigger1 = pos y > -5
 trigger2 = movecontact
+trigger3 = root,movetype = H
 value = 252
 
 
@@ -589,7 +590,7 @@ trigger1 = FrontEdgeDist < -5
 x = -1.75
 
 ;---------------------------------------------------------------------------
-;6D Knife Bounce
+;6D Knife Harmless Bounce
 [Statedef 252]
 type    = U
 movetype= I
@@ -740,6 +741,7 @@ player = -5,-5
 type = ChangeState
 trigger1 = pos y > -5
 trigger2 = (movecontact || MoveReversed) && Map(Bounce)=1
+trigger3 = root,movetype = H
 value = 252
 
 [State 0, VelMul]
@@ -863,6 +865,7 @@ movecamera = 0,0
 type = ChangeState
 trigger1 = pos y > -5
 trigger2 = movecontact
+trigger3 = root,movetype = H
 value = 252
 
 
@@ -1161,7 +1164,7 @@ helpertype = Normal
 name = "Louie"
 ID = 430
 stateno = 431
-pos = 150,0
+pos = 160,0
 postype = P1
 facing = 1
 keyctrl = 0
@@ -1175,7 +1178,7 @@ helpertype = Normal
 name = "Louie"
 ID = 430
 stateno = 431
-pos = 250,0
+pos = 270,0
 postype = P1
 facing = 1
 keyctrl = 0

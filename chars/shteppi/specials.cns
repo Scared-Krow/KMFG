@@ -711,7 +711,7 @@ value = 160
 map = "flirt"
 ignorehitpause = 1
 persistent = 0
-redirectID = root,ID
+redirectID = target,ID
 
 [State -2, Starter Damage Scaling]
 type = mapset
@@ -720,7 +720,7 @@ value = 80
 map = "flirt"
 ignorehitpause = 1
 persistent = 0
-redirectID = root,ID
+redirectID = target,ID
 
 [State 0, ChangeState]
 type = ChangeState
@@ -1588,7 +1588,7 @@ time = 999
 [State 0, VelAdd]
 type = VelAdd
 trigger1 = 1
-y = .325
+y = .375
 
 [State 0, ChangeState]
 type = ChangeState
@@ -1700,7 +1700,7 @@ time = 999
 [State 0, VelAdd]
 type = VelAdd
 trigger1 = 1
-y = .325
+y = .375
 
 [State 0, ChangeState]
 type = ChangeState

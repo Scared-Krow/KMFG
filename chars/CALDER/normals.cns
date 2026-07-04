@@ -494,6 +494,7 @@ getpower = (30*root,Map(DamageScaling)/2)+10
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = root,movetype = H
+trigger2 = movereversed
 value = 599
 
 
@@ -612,6 +613,7 @@ getpower = (30*root,Map(DamageScaling)/2)+15
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = root,movetype = H
+trigger2 = movereversed
 value = 599
 
 
@@ -727,6 +729,7 @@ getpower = (30*root,Map(DamageScaling)/2)+20
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = root,movetype = H
+trigger2 =  movereversed
 value = 599
 
 
@@ -844,6 +847,7 @@ ignorehitpause = 1
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = root,movetype = H
+trigger2 =  movereversed
 value = 599
 
 [State 0, PosSet]
@@ -977,6 +981,7 @@ ignorehitpause = 1
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = root,movetype = H
+trigger2 =  movereversed
 value = 599
 
 
@@ -998,7 +1003,7 @@ sprPriority = -6
 [State 0, VelMul]
 type = VelMul
 trigger1 = 1
-x = .99
+x = .95
 y = .95
 
 [State 0, PosAdd]
@@ -1008,7 +1013,9 @@ y = -3
 [State 0, PosAdd]
 type = VelAdd
 trigger1 = time > 12
-y = .35
+y = .35/(time*.1)
+
+
 
 [State 0, DestroySelf]
 type = DestroySelf

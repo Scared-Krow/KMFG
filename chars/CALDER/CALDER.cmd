@@ -341,10 +341,8 @@ type = ChangeState
 value = 1000
 triggerall = command = "22D"
 triggerall = stateno!=1000
-triggerall = numhelper(500)>0
-trigger1 = ctrl
-trigger2 = helper(500), movecontact
-trigger3 = var(1)
+triggerall = numhelper(500)>0 && helper(500),stateno!=599
+trigger1 = helper(500), movecontact
 ;---------------------------------------------------------------------------
 ;214C
 [State -1, 214C]

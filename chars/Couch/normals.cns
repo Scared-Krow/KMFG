@@ -138,7 +138,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.785
+value = Map(DamageScaling)*.78
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -255,7 +255,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.8
+value = Map(DamageScaling)*.78
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -376,7 +376,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.825
+value = Map(DamageScaling)*.8
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -414,7 +414,7 @@ ground.slidetime = 12
 ground.hittime  = 20
 ground.velocity = -3.25-(Map(PushBack))
 guard.velocity = -3.5
-air.hittime = ceil(cond(30-Map(HitstunScaling) < 17, 17, 30-Map(HitstunScaling)))
+air.hittime = ceil(cond(28-Map(HitstunScaling) < 17, 17, 28-Map(HitstunScaling)))
 air.velocity = -2,-3
 guard.ctrltime = 20
 guard.hittime = 20
@@ -495,7 +495,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.055
+value = Map(DamageScaling)-.065
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -546,6 +546,7 @@ air.cornerpush.veloff = -5
 p2stateno = 5400
 missonoverride = 0
 getpower = (50*Map(DamageScaling)/2)+25
+p2facing = 1
 
 [State 200, 1]
 type = HitDef
@@ -635,7 +636,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.75
+value = Map(DamageScaling)*.7
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -988,8 +989,9 @@ persistent = 0
 
 [State 440, 2]
 type = PlaySnd
-trigger1 = animelem = 3
-value = 0, 2
+trigger1 = time = 16
+value = 440, 0
+;stoponchangestate = 1
 
 [State 0, NotHitBy]
 type = NotHitBy
@@ -1086,7 +1088,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.75
+value = Map(DamageScaling)*.7
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0

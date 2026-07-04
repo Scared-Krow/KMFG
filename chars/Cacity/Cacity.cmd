@@ -270,30 +270,18 @@ trigger2 = var(1)
 ;============================================================================
 
 ;---------------------------------------------------------------------------
-;236236C G
-[State -1, 236236CC]
+;236236D
+[State -1, 236236D]
 type = ChangeState
-value = 3000
+value = 3099
 triggerall = power>=500
-triggerall = command = "236236C"
+triggerall = command = "236236D"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 trigger3 = stateno=[1000,2000] && movecontact
 
 ;---------------------------------------------------------------------------
-;236236C A
-[State -1, 236236C]
-type = ChangeState
-value = 3100
-triggerall = power>=500
-triggerall = command = "236236C"
-triggerall = statetype = A
-trigger1 = ctrl
-trigger2 = var(1)
-trigger3 = ((stateno=1000 || stateno=1005)&& time >= 21)
-trigger4 = helper(1002),movecontact || helper(1006),movecontact
-trigger5 = stateno=[1000,2000] && movecontact
 
 ;============================================================================
 ;============================SPECIALS========================================

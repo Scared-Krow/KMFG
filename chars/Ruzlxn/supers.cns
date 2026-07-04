@@ -68,6 +68,7 @@ envshake.ampl = 6
 p2stateno = 3010
 missonoverride = 0
 
+
 [State 1000, 7]
 type = ChangeState
 trigger1 = movehit
@@ -130,8 +131,6 @@ guard.velocity = -3
 airguard.velocity = -1
 fall = 1
 down.hittime = 40
-ground.cornerpush.veloff = -2
-air.cornerpush.veloff = -2
 down.velocity = 0,-2
 fall.yvelocity = -3.3
 p2facing = 1
@@ -140,6 +139,9 @@ envshake.freq = 200
 envshake.phase = 200
 envshake.ampl = 4
 missonoverride = 0
+air.cornerpush.veloff = 0
+ground.cornerpush.veloff = 0
+down.cornerpush.veloff = 0
 
 [State 0]
 type = Zoom
@@ -181,8 +183,8 @@ envshake.time = 12
 envshake.freq = 150
 envshake.phase = 180
 envshake.ampl = -7
-ground.cornerpush.veloff = -2
-air.cornerpush.veloff = -2
+ground.cornerpush.veloff = -6
+air.cornerpush.veloff = -6
 down.velocity = -.1,8
 fall.yvelocity = 0
 p2facing = 1
@@ -531,6 +533,12 @@ anim = 3120
 velset = random%5-2.5,-(random%5)-1
 ctrl = 0
 
+[State -2, Rotation]
+type = mapset
+trigger1 = time = 0
+value = 90-random%180
+map = "rotate"
+
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = 1
@@ -539,14 +547,19 @@ time = 1
 
 [State 0, AngleDraw]
 type = AngleDraw
-trigger1 =1
+trigger1 = 1
 value = 1
 
 [State 0, AngleDraw]
 type = AngleSet
-trigger1 = time = 0
-value = random%360
+trigger1 = 1
+value = Map(rotate)
 ignorehitpause = 1
+
+[State 0, AngleAdd]
+type = AngleAdd
+trigger1 = 1
+value = 2
 
 
 [State 0, VelAdd]
