@@ -1,0 +1,184 @@
+[Function glow(alpha,quality,size,r,g,b, p, id, ignorehit, movehitpause)] 
+#alpha, quality, size, r, g, b, sprpriority, updatehitpause, movehitpause
+
+#alpha: 		controls the opacity of explods
+#quality: 		controls distribution of the explod scattering (divided by 10 and then multiplied by nested loop)
+#size: 			glow radius;
+#r,g,b: 		colors;
+#sprpriority: 	sprpriority of the explods (usually smaller than 0);
+#ignorehit: 	updates the anim during hitpause;
+#movehitpause: 	lets the explod run during hitpause (controls ignorehitpause parameter on explods)
+
+ignoreHitPause{
+	let a = $alpha;
+	let q = $quality/10;
+	if ((hitPauseTime && $ignorehit) || !hitPauseTime || isAsserted(animatehitpause)) && !pauseTime{
+		map(glow.frame) := animElemNo(0);
+	}
+	removeExplod{id: $id;}
+	for i = 0; $q; 1 {
+		for h = 0; $q; 1
+		{
+			if (($h%2 = 0 && $i%2 = 0) || ($h%2 = 1 && $i%2 = 1)) && (gameTime%2 = 0)
+			{
+				explod{
+					anim: anim; 
+					id: $id; 
+					animplayerno: animplayerno; #ty P.O.T.S for help w/ this lol
+					postype: p1;          
+					bindtime: 1;            
+					sprpriority: $p; 
+					pos: 0, -($size/2)+$i*($size/$q);
+					removetime: 2;          # refresh loop
+					animelem: map(glow.frame);
+					pausemovetime: -1;
+					supermovetime: -1;
+					scale: 1 * const(size.xscale) * (scale x), 1 * const(size.yscale) * (scale y);
+					trans: addalpha;
+					alpha: $a,255-$a;
+					ownpal: 1;
+					under: 1;
+					angle: angle;
+					palfx.time: -1;
+					palfx.add: 256,256,256;
+					palfx.mul: $r,$g,$b;
+					ignorehitpause: $movehitpause;
+					removeonchangestate: 1;
+				}
+				explod{
+					anim: anim; 
+					id: $id; 
+					animplayerno: animplayerno; #ty P.O.T.S for help w/ this lol
+					postype: p1;          
+					bindtime: 1;            
+					sprpriority: $p; 
+					pos: -1, -($size/2)+$i*($size/$q);
+					removetime: 2;          # refresh loop
+					animelem: map(glow.frame);
+					pausemovetime: -1;
+					supermovetime: -1;
+					scale: 1 * const(size.xscale) * (scale x), 1 * const(size.yscale) * (scale y);
+					trans: addalpha;
+					alpha: $a,255-$a;
+					ownpal: 1;
+					under: 1;
+					angle: angle;
+					palfx.time: -1;
+					palfx.add: 256,256,256;
+					palfx.mul: $r,$g,$b;
+					ignorehitpause: $movehitpause;
+					removeonchangestate: 1;
+				}
+				explod{
+					anim: anim; 
+					id: $id; 
+					animplayerno: animplayerno; #ty P.O.T.S for help w/ this lol
+					postype: p1;          
+					bindtime: 1;            
+					sprpriority: $p; 
+					pos: 1, -($size/2)+$i*($size/$q);
+					removetime: 2;          # refresh loop
+					animelem: map(glow.frame);
+					pausemovetime: -1;
+					supermovetime: -1;
+					scale: 1 * const(size.xscale) * (scale x), 1 * const(size.yscale) * (scale y);
+					trans: addalpha;
+					alpha: $a,255-$a;
+					ownpal: 1;
+					under: 1;
+					angle: angle;
+					palfx.time: -1;
+					palfx.add: 256,256,256;
+					palfx.mul: $r,$g,$b;
+					ignorehitpause: $movehitpause;
+					removeonchangestate: 1;
+				}
+			}
+
+			if (($h%2 = 0 && $i%2 = 1) || ($h%2 = 1 && $i%2 = 0)) && (gameTime%2 = 1)
+			{
+				explod{
+					anim: anim; 
+					id: $id; 
+					animplayerno: animplayerno; 
+					postype: p1; 
+					bindtime: 1; 
+					sprpriority: $p; 
+					pos: 0, -($size/2)+$i*($size/$q);
+					removetime: 2; 
+					animelem: map(glow.frame);
+					pausemovetime: -1;
+					supermovetime: -1;
+					scale: 1 * const(size.xscale) * (scale x), 1 * const(size.yscale) * (scale y);
+					trans: addalpha;
+					alpha: $a,255-$a;
+					ownpal: 1;
+					under: 1;
+					angle: angle;
+					palfx.time: -1;
+					palfx.add: 256,256,256;
+					palfx.mul: $r,$g,$b;
+					ignorehitpause: $movehitpause;
+					removeonchangestate: 1;
+				}
+				explod{
+					anim: anim; 
+					id: $id; 
+					animplayerno: animplayerno; #ty P.O.T.S for help w/ this lol
+					postype: p1;          
+					bindtime: 1;            
+					sprpriority: $p; 
+					pos: -1, -($size/2)+$i*($size/$q);
+					removetime: 2;          # refresh loop
+					animelem: map(glow.frame);
+					pausemovetime: -1;
+					supermovetime: -1;
+					scale: 1 * const(size.xscale) * (scale x), 1 * const(size.yscale) * (scale y);
+					trans: addalpha;
+					alpha: $a,255-$a;
+					ownpal: 1;
+					under: 1;
+					angle: angle;
+					palfx.time: -1;
+					palfx.add: 256,256,256;
+					palfx.mul: $r,$g,$b;
+					ignorehitpause: $movehitpause;
+					removeonchangestate: 1;
+				}
+				explod{
+					anim: anim; 
+					id: $id; 
+					animplayerno: animplayerno; #ty P.O.T.S for help w/ this lol
+					postype: p1;          
+					bindtime: 1;            
+					sprpriority: $p; 
+					pos: 1, -($size/2)+$i*($size/$q);
+					removetime: 2;          # refresh loop
+					animelem: map(glow.frame);
+					pausemovetime: -1;
+					supermovetime: -1;
+					scale: 1 * const(size.xscale) * (scale x), 1 * const(size.yscale) * (scale y);
+					trans: addalpha;
+					alpha: $a,255-$a;
+					ownpal: 1;
+					under: 1;
+					angle: angle;
+					palfx.time: -1;
+					palfx.add: 256,256,256;
+					palfx.mul: $r,$g,$b;
+					ignorehitpause: $movehitpause;
+					removeonchangestate: 1;
+				}
+			}
+		}
+	}
+}
+[StateDef +1]
+	ignoreHitPause
+	{
+		if !isHelper
+		{
+			#alpha, quality, size, r, g, b, priority, id, updatehitpause, movehitpause(explod)
+			call glow(256, 50, 3, 0,0,0, 1, 92000, 1, 1);
+		}
+	}
