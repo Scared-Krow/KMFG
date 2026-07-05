@@ -164,19 +164,22 @@ buffer.time = 1
 name = "fwd"
 command = $F
 time = 1
+buffer.time = 0
 [Command]
 name = "back"
 command = $B
 time = 1
+buffer.time = 0
 [Command]
 name = "up"
 command = $U
 time = 1
+buffer.time = 0
 [Command]
 name = "down"
 command = $D
 time = 1
-
+buffer.time = 0
 
 [Command]
 name = "holdfwdB"
@@ -203,18 +206,22 @@ buffer.time = 0
 name = "holdfwd"
 command = /$F
 time = 1
+buffer.time = 0
 [Command]
 name = "holdback"
 command = /$B
 time = 1
+buffer.time = 0
 [Command]
 name = "holdup"
 command = /$U
 time = 1
+buffer.time = 0
 [Command]
 name = "holddown"
 command = /$D
 time = 1
+buffer.time = 0
 
 [Command]
 name = "holdx"

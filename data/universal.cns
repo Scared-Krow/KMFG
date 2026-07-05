@@ -94,6 +94,7 @@ ctrl = 0
 anim = 700
 velset = 3,0
 facep2 = 1
+sprPriority = -4
 
 [State -3, Lv1 Shadows]
 type = afterimage

@@ -314,6 +314,7 @@ trigger1 = ctrl
 [State -1, DJ]
 type = ChangeState
 value = 45
+triggerall = stateno != 45
 triggerall = Map(Flight)<=0
 triggerall = Map(DJ)>0 && Map(DJAccess)=1
 triggerall = vel y > 0 || pos y < -50
