@@ -522,7 +522,7 @@ damage = ceil(cond(15*Map(DamageScaling) < 2, 2, 15*Map(DamageScaling)))
 priority  = 1
 animtype  = Light
 hitflag = MAF
-guardflag = MA
+guardflag = LA
 pausetime = 6,6
 priority = 1, Hit 
 sparkno = 0
@@ -532,21 +532,33 @@ guardsound = 6,0
 ground.type = Low
 ground.slidetime = 4
 ground.hittime  = 13
-ground.velocity = -3-(Map(PushBack))
-guard.velocity = -3
+ground.velocity = -2-(Map(PushBack))
+guard.velocity = -2
 air.velocity = -1,-1.35
 air.hittime = ceil(cond(22-Map(HitstunScaling) < 5, 5, 22-Map(HitstunScaling)))
 air.fall = 1
 guard.ctrltime = 10
 guard.hittime = 10
 fall.yvelocity = 0
-ground.cornerpush.veloff = -4-(Map(PushBack))
-air.cornerpush.veloff = -4
+ground.cornerpush.veloff = -2-(Map(PushBack))
+air.cornerpush.veloff = -2
 p2facing = 1
 guard.dist = 0
 getpower = (20*Map(DamageScaling)/2)+5,5
 givepower = (20*Map(DamageScaling)/2),4
 
+[State 210, 5]
+type = ChangeState
+triggerall = command = "28"
+trigger1 = MoveContact
+value = 60
+ctrl = 0
+[State 210, 5]
+type = ChangeState
+triggerall = command = "holdup"
+trigger1 = MoveContact
+value = 40
+ctrl = 0
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -577,9 +589,14 @@ sprpriority = 2
 facep2 = 1
 
 [State 0, PosAdd]
+type = VelSet
+trigger1 = animelemno(0) = [1, 2]
+x = 1
+persistent = 0
+[State 0, PosAdd]
 type = VelAdd
-trigger1 = animelem = 2
-x = 6
+trigger1 = animelem = 3
+x = 8
 
 [State 430, 1]
 type = PlaySnd
@@ -653,23 +670,10 @@ getpower = (30*Map(DamageScaling)/2)+10
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = animelem = 4
+trigger1 = animelem = 6
 statetype = C      
 movetype = I        
 physics = C  
-
-[State 210, 5]
-type = ChangeState
-triggerall = command = "28"
-trigger1 = MoveContact
-value = 60
-ctrl = 0
-[State 210, 5]
-type = ChangeState
-triggerall = command = "holdup"
-trigger1 = MoveContact
-value = 40
-ctrl = 0
 
 [State 430, 3]
 type = ChangeState
@@ -788,6 +792,19 @@ guard.dist = 0
 getpower = (30*Map(DamageScaling)/2)+10
 id		= 2
 
+[State 210, 5]
+type = ChangeState
+triggerall = command = "28"
+trigger1 = MoveContact
+value = 60
+ctrl = 0
+[State 210, 5]
+type = ChangeState
+triggerall = command = "holdup"
+trigger1 = MoveContact
+value = 40
+ctrl = 0
+
 [State 0, ChangeAnim]
 type = ChangeAnim
 triggerall = anim = 430
@@ -866,9 +883,9 @@ guardsound = 6,0
 ground.type = Low
 ground.slidetime = 19
 ground.hittime  = 18
-ground.velocity = -3,-1
+ground.velocity = 0,-1
 guard.velocity = -4
-air.velocity = -3,-.5
+air.velocity = 0,-.5
 air.hittime = 60
 fall = 1
 ground.cornerpush.veloff = -3-(Map(PushBack))
@@ -1110,7 +1127,7 @@ ground.hittime  = 15
 ground.velocity = -4-(Map(PushBack))
 air.velocity = -1,-1
 airguard.velocity = -1.25,-1.75
-air.hittime = ceil(cond(15-Map(HitstunScaling) < 5, 5, 15-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
+air.hittime = ceil(cond(18-Map(HitstunScaling) < 5, 5, 18-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
 forcenofall = 1
 fall.yvelocity = 0
 guard.ctrltime = 10
@@ -1211,11 +1228,11 @@ hitsound   = 5,4
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
-ground.hittime  = 16
+ground.hittime  = 18
 ground.velocity = -4-(Map(PushBack))
 air.velocity = -2,-2
 airguard.velocity = -1.75,-2.25
-air.hittime = ceil(cond(22-Map(HitstunScaling) < 14, 14, 22-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
+air.hittime = ceil(cond(25-Map(HitstunScaling) < 14, 14, 25-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
 air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 14
@@ -1309,11 +1326,11 @@ hitsound   = 9,0
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 6
-ground.hittime  = 17
+ground.hittime  = 22
 ground.velocity = -4-(Map(PushBack))
 air.velocity = -2,-3
 airguard.velocity = -2,-2.55
-air.hittime = ceil(cond(25-Map(HitstunScaling) < 18, 18, 25-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
+air.hittime = ceil(cond(28-Map(HitstunScaling) < 18, 18, 28-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
 guard.ctrltime = 12
 guard.hittime = 12
 air.fall = 1

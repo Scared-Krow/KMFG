@@ -189,7 +189,7 @@ null{}
 
 #-------------------------------------------------------------------------------
 # Jump Land
-[StateDef 52; type: S; physics: S; ctrl: 0; anim: 47; facep2: 1;]
+[StateDef 52; type: S; physics: S; ctrl: 1; anim: 47; facep2: 1;]
 
 if time = 0 {
 	velSet{y: 0}
