@@ -28,7 +28,7 @@ ignoreHitPause{
 					postype: p1;          
 					bindtime: 1;            
 					sprpriority: $p; 
-					pos: 0, -($size/2)+$i*($size/$q);
+					pos: 0, 1-($size/2)+$i*($size/$q);
 					removetime: 2;          # refresh loop
 					animelem: map(glow.frame);
 					pausemovetime: -1;
@@ -52,7 +52,7 @@ ignoreHitPause{
 					postype: p1;          
 					bindtime: 1;            
 					sprpriority: $p; 
-					pos: -1, -($size/2)+$i*($size/$q);
+					pos: -1, 1-($size/2)+$i*($size/$q);
 					removetime: 2;          # refresh loop
 					animelem: map(glow.frame);
 					pausemovetime: -1;
@@ -76,7 +76,7 @@ ignoreHitPause{
 					postype: p1;          
 					bindtime: 1;            
 					sprpriority: $p; 
-					pos: 1, -($size/2)+$i*($size/$q);
+					pos: 1, 1-($size/2)+$i*($size/$q);
 					removetime: 2;          # refresh loop
 					animelem: map(glow.frame);
 					pausemovetime: -1;
@@ -104,7 +104,7 @@ ignoreHitPause{
 					postype: p1; 
 					bindtime: 1; 
 					sprpriority: $p; 
-					pos: 0, -($size/2)+$i*($size/$q);
+					pos: 0, 1-($size/2)+$i*($size/$q);
 					removetime: 2; 
 					animelem: map(glow.frame);
 					pausemovetime: -1;
@@ -128,7 +128,7 @@ ignoreHitPause{
 					postype: p1;          
 					bindtime: 1;            
 					sprpriority: $p; 
-					pos: -1, -($size/2)+$i*($size/$q);
+					pos: -1, 1-($size/2)+$i*($size/$q);
 					removetime: 2;          # refresh loop
 					animelem: map(glow.frame);
 					pausemovetime: -1;
@@ -152,7 +152,7 @@ ignoreHitPause{
 					postype: p1;          
 					bindtime: 1;            
 					sprpriority: $p; 
-					pos: 1, -($size/2)+$i*($size/$q);
+					pos: 1, 1-($size/2)+$i*($size/$q);
 					removetime: 2;          # refresh loop
 					animelem: map(glow.frame);
 					pausemovetime: -1;
@@ -179,6 +179,6 @@ ignoreHitPause{
 		if !isHelper
 		{
 			#alpha, quality, size, r, g, b, priority, id, updatehitpause, movehitpause(explod)
-			call glow(256, 50, 3, 0,0,0, 1, 92000, 1, 1);
+			call glow(256, 50, 4, 0,0,0, 1, 92000, 1, 1);
 		}
 	}
