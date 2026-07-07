@@ -26,8 +26,6 @@ head.pos = -5, -90
 mid.pos = -5, -60    
 shadowoffset = 0     
 draw.offset = 0,1
-stand.sizebox = -10, -45, 23, 0
-air.sizebox = -12, -45, 12, 0
 
 
 [Velocity]

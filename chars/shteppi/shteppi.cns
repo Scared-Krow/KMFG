@@ -15,7 +15,7 @@ fall.defence_up = 0
 xscale = 1.3
 yscale = 1.3
 ground.back = 12 
-ground.front = 16 
+ground.front = 12
 air.back = 12     
 air.front = 18
 height = 45
@@ -27,8 +27,6 @@ mid.pos = -5, -60
 shadowoffset = 0     
 draw.offset = 0,1
 attack.dist = 0
-stand.sizebox = -12, -45, 10, 0
-air.sizebox = -12, -45, 12, 0
 
 
 [Velocity]

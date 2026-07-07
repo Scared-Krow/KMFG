@@ -179,6 +179,6 @@ ignoreHitPause{
 		if !isHelper
 		{
 			#alpha, quality, size, r, g, b, priority, id, updatehitpause, movehitpause(explod)
-			call glow(256, 50, 4, 0,0,0, 1, 92000, 1, 1);
+			call glow(256, 50, 4, 20,10,32, 1, 92000, 1, 1);
 		}
 	}

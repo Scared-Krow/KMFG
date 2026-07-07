@@ -340,20 +340,16 @@ trigger2 = var(1)
 trigger3 = stateno=[1000,2000] && movecontact
 
 ;---------------------------------------------------------------------------
-;214214A
-[State -1, 214214B]
+;632146D
+[State -1, 632146D]
 type = ChangeState
 value = 3100
-triggerall = Map(BUCKX2) <= 0
 triggerall = power>=500
-triggerall = command = "214214A"
+triggerall = command = "6246D"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
-trigger3 = ((stateno=1000 || stateno=1005)&& time >= 21)
-trigger4 = helper(1002),movecontact || helper(1006),movecontact
-trigger5 = stateno=[1000,2000] && movecontact
-
+trigger3 = stateno=[1000,2000] && movecontact
 ;============================================================================
 ;============================SPECIALS========================================
 ;============================================================================

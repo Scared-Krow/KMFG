@@ -1430,7 +1430,7 @@ value = 0, 2
 
 [State 0, NotHitBy]
 type = NotHitBy
-trigger1 = time = [11,18]
+trigger1 = time = [8,16]
 value = A
 time = 1
 

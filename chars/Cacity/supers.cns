@@ -1,5 +1,5 @@
 ;---------------------------------------------------------------------------
-;236236D
+;236236D 
 [Statedef 3099]
 type    = S
 movetype= A
@@ -24,7 +24,7 @@ helpertype = Normal ;Player
 name = "Tech The Throw And..."
 ID = 3100
 stateno = 3100
-pos = 25,-46
+pos = 25,-40
 postype = P1
 facing = 1
 keyctrl = 0
@@ -37,7 +37,7 @@ value = 0
 ctrl = 1
 
 ;---------------------------------------------------------------------------
-;236236D
+;236236D proj
 [Statedef 3100]
 type    = U
 movetype= A

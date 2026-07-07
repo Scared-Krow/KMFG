@@ -112,16 +112,11 @@ map = "HitstunScaling"
 persistent = 0
 redirectID = root,ID
 
-[State 0, NotHitBy]
-type = NotHitBy
-trigger1 = 1
-value = SCA,AA,AT
-time = 1
 
 [State 0, HitBy]
 type = HitBy
 trigger1 = 1
-value = SCA,AP
+value = SCA,NP,SP
 time = 1
 
 [State 0, HitOverride]
@@ -204,16 +199,11 @@ map = "HitstunScaling"
 persistent = 0
 redirectID = root,ID
 
-[State 0, NotHitBy]
-type = NotHitBy
-trigger1 = 1
-value = SCA,AA,AT
-time = 1
 
 [State 0, HitBy]
 type = HitBy
 trigger1 = 1
-value = SCA,AP
+value = SCA,NP,SP
 time = 1
 
 [State 0, VelMul]
