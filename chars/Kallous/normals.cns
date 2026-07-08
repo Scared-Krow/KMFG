@@ -1055,7 +1055,7 @@ ctrl = 0
 anim = 600
 sprpriority = 2
 velset = vel x, vel y
-facep2 = cond((Map(AirDashing)>0 || prevstateno = 1027),1,0)
+facep2 = cond((Map(AirDashing)||Map(SJ))>0,1,0)
 
 [State 0, VelMul]
 type = VelMul
@@ -1162,7 +1162,7 @@ ctrl = 0
 anim = 610
 sprpriority = 2
 velset = vel x, vel y
-facep2 = cond((Map(AirDashing)>0 || prevstateno = 1027),1,0)
+facep2 = cond((Map(AirDashing)||Map(SJ))>0,1,0)
 
 [State 0, VelMul]
 type = VelMul
@@ -1259,7 +1259,7 @@ ctrl = 0
 anim = 630
 sprpriority = 2
 velset = vel x, vel y
-facep2 = cond((Map(AirDashing)>0 || prevstateno = 1027),1,0)
+facep2 = cond((Map(AirDashing)||Map(SJ))>0,1,0)
 
 [State 0, VelMul]
 type = VelMul
@@ -1362,7 +1362,7 @@ ctrl = 0
 anim = 640
 sprpriority = 2
 velset = vel x, vel y
-facep2 = cond((Map(AirDashing)>0 || prevstateno = 1027),1,0)
+facep2 = cond((Map(AirDashing)||Map(SJ))>0,1,0)
 
 [State 0, VelMul]
 type = VelMul

@@ -32,6 +32,18 @@ physics = A
 ctrl = 1
 anim = 41
 
+[State -2, Super Jump]
+type = mapset
+trigger1 = time = 0
+value = 1
+map = "SJ"
+
+[State 0, Turn]
+type = Turn
+triggerall = Map(SJ) = 1
+trigger1 = p2dist x < 0
+
+
 [State 45, 2]
 type = ChangeAnim
 trigger1 = vel y < -2
@@ -154,7 +166,7 @@ movetype = I
 physics = N
 ctrl = 0
 anim = 700
-velset = 3,0
+velset = 6,0
 facep2 = 1
 
 [State -2, Damage Scaling]
@@ -221,7 +233,7 @@ flag = NoWalk
 
 [State 0, CtrlSet]
 type = CtrlSet
-trigger1 = time = 10
+trigger1 = time = 2
 value = 1
 
 [State 0, ChangeState]
@@ -255,15 +267,22 @@ map = "Parry"
 [State 1300, 2]
 type = ReversalDef
 trigger1 = Time = [0,8]
-;trigger1 = (P2, HitDefVar(guardflag) = M || P2, HitDefVar(guardflag) = H)
-reversal.attr = SA,AA,AP
+reversal.attr = SA,AA
 pausetime = 0,0
 sparkno = 40
 sparkxy = 40,0
 hitsound = 6,0
 p1stateno = 706
-p1sprpriority = 2 ;Set P1's sprite in front of P2's
+p1sprpriority = 2 
 p2sprpriority = 1
+
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = Time = [0,8]
+attr = SCA,AP        
+slot = 0
+stateno = 704
+time = 1
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -271,6 +290,52 @@ trigger1 = time = 9
 statetype = S       
 movetype = A        
 physics = S        
+
+[State 700, End]
+type = changestate
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;Stand Projectile Parry Success
+[Statedef 704]
+type = S
+physics = S
+movetype = I
+anim = 705
+velset = 0, 0
+ctrl = 1
+sprpriority = 2
+facep2 = 1
+
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0 
+time = 5
+anim = -1
+sound = -1
+darken = 0
+unhittable = 1
+
+[State 0, PowerAdd]
+type = PowerAdd
+trigger1 = time = 0
+value = -GetHitVar(power)
+
+[State 700, Flash]
+type = palfx
+trigger1 = time = 0
+ignorehitpause = 1
+add = 100, 100, 100
+sinadd = 0, 0, 0, 60
+time = 15
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time = [0,3]
+value = SCA,AP
+time = 1
 
 [State 700, End]
 type = changestate
@@ -293,12 +358,12 @@ poweradd = 100
 [State 0, SuperPause]
 type = SuperPause
 trigger1 = time = 0 
-time = cond(enemynear, hitdefattr != SCA,NP, SP, HP,15,3)
+time = 10
 anim = -1
 sound = -1
 darken = 0
 unhittable = 1
-movetime = 15
+movetime = 10
 
 [State 0, PosFreeze]
 type = PosFreeze
@@ -373,7 +438,7 @@ map = "Parry"
 type = ReversalDef
 ;triggerall = P2, HitDefVar(guardflag) = L
 trigger1 = Time = [0,8]
-reversal.attr = C,AA,AP
+reversal.attr = C,AA
 pausetime = 0,0
 sparkno = 40
 sparkxy = 40,0
@@ -389,11 +454,65 @@ statetype = S
 movetype = A        
 physics = S 
 
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = Time = [0,8]
+attr = SCA,AP        
+slot = 0
+stateno = 709
+time = 1
+
 [State 700, End]
 type = changestate
 trigger1 = animtime = 0
 value = 11
 ctrl = 1
+
+;Crouch Projectile Parry Success
+[Statedef 709]
+type = C
+physics = C
+movetype = I
+anim = 710
+velset = 0, 0
+ctrl = 1
+sprpriority = 2
+facep2 = 1
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0 
+time = 5
+anim = -1
+sound = -1
+darken = 0
+unhittable = 1
+
+[State 0, PowerAdd]
+type = PowerAdd
+trigger1 = time = 0
+value = -GetHitVar(power)
+
+[State 700, Flash]
+type = palfx
+trigger1 = time = 0
+ignorehitpause = 1
+add = 100, 100, 100
+sinadd = 0, 0, 0, 60
+time = 15
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time = [0,3]
+value = SCA,AP
+time = 1
+
+[State 700, End]
+type = changestate
+trigger1 = animtime = 0
+value = 11
+ctrl = 1
+
 
 ;Crouch Parry Success
 [Statedef 711]
@@ -410,12 +529,12 @@ poweradd = 100
 [State 0, SuperPause]
 type = SuperPause
 trigger1 = time = 0 
-time = cond(enemy, hitdefattr != SCA,NP, SP, HP,15,5)
+time = 10
 anim = -1
 sound = -1
 darken = 0
 unhittable = 1
-movetime = 15
+movetime = 10
 
 [State 0, NotHitBy]
 type = NotHitBy
@@ -492,7 +611,7 @@ map = "Parry"
 type = ReversalDef
 trigger1 = Time = [0,8]
 ;trigger1 = (P2, HitDefVar(guardflag) = M || P2, HitDefVar(guardflag) = H)
-reversal.attr = SCA,AA,AP
+reversal.attr = SCA,AA
 pausetime = 0,0
 sparkno = 40
 sparkxy = 40,0
@@ -500,6 +619,14 @@ hitsound = 6,0
 p1stateno = 716
 p1sprpriority = 2 ;Set P1's sprite in front of P2's
 p2sprpriority = 1
+
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = Time = [0,8]
+attr = SCA,AP        
+slot = 0
+stateno = 713
+time = 1
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -514,6 +641,78 @@ trigger1 = animtime = 0
 value = 50
 ctrl = 1
 
+;Air Projectile Parry Success
+[Statedef 713]
+type = A
+physics = A
+movetype = I
+anim = 715
+ctrl = 1
+sprpriority = 2
+facep2 = 1
+
+[State 700, Stop]
+type = posfreeze
+trigger1 = time <= 0
+value = 1
+
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0 
+time = 5
+anim = -1
+sound = -1
+darken = 0
+unhittable = 1
+
+[State 0, PowerAdd]
+type = PowerAdd
+trigger1 = time = 0
+value = -GetHitVar(power)
+
+[State 700, Flash]
+type = palfx
+trigger1 = time = 0
+ignorehitpause = 1
+add = 100, 100, 100
+sinadd = 0, 0, 0, 60
+time = 15
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = time = [0,3]
+value = SCA,AP
+time = 1
+
+[State 700, End]
+type = changestate
+trigger1 = animtime = 0
+value = 50
+ctrl = 1
+
+[State -2, StoreVelX]
+type = mapset
+trigger1 = time = 0
+value = vel x
+map = "VelX"
+ignorehitpause = 1
+persistent = 0
+[State -2, StoreVelY]
+type = mapset
+trigger1 = time = 0
+value = vel y
+map = "VelY"
+ignorehitpause = 1
+persistent = 0
+
+[State 0, VelMul]
+type = VelSet
+trigger1 = time < 1
+x = Map(VelX) * .6
+y = Map(VelY) * .2
+
+
 ;Air Parry Success
 [Statedef 716]
 type = A
@@ -525,26 +724,33 @@ sprpriority = 2
 facep2 = 1
 poweradd = 100
 
+
 [State 0, SuperPause]
 type = SuperPause
 trigger1 = time = 0 
-time = cond(enemy, hitdefattr != SCA,NP, SP, HP,15,5)
+time = 5
 anim = -1
 sound = -1
 darken = 0
 unhittable = 1
-movetime = 15
 
-[State 0, PosFreeze]
-type = PosFreeze
-trigger1 = time < 10
-value = 1
-redirectID = enemy,ID
+[State 0, PowerAdd]
+type = PowerAdd
+trigger1 = time = 0
+value = -GetHitVar(power)
+
+[State 700, Flash]
+type = palfx
+trigger1 = time = 0
+ignorehitpause = 1
+add = 100, 100, 100
+sinadd = 0, 0, 0, 60
+time = 15
 
 [State 0, NotHitBy]
 type = NotHitBy
-trigger1 = time = [0,5]
-value = SCA
+trigger1 = time = [0,3]
+value = SCA,AP
 time = 1
 
 [State 0, CtrlSet]
@@ -553,14 +759,9 @@ trigger1 = time = 5
 ignorehitpause = 1
 value = 1
 
-[State 700, Snd]
-type = playsnd
-trigger1 = !time
-value = S6700, 0
-
 [State 700, Stop]
 type = posfreeze
-trigger1 = time <= 12
+trigger1 = time <= 10
 value = 1
 
 [State -2, StoreVelX]
@@ -580,9 +781,9 @@ persistent = 0
 
 [State 0, VelMul]
 type = VelSet
-trigger1 = time < 13
+trigger1 = time > 6
 x = Map(VelX) * .6
-y = Map(VelY) * .2
+y = Map(VelY) * .5
 
 [State 700, Flash]
 type = palfx
@@ -767,12 +968,55 @@ type = ChangeState
 trigger1 = !time
 value = fvar(9)
 
+[Statedef -1]
+;---------------------------------------------------------------------------
+;Roll
+[State -1, 6K]
+type = ChangeState
+value = 700
+triggerall = command = "holdfwd" && (command = "c" || (command = "y" && command = "b"))
+triggerall = statetype != A
+triggerall = stateno != 700
+trigger1 = ctrl
+;---------------------------------------------------------------------------
+;Stand Parry
+[State -1, 5K]
+type = ChangeState
+value = 705
+triggerall = command != "holdfwd" && command != "holddown" && ((command = "c" || (command = "y" && command = "b")) || command = "holdc" && prevstateno = 5120)
+triggerall = statetype != A
+trigger1 = (stateno = 706 || stateno = 711) && (command = "cNB" || (command = "y" && command = "b"))
+trigger2 = ctrl
+;---------------------------------------------------------------------------
+;Crouch Parry
+[State -1, 2K]
+type = ChangeState
+value = 710
+triggerall = command = "holddown" && ((command = "c" || (command = "y" && command = "b")) || command = "holdc" && prevstateno = 5120)
+triggerall = statetype != A
+trigger1 = (stateno = 706 || stateno = 711) && (command = "cNB" || (command = "y" && command = "b"))
+trigger2 = ctrl
+;---------------------------------------------------------------------------
+;Air Parry
+[State -1, jK]
+type = ChangeState
+value = 715
+triggerall = (command = "c" || (command = "y" && command = "b"))
+triggerall = statetype = A
+trigger1 = (stateno = 716) && (command = "cNB" || (command = "y" && command = "b"))
+trigger2 = ctrl
+
 [Statedef -2]
+
+
+;----------POWER SET------------
 
 [State 0, PowerSet]
 type = PowerSet
 trigger1 = roundstate = [0,1]
 value = 250
+
+;-----------DISPLAY----------------
 
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
@@ -781,6 +1025,7 @@ text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(WallBounce) %.0f, Map(
 params = Map(DamageScaling),Map(HitstunScaling),Map(WallBounce),Map(GroundBounce),Map(Rocks)
 
 
+;-------SCALING---------------
 
 [State -2, Damage Scaling Reset]
 type = mapset
@@ -875,6 +1120,15 @@ trigger1 = Map(FatalCounter)>0
 map = "FatalCounter"
 value = 0
 ignorehitpause = 1
+
+
+;---------LIMITERS---------------
+
+[State -2, Super Jump Reset]
+type = mapset
+trigger1 = Statetype != A
+value = 0
+map = "SJ"
 
 ;-------PUSHBLOCK----------
 

@@ -173,6 +173,8 @@ if time = 2{
 # Jump Up
 [StateDef 50; type: A; physics: A; facep2: 1; ctrl: 1;]
 
+if Map(SJ)=1 && p2dist x < 0 {Turn{}}
+
 if time = 0 {
 	sysVar(1) := 0;
 	changeAnim{value: cond(vel x = 0, 41, ifElse(vel x > 0, 42, 43))}

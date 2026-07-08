@@ -412,14 +412,14 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.925
+value = Map(DamageScaling)*.9
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.05
+value = Map(DamageScaling)-.065
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -517,7 +517,7 @@ x = 2
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.85
+value = Map(DamageScaling)*.7
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -700,8 +700,8 @@ air.fall = 1
 guard.ctrltime = 15
 guard.hittime = 15
 fall.yvelocity = 0
-ground.cornerpush.veloff = -1.5-(Map(PushBack))
-air.cornerpush.veloff = -1
+ground.cornerpush.veloff = -2.5-(Map(PushBack))
+air.cornerpush.veloff = -1.5
 p2facing = 1
 guard.dist = 0
 getpower = (20*Map(DamageScaling)/2)+10
@@ -921,7 +921,7 @@ ground.velocity = -2-(Map(PushBack))
 air.velocity = -1.5,-3
 down.velocity = -5,0
 airguard.velocity = -2,-2 
-air.hittime = ceil(cond(20-Map(HitstunScaling) < 12, 12, 20-Map(HitstunScaling)))
+air.hittime = ceil(cond(25-Map(HitstunScaling) < 15, 15, 25-Map(HitstunScaling)))
 air.fall = 1
 guard.ctrltime = 14
 guard.hittime = 14
@@ -1073,8 +1073,7 @@ ctrl = 0
 anim = 600
 sprpriority = 2
 velset = vel x, vel y
-facep2 = cond(Map(AirDashing)>0,1,0)
-
+facep2 = cond((Map(AirDashing)||Map(SJ))>0,1,0)
 [State 0, VelMul]
 type = VelMul
 trigger1 = time > 6
@@ -1145,7 +1144,7 @@ ground.hittime  = 15
 ground.velocity = -4-(Map(PushBack))
 air.velocity = -3,-3
 airguard.velocity = -2,-2 
-air.hittime = ceil(cond(22-Map(HitstunScaling) < 5, 5, 22-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
+air.hittime = ceil(cond(25-Map(HitstunScaling) < 12, 12, 25-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
 air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 6
@@ -1177,7 +1176,7 @@ ctrl = 0
 anim = 610
 sprpriority = 2
 velset = vel x, vel y
-facep2 = cond(Map(AirDashing)>0,1,0)
+facep2 = cond((Map(AirDashing)||Map(SJ))>0,1,0)
 
 [State 0, VelMul]
 type = VelMul
@@ -1273,7 +1272,7 @@ ctrl = 0
 anim = 620
 sprpriority = 2
 velset = vel x, vel y
-facep2 = cond(Map(AirDashing)>0,1,0)
+facep2 = cond((Map(AirDashing)||Map(SJ))>0,1,0)
 
 [State 0, VelMul]
 type = VelMul
@@ -1362,7 +1361,7 @@ guardsound = 6,0
 ground.type = High
 ground.slidetime = 6
 ground.hittime  = 17
-ground.velocity = -0-(Map(PushBack)), -8
+ground.velocity = 0, -7
 air.velocity = -0,-7
 air.hittime = ceil(cond(30-Map(HitstunScaling) < 15, 15, 30-Map(HitstunScaling)))
 guard.ctrltime = 12
@@ -1415,7 +1414,7 @@ ctrl = 0
 anim = 630
 sprpriority = 2
 velset = vel x, vel y
-facep2 = cond(Map(AirDashing)>0,1,0)
+facep2 = cond((Map(AirDashing)||Map(SJ))>0,1,0)
 
 [State 0, VelMul]
 type = VelMul

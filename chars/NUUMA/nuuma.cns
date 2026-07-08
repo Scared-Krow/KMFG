@@ -244,7 +244,7 @@ facep2 = 1
 type = CtrlSet
 trigger1 = !combocount
 trigger1 = var(4)
-value = time > 5
+value = time > 4
 
 [State 50, 1]
 type = VarSet
@@ -655,13 +655,7 @@ type = mapset
 trigger1 = command != "holdup"
 value = 0
 map = "DJCount"
-[State -2, PushBack]
-type = mapset
-trigger1 = !combocount
-value = 0
-map = "JDPushBack"
-ignorehitpause = 1
-persistent = 0
+
 
 [State -2, AirDash Physics]
 type = mapadd
@@ -729,6 +723,13 @@ trigger1 = enemy,GetHitVar(hittime)=-1 || enemy,movetype != H
 value = 0
 map = "DCleaver"
 ignorehitpause = 1
+[State -2, PushBack]
+type = mapset
+trigger1 = !combocount
+value = 0
+map = "JDPushBack"
+ignorehitpause = 1
+persistent = 0
 
 ;This controller plays a sound everytime KFM lands from a jump, or
 ;from his back-dash.

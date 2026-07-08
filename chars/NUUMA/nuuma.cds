@@ -94,7 +94,7 @@ triggerall = vel y > 0 || pos y < -40
 triggerall = command = "FADash"
 trigger1 = statetype = A
 trigger1 = ctrl
-trigger2 = var(1)
+trigger2 = var(1) || (stateno = 1020 && movehit)
 ;---------------------------------------------------------------------------
 ;Air Dash Back
 [State -1, Run Back]
@@ -106,45 +106,21 @@ triggerall = command = "BADash"
 trigger1 = statetype = A
 trigger1 = ctrl
 trigger2 = var(1)
-;---------------------------------------------------------------------------
-;6K
-[State -1, 6K]
-type = ChangeState
-value = 700
-triggerall = command = "holdfwd" && (command = "c" || (command = "y" && command = "b"))
-triggerall = statetype != A
-triggerall = stateno != 700
-trigger1 = ctrl
+
 ;---------------------------------------------------------------------------
 ;Enhanced 6K
 [State -1, 6K]
 type = ChangeState
 value = 701
 triggerall = HitDefAttr != SCA,HA,HP,HT
-triggerall = command = "holdfwd" && (command = "c" || (command = "y" && command = "b"))
+triggerall = command = "holdfwd" && (command = "holdc" || (command = "holdy" && command = "holdb"))
 triggerall = statetype != A
 triggerall = stateno != 700
+triggerall = power >= 250
 triggerall = !(stateno = 1025 && numtarget(1))
-trigger1 = movecontact && power >= 250
-trigger2 = (stateno= [1000, 1005] && animelemno(0) >= 5) && power >= 250
-;---------------------------------------------------------------------------
-;5K
-[State -1, 5K]
-type = ChangeState
-value = 705
-triggerall = command != "holdfwd" && command != "holddown" &&(command = "c" || (command = "y" && command = "b"))
-triggerall = statetype != A
-trigger1 = (stateno = 706 || stateno = 711) && (command = "cNB" || (command = "y" && command = "b"))
-trigger2 = ctrl
-;---------------------------------------------------------------------------
-;2K
-[State -1, 2K]
-type = ChangeState
-value = 710
-triggerall = command = "holddown" && (command = "c" || (command = "y" && command = "b"))
-triggerall = statetype != A
-trigger1 = (stateno = 706 || stateno = 711) && (command = "cNB" || (command = "y" && command = "b"))
-trigger2 = ctrl
+trigger1 = movecontact
+trigger2 = (stateno= [1000, 1005] && animelemno(0) >= 5)
+
 ;---------------------------------------------------------------------------
 ;jK
 [State -1, jK]

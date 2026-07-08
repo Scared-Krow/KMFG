@@ -252,53 +252,19 @@ triggerall = command = "BADash"
 trigger1 = statetype = A
 trigger1 = ctrl
 trigger2 = var(1)
-;---------------------------------------------------------------------------
-;6K
-[State -1, 6K]
-type = ChangeState
-value = 700
-triggerall = command = "holdfwd" && (command = "c" || (command = "y" && command = "b"))
-triggerall = statetype != A
-triggerall = stateno != 700
-trigger1 = ctrl
+
 ;---------------------------------------------------------------------------
 ;Enhanced 6K
 [State -1, 6K]
 type = ChangeState
 value = 701
 triggerall = HitDefAttr != SCA,HA,HP,HT
-triggerall = command = "holdfwd" && (command = "c" || (command = "y" && command = "b"))
+triggerall = command = "holdfwd" && (command = "holdc" || (command = "holdy" && command = "holdb"))
 triggerall = statetype != A
 triggerall = stateno != 700
-trigger1 = movecontact && power >= 250
-trigger2 = (stateno=1101 && time >= 6 ) && power >= 250
-;---------------------------------------------------------------------------
-;5K
-[State -1, 5K]
-type = ChangeState
-value = 705
-triggerall = command != "holdfwd" && command != "holddown" &&(command = "c" || (command = "y" && command = "b"))
-triggerall = statetype != A
-trigger1 = (stateno = 706 || stateno = 711) && (command = "cNB" || (command = "y" && command = "b"))
-trigger2 = ctrl
-;---------------------------------------------------------------------------
-;2K
-[State -1, 2K]
-type = ChangeState
-value = 710
-triggerall = command = "holddown" && (command = "c" || (command = "y" && command = "b"))
-triggerall = statetype != A
-trigger1 = (stateno = 706 || stateno = 711) && (command = "cNB" || (command = "y" && command = "b"))
-trigger2 = ctrl
-;---------------------------------------------------------------------------
-;jK
-[State -1, jK]
-type = ChangeState
-value = 715
-triggerall = (command = "c" || (command = "y" && command = "b"))
-triggerall = statetype = A
-trigger1 = (stateno = 716) && (command = "cNB" || (command = "y" && command = "b"))
-trigger2 = ctrl
+triggerall = power >= 250
+trigger1 = movecontact 
+
 ;---------------------------------------------------------------------------
 ;Super Jump
 [State -1, SJ]

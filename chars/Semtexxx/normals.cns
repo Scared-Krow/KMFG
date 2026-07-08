@@ -499,7 +499,7 @@ value = F8, 0
 [State 400, 2]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
-attr = S, NA
+attr = C, NA
 damage = ceil(cond(20*Map(DamageScaling) < 2, 2, 20*Map(DamageScaling)))
 priority  = 3
 animtype  = Light
@@ -800,7 +800,7 @@ value = F8, 2
 [State 400, 2]
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
-attr = S, NA
+attr = C, NA
 damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
 priority  = 4
 animtype  = Light
@@ -863,7 +863,7 @@ ctrl = 0
 anim = 600
 sprpriority = 2
 velset = vel x, vel y
-facep2 = cond(Map(AirDashing)>0,1,0)
+facep2 = cond((Map(AirDashing)||Map(SJ))>0,1,0)
 
 [State 0, VelMul]
 type = VelMul
@@ -968,7 +968,7 @@ ctrl = 0
 anim = 610
 sprpriority = 2
 velset = vel x, vel y
-facep2 = cond(Map(AirDashing)>0,1,0)
+facep2 = cond((Map(AirDashing)||Map(SJ))>0,1,0)
 
 [State 0, VelMul]
 type = VelMul
@@ -1064,7 +1064,7 @@ ctrl = 0
 anim = 630
 sprpriority = 2
 velset = vel x, vel y
-facep2 = cond(Map(AirDashing)>0,1,0)
+facep2 = cond((Map(AirDashing)||Map(SJ))>0,1,0)
 
 [State 0, VelMul]
 type = VelMul
@@ -1156,7 +1156,7 @@ ctrl = 0
 anim = 640
 sprpriority = 2
 velset = vel x*.7, vel y*.2
-facep2 = cond(Map(AirDashing)>0,1,0)
+facep2 = cond((Map(AirDashing)||Map(SJ))>0,1,0)
 
 [State 0, VelMul]
 type = VelAdd
