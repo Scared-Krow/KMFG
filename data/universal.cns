@@ -246,7 +246,7 @@ ctrl = 1
 [Statedef 705]
 type = S
 physics = S
-movetype = A
+movetype = I
 anim = 705
 velset = 0, 0
 ctrl = 0
@@ -416,7 +416,7 @@ ctrl = 1
 [Statedef 710]
 type = C
 physics = C
-movetype = A
+movetype = I
 anim = 710
 velset = 0, 0
 ctrl = 0
@@ -1021,8 +1021,8 @@ value = 250
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(WallBounce) %.0f, Map(GroundBounce) %.0f, Map(Rocks) = %.0f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(WallBounce),Map(GroundBounce),Map(Rocks)
+text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(WallBounce) %.0f, Map(GroundBounce) %.0f, Map(CounterHit) = %.0f"
+params = Map(DamageScaling),Map(HitstunScaling),Map(WallBounce),Map(GroundBounce),Map(CounterHit)
 
 
 ;-------SCALING---------------
@@ -1070,11 +1070,10 @@ persistent = 1
 
 [State 0, Zoom]
 type = zoom
-triggerall = enemynear,isHelper=0
 triggerall = enemy,stateno != 666999 && enemy,prevstateno != 666999
 triggerall = movetype != H
 triggerall = stateno != 200 && stateno != 400
-trigger1= Movecountered 
+trigger1= enemy,Map(CounterHit)=1 && movehit
 scale = 1.2
 lag = .4
 stagebound = 1
@@ -1085,7 +1084,7 @@ ignorehitpause=1
 [State 0, EnvShake]
 type = EnvShake
 triggerall = stateno != 200 && stateno != 400
-trigger1= Movecountered && time = 0
+trigger1= enemy,Map(CounterHit)=1 && movehit
 time = 10
 freq = 60
 ampl = -4
@@ -1093,14 +1092,14 @@ phase = 90
 
 [State Fatal Counter]
 type = mapset
-trigger1 = enemy,movetype != A
+trigger1 = enemy,HitPauseTime=1 || movetype = I
 map = "CounterHit"
 value = 0
-ignorehitpause = 1
+ignorehitpause = 0
 
 [State Fatal Counter]
 type = mapset
-trigger1 = enemy,movetype = A
+trigger1 = movetype = A
 map = "CounterHit"
 value = 1
 ignorehitpause = 1
@@ -1108,8 +1107,8 @@ ignorehitpause = 1
 
 [State -2, Counter Hit]
 type = mapset
-trigger1 = HitPauseTime=1 && (enemy,movetype = H && enemy,prevmovetype=A)
-value = Map(DamageScaling)+.1
+trigger1 = HitPauseTime=1 && (movehit=1 && enemy,Map(CounterHit)=1)
+value = Map(DamageScaling)+.05
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0

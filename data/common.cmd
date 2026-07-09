@@ -318,8 +318,8 @@ buffer.time = 6
 
 [Command]
 name = "28"    
-command = ~$D, $U
-time = 4
+command = $D, $U
+time = 6
 buffer.time = 0
 
 

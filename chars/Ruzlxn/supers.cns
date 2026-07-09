@@ -159,7 +159,7 @@ type = HitDef
 trigger1 = animelem = 18
 attr = S, HA
 animtype  = up
-damage = ceil(cond(150*Map(DamageScaling) < 80, 80,150*Map(DamageScaling))),20
+damage = ceil(cond(150*Map(DamageScaling) < 75, 75,150*Map(DamageScaling))),20
 guardflag = MA
 hitflag = MAFD
 air.animtype = up

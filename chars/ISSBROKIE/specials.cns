@@ -144,7 +144,7 @@ air.fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 12
 guard.hittime = 12
-getpower = (20*Map(DamageScaling)/2)+15
+getpower = (20*Map(DamageScaling)/2)+5
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -404,7 +404,7 @@ envshake.freq = 90
 envshake.phase = 150
 envshake.ampl = -5
 id = 5420
-getpower = (50*Map(DamageScaling)/2)+25
+getpower = (25*Map(DamageScaling)/2)+15
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -507,7 +507,7 @@ ground.cornerpush.veloff = -5
 air.cornerpush.veloff = -5
 p2stateno = 5400
 missonoverride = 0
-getpower = (50*Map(DamageScaling)/2)+15
+getpower = (25*Map(DamageScaling)/2)+10
 
 [State 200, 1]
 type = HitDef
@@ -544,7 +544,7 @@ envshake.phase = 150
 envshake.ampl = -4
 ground.cornerpush.veloff = -5
 air.cornerpush.veloff = -5
-getpower = (50*Map(DamageScaling)/2)+15
+getpower = (25*Map(DamageScaling)/2)+15
 
 [State 0, StateTypeSet]
 type = StateTypeSet
