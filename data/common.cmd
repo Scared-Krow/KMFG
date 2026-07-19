@@ -690,21 +690,21 @@ buffer.shared = 0
 [Command]
 name = "28B"    
 command = ~25$D, $U, ~a
-time = 20
+time = 15
 buffer.time = 5
 buffer.shared = 0
 
 [Command]
 name = "28C"    
 command = ~25$D, $U, ~y
-time = 20
+time = 15
 buffer.time = 5
 buffer.shared = 0
 
 [Command]
 name = "28D"    
 command = ~25$D, $U, ~b
-time = 20
+time = 15
 buffer.time = 5
 buffer.shared = 0
 

@@ -890,7 +890,7 @@ time = 1
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.9
+value = Map(DamageScaling)*.85
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0

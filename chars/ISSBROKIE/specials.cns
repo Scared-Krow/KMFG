@@ -488,12 +488,12 @@ guardsound = 6, 0                ;Sound to play on guard
 ground.type = High               ;Type: High, Low, Trip (def: Normal)
 ground.slidetime = 50            ;Time that the opponent slides back
 ground.hittime  = 60
-ground.velocity = cond(Map(WallBounce)=0,-15,-8),cond(Map(WallBounce)=0,-6,-2) 
+ground.velocity = cond(Map(WallBounce)=0,-15,-8),cond(Map(WallBounce)=0,-6.5,-2) 
 guard.velocity = -3
 guard.slidetime = 12
 airguard.velocity = -4,-2    ;Guard velocity in air (def: (air.xvel*1.5, air.yvel/2))
 air.type = High                  ;Type: High, Low, Trip (def: same as ground.type)
-air.velocity = cond(Map(WallBounce)=0,-15,-8),cond(Map(WallBounce)=0,-5,-3)     ;X-velocity at which opponent is pushed,
+air.velocity = cond(Map(WallBounce)=0,-15,-8),cond(Map(WallBounce)=0,-5.5,-3)     ;X-velocity at which opponent is pushed,
 air.hittime = 60
 fall = 1
 fall.yvelocity = 0

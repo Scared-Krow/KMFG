@@ -631,6 +631,12 @@ anim = 1201
 ctrl = 0
 velset = cond(command="holdfwd",5,3.5),cond(command="holdfwd",-6,-8.5)
 
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = enemy, stateno = [5000,5999]
+value = 1201
+elem = 1
+
 [State 0, NotHitBy]
 type = NotHitBy
 trigger1 = time = 0
@@ -684,6 +690,13 @@ anim = 1202
 ctrl = 0
 velset = cond(command="holdfwd",8.5,5),cond(command="holdfwd",-8,-11)
 
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = enemy, stateno = [5000,5999]
+value = 1202
+elem = 1
+
+
 [State 0, PalFX]
 type = PalFX
 trigger1 = time = 0
@@ -698,7 +711,7 @@ color = 256
 type = NotHitBy
 trigger1 = time = 0
 value = A,
-time = 20
+time = 15
 
 [State 0, VelAdd]
 type = VelAdd

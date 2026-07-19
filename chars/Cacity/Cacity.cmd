@@ -400,7 +400,7 @@ trigger2 = var(1)
 [State -1, 6K]
 type = ChangeState
 value = 701
-triggerall = HitDefAttr != SCA,HA,HP,HT
+triggerall = HitDefAttr != SCA,HA,HP,AT
 triggerall = command = "holdfwd" && (command = "holdc" || (command = "holdy" && command = "holdb"))
 triggerall = statetype != A
 triggerall = stateno != 700

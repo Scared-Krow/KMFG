@@ -75,7 +75,7 @@ y = 0
 
 [State 210, 2]
 type = HitDef
-triggerall = time < 49
+triggerall = time < 51
 trigger1 = time%2=0
 attr = S, HP
 animtype  = up
@@ -106,7 +106,7 @@ p2facing = -1
 
 [State 210, 2]
 type = HitDef
-trigger1 = time = 50
+trigger1 = time = 52
 attr = S, HP
 animtype  = up
 damage = ceil(cond(100*root,Map(DamageScaling) < 25, 25, 100*root,Map(DamageScaling))),5
@@ -146,7 +146,7 @@ ignorehitpause = 1
 
 [State 0, DestroySelf]
 type = DestroySelf
-trigger1 = time = 51
+trigger1 = time = 53
 
 
 ;---------------------------------------------------------------------------
@@ -227,6 +227,13 @@ velset = vel x
 sprpriority = 3
 facep2 = 1
 
+[State 0, Width]
+type = Width
+trigger1 = 1
+edge = 40,40
+player = 10,10
+
+
 [State 0, ChangeAnim]
 type = ChangeAnim
 triggerall = anim = 3101
@@ -294,6 +301,7 @@ fall = 1
 fall.yvelocity = 0
 guard.ctrltime = 10
 guard.hittime = 10
+air.cornerpush.veloff = 0
 getpower = 0
 maxdist = 50
 

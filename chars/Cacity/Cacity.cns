@@ -534,7 +534,7 @@ type = ModifyExplod
 triggerall = teamside = 1
 trigger1 = numexplod(2001)>=1
 ID = 2001
-window = 0, -5, 35.9+(Map(AMP)/13.7), 30
+window = 0, -5, 25.4+(Map(AMP)/19.8), 50
 ignorehitpause = 1
 
 [State 0, Explod]
@@ -562,7 +562,7 @@ type = ModifyExplod
 triggerall = teamside = 2
 trigger1 = numexplod(2001)>=1
 ID = 2001
-window = 0, -5, 35.9+(Map(AMP)/13.7), 30
+window = 0, -5, 25.4+(Map(AMP)/19.8), 50
 ignorehitpause = 1
 
 ;---------------------------------------------------------------------------
