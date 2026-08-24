@@ -534,6 +534,11 @@ if hitOver {
 # Stand get-hit (shaking)
 [StateDef 5000; type: S; movetype: H; physics: N; velset: 0, 0; sprPriority: 0;]
 
+if random%3 = 0 && time = 0 && map(HurtSound)<=0 {
+	playsnd{value: 5000, random%4; volumescale: 80}
+	mapAdd{map: "HurtSound"; value: 50;}
+}
+
 call GetHitShaking(ifElse(getHitVar(groundType) = 1, 5000, 5010));
 if (time = 0 && (getHitVar(yVel) || getHitVar(fall))) || pos y != 0 {
 	stateTypeSet{statetype: A}
@@ -557,6 +562,11 @@ call GetHitKnockedBack(5005 + (getHitVar(groundType) = 2) * 10, 0);
 #-------------------------------------------------------------------------------
 # Crouch get-hit (shaking)
 [StateDef 5010; type: C; movetype: H; physics: N; velset: 0, 0; sprPriority: 0;]
+
+if random%3 = 0 && time = 0 && map(HurtSound)<=0 {
+	playsnd{value: 5000, random%4; volumescale: 80}
+	mapAdd{map: "HurtSound"; value: 50;}
+}
 
 call GetHitShaking(5020);
 if (time = 0 && (getHitVar(yVel) || getHitVar(fall))) || pos y != 0 {
@@ -582,6 +592,11 @@ call GetHitKnockedBack(5025, 11);
 #-------------------------------------------------------------------------------
 # Air get-hit (shaking)
 [StateDef 5020; type: A; movetype: H; physics: N; velset: 0, 0; sprPriority: 0;]
+
+if random%3 = 0 && time = 0 && map(HurtSound)<=0 {
+	playsnd{value: 5000, random%4; volumescale: 80}
+	mapAdd{map: "HurtSound"; value: 50;}
+}
 
 if time = 0 && prevStateNo=[5430,5431] {
 	ignoreHitPause{
@@ -915,8 +930,8 @@ if hitShakeOver {
 # Extended Knockdown Launch
 [StateDef 5112; type: A; movetype: H; physics: N; sprPriority: 0;]
 
-if anim != [5000, 5199] && selfAnimExist(5035) {
-	changeAnim{value: 5035}
+if time > 0 {
+	changeAnim{value: 5035; elem: 2;}
 }
 if time = 0 {
 	hitVelSet{x: 1; y: 1}
@@ -1319,6 +1334,10 @@ if roundNo = 1 {
 changeState{value: 0}
 
 [Statedef -2]
+
+if Map(HurtSound)>0{
+	mapAdd{map: "HurtSound"; value: -1;}
+}
 
 if Map(ADPhysics)>0 && moveType != H && stateno != [40,50] {
 	velMul{y:0}

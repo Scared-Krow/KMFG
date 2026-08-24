@@ -530,7 +530,7 @@ pausetime = 9,9
 priority = 4, Hit 
 sparkno = 1
 sparkxy = -12,-50
-hitsound   = 9,1
+hitsound   = 5,1
 guardsound = 6,0
 ground.type = High
 ground.slidetime = 12
@@ -1103,11 +1103,19 @@ givepower = (20*Map(DamageScaling)/2),4
 
 [State 0, StateTypeSet]
 type = StateTypeSet
+triggerall = Map(Flight)<=0
 trigger1 = animelem = 3
 statetype = A     
 movetype = I        
-physics = A 
+physics = A
 
+[State 0, StateTypeSet]
+type = StateTypeSet
+triggerall = Map(Flight)>0
+trigger1 = animelem = 3
+statetype = A     
+movetype = I        
+physics = N
 
 [State 600, 3]
 type = CtrlSet
@@ -1218,10 +1226,19 @@ getpower = (20*Map(DamageScaling)/2)+5
 
 [State 0, StateTypeSet]
 type = StateTypeSet
+triggerall = Map(Flight)<=0
 trigger1 = animelem = 5
 statetype = A     
 movetype = I        
-physics = A 
+physics = A
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+triggerall = Map(Flight)>0
+trigger1 = animelem = 5
+statetype = A     
+movetype = I        
+physics = N
 
 [State 1000, 7]
 type = ChangeState
@@ -1327,10 +1344,19 @@ getpower = (40*Map(DamageScaling)/2)+10
 
 [State 0, StateTypeSet]
 type = StateTypeSet
-trigger1 = animelem = 5
+triggerall = Map(Flight)<=0
+trigger1 = animelem = 4
 statetype = A     
 movetype = I        
-physics = A 
+physics = A
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+triggerall = Map(Flight)>0
+trigger1 = animelem = 4
+statetype = A     
+movetype = I        
+physics = N
 
 [State 1000, 7]
 type = ChangeState
@@ -1443,10 +1469,19 @@ getpower = (50*Map(DamageScaling)/2)+15
 
 [State 0, StateTypeSet]
 type = StateTypeSet
+triggerall = Map(Flight)<=0
 trigger1 = animelem = 5
 statetype = A     
 movetype = I        
-physics = A 
+physics = A
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+triggerall = Map(Flight)>0
+trigger1 = animelem = 5
+statetype = A     
+movetype = I        
+physics = N
 
 [State 1000, 7]
 type = ChangeState
@@ -1550,10 +1585,19 @@ getpower = (50*Map(DamageScaling)/2)+15
 
 [State 0, StateTypeSet]
 type = StateTypeSet
+triggerall = Map(Flight)<=0
 trigger1 = animelem = 5
 statetype = A     
 movetype = I        
-physics = A 
+physics = A
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+triggerall = Map(Flight)>0
+trigger1 = animelem = 5
+statetype = A     
+movetype = I        
+physics = N
 
 [State 1000, 7]
 type = ChangeState

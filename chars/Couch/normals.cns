@@ -1217,7 +1217,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.105
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1314,7 +1314,7 @@ persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.075
+value = Map(DamageScaling)-.08
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0

@@ -1072,7 +1072,7 @@ persistent = 1
 type = zoom
 triggerall = enemy,stateno != 666999 && enemy,prevstateno != 666999
 triggerall = movetype != H
-triggerall = stateno != 200 && stateno != 400
+triggerall = stateno != 200 && stateno != 400 && stateno != 600
 trigger1= enemy,Map(CounterHit)=1 && movehit
 scale = 1.2
 lag = .4
@@ -1083,7 +1083,7 @@ ignorehitpause=1
 
 [State 0, EnvShake]
 type = EnvShake
-triggerall = stateno != 200 && stateno != 400
+triggerall = stateno != 200 && stateno != 400 && stateno != 600
 trigger1= enemy,Map(CounterHit)=1 && movehit
 time = 10
 freq = 60
@@ -1092,7 +1092,7 @@ phase = 90
 
 [State 0, SuperPause]
 type = SuperPause
-triggerall = stateno != 200 && stateno != 400
+triggerall = stateno != 200 && stateno != 400 && stateno != 600
 trigger1= enemy,Map(CounterHit)=1 && movehit
 time = 10
 anim = -1
@@ -1105,7 +1105,7 @@ poweradd = 50
 
 [State Counter]
 type = mapset
-trigger1 = enemy,HitPauseTime=1 || movetype = I
+trigger1 = enemynear,HitPauseTime=1 || movetype = I
 map = "CounterHit"
 value = 0
 ignorehitpause = 0

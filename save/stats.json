@@ -1,23 +1,25 @@
 {
-  "playtime": 14462.42,
+  "playtime": 18638.55,
   "modes": {
     "training": {
       "playtime": 0,
       "clear": 0
     },
     "netplayversus": {
-      "playtime": 14462.42,
-      "clear": 34,
+      "playtime": 18638.55,
+      "clear": 50,
       "clearcount": {
-        "issbrokie": 2,
-        "nuuma": 5,
-        "daki": 1,
-        "couch": 14,
+        "issbrokie": 4,
+        "nuuma": 6,
+        "daki": 2,
+        "couch": 17,
         "kallous": 2,
-        "semtexxx": 2,
-        "calder": 2,
-        "ruzlxn": 2,
-        "cacity": 4
+        "semtexxx": 3,
+        "calder": 3,
+        "ruzlxn": 5,
+        "cacity": 4,
+        "shteppi": 3,
+        "jen": 1
       }
     },
     "versus": {

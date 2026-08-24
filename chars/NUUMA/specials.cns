@@ -962,7 +962,7 @@ getpower = (50*Map(DamageScaling)/2)+20
 [State 0, LifeAdd]
 type = LifeAdd
 trigger1 = anim = 1016 && animelem = 2
-value = 10
+value = 50
 
 [State 0, ChangeAnim]
 type = ChangeAnim

@@ -539,7 +539,7 @@ persistent = 0
 
 [State 210, 2]
 type = HitDef
-triggerall = Map(CounterHit)=1
+triggerall = enemy,Map(CounterHit)=1 
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 animtype  = Medium
@@ -569,7 +569,7 @@ getpower = (50*Map(DamageScaling)/2)+10
 
 [State 210, 2]
 type = HitDef
-triggerall = Map(CounterHit)=0
+triggerall = enemy,Map(CounterHit)=0
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 animtype  = Medium
@@ -1241,8 +1241,8 @@ sparkxy = -10,-25
 hitsound   = 5,1
 guardsound = 6,0
 ground.type = High
-ground.slidetime = 12
-ground.hittime  = 16
+ground.slidetime = 16
+ground.hittime  = 17
 ground.velocity = -4-(Map(PushBack))
 air.velocity = -2,-3
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 10, 10, 25-Map(HitstunScaling)))+cond(enemy,movetype=A,99,0)
