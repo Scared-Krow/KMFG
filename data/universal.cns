@@ -1068,13 +1068,44 @@ persistent = 1
 
 ;-------COUNTER HITS----------
 
+[State 0]
+type = MapSet
+trigger1 = time=0
+map = "nozoom"
+value = 0
+ignorehitpause = 0
+
+[State 0, Zoom]
+type = zoom
+triggerall=map(nozoom)=0
+triggerall = enemy,stateno != 666999 && enemy,prevstateno != 666999
+triggerall = movetype != H
+triggerall = HitDefAttr != SCA,AT
+triggerall = stateno != 200 && stateno != 400 && stateno != 600
+trigger1 = movecountered
+trigger1 = enemy,HitShakeOver = 0
+scale = 1.5
+lag = 0.4
+stagebound = 1
+camerabound = 0
+pos =0,0
+ignorehitpause=1
+
+[State 0]
+type = MapAdd
+trigger1 = movehit
+map = "nozoom"
+value = 1
+ignorehitpause = 0
+
+
 [State 0, EnvShake]
 type = EnvShake
 triggerall = enemy,stateno != 666999 && enemy,prevstateno != 666999
 triggerall = movetype != H
 triggerall = HitDefAttr != SCA,AT
 triggerall = stateno != 200 && stateno != 400 && stateno != 600
-trigger1= enemy,Map(CounterHit)=1 && movehit
+trigger1= enemy,Map(CounterHit)=1 && movehit=1
 time = 12
 freq = 60
 ampl = -4
@@ -1082,26 +1113,9 @@ phase = 90
 ignorehitpause = 1
 
 
-[State 0, Zoom]
-type = zoom
-triggerall = enemy,stateno != 666999 && enemy,prevstateno != 666999
-triggerall = movetype != H
-triggerall = HitDefAttr != SCA,AT
-triggerall = stateno != 200 && stateno != 400 && stateno != 600
-trigger1= enemy,Map(CounterHit)=1 && movehit=1
-scale = 1.2
-lag = .4
-stagebound = 1
-camerabound = 1
-pos = pos x+20,pos y - 10
-ignorehitpause=1
-
-
-
-
 [State Counter]
 type = mapset
-trigger1 = enemynear,HitPauseTime=gethitvar(hitshaketime)-1 || movetype = I
+trigger1 = enemy,GetHitVar(hittime)=-1 || movetype = I
 map = "CounterHit"
 value = 0
 ignorehitpause = 0
@@ -1116,7 +1130,7 @@ ignorehitpause = 1
 [State -2, Counter Hit]
 type = mapset
 triggerall = HitDefAttr != SCA,AT
-trigger1 = HitPauseTime=1 && (movehit=1 && enemy,Map(CounterHit)=1)
+trigger1 = HitPauseTime=1 && (movehit=1 && movecountered)
 value = Map(DamageScaling)+.05
 map = "DamageScaling"
 ignorehitpause = 1

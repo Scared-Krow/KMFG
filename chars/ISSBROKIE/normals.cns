@@ -170,7 +170,7 @@ animtype  = Medium
 damage = ceil(cond(40*Map(DamageScaling) < 4, 4, 40*Map(DamageScaling)))
 guardflag = MA
 priority = 2
-pausetime = 10,10  
+pausetime = 10*cond(enemy,Map(CounterHit)=1,2,1),10*cond(enemy,Map(CounterHit)=1,2,1)
 sparkno = 0
 sparkxy = -10,-45
 hitsound   = 5,4
@@ -352,6 +352,7 @@ anim = 240
 velset = vel x
 sprpriority = -1
 facep2 = 1
+
 
 [State 0, PosAdd]
 type = PosAdd
@@ -879,7 +880,7 @@ time = 1
 
 [State 440, 3]
 type = HitDef
-triggerall = enemy,Map(CounterHit)=1 
+triggerall = enemynear,movetype = A 
 trigger1 = animelem = 4
 attr = S, NA
 damage = ceil(cond(75*Map(DamageScaling) < 10, 10, 75*Map(DamageScaling)))
@@ -912,10 +913,11 @@ p2facing = 1
 p2stateno = 5430
 missonoverride = 0
 getpower = (50*Map(DamageScaling)/2)+15
+p2getp1state = 0
 
 [State 440, 3]
 type = HitDef
-triggerall = enemy,Map(CounterHit)=0
+triggerall = enemynear,movetype != A 
 trigger1 = animelem = 4
 attr = S, NA
 damage = ceil(cond(75*Map(DamageScaling) < 10, 10, 75*Map(DamageScaling)))
