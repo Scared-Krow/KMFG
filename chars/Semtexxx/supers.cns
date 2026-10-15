@@ -179,7 +179,7 @@ type = HitDef
 trigger1 = animelem = 16
 attr = S, HA
 animtype  = up
-damage = ceil(cond(60*Map(DamageScaling) < 30, 30, 60*Map(DamageScaling))),10
+damage = ceil(cond(60*Map(DamageScaling) < 20, 20, 60*Map(DamageScaling))),10
 guardflag = MA
 hitflag = MAFD
 pausetime = 15,20
@@ -213,5 +213,212 @@ value = 1100
 [State 1000, 7]
 type = ChangeState
 trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+
+;---------------------------------------------------------------------------
+;214214B
+[Statedef 3100]
+type    = S
+movetype= A
+physics = S
+anim = 3100
+velset = 0,0
+ctrl = 0
+poweradd = -500
+
+
+[State -2, Starter Damage Scaling]
+type = mapset
+trigger1 = movehit && combocount=1
+value = Map(DamageScaling)*.7
+map = "DamageScaling"
+ignorehitpause = 1
+persistent = 0
+
+
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0
+time = 25
+darken = 1
+p2defmul = 1
+movetime = 25
+
+[State 210, 2]
+type = HitDef
+trigger1 = !MoveContact && !MoveReversed
+attr = S, HA
+animtype  = up
+damage = ceil(cond(60*Map(DamageScaling) < 30, 30, 60*Map(DamageScaling))),10
+guardflag = MA
+hitflag = MAFD
+pausetime = 15,15
+sparkno = 2
+sparkxy = -10,-50
+hitsound   = 5,2
+guardsound = 6,0
+ground.slidetime = 12
+ground.hittime  = 22
+ground.velocity = -4.5,-6.78
+air.hittime = 999
+air.velocity = -5+(p2dist x/50),-7.5-(p2dist y/20)
+guard.ctrltime = 15
+guard.hittime = 15
+guard.velocity = -3
+airguard.velocity = -1
+fall = 1
+down.velocity = -4,-6.8
+down.hittime = 999
+ground.cornerpush.veloff = -2
+air.cornerpush.veloff = -2
+fall.yvelocity = 0
+p2facing = 1
+
+[State 0, TargetBind]
+type = TargetBind
+trigger1 = hitpausetime = -1
+time = 1
+id = -1
+pos = 0,0
+ignorehitpause = 1
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = movehit
+value = 3101
+
+
+[State 1000, 7]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;214214B Followup
+[Statedef 3101]
+type    = A
+movetype= A
+physics = N
+anim = 3101
+velset = 5.85,-9.4
+ctrl = 0
+sprpriority = 4
+
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+edge = 0,0
+player = -20,0
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 0]
+type = Zoom
+trigger1 = time = [6, 34]
+scale = exp(0.08 * ln(time))
+pos = pos x,pos y+60
+lag = .5
+stagebound = 1
+camerabound = 1
+ignorehitpause = 1
+
+[State 210, 2]
+type = HitDef
+trigger1 = !MoveContact && !MoveReversed
+attr = S, HA
+animtype  = back
+damage = ceil(cond(171*Map(DamageScaling) < 60, 60, 171*Map(DamageScaling))),10
+guardflag = MA
+hitflag = MAFD
+pausetime = 25,25
+sparkno = 2
+sparkxy = -10,-20
+hitsound   = 5,2
+guardsound = 6,0
+ground.slidetime = 12
+ground.hittime  = 22
+ground.velocity = -3,-6
+air.hittime = 45
+air.velocity = 3,-3
+guard.ctrltime = 15
+guard.hittime = 15
+guard.velocity = -3
+airguard.velocity = -1
+fall = 1
+down.velocity = -3,-4
+down.hittime = 20
+ground.cornerpush.veloff = -2
+air.cornerpush.veloff = -2
+fall.yvelocity = 0
+p2facing = 1
+envshake.time = 25
+envshake.freq = 100
+envshake.phase = 150
+envshake.ampl = -7
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = time > 5
+y = .6
+
+[State 0, VelMul]
+type = VelMul
+trigger1 = time > 5
+x = .999
+
+
+[State 0, Explod]
+type = Explod
+trigger1 = animelem = 11
+anim = 3102
+ID = 3102
+pos = 6,8
+postype = P1  ;P2, Front, Back, Left, Right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 0
+pausemovetime = 0
+scale = 1.25,1.25
+sprpriority = 5
+
+[State 210, 5]
+type = ChangeState
+triggerall = time > 5
+trigger1 = pos y >= -3
+value = 3103
+
+;---------------------------------------------------------------------------
+;214214B Land
+[Statedef 3103]
+type    = S
+movetype= I
+physics = S
+anim = 3103
+velset = 0,0
+ctrl = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+
+
+[State 200, 3]
+type = ChangeState
+trigger1 = AnimTime = 0
 value = 0
 ctrl = 1

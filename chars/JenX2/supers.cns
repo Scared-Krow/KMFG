@@ -159,10 +159,10 @@ poweradd = -500
 [State 0, SuperPause]
 type = SuperPause
 trigger1 = time = 0
-time = 41
+time = 57
 darken = 1
 p2defmul = 1
-movetime = 41
+movetime = 57
 
 [State -2, Install]
 type = mapset

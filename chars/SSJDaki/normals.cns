@@ -88,8 +88,10 @@ physics = S
 
 [State 200, 2]
 type = PlaySnd
-trigger1 = Time = 1
-value = 0, 0
+triggerall = random%5=0
+trigger1 = Time = 0
+value = 200, 0
+volumescale = 120
 
 [State 200, 3]
 type = ChangeState
@@ -200,6 +202,17 @@ statetype = S
 movetype = I        
 physics = S       
 
+[State 200, 2]
+type = PlaySnd
+triggerall = random%2=0
+trigger1 = Time = 6
+value = 200, random%2+1
+
+[State 200, 2]
+type = PlaySnd
+trigger1 = Time = 6
+value = F4, 1
+
 
 [State 230, 3]
 type = ChangeState
@@ -216,7 +229,6 @@ physics = S
 ctrl = 0
 anim = 230
 velset = vel x * 1.25
-sprpriority = -1
 facep2 = 1
 
 [State 0, PosSet]
@@ -305,24 +317,12 @@ air.cornerpush.veloff = -3
 p2facing = 1
 getpower = (40*Map(DamageScaling)/2)+10
 
-[State -2, 5C Scaling]
-type = mapadd
-trigger1 = movehit && enemy,statetype != A
-value = 1
-map = "stC"
-ignorehitpause = 1
-
 [State 0, StateTypeSet]
 type = StateTypeSet
 trigger1 = animelem = 5
 statetype = S       
 movetype = I        
 physics = S  
-
-[State 210, 4]
-type = SprPriority
-trigger1 = AnimElem = 4
-value = 2
 
 [State 210, 5]
 type = ChangeState
@@ -336,6 +336,18 @@ triggerall = command = "holdup"
 trigger1 = movecontact
 value = 40
 ctrl = 0
+
+[State 200, 2]
+type = PlaySnd
+triggerall = random%2=0
+trigger1 = Time = 10
+value = 200, random%2+3
+volumescale = 140
+
+[State 200, 2]
+type = PlaySnd
+trigger1 = Time = 10
+value = F4, 3
 
 [State 210, 5]
 type = ChangeState
@@ -352,7 +364,6 @@ physics = S
 ctrl = 0
 anim = 240
 velset = vel x * 1.35
-sprpriority = -1
 facep2 = 1
 
 [State 0, PosSet]
@@ -448,10 +459,18 @@ statetype = S
 movetype = I        
 physics = S  
 
-[State 210, 4]
-type = SprPriority
-trigger1 = AnimElem = 5
-value = 2
+
+[State 200, 2]
+type = PlaySnd
+triggerall = random%2=0
+trigger1 = Time = 11
+value = 200, random%2+5
+volumescale = 140
+
+[State 200, 2]
+type = PlaySnd
+trigger1 = Time = 11
+value = F4, 0
 
 [State 210, 5]
 type = ChangeState
@@ -467,7 +486,6 @@ physics = S
 ctrl = 0
 anim = 250
 velset = vel x * 1.35
-sprpriority = -1
 facep2 = 1
 
 [State 0, PosSet]
@@ -660,6 +678,11 @@ p2facing = 1
 getpower = (20*Map(DamageScaling)/2)+5,5
 givepower = (20*Map(DamageScaling)/2),4
 
+[State 200, 2]
+type = PlaySnd
+triggerall = random%5=0
+trigger1 = Time = 0
+value = 200, 0
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -769,6 +792,13 @@ trigger1 = animelem = 5
 statetype = C      
 movetype = I        
 physics = C  
+
+[State 200, 2]
+type = PlaySnd
+triggerall = random%2=0
+trigger1 = Time = 9
+value = 200, random%2+1
+
 
 [State 430, 3]
 type = ChangeState
@@ -1100,6 +1130,11 @@ air.cornerpush.veloff = -2
 getpower = (20*Map(DamageScaling)/2)+5,5
 givepower = (20*Map(DamageScaling)/2),4
 
+[State 200, 2]
+type = PlaySnd
+triggerall = random%5=0
+trigger1 = Time = 0
+value = 200, 0
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -1224,6 +1259,18 @@ ground.cornerpush.veloff = -5-(Map(PushBack))
 air.cornerpush.veloff = -3
 getpower = (20*Map(DamageScaling)/2)+5
 
+[State 200, 2]
+type = PlaySnd
+triggerall = random%2=0
+trigger1 = Time = 7
+value = 200, random%2+2
+volumescale = 140
+
+[State 200, 2]
+type = PlaySnd
+trigger1 = Time = 7
+value = F4, 1
+
 [State 0, StateTypeSet]
 type = StateTypeSet
 triggerall = Map(Flight)<=0
@@ -1341,6 +1388,19 @@ p2facing = 1
 ground.cornerpush.veloff = -5-(Map(PushBack))
 air.cornerpush.veloff = -3
 getpower = (40*Map(DamageScaling)/2)+10
+
+[State 200, 2]
+type = PlaySnd
+triggerall = random%2=0
+trigger1 = Time = 7
+value = 200, random%2+4
+volumescale = 140
+
+[State 200, 2]
+type = PlaySnd
+trigger1 = Time = 7
+value = F4, 2
+
 
 [State 0, StateTypeSet]
 type = StateTypeSet

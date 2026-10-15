@@ -580,23 +580,23 @@ trigger2 = stateno = 600 || stateno = 610
 trigger2 = movecontact
 
 ;---------------------------------------------------------------------------
-;j.6D
-[State -1, j6D]
+;j.2D
+[State -1, j2D]
 type = ChangeState
-value = 650
-triggerall = command = "b" && command = "holdfwd"
+value = 640
+triggerall = command = "b" && command = "holddown"
 trigger1 = statetype = A
 trigger1 = ctrl
-trigger2 = stateno = [600,640]
+trigger2 = stateno = [600,630]
 trigger2 = movecontact
 
 ;---------------------------------------------------------------------------
 ;j.D
 [State -1, jD]
 type = ChangeState
-value = 640
-triggerall = command = "b" && command != "holdfwd"
+value = 650
+triggerall = command = "b" && command != "holddown"
 trigger1 = statetype = A
 trigger1 = ctrl
-trigger2 = stateno = 600 || stateno = 610 || stateno = 630
+trigger2 = stateno = [600,630]
 trigger2 = movecontact

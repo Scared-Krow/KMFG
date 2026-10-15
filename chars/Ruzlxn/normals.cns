@@ -2185,7 +2185,7 @@ type = HitDef
 triggerall = anim = 911
 trigger1 = !movecontact
 attr = A, NT
-damage = 150
+damage = 125
 animtype = light
 air.animtype = Up
 guardflag =

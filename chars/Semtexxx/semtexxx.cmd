@@ -304,12 +304,12 @@ trigger2 = var(1)
 trigger3 = stateno=[640,2000] && movecontact
 
 ;---------------------------------------------------------------------------
-;236236D
-[State -1, 236236D]
+;214214B
+[State -1, 214214B]
 type = ChangeState
 value = 3100
 triggerall = power>=500
-triggerall = command = "236236D"
+triggerall = command = "214214B"
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)

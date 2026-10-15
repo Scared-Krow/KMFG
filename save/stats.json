@@ -1,13 +1,13 @@
 {
-  "playtime": 18638.55,
+  "playtime": 20678.22,
   "modes": {
     "training": {
       "playtime": 0,
       "clear": 0
     },
     "netplayversus": {
-      "playtime": 18638.55,
-      "clear": 50,
+      "playtime": 20678.22,
+      "clear": 53,
       "clearcount": {
         "issbrokie": 4,
         "nuuma": 6,
@@ -15,11 +15,11 @@
         "couch": 17,
         "kallous": 2,
         "semtexxx": 3,
-        "calder": 3,
+        "calder": 5,
         "ruzlxn": 5,
         "cacity": 4,
         "shteppi": 3,
-        "jen": 1
+        "jen": 2
       }
     },
     "versus": {
