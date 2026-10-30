@@ -172,7 +172,7 @@ facep2 = 1
 [State -2, Damage Scaling]
 type = mapadd
 trigger1 = time = 0
-value = .025
+value = .03
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1021,8 +1021,8 @@ value = 250
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "DamageScaling = %.3f, HitstunScaling = %.3f,  Map(WallBounce) %.0f, Map(GroundBounce) %.0f, Map(CounterHit) = %.0f"
-params = Map(DamageScaling),Map(HitstunScaling),Map(WallBounce),Map(GroundBounce),Map(CounterHit)
+text = "DamageScaling = %.3f, HitstunScaling = %.3f, MoveCountered = %.0f"
+params = Map(DamageScaling),Map(HitstunScaling), movecountered
 
 
 ;-------SCALING---------------
@@ -1070,10 +1070,10 @@ persistent = 1
 
 [State 0]
 type = MapSet
-trigger1 = time=0
+trigger1 = movetype = I
 map = "nozoom"
 value = 0
-ignorehitpause = 0
+ignorehitpause = 1
 
 [State 0, Zoom]
 type = zoom
@@ -1085,10 +1085,10 @@ triggerall = stateno != 200 && stateno != 400 && stateno != 600
 trigger1 = movecountered
 trigger1 = enemy,HitShakeOver = 0
 scale = 1.5
-lag = 0.4
+lag = 0.7
 stagebound = 1
 camerabound = 0
-pos =0,0
+pos =pos x + (facing*20),pos y-5
 ignorehitpause=1
 
 [State 0]
@@ -1099,18 +1099,14 @@ value = 1
 ignorehitpause = 0
 
 
-[State 0, EnvShake]
-type = EnvShake
-triggerall = enemy,stateno != 666999 && enemy,prevstateno != 666999
-triggerall = movetype != H
-triggerall = HitDefAttr != SCA,AT
-triggerall = stateno != 200 && stateno != 400 && stateno != 600
-trigger1= enemy,Map(CounterHit)=1 && movehit=1
-time = 12
-freq = 60
-ampl = -4
-phase = 90
-ignorehitpause = 1
+[State AddPause]
+type = ModifyHitdef
+trigger1 = movecountered && enemy,HitShakeOver = 0
+hitpause = 40,40
+envshake.time = 12
+envshake.freq = 70
+envshake.phase = 120
+envshake.ampl = -7
 
 
 [State Counter]

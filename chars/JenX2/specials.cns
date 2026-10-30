@@ -86,7 +86,7 @@ redirectID = root,ID
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount=1
-value = root,Map(DamageScaling)*.825
+value = root,Map(DamageScaling)*.7
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -94,7 +94,7 @@ redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.075
+value = root,Map(DamageScaling)-.05
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -275,7 +275,7 @@ redirectID = root,ID
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount=1
-value = root,Map(DamageScaling)*.85
+value = root,Map(DamageScaling)*.7
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -467,7 +467,7 @@ ctrl = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount=1
-value = root,Map(DamageScaling)*.825
+value = root,Map(DamageScaling)*.7
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -475,7 +475,7 @@ redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.075
+value = root,Map(DamageScaling)-.05
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -795,7 +795,7 @@ type = HitDef
 triggerall = Map(extendedCH)=1
 trigger1 = animelem = 12
 attr = C, SP                    ;Attribute: Standing, Normal Attack
-damage = ceil(cond(35*Map(DamageScaling) < 3, 3, 35*Map(DamageScaling))),5
+damage = ceil(cond(40*Map(DamageScaling) < 3, 3, 40*Map(DamageScaling))),5
 animtype = Light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = LA                   ;Flags on how move is to be guarded against
 hitflag = MAFD                    ;Flags of conditions that move can hit
@@ -1198,14 +1198,14 @@ getpower = (50*Map(DamageScaling)/2)+25
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.95
+value = Map(DamageScaling)*.85
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.135
+value = Map(DamageScaling)-.1
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1213,7 +1213,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1
+value = Map(HitstunScaling)+.25
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1421,7 +1421,7 @@ airguard.velocity = -1.25,-5
 [State -2, Repeated Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1 && Map(stanceA)=1
-value = Map(DamageScaling)-.5
+value = Map(DamageScaling)-.25
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1429,7 +1429,7 @@ persistent = 0
 type = mapset
 triggerall = animelem = 8
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.18
+value = Map(DamageScaling)-.125
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1437,7 +1437,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1
+value = Map(HitstunScaling)+.75
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1551,7 +1551,7 @@ ctrl = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount=1
-value = root,Map(DamageScaling)*.9
+value = root,Map(DamageScaling)*.75
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1759,14 +1759,14 @@ getpower = (50*Map(DamageScaling)/2)+25
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.95
+value = Map(DamageScaling)*.85
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.135
+value = Map(DamageScaling)-.1
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1774,7 +1774,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1
+value = Map(HitstunScaling)+.25
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0

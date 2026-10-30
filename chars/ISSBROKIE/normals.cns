@@ -21,7 +21,7 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.7
+value = Map(DamageScaling)*.6
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -36,7 +36,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1
+value = Map(HitstunScaling)+.5
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -45,7 +45,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(20*Map(DamageScaling) < 2, 2, 20*Map(DamageScaling)))
+damage = ceil(cond(25*Map(DamageScaling) < 2, 2, 25*Map(DamageScaling)))
 animtype = Light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -121,14 +121,14 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.775
+value = Map(DamageScaling)*.675
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.11
+value = Map(DamageScaling)-.055
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -136,7 +136,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1
+value = Map(HitstunScaling)+.75
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -170,7 +170,7 @@ animtype  = Medium
 damage = ceil(cond(40*Map(DamageScaling) < 4, 4, 40*Map(DamageScaling)))
 guardflag = MA
 priority = 2
-pausetime = 10*cond(enemy,Map(CounterHit)=1,2,1),10*cond(enemy,Map(CounterHit)=1,2,1)
+pausetime = 10,10
 sparkno = 0
 sparkxy = -10,-45
 hitsound   = 5,4
@@ -182,7 +182,7 @@ ground.velocity = -2.5-(Map(PushBack))
 air.velocity = -2,-1.5
 airguard.velocity = -1.5,-1.5
 air.hittime = ceil(cond(25-Map(HitstunScaling) < 15, 15, 25-Map(HitstunScaling)))
-air.fall = 1
+forcenofall = 1
 ground.cornerpush.veloff = -2-(Map(PushBack))
 fall.yvelocity = 0
 guard.ctrltime = 14
@@ -256,14 +256,14 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.835
+value = Map(DamageScaling)*.735
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.075
+value = Map(DamageScaling)-.05
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -271,7 +271,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1
+value = Map(HitstunScaling)+.75
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -281,7 +281,7 @@ type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
 animtype  = Medium
-damage = ceil(cond(55*Map(DamageScaling) < 5, 5, 55*Map(DamageScaling)))
+damage = ceil(cond(60*Map(DamageScaling) < 6, 6, 60*Map(DamageScaling)))
 guardflag = MA
 priority = 3
 pausetime = 12,12
@@ -369,7 +369,7 @@ ignorehitpause = 1
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.975
+value = Map(DamageScaling)*.925
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -519,7 +519,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1
+value = Map(HitstunScaling)+.5
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -540,7 +540,7 @@ volumescale = 80
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
-damage = ceil(cond(20*Map(DamageScaling) < 2, 2, 20*Map(DamageScaling)))
+damage = ceil(cond(25*Map(DamageScaling) < 2, 2, 25*Map(DamageScaling)))
 priority  = 1
 animtype  = Light
 hitflag = MAF
@@ -620,14 +620,14 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.8
+value = Map(DamageScaling)*.7
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.125
+value = Map(DamageScaling)-.05
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -635,7 +635,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1
+value = Map(HitstunScaling)+.25
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -644,7 +644,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = C, NA
-damage = ceil(cond(35*Map(DamageScaling) < 3, 3, 35*Map(DamageScaling)))
+damage = ceil(cond(40*Map(DamageScaling) < 4, 4, 40*Map(DamageScaling)))
 animtype  = Light
 hitflag = MAF
 guardflag = LA
@@ -729,14 +729,14 @@ persistent = 0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.85
+value = Map(DamageScaling)*.75
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.08
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -744,7 +744,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1
+value = Map(HitstunScaling)+.75
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -765,7 +765,7 @@ value = 0, 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = S, NA
-damage = ceil(cond(45*Map(DamageScaling) < 4, 4, 45*Map(DamageScaling)))
+damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
 priority  = 3
 animtype = back
 hitflag = MAF
@@ -845,14 +845,14 @@ x = 12
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.9
+value = Map(DamageScaling)*.8
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.12
+value = Map(DamageScaling)-.09
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -860,7 +860,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+2
+value = Map(HitstunScaling)+1
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -1015,6 +1015,28 @@ envshake.ampl = -4
 p2facing = 1
 getpower = (50*Map(DamageScaling)/2)+15
 
+
+[State 0, Zoom]
+type = zoom
+trigger1 = movecountered
+trigger1 = enemy,HitShakeOver = 0
+scale = 1.5
+lag = 0.7
+stagebound = 1
+camerabound = 0
+pos =pos x + (facing*20),pos y-5
+ignorehitpause=1
+
+
+[State AddPause]
+type = ModifyHitdef
+trigger1 = movecountered && enemy,HitShakeOver = 0
+hitpause = 40,40
+envshake.time = 12
+envshake.freq = 70
+envshake.phase = 120
+envshake.ampl = -7
+
 [State 0, Mapset]
 type = MapSet
 trigger1 = time = 0
@@ -1130,7 +1152,7 @@ value = 0, 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
-damage = ceil(cond(20*Map(DamageScaling) < 2, 2, 20*Map(DamageScaling)))
+damage = ceil(cond(25*Map(DamageScaling) < 2, 2, 25*Map(DamageScaling)))
 guardflag = HA
 priority = 1
 pausetime = 8,8
@@ -1245,7 +1267,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
-damage = ceil(cond(35*Map(DamageScaling) < 3, 3, 35*Map(DamageScaling)))
+damage = ceil(cond(40*Map(DamageScaling) < 4, 4, 40*Map(DamageScaling)))
 guardflag = HA
 priority = 2
 pausetime = 10,10
@@ -1346,7 +1368,7 @@ persistent = 0
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = A, NA
-damage = ceil(cond(45*Map(DamageScaling) < 4, 4, 45*Map(DamageScaling)))
+damage = ceil(cond(50*Map(DamageScaling) < 5, 5, 50*Map(DamageScaling)))
 guardflag = HA
 priority = 3
 pausetime = 12,12

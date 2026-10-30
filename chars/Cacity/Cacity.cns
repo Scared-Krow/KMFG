@@ -234,7 +234,7 @@ map = "DJ"
 [State 0, VelSet]
 type = VelSet
 trigger1 = 1
-x = 4
+x = 4.25
 
 [State 0, StateTypeSet]
 type = StateTypeSet
@@ -287,7 +287,7 @@ map = "DJ"
 [State 0, VelSet]
 type = VelSet
 trigger1 = 1
-x = -4
+x = -4.25
 
 [State 0, StateTypeSet]
 type = StateTypeSet

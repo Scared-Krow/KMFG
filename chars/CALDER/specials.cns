@@ -419,14 +419,14 @@ y = enemy, pos y-5
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount=1
-value = root,Map(DamageScaling)*.85
+value = root,Map(DamageScaling)*.65
 map = "DamageScaling"
 persistent = 0
 redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.09-cond(root,Map(qcfD),.1,0)
+value = root,Map(DamageScaling)-.075-cond(root,Map(qcfD),.1,0)
 map = "DamageScaling"
 persistent = 0
 redirectID = root,ID
@@ -664,7 +664,7 @@ redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.11
+value = root,Map(DamageScaling)-.1
 map = "DamageScaling"
 persistent = 0
 redirectID = root,ID
@@ -672,7 +672,7 @@ redirectID = root,ID
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit=1
-value = root,Map(HitstunScaling)+2.5
+value = root,Map(HitstunScaling)+2
 map = "HitstunScaling"
 persistent = 0
 redirectID = root,ID
@@ -787,14 +787,14 @@ x = .9675
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.95
+value = Map(DamageScaling)*.9
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.05
+value = Map(DamageScaling)-.045
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -802,7 +802,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1
+value = Map(HitstunScaling)+.75
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0
@@ -950,14 +950,14 @@ velset = 0 ,0
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount=1
-value = root,Map(DamageScaling)*.85
+value = root,Map(DamageScaling)*.675
 map = "DamageScaling"
 persistent = 0
 redirectID = root,ID
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit=1 && combocount>1
-value = root,Map(DamageScaling)-.065
+value = root,Map(DamageScaling)-.05
 map = "DamageScaling"
 persistent = 0
 redirectID = root,ID

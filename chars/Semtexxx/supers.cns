@@ -179,7 +179,7 @@ type = HitDef
 trigger1 = animelem = 16
 attr = S, HA
 animtype  = up
-damage = ceil(cond(60*Map(DamageScaling) < 20, 20, 60*Map(DamageScaling))),10
+damage = ceil(cond(60*Map(DamageScaling) < 10, 10, 60*Map(DamageScaling))),10
 guardflag = MA
 hitflag = MAFD
 pausetime = 15,20

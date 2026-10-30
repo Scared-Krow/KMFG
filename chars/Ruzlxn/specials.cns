@@ -74,14 +74,14 @@ map = "ArmorActive"
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.875
+value = Map(DamageScaling)*.8
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.05
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -112,7 +112,7 @@ type = HitDef
 triggerall = Map(GroundBounce)=0
 trigger1 = !MoveContact && !MoveReversed
 attr = S,SA                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(90*Map(DamageScaling)+cond(Map(Rage)=1,20,0) < 20, 20, 90*Map(DamageScaling)+cond(Map(Rage)=1,20,0))),20
+damage = ceil(cond(100*Map(DamageScaling)+cond(Map(Rage)=1,20,0) < 20, 20, 100*Map(DamageScaling)+cond(Map(Rage)=1,20,0))),20
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = HA                   ;Flags on how move is to be guarded against
 hitflag = MAFD                    ;Flags of conditions that move can hit
@@ -326,14 +326,14 @@ map = "ArmorActive"
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.87
+value = Map(DamageScaling)*.75
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.1
+value = Map(DamageScaling)-.075
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -363,7 +363,7 @@ trans = add1
 type = HitDef
 trigger1 = !MoveContact && !MoveReversed
 attr = C,SA                     ;Attribute: Standing, Normal Attack
-damage = ceil(cond(70*Map(DamageScaling)+cond(Map(Rage)=1,20,0) < 10, 10, 70*Map(DamageScaling)+cond(Map(Rage)=1,20,0))),15
+damage = ceil(cond(75*Map(DamageScaling)+cond(Map(Rage)=1,20,0) < 10, 10, 75*Map(DamageScaling)+cond(Map(Rage)=1,20,0))),15
 animtype = Back                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = LA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
@@ -627,14 +627,14 @@ time = 6
 [State -2, Starter Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount=1
-value = Map(DamageScaling)*.83
+value = Map(DamageScaling)*.725
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
 [State -2, Damage Scaling]
 type = mapset
 trigger1 = movehit && combocount>1
-value = Map(DamageScaling)-.125
+value = Map(DamageScaling)-.08
 map = "DamageScaling"
 ignorehitpause = 1
 persistent = 0
@@ -642,7 +642,7 @@ persistent = 0
 type = mapset
 triggerall = enemy,statetype = A && enemy,movetype = H
 trigger1 = movehit
-value = Map(HitstunScaling)+1.75
+value = Map(HitstunScaling)+1
 map = "HitstunScaling"
 ignorehitpause = 1
 persistent = 0

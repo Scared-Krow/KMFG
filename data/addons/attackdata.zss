@@ -240,7 +240,7 @@ if numenemy {
 			if root, movetype = H
 			&& root, gethitvar(frame)
 			&& root, pausetime = 0 # Otherwise slow motion makes guard level indicator misbehave
-			&& cond(map(_pots_attackdata_cfg_guardlevel_combo) = 0, root, prevmovetype != H, 1) {
+			&& cond(map(_pots_attackdata_cfg_guardlevel_combo) = 0, root, prevstateno != [5000,6000], 1) {
 
 				# Set dummy text velocity
 				let text_velx_dummy = 0;

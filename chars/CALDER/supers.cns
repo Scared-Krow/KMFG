@@ -34,7 +34,7 @@ guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAFD                    ;Flags of conditions that move can hit
 priority = 3, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 pausetime = 10,999
-guard.pausetime = 10,5
+guard.pausetime = 7,7
 sparkno = 0                      
 sparkxy = -10, -70              ;X-offset for the "hit spark" rel. to p2,
 hitsound = 5, 0                  ;Sound to play on hit
@@ -243,11 +243,11 @@ poweradd = -500
 
 [State 0, SuperPause]
 type = SuperPause
-trigger1 = time = 0
-time = 26
+trigger1 = time = 7
+time = 20
 darken = 1
 p2defmul = 1
-movetime = 26
+movetime = 20
 
 [State 200, 1]
 type = HitDef
